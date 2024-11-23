@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class JadwalBimbinganController extends Controller
 {
-    // Data dosen beserta jadwal mereka
     private $dosensWithSchedules = [
         "Julianto Lemantara, S.Kom., M.Eng." => [
             ['tanggal' => 'Selasa', 'jam_mulai' => '15:00', 'jam_selesai' => '17:30', 'ruang' => 'M-306', 'ket' => 'Progres'],
@@ -33,6 +32,12 @@ class JadwalBimbinganController extends Controller
             ['tanggal' => 'Jumat', 'jam_mulai' => '10:30', 'jam_selesai' => '12:00', 'ruang' => 'M-309', 'ket' => 'Progres'],
         ],
         "Agus Dwi Churniawan, S.Si., M.Kom." => [
+            ['tanggal' => 'Senin', 'jam_mulai' => '13:00', 'jam_selesai' => '15:00', 'ruang' => 'M-310', 'ket' => 'Skripsi'],
+            ['tanggal' => 'Kamis', 'jam_mulai' => '14:30', 'jam_selesai' => '16:30', 'ruang' => 'M-311', 'ket' => 'Proposal'],
+            ['tanggal' => 'Senin', 'jam_mulai' => '13:00', 'jam_selesai' => '15:00', 'ruang' => 'M-310', 'ket' => 'Skripsi'],
+            ['tanggal' => 'Kamis', 'jam_mulai' => '14:30', 'jam_selesai' => '16:30', 'ruang' => 'M-311', 'ket' => 'Proposal'],
+            ['tanggal' => 'Senin', 'jam_mulai' => '13:00', 'jam_selesai' => '15:00', 'ruang' => 'M-310', 'ket' => 'Skripsi'],
+            ['tanggal' => 'Kamis', 'jam_mulai' => '14:30', 'jam_selesai' => '16:30', 'ruang' => 'M-311', 'ket' => 'Proposal'],
             ['tanggal' => 'Senin', 'jam_mulai' => '13:00', 'jam_selesai' => '15:00', 'ruang' => 'M-310', 'ket' => 'Skripsi'],
             ['tanggal' => 'Kamis', 'jam_mulai' => '14:30', 'jam_selesai' => '16:30', 'ruang' => 'M-311', 'ket' => 'Proposal'],
         ],

@@ -1,7 +1,8 @@
 <x-layout>
-    <div class="h-full w-full p-6 bg-white rounded-lg shadow-lg">
-        <div class="max-w-lg mx-auto mb-8">
-            <h1 class="text-2xl font-bold text-center text-blue-800 mb-4">Jadwal Bimbingan Dosen</h1>
+    <div class="min-h-96 p-4 md:p-6 bg-white rounded-md shadow-lg">
+        <div class="max-w-xl mx-auto">
+            <h1 class="text-xl md:text-2xl font-semibold text-center text-blue-800 mb-3 md:mb-4">Jadwal Bimbingan Dosen
+            </h1>
             <div class="relative">
                 <div
                     class="flex items-center border border-gray-300 rounded-md focus-within:ring-2 focus-within:ring-blue-500">
@@ -20,9 +21,9 @@
             </div>
         </div>
 
-        <div id="schedule-table" class="hidden mt-8 relative overflow-x-auto shadow-md sm:rounded-lg">
+        <div id="schedule-table" class="hidden mt-8 relative overflow-x-auto shadow-lg rounded-md">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <thead class="text-xs bg-gray-200 text-gray-700 uppercase">
                     <tr>
                         <th scope="col" class="px-6 py-3">Tanggal</th>
                         <th scope="col" class="px-6 py-3">Jam Mulai</th>
@@ -45,6 +46,8 @@
     const clearButton = document.getElementById("clear-button");
     const inputField = document.getElementById("autocomplete-input");
     const sortedList = dosen.sort();
+    const scheduleBody = document.getElementById("schedule-body");
+    const table = document.getElementById("schedule-table");
 
     function showSuggestions(value) {
         list.innerHTML = ""; // Clear previous suggestions
@@ -74,6 +77,7 @@
         if (value.trim() !== "") {
             clearButton.classList.remove("hidden");
         } else {
+            table.classList.add("hidden");
             clearButton.classList.add("hidden");
         }
     }
@@ -112,8 +116,6 @@
     function loadSchedule(dosen) {
         // Kirim permintaan ke server untuk mendapatkan jadwal berdasarkan dosen
         $.get(`/jadbimbingan-dosen?dosen=${encodeURIComponent(dosen)}`, function(response) {
-            const scheduleBody = document.getElementById("schedule-body");
-            const table = document.getElementById("schedule-table");
             scheduleBody.innerHTML = ""; // Bersihkan jadwal sebelumnya
 
             if (response.schedules.length > 0) {

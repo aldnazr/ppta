@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <div class="mx-auto p-4 md:p-6 bg-white rounded-lg shadow-lg">
         <h1 class="text-2xl font-bold text-blue-800 mb-4">Contoh Document - Document Tugas Akhir (TA)</h1>
 
         <div class="prose max-w-none">

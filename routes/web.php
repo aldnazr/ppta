@@ -29,6 +29,10 @@ Route::get('/document', function () {
     return view('document', ['title' => 'Contact Page']);
 });
 
+Route::get('/berkas', function () {
+    return view('berkas', ['title' => 'Contact Page']);
+});
+
 // Route::get('/jadbimbingan', function () {
 //     return view('jadbimbingan', ['title' => 'Contact Page']);
 // });

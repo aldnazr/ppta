@@ -1,51 +1,49 @@
 <x-layout>
-    <div class="max-w-7xl mx-auto">
-        <h1 class="text-2xl md:text-3xl font-bold text-blue-800 my-6">Daftar Judul Tugas Akhir Per Jurusan</h1>
+    <h1 class="text-2xl md:text-3xl font-semibold text-blue-800 my-6">Daftar Judul Tugas Akhir Per Jurusan</h1>
 
-        <!-- Filter Chips -->
-        <div class="flex flex-wrap gap-2 mb-8">
-            @foreach ($jurusan as $jur)
-                <button data-jurusan="{{ $jur }}"
-                    class="filter-btn px-4 py-2 rounded-full font-medium transition-colors hover:bg-blue-100 {{ $jur === $activeJurusan ? 'bg-blue-100 text-blue-800' : 'bg-gray-200 text-gray-700' }}">
-                    {{ $jur }}
-                </button>
-            @endforeach
+    <!-- Filter Chips -->
+    <div class="flex flex-wrap gap-2 mb-8">
+        @foreach ($jurusan as $jur)
+            <button data-jurusan="{{ $jur }}"
+                class="filter-btn px-4 py-2 rounded-full font-medium transition-colors hover:bg-blue-100 {{ $jur === $activeJurusan ? 'bg-blue-100 text-blue-800' : 'bg-gray-200 text-gray-700' }}">
+                {{ $jur }}
+            </button>
+        @endforeach
+    </div>
+
+    <!-- Content Card -->
+    <div id="content-container" class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-semibold text-gray-800" id="jurusan-title">{{ $activeJurusan }}</h2>
+            <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg text-sm font-medium">
+                Total Mahasiswa: {{ array_sum($angkatan) }}
+            </div>
         </div>
 
-        <!-- Content Card -->
-        <div id="content-container" class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300">
-            <div class="flex items-center justify-between mb-6">
-                <h2 class="text-2xl font-bold text-gray-800" id="jurusan-title">{{ $activeJurusan }}</h2>
-                <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg text-sm font-medium">
-                    Total Mahasiswa: {{ array_sum($angkatan) }}
-                </div>
-            </div>
-
-            <!-- List Angkatan -->
-            <div id="angkatan-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                @if (!empty($angkatan))
-                    @foreach ($angkatan as $tahun => $total)
-                        <div class="group">
-                            <a href="#"
-                                class="block p-4 border border-gray-200 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <span class="text-gray-500 text-sm">Angkatan</span>
-                                        <h3 class="text-lg font-semibold text-gray-800 group-hover:text-blue-600">
-                                            {{ $tahun }}</h3>
-                                    </div>
-                                    <div
-                                        class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium group-hover:bg-blue-100">
-                                        {{ $total }}
-                                    </div>
+        <!-- List Angkatan -->
+        <div id="angkatan-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            @if (!empty($angkatan))
+                @foreach ($angkatan as $tahun => $total)
+                    <div class="group">
+                        <a href="#"
+                            class="block p-4 border border-gray-200 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-gray-500 text-sm">Angkatan</span>
+                                    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-blue-600">
+                                        {{ $tahun }}</h3>
                                 </div>
-                            </a>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="col-span-full text-center text-gray-500">Tidak ada data untuk jurusan ini.</div>
-                @endif
-            </div>
+                                <div
+                                    class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium group-hover:bg-blue-100">
+                                    {{ $total }}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            @else
+                <div class="col-span-full text-center text-gray-500">Tidak ada data untuk jurusan ini.</div>
+            @endif
         </div>
     </div>
 </x-layout>

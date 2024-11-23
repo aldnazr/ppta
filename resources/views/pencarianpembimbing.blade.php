@@ -1,9 +1,10 @@
 <x-layout>
-    <div class="mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <div class="p-4 md:p-6 bg-white rounded-lg shadow-lg">
         <div class="mb-8">
             <!-- Search Form -->
             <div class="max-w-lg mx-auto">
-                <h1 class="text-2xl font-bold text-center text-blue-800 mb-4">Pencarian Pembimbing</h1>
+                <h1 class="text-xl md:text-2xl font-semibold text-center text-blue-800 mb-3 md:mb-4">Pencarian Pembimbing
+                </h1>
                 <div class="relative">
                     <div
                         class="flex items-center border border-gray-300 rounded-md focus-within:ring-2 focus-within:ring-blue-500">
