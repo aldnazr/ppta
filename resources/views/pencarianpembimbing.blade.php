@@ -2,24 +2,45 @@
     <div class="p-4 md:p-6 bg-white rounded-lg shadow-lg">
         <div class="mb-8">
             <!-- Search Form -->
-            <div class="max-w-lg mx-auto">
-                <h1 class="text-xl md:text-2xl font-semibold text-center text-blue-800 mb-3 md:mb-4">Pencarian Pembimbing
+            <div class="max-w-xl mx-auto">
+                <h1 class="text-xl md:text-2xl font-semibold text-center text-gray-800 mb-6">
+                    Jadwal Bimbingan Dosen
                 </h1>
+
+                <!-- Search Input -->
                 <div class="relative">
                     <div
-                        class="flex items-center border border-gray-300 rounded-md focus-within:ring-2 focus-within:ring-blue-500">
-                        <input type="text" id="autocomplete-input" placeholder="Masukkan nama dosen"
-                            class="w-full px-4 py-2 focus:outline-hidden rounded-l-md"
-                            oninput="showSuggestions(this.value); toggleClearButton(this.value)" autocomplete="off">
+                        class="flex items-center border border-gray-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500 transition-all duration-200 bg-white">
+                        <!-- Search Icon -->
+                        <span class="pl-4 text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </span>
+
+                        <!-- Input Field -->
+                        <input type="text" id="autocomplete-input" placeholder="Cari nama dosen..."
+                            class="w-full px-4 py-3 text-gray-700 focus:outline-none" autocomplete="off"
+                            oninput="showSuggestions(this.value); toggleClearButton(this.value)">
+
+                        <!-- Clear Button -->
                         <button id="clear-button"
-                            class="hidden px-3 text-gray-500 hover:text-gray-700 focus:outline-hidden"
+                            class="hidden px-4 text-gray-400 hover:text-gray-600 focus:outline-none"
                             onclick="clearInput()">
-                            <i class="fa-regular fa-circle-xmark"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
                         </button>
                     </div>
+
+                    <!-- Autocomplete List -->
                     <ul id="autocomplete-list"
-                        class="absolute z-10 overflow-y-auto h-auto max-h-60 md:max-h-80 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg hidden">
-                        <!-- Suggestions will appear here -->
+                        class="absolute z-10 max-h-60 md:max-h-80 overflow-y-auto w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg hidden">
+                        <!-- List items will be inserted here via JavaScript -->
                     </ul>
                 </div>
             </div>
