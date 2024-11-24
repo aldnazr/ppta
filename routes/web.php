@@ -9,13 +9,6 @@ use App\Http\Controllers\JadwalBimbinganController;
 use App\Http\Controllers\UsulanTugasAkhirController;
 use App\Http\Controllers\PencarianPembimbingController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Route::get('/', function () {
-//     return view('home', ['title' => 'Home Page']);
-// });
 
 Route::get('/blog', function () {
     return view('blog', [
@@ -24,7 +17,6 @@ Route::get('/blog', function () {
     ]);
 });
 
-
 Route::get('/document', function () {
     return view('document', ['title' => 'Contact Page']);
 });
@@ -32,14 +24,6 @@ Route::get('/document', function () {
 Route::get('/berkas', function () {
     return view('berkas', ['title' => 'Contact Page']);
 });
-
-// Route::get('/jadbimbingan', function () {
-//     return view('jadbimbingan', ['title' => 'Contact Page']);
-// });
-
-// Route::get('/usulan', function () {
-//     return view('usulan', ['title' => 'Contact Page']);
-// });
 
 Route::get('/mhshome', function () {
     return view('mhshome', ['title' => 'Contact Page']);
@@ -61,6 +45,17 @@ Route::get('/usulan', [UsulanTugasAkhirController::class, 'index']);
 Route::get('/jadbimbingan', [JadwalBimbinganController::class, 'index']);
 Route::get('/jadbimbingan-dosen', [JadwalBimbinganController::class, 'getJadwalDosen']);
 
-// Route::view('/login', 'login')->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/login', function () {
+    return view('login'); // Replace with your login page
+});
+
+// Handle login submissions
+// Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+
+// Logout functionality
+// Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Protected routes
+// Route::middleware(['loggedin'])->group(function () {
+//     Route::get('/', [HomeController::class, 'index']);
+// });

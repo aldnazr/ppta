@@ -86,21 +86,11 @@ window.addEventListener('resize', () => {
 
         <!-- Logout -->
         <div class="group mb-4 mt-auto px-3">
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit"
-                    class="flex w-full gap-x-4 font-semibold items-center  rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-sky-50">
-                    <i
-                        class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>
-                    Logout
-                </button>
-            </form>
-            {{-- @csrf
             <a href="/login"
-                class="flex font-semibold items-center gap-x-4 rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-sky-50">
+                class="flex w-full gap-x-4 font-semibold items-center  rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-sky-50">
                 <i class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>
                 Logout
-            </a> --}}
+            </a>
         </div>
     </div>
 

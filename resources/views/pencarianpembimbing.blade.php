@@ -4,7 +4,7 @@
             <!-- Search Form -->
             <div class="max-w-xl mx-auto">
                 <h1 class="text-xl md:text-2xl font-semibold text-center text-gray-800 mb-6">
-                    Jadwal Bimbingan Dosen
+                    Pencarian Pembimbing
                 </h1>
 
                 <!-- Search Input -->

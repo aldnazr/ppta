@@ -62,7 +62,7 @@
         <div id="schedule-table" class="hidden mt-8">
             <div class="overflow-x-auto rounded-lg border border-gray-200">
                 <table class="w-full text-sm text-left">
-                    <thead class="bg-gray-50 text-gray-700">
+                    <thead class="bg-gray-200 text-gray-700">
                         <tr>
                             <th scope="col" class="px-6 py-4 font-medium">Tanggal</th>
                             <th scope="col" class="px-6 py-4 font-medium">Jam Mulai</th>

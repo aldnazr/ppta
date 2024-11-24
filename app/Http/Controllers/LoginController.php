@@ -12,45 +12,38 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
-        $data = [
-            'form_params' => [
-                'email' => $request->input('email'),
-                'password' => $request->input('password')
-            ]
+        // Data statis untuk autentikasi
+        $staticUser = [
+            'email' => 'admin',
+            'password' => 'admin',
         ];
 
-        $client = new Client();
-        // $url = 'https://capstone-blendit.et.r.appspot.com/login';
+        // Validasi kredensial
+        if (
+            $request->input('email') === $staticUser['email'] &&
+            $request->input('password') === $staticUser['password']
+        ) {
+            // Simpan informasi login ke sesi
+            session(['is_logged_in' => true]);
+            return redirect()->intended('/'); // Arahkan ke halaman utama
+        }
 
-        return redirect()->to('/');
-
-        /*try {
-            $response = $client->post($url, $data);
-            $body = json_decode($response->getBody()->getContents(), true);
-
-            if ($body['status'] == 'success') {
-                return redirect()->to('/'); // redirect ke root jika login berhasil
-            } else {
-                return redirect()->back()->with('error', 'Invalid email or password');
-            }
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Login failed: ' . $e->getMessage());
-        }*/
+        // Jika kredensial salah
+        return back()->withErrors([
+            'email' => 'Email atau password salah.',
+        ])->onlyInput('email');
     }
 
     public function logout(Request $request)
     {
-        Auth::logout(); // Log out pengguna
+        $request->session()->forget('is_logged_in'); // Hapus informasi login
+        $request->session()->invalidate(); // Hancurkan sesi
+        $request->session()->regenerateToken(); // Regenerate CSRF token
 
-        // Invalidate dan regenerasi token session
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        // Redirect ke halaman login
-        return redirect('/login');
+        return redirect()->route('login'); // Arahkan ke halaman login
     }
 }

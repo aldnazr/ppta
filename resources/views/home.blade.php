@@ -4,15 +4,15 @@
             Sidang Tugas Akhir
         </h1>
         <div class="container mx-auto">
-            <div class="overflow-x-auto bg-white rounded-md shadow">
-                <table class="min-w-full">
-                    <thead>
-                        <tr class="bg-gray-200 border-b">
-                            <th class="px-6 py-3 text-left text-xs font-bold text-gray-800 uppercase tracking-wider">
+            <div class="overflow-x-auto bg-white rounded-md shadow border border-gray-200">
+                <table class="w-full text-sm text-left">
+                    <thead class="bg-gray-200 text-gray-700">
+                        <tr>
+                            <th class="px-6 py-4 font-medium">
                                 <a href="#" class="w-max flex items-center gap-x-2">Waktu <i
                                         class="fa-solid fa-sort fa-sm"></i></a>
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-bold text-gray-800 uppercase tracking-wider">
+                            <th class="px-6 py-4 font-medium">
                                 Tugas Akhir
                             </th>
                         </tr>

@@ -8,49 +8,64 @@
         @vite('resources/css/app.css')
     </head>
 
-    <body class="bg-gray-100 flex items-center justify-center h-screen">
+    <body class="bg-gradient-to-r from-blue-100 to-purple-100 min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-md">
+            <div class="bg-white rounded-lg shadow-xl p-6 md:p-8 space-y-6">
+                <!-- Logo atau Gambar (opsional) -->
+                <div class="text-center">
+                    <!-- Tambahkan logo di sini jika diperlukan -->
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900">
+                        Sign in to your account
+                    </h2>
+                    <p class="mt-2 text-sm text-gray-600">
+                        Welcome back! Please enter your details
+                    </p>
+                </div>
 
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <form action="{{ route('login') }}" method="POST" class="bg-white shadow-md rounded-sm px-8 pt-5 pb-8 mb-4">
-                @csrf
-                <h2 class="my-6 text-center text-2xl/9 font-bold tracking-tight text-gray-900">Sign in to your account
-                </h2>
-
-                <!-- Email Field -->
-                <div>
-                    <label for="email" class="block text-sm/6 font-medium text-gray-900">NIDN</label>
-                    <div class="mt-2">
+                <form action="/" class="space-y-5">
+                    <!-- NIDN Field -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                            NIDN
+                        </label>
                         <input id="email" name="email" type="text" autocomplete="email" required
-                            class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder-gray-400 text-sm"
+                            placeholder="Masukkan NIDN Anda">
                     </div>
-                </div>
 
-                <!-- Password Field -->
-                <div>
-                    <div class="flex items-center justify-between">
-                        <label for="password" class="block mt-2 text-sm/6 font-medium text-gray-900">Password</label>
-                    </div>
-                    <div class="mt-2">
+                    <!-- Password Field -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">
+                            Password
+                        </label>
                         <input id="password" name="password" type="password" autocomplete="current-password" required
-                            class="block w-full rounded-md border-0 px-2 py-1.5 text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder-gray-400 text-sm"
+                            placeholder="••••••••">
                     </div>
-                </div>
 
-                <!-- Submit Button -->
-                <div class="flex items-center justify-between">
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <input id="remember-me" name="remember-me" type="checkbox"
+                                class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                            <label for="remember-me" class="ml-2 block text-sm text-gray-700">
+                                Remember me
+                            </label>
+                        </div>
+                        <div class="text-sm">
+                            <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
+                                Forgot password?
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Sign in Button -->
                     <button type="submit"
-                        class="flex w-full justify-center rounded-md bg-indigo-600 mt-6 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                        Sign in</button>
-                </div>
-            </form>
-
-            <!-- Display error message if login fails -->
-            @if (session('error'))
-                <div class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-sm relative"
-                    role="alert">
-                    <span class="block sm:inline">{{ session('error') }}</span>
-                </div>
-            @endif
+                        class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">
+                        Sign in
+                    </button>
+                </form>
+            </div>
         </div>
     </body>
 
