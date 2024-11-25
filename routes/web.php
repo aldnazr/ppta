@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BerkasController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -21,8 +22,8 @@ Route::get('/document', function () {
     return view('document', ['title' => 'Contact Page']);
 });
 
-Route::get('/berkas', function () {
-    return view('berkas', ['title' => 'Contact Page']);
+Route::get('/penilaian', function () {
+    return view('penilaian');
 });
 
 Route::get('/mhshome', function () {
@@ -48,6 +49,8 @@ Route::get('/jadbimbingan-dosen', [JadwalBimbinganController::class, 'getJadwalD
 Route::get('/login', function () {
     return view('login'); // Replace with your login page
 });
+
+Route::get('/berkas', [BerkasController::class, 'index']);
 
 // Handle login submissions
 // Route::post('/login', [LoginController::class, 'login'])->name('login.post');

@@ -11,10 +11,10 @@ window.addEventListener('resize', () => {
         x-transition:enter="transition transform duration-300 ease-in-out" x-transition:enter-start="-translate-x-full"
         x-transition:enter-end="translate-x-0" x-transition:leave="transition transform duration-300 ease-in-out"
         x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
-        class="w-72 fixed flex flex-col inset-y-0 left-0 z-50 transform border-r border-gray-200 bg-white">
+        class="w-72 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
         <!-- Open Close Button -->
         <button @click="isOpen = !isOpen"
-            class="mt-3 ml-3 flex justify-center items-center pt-1 rounded-lg hover:border hover:bg-zinc-50 w-10 h-10 text-zinc-700 hover:text-zinc-500 hover:shadow-xs">
+            class="mt-[0.73rem] ml-3 flex justify-center items-center pt-1 rounded-lg hover:border hover:bg-zinc-50 w-10 h-10 text-zinc-700 hover:text-zinc-500 hover:shadow-xs">
             {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
             <i class="fa-light fa-bars-sort fa-lg"></i>
         </button>
@@ -98,7 +98,7 @@ window.addEventListener('resize', () => {
     <div :class="{ 'md:pl-72': isOpen }" class="flex flex-1 flex-col h-full w-full">
         <!-- Top Navigation -->
         <div :class="{ 'justify-between': !isOpen, 'justify-end': isOpen }"
-            class="fixed top-0 left-0 right-0 z-40 flex h-16 items-center bg-white border-b border-gray-200 px-3">
+            class="fixed top-0 left-0 right-0 z-30 flex h-16 items-center bg-white border-b border-gray-200 px-3">
 
             <!-- Button Toggle Sidebar -->
             <button :class="{ 'hidden': isOpen }" @click="isOpen = !isOpen"

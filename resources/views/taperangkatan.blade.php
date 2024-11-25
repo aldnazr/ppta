@@ -1,21 +1,23 @@
 <x-layout>
-    <h1 class="text-2xl md:text-3xl font-semibold text-blue-800 my-6">Daftar Judul Tugas Akhir Per Jurusan</h1>
+    <div class="bg-white rounded-t-xl shadow-lg px-6 py-2 mb-0.5">
+        <h1 class="text-2xl md:text-3xl font-semibold text-blue-800 my-6">Daftar Judul Tugas Akhir Per Jurusan</h1>
 
-    <!-- Filter Chips -->
-    <div class="flex flex-wrap gap-2 mb-8">
-        @foreach ($jurusan as $jur)
-            <button data-jurusan="{{ $jur }}"
-                class="filter-btn px-4 py-2 rounded-full font-medium transition-colors hover:bg-blue-100 {{ $jur === $activeJurusan ? 'bg-blue-100 text-blue-800' : 'bg-gray-200 text-gray-700' }}">
-                {{ $jur }}
-            </button>
-        @endforeach
+        <!-- Filter Chips -->
+        <div class="flex flex-wrap gap-2 mb-8">
+            @foreach ($jurusan as $jur)
+                <button data-jurusan="{{ $jur }}"
+                    class="filter-btn px-4 py-2 rounded-full font-medium transition-colors hover:bg-blue-100 {{ $jur === $activeJurusan ? 'bg-blue-100 text-blue-800' : 'bg-gray-200 text-gray-700' }}">
+                    {{ $jur }}
+                </button>
+            @endforeach
+        </div>
     </div>
 
     <!-- Content Card -->
-    <div id="content-container" class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300">
+    <div id="content-container" class="bg-white rounded-b-xl shadow-lg p-6 transition-all duration-300">
         <div class="flex items-center justify-between mb-6">
             <h2 class="text-2xl font-semibold text-gray-800" id="jurusan-title">{{ $activeJurusan }}</h2>
-            <div class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg text-sm font-medium">
+            <div id="total-mahasiswa" class="bg-blue-100 text-blue-800 px-4 py-2 rounded-lg text-sm font-medium">
                 Total Mahasiswa: {{ array_sum($angkatan) }}
             </div>
         </div>
@@ -73,25 +75,24 @@
                     .forEach(([tahun, jumlah]) => {
                         total += jumlah;
                         html += `
-                    <div class="group">
-                        <a href="#" class="block p-4 border border-gray-200 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
-                            <div class="flex items-center justify-between">
-                                <div>
-                                    <span class="text-gray-500 text-sm">Angkatan</span>
-                                    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-blue-600">${tahun}</h3>
-                                </div>
-                                <div class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium group-hover:bg-blue-100">
-                                    ${jumlah}
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                `;
+                                <div class="group">
+                                    <a href="#" class="block p-4 border border-gray-200 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <span class="text-gray-500 text-sm">Angkatan</span>
+                                                <h3 class="text-lg font-semibold text-gray-800 group-hover:text-blue-600">${tahun}</h3>
+                                            </div>
+                                            <div class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium group-hover:bg-blue-100">
+                                                ${jumlah}
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>`;
                     });
 
                 // Update grid and total
                 $('#angkatan-grid').html(html);
-                $('.total-mahasiswa').text(`Total Mahasiswa: ${total}`);
+                $('#total-mahasiswa').text(`Total Mahasiswa: ${total}`);
 
             }).fail(function() {
                 // Show error

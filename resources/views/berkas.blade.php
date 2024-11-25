@@ -1,656 +1,211 @@
 <x-layout>
-    {{-- <div class="bg-transparent pb-8"> --}}
-    <!-- Header Card -->
-    <div class="bg-white rounded-md shadow-md mb-6 p-6">
-        <div class="grid grid-cols-1 gap-4">
-            <div class="flex justify-between items-center">
-                <h1 class="text-xl font-semibold text-gray-900">Nilai Detail</h1>
-                <span class="text-sm text-gray-500">Log Out (Tan Amelia)</span>
-            </div>
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-bold mb-4">Antrian Proposal Tugas Akhir</h2>
 
-            <!-- Student Info -->
-            <div class="grid grid-cols-1 gap-4 mt-4">
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="text-sm text-gray-900">NIM</div>
-                    <div class="col-span-2">
-                        <input type="text"
-                            class="w-full border border-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
-                            value="18410100143" readonly>
-                    </div>
-                </div>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="text-sm text-gray-900">Nama Mahasiswa</div>
-                    <div class="col-span-2">
-                        <input type="text"
-                            class="w-full border border-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
-                            value="Muhammad Alauddin Azhary" readonly>
-                    </div>
-                </div>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="text-sm text-gray-900">Judul</div>
-                    <div class="col-span-2">
-                        <textarea class="w-full border border-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
-                            rows="2" readonly>PENGARUH BANTUAN AI UPSCALE FHD MODEL PADA UNIVERSITAS SURABAYA</textarea>
-                    </div>
-                </div>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="text-sm text-gray-900">Tanggal Seminar TA</div>
-                    <div class="col-span-2">
-                        <input type="text"
-                            class="w-full border border-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
-                            value="*************" readonly>
-                    </div>
-                </div>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="text-sm text-gray-900">Status Dosen</div>
-                    <div class="col-span-2">
-                        <input type="text"
-                            class="w-full border border-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
-                            value="Pembimbing 1" readonly>
-                    </div>
-                </div>
-                <div class="grid grid-cols-3 gap-4">
-                    <div class="text-sm text-gray-900">Berkas</div>
-                    <div class="col-span-2">
-                        <div
-                            class="flex flex-wrap md:flex-nowrap gap-2 overflow-x-auto py-2 px-1 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-                            <button
-                                class="flex-shrink-0 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-                                Proposal
-                            </button>
-                            <button
-                                class="flex-shrink-0 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-                                Proposal (Digi)
-                            </button>
-                            <button
-                                class="flex-shrink-0 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-                                Ujian
-                            </button>
-                            <button
-                                class="flex-shrink-0 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-                                Bimbingan
-                            </button>
-                            <button
-                                class="flex-shrink-0 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-                                Hasil Ujian
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3 grid grid-cols-3 gap-4">
-                    <div class="text-sm text-gray-900">Nilai TA</div>
-                    <div class="col-span-2">
-                        <input type="text"
-                            class="w-full border border-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
-                            value="0" readonly>
-                    </div>
-                </div>
+        <form id="searchForm" method="GET" action="{{ url()->current() }}" class="flex gap-4 mb-4">
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama atau judul..."
+                class="border rounded px-2 py-1" />
+            <select name="filter" class="border rounded px-2 py-1">
+                <option value="10" {{ request('filter') == 10 ? 'selected' : '' }}>10</option>
+                <option value="25" {{ request('filter') == 25 ? 'selected' : '' }}>25</option>
+                <option value="50" {{ request('filter') == 50 ? 'selected' : '' }}>50</option>
+            </select>
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Terapkan</button>
+        </form>
+
+        <div class="overflow-x-auto bg-white rounded-md shadow border border-gray-200">
+            <table class="w-full text-sm text-left">
+                <thead class="bg-gray-200 text-gray-700">
+                    <tr>
+                        <th class="px-6 py-4 font-medium">No</th>
+                        <th class="px-6 py-4 font-medium">No Daftar</th>
+                        <th class="px-6 py-4 font-medium">Pengajuan</th>
+                        <th class="px-6 py-4 font-medium">NIM</th>
+                        <th class="px-6 py-4 font-medium">Nama</th>
+                        <th class="px-6 py-4 font-medium">Judul</th>
+                        <th class="px-6 py-4 font-medium">Pembimbing 1</th>
+                        <th class="px-6 py-4 font-medium">Pembimbing 2</th>
+                        <th class="px-6 py-4 font-medium">Sidang Proposal</th>
+                        <th class="px-6 py-4 font-medium">Revisi</th>
+                        <th class="px-6 py-4 font-medium">File</th>
+                        <th class="px-6 py-4 font-medium">Hasil</th>
+                    </tr>
+                </thead>
+                <!-- Bagian tbody pada table di view -->
+                <tbody class="bg-white divide-y divide-gray-200">
+                    @forelse($proposals as $index => $proposal)
+                        <tr>
+                            <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                            <td class="border px-4 py-2">{{ $proposal['no_daftar'] }}</td>
+                            <td class="border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}</td>
+                            <td class="border px-4 py-2">{{ $proposal['nim'] }}</td>
+                            <td class="border px-4 py-2">{{ $proposal['nama'] }}</td>
+                            <td class="border px-4 py-2">{{ $proposal['judul'] }}</td>
+                            <td class="border px-4 py-2">{{ $proposal['pembimbing1'] }}</td>
+                            <td class="border px-4 py-2">{{ $proposal['pembimbing2'] }}</td>
+                            <td class="border px-4 py-2">
+                                <span
+                                    class="px-2 py-1 rounded text-sm 
+                                    {{ $proposal['status'] === 'Disetujui'
+                                        ? 'bg-green-200 text-green-800'
+                                        : ($proposal['status'] === 'Pending'
+                                            ? 'bg-yellow-200 text-yellow-800'
+                                            : 'bg-red-200 text-red-800') }}">
+                                    {{ $proposal['status'] }}
+                                </span>
+                            </td>
+                            <td class="border px-4 py-2"></td>
+                            <td class="border px-4 py-2">
+                                <div class="flex space-x-2">
+                                    <button class="text-blue-600 hover:text-blue-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                    </button>
+                                    <button class="text-green-600 hover:text-green-800">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="border px-4 py-2">
+                                <div class="relative" x-data="{ open: false }">
+                                    <button @click="open = !open"
+                                        class="px-3 py-1 text-gray-600 hover:text-gray-800 border rounded-md hover:bg-gray-50 focus:outline-none inline-flex items-center"
+                                        type="button">
+                                        <span>Update Status</span>
+                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+
+                                    <!-- Dropdown menu -->
+                                    <div x-show="open" @click.away="open = false"
+                                        class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-50 border"
+                                        x-transition:enter="transition ease-out duration-100"
+                                        x-transition:enter-start="transform opacity-0 scale-95"
+                                        x-transition:enter-end="transform opacity-100 scale-100">
+                                        <div class="py-1">
+                                            <!-- ACC -->
+                                            <div>
+                                                <input type="hidden" name="status" value="ACC">
+                                                <button
+                                                    class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-green-50 hover:text-green-700 flex items-center">
+                                                    <svg class="w-4 h-4 mr-2 text-green-500" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M5 13l4 4L19 7" />
+                                                    </svg>
+                                                    ACC
+                                                </button>
+                                            </div>
+
+                                            <!-- ACC Bersyarat -->
+                                            <div>
+                                                <input type="hidden" name="status" value="ACC Bersyarat">
+                                                <button
+                                                    class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-blue-50 hover:text-blue-700 flex items-center">
+                                                    <svg class="w-4 h-4 mr-2 text-blue-500" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                                    </svg>
+                                                    ACC Bersyarat
+                                                </button>
+                                            </div>
+
+                                            <!-- ACC Bersyarat Sidang Ulang -->
+                                            <div>
+                                                <input type="hidden" name="status"
+                                                    value="ACC Bersyarat Sidang Ulang">
+                                                <button
+                                                    class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-purple-50 hover:text-purple-700 flex items-center">
+                                                    <svg class="w-4 h-4 mr-2 text-purple-500" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                                    </svg>
+                                                    ACC Bersyarat Sidang Ulang
+                                                </button>
+                                            </div>
+
+                                            <!-- Materi Kurang -->
+                                            <div>
+                                                <input type="hidden" name="status" value="Materi Kurang">
+                                                <button
+                                                    class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-yellow-50 hover:text-yellow-700 flex items-center">
+                                                    <svg class="w-4 h-4 mr-2 text-yellow-500" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                                    </svg>
+                                                    Materi Kurang
+                                                </button>
+                                            </div>
+
+                                            <!-- Ditolak -->
+                                            <div>
+                                                <input type="hidden" name="status" value="Ditolak">
+                                                <button
+                                                    class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-red-50 hover:text-red-700 flex items-center">
+                                                    <svg class="w-4 h-4 mr-2 text-red-500" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                                    </svg>
+                                                    Ditolak
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="10" class="border px-4 py-2 text-center">Tidak ada data proposal</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-4 flex justify-between items-center">
+            <div class="text-gray-600 mb-4">
+                Menampilkan {{ $proposals->firstItem() }}-{{ $proposals->lastItem() }} dari
+                {{ $proposals->total() }} hasil
+            </div>
+            <!-- Pagination Links -->
+            <div class="flex mt-8 w-full justify-center">
+                {{ $proposals->links('vendor.pagination.custom-pagination') }}
             </div>
         </div>
     </div>
-
-    {{-- Tab Layout --}}
-    <div class="bg-white rounded-md shadow-md p-4 mx-auto">
-        {{-- Tab Menu --}}
-        <div
-            class="mx-auto p-2 flex justify-center bg-zinc-100 rounded-lg mb-4 border-b border-gray-200 overflow-x-auto">
-            <div class="my-1 w-full">
-                <ul class="flex flex-wrap md:flex-nowrap justify-center gap-2 text-sm font-medium text-center"
-                    id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
-                    <li class="w-full md:w-auto" role="presentation">
-                        <button
-                            class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                            id="profile-tab" data-tabs-target="#proposal" type="button" role="tab"
-                            aria-controls="profile" aria-selected="false">
-                            <span class="block md:inline">Proposal</span>
-                            <span class="block md:inline md:ml-1">(10%): 0</span>
-                        </button>
-                    </li>
-                    <li class="w-full md:w-auto" role="presentation">
-                        <button
-                            class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                            id="dashboard-tab" data-tabs-target="#bimbingan" type="button" role="tab"
-                            aria-controls="dashboard" aria-selected="false">
-                            <span class="block md:inline">Bimbingan</span>
-                            <span class="block md:inline md:ml-1">(40%): 0</span>
-                        </button>
-                    </li>
-                    <li class="w-full md:w-auto" role="presentation">
-                        <button
-                            class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                            id="settings-tab" data-tabs-target="#sidang" type="button" role="tab"
-                            aria-controls="settings" aria-selected="false">
-                            <span class="block md:inline">Sidang</span>
-                            <span class="block md:inline md:ml-1">(100%): 0</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        {{-- Tab Content --}}
-        <div id="default-tab-content">
-            {{-- Tab Content 1 --}}
-            <div class="hidden rounded-lg" id="proposal" role="tabpanel" aria-labelledby="profile-tab">
-                <!-- Supervision Forms -->
-                <div class="grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-8">
-                    <!-- Pembimbing Section -->
-                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                        <!-- Top Bar -->
-                        <x-dosen.profile-bobot role="Pembimbing 1" bobot="60" />
-
-                        <!-- Form Section -->
-                        <div class="space-y-4">
-                            <h2 class="text-black font-semibold">Berita Acara</h2>
-                            <div>
-                                <label for="penulisan_masalah"
-                                    class="block text-gray-900 text-sm font-medium mb-2.5">Penulisan
-                                    masalah</label>
-                                <textarea id="penulisan_masalah" name="penulisan_masalah"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                    placeholder="Masukkan penulisan masalah..."></textarea>
-                            </div>
-
-                            <div>
-                                <label for="penulisan_masalah"
-                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian pustaka</label>
-                                <textarea id="penulisan_masalah" name="penulisan_masalah"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                    placeholder="Masukkan kajian pustaka..."></textarea>
-                            </div>
-
-                            <div>
-                                <label for="penulisan_masalah"
-                                    class="block text-gray-900 text-sm font-medium mb-2.5">Metodologi</label>
-                                <textarea id="penulisan_masalah" name="penulisan_masalah"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                    placeholder="Masukkan metodologi..."></textarea>
-                            </div>
-
-                            <div>
-                                <label for="penulisan_masalah"
-                                    class="block text-gray-900 text-sm font-medium mb-2.5">Luaran tugas
-                                    akhir</label>
-                                <textarea id="penulisan_masalah" name="penulisan_masalah"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                    placeholder="Masukkan luaran tugas akhir..."></textarea>
-                            </div>
-
-                            <div>
-                                <label for="tanggal_review"
-                                    class="text-gray-900 text-sm font-medium mb-2.5 flex items-center gap-x-2">
-                                    <i class="fa-solid fa-calendar-days text-zinc-500"></i>
-                                    Tanggal Review</label>
-                                <input type="date" id="tanggal_review" name="tanggal_review"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                            </div>
-                        </div>
-
-                        <!-- Buttons -->
-                        <div class="mt-6">
-                            <button type="button"
-                                class="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
-                                Simpan Berita Acara Pembimbing
-                            </button>
-                        </div>
-
-                        <!-- Penilaian Section -->
-                        <div class="mt-8 space-y-4">
-                            <h2 class="text-black font-semibold">Penilaian</h2>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label for="penulisan_masalah_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Penulisan masalah
-                                        (25%)</label>
-                                    <input type="number" id="penulisan_masalah_nilai" name="penulisan_masalah_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="kajian_pustaka_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                        pustaka (25%)</label>
-                                    <input type="number" id="kajian_pustaka_nilai" name="kajian_pustaka_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="metodologi_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Metodologi
-                                        (25%)</label>
-                                    <input type="number" id="metodologi_nilai" name="metodologi_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="luaran_tugas_akhir_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Luaran tugas akhir
-                                        (25%)</label>
-                                    <input type="number" id="luaran_tugas_akhir_nilai"
-                                        name="luaran_tugas_akhir_nilai" min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Save Button -->
-                        <div class="mt-6">
-                            <button type="button"
-                                class="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
-                                Simpan Nilai Pembimbing
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Pembahas Section -->
-                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                        <!-- Top Bar -->
-                        <x-dosen.profile-bobot role="Pembahas 1" bobot="40" />
-
-                        <!-- Form Section -->
-                        <div class="space-y-4">
-                            <h2 class="text-black font-semibold">Berita Acara</h2>
-                            <div>
-                                <label for="penulisan_masalah"
-                                    class="block text-gray-900 text-sm font-medium mb-2.5">Penulisan
-                                    masalah</label>
-                                <textarea id="penulisan_masalah" name="penulisan_masalah"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                    placeholder="Masukkan penulisan masalah..."></textarea>
-                            </div>
-
-                            <div>
-                                <label for="penulisan_masalah"
-                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian pustaka</label>
-                                <textarea id="penulisan_masalah" name="penulisan_masalah"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                    placeholder="Masukkan kajian pustaka..."></textarea>
-                            </div>
-
-                            <div>
-                                <label for="penulisan_masalah"
-                                    class="block text-gray-900 text-sm font-medium mb-2.5">Metodologi</label>
-                                <textarea id="penulisan_masalah" name="penulisan_masalah"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                    placeholder="Masukkan metodologi..."></textarea>
-                            </div>
-
-                            <div>
-                                <label for="penulisan_masalah"
-                                    class="block text-gray-900 text-sm font-medium mb-2.5">Luaran tugas
-                                    akhir</label>
-                                <textarea id="penulisan_masalah" name="penulisan_masalah"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                    placeholder="Masukkan luaran tugas akhir..."></textarea>
-                            </div>
-
-                            <div>
-                                <label for="tanggal_review"
-                                    class="text-gray-900 text-sm font-medium mb-2.5 flex items-center gap-x-2">
-                                    <i class="fa-solid fa-calendar-days text-zinc-500"></i>
-                                    Tanggal Review</label>
-                                <input type="date" id="tanggal_review" name="tanggal_review"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                            </div>
-                        </div>
-
-                        <!-- Buttons -->
-                        <div class="mt-6">
-                            <button type="button"
-                                class="hidden w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
-                                Simpan Berita Acara Pembimbing
-                            </button>
-                        </div>
-
-                        <!-- Penilaian Section -->
-                        <div class="mt-8 space-y-4">
-                            <h2 class="text-black font-semibold">Penilaian</h2>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label for="penulisan_masalah_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Penulisan masalah
-                                        (25%)</label>
-                                    <input type="number" id="penulisan_masalah_nilai" name="penulisan_masalah_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="kajian_pustaka_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                        pustaka (25%)</label>
-                                    <input type="number" id="kajian_pustaka_nilai" name="kajian_pustaka_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="metodologi_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Metodologi
-                                        (25%)</label>
-                                    <input type="number" id="metodologi_nilai" name="metodologi_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="luaran_tugas_akhir_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Luaran tugas akhir
-                                        (25%)</label>
-                                    <input type="number" id="luaran_tugas_akhir_nilai"
-                                        name="luaran_tugas_akhir_nilai" min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- Tab Content 2 --}}
-            <div class="hidden rounded-lg" id="bimbingan" role="tabpanel" aria-labelledby="dashboard-tab">
-                <div class="grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-8">
-                    {{-- Pembimbing 1 --}}
-                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                        <!-- Top Bar -->
-                        <x-dosen.profile-bobot role="Pembimbing 1" bobot="50" />
-
-                        <!-- Penilaian Section -->
-                        <div class="mt-8 space-y-4">
-                            <h2 class="text-black font-semibold">Penilaian</h2>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label for="penulisan_masalah_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Penulisan
-                                        masalah
-                                        (25%)</label>
-                                    <input type="number" id="penulisan_masalah_nilai" name="penulisan_masalah_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="kajian_pustaka_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                        pustaka (25%)</label>
-                                    <input type="number" id="kajian_pustaka_nilai" name="kajian_pustaka_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="metodologi_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Metodologi
-                                        (25%)</label>
-                                    <input type="number" id="metodologi_nilai" name="metodologi_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="luaran_tugas_akhir_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Luaran tugas
-                                        akhir
-                                        (25%)</label>
-                                    <input type="number" id="luaran_tugas_akhir_nilai"
-                                        name="luaran_tugas_akhir_nilai" min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Save Button -->
-                        <div class="mt-6">
-                            <button type="button"
-                                class="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
-                                Simpan Nilai Pembimbing
-                            </button>
-                        </div>
-                    </div>
-
-                    {{-- Pembimbing 2 --}}
-                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                        <!-- Top Bar -->
-                        <x-dosen.profile-bobot role="Pembimbing 2" bobot="50" />
-
-                        <!-- Penilaian Section -->
-                        <div class="mt-8 space-y-4">
-                            <h2 class="text-black font-semibold">Penilaian</h2>
-
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label for="penulisan_masalah_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Penulisan
-                                        masalah
-                                        (25%)</label>
-                                    <input type="number" id="penulisan_masalah_nilai" name="penulisan_masalah_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="kajian_pustaka_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                        pustaka (25%)</label>
-                                    <input type="number" id="kajian_pustaka_nilai" name="kajian_pustaka_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="metodologi_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Metodologi
-                                        (25%)</label>
-                                    <input type="number" id="metodologi_nilai" name="metodologi_nilai"
-                                        min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-
-                                <div>
-                                    <label for="luaran_tugas_akhir_nilai"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5 ">Luaran tugas
-                                        akhir
-                                        (25%)</label>
-                                    <input type="number" id="luaran_tugas_akhir_nilai"
-                                        name="luaran_tugas_akhir_nilai" min="0" max="100"
-                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- Tab Content 3 --}}
-            <div class="hidden rounded-lg" id="sidang" role="tabpanel" aria-labelledby="settings-tab">
-                <!-- Pembimbing Section -->
-                <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                    <!-- Top Bar -->
-                    <x-dosen.profile-bobot role="Pembahas" bobot="60" />
-
-                    <!-- Form Section -->
-                    <div class="space-y-4">
-                        <h2 class="text-black font-semibold">Berita Acara</h2>
-                        <div>
-                            <label for="penulisan_masalah"
-                                class="block text-gray-900 text-sm font-medium mb-2.5">Penulisan
-                                masalah</label>
-                            <textarea id="penulisan_masalah" name="penulisan_masalah"
-                                class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                placeholder="Masukkan penulisan masalah..."></textarea>
-                        </div>
-
-                        <div>
-                            <label for="penulisan_masalah"
-                                class="block text-gray-900 text-sm font-medium mb-2.5">Kajian pustaka</label>
-                            <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                placeholder="Masukkan kajian pustaka..."></input>
-                        </div>
-
-                        <!-- Penilaian Section -->
-                        <div class="mt-8 space-y-4">
-                            <h2 class="text-black font-semibold">Penilaian</h2>
-                            <div class="gap-4">
-                                <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                    <!-- Top Bar -->
-                                    <x-dosen.profile-bobot :isRole="false" role="Presentasi" bobot="20" />
-
-                                    <!-- Form Section -->
-                                    <div class="space-y-4">
-                                        <div>
-                                            <label for="penulisan_masalah"
-                                                class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                pustaka</label>
-                                            <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                placeholder="Masukkan kajian pustaka..."></input>
-                                        </div>
-                                        <div>
-                                            <label for="penulisan_masalah"
-                                                class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                pustaka</label>
-                                            <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                placeholder="Masukkan kajian pustaka..."></input>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gap-4">
-                                <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                    <!-- Top Bar -->
-                                    <x-dosen.profile-bobot :isRole="false" role="Buku" bobot="40" />
-
-                                    <!-- Form Section -->
-                                    <div class="space-y-4">
-                                        <div>
-                                            <label for="penulisan_masalah"
-                                                class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                pustaka</label>
-                                            <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                placeholder="Masukkan kajian pustaka..."></input>
-                                        </div>
-
-                                        <div>
-                                            <label for="penulisan_masalah"
-                                                class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                pustaka</label>
-                                            <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                placeholder="Masukkan kajian pustaka..."></input>
-                                        </div>
-
-                                        <div>
-                                            <label for="penulisan_masalah"
-                                                class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                pustaka</label>
-                                            <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                placeholder="Masukkan kajian pustaka..."></input>
-                                        </div>
-
-                                        <div>
-                                            <label for="penulisan_masalah"
-                                                class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                pustaka</label>
-                                            <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                placeholder="Masukkan kajian pustaka..."></input>
-                                        </div>
-
-                                        <div>
-                                            <label for="penulisan_masalah"
-                                                class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                pustaka</label>
-                                            <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                placeholder="Masukkan kajian pustaka..."></input>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gap-4">
-                                <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                    <!-- Top Bar -->
-                                    <x-dosen.profile-bobot :isRole="false" role="Tanya-jawab" bobot="40" />
-
-                                    <!-- Form Section -->
-                                    <div class="space-y-4">
-                                        <div>
-                                            <label for="penulisan_masalah"
-                                                class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                pustaka</label>
-                                            <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                placeholder="Masukkan kajian pustaka..."></input>
-                                        </div>
-
-                                        <div>
-                                            <label for="penulisan_masalah"
-                                                class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                pustaka</label>
-                                            <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                placeholder="Masukkan kajian pustaka..."></input>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- </div> --}}
 </x-layout>
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get all tab buttons and content
-        const tabButtons = document.querySelectorAll('[role="tab"]');
-        const tabContents = document.querySelectorAll('[role="tabpanel"]');
+    let searchTimeout;
 
-        // Function to set active tab
-        function setActiveTab(tabId) {
-            // Hide all tab contents
-            tabContents.forEach(content => {
-                content.classList.add('hidden');
-            });
+    function submitSearchForm() {
+        const form = document.getElementById('searchForm');
 
-            // Remove active states from all tabs
-            tabButtons.forEach(button => {
-                button.classList.remove('bg-white', 'shadow-sm');
-                button.setAttribute('aria-selected', 'false');
-            });
+        // Hentikan timeout sebelumnya (debouncing)
+        clearTimeout(searchTimeout);
 
-            // Show selected tab content
-            const selectedContent = document.querySelector(tabId);
-            if (selectedContent) {
-                selectedContent.classList.remove('hidden');
-            }
-
-            // Set active state for the selected tab
-            const selectedTab = document.querySelector(`[data-tabs-target="${tabId}"]`);
-            if (selectedTab) {
-                selectedTab.classList.add('bg-white', 'shadow-sm');
-                selectedTab.setAttribute('aria-selected', 'true');
-            }
-        }
-
-        // Add click event listeners to all tabs
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const tabTarget = button.getAttribute('data-tabs-target');
-                setActiveTab(tabTarget);
-            });
-        });
-
-        // Set initial active tab (Profile tab)
-        setActiveTab('#proposal');
-    });
+        // Tetapkan timeout baru
+        searchTimeout = setTimeout(() => {
+            form.submit();
+        }, 300); // Tunggu 300ms setelah pengguna berhenti mengetik
+    }
 </script>

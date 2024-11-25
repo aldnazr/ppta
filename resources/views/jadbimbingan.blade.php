@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="min-h-[580px] p-4 md:p-6 bg-white rounded-lg shadow-lg">
+    <div class="min-h-[75vh] p-4 md:p-6 bg-white rounded-lg shadow-lg">
         <!-- Header Section -->
         <div class="max-w-xl mx-auto">
             <h1 class="text-xl md:text-2xl font-semibold text-center text-gray-800 mb-6">
