@@ -2,9 +2,10 @@
     <div class="p-4 md:p-6 bg-white rounded-lg shadow-lg">
         <h1 class="text-2xl font-semibold text-blue-800 mb-6 mt-2">Daftar Usulan Tugas Akhir</h1>
 
-        <ul class="space-y-5">
+        <ul class="space-y-4">
             @foreach ($paginatedJudulTugasAkhir as $ta)
-                <li class="p-4 bg-zinc-100 rounded-lg shadow-xs hover:shadow-md transition-shadow duration-200">
+                <li
+                    class="p-4 bg-zinc-50 border border-zinc-200 rounded-xl shadow-xs hover:shadow-md transition-shadow duration-200">
                     <h2 class="text-xl font-semibold text-blue-600"> Judul TA: {{ $ta->judul }}
                     </h2>
                     <p class="text-sm text-gray-600 mt-2"><strong>Pengusul:</strong> {{ $ta->pengusul }}</p>

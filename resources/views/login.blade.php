@@ -22,7 +22,7 @@
                     </p>
                 </div>
 
-                <form action="/" class="space-y-5">
+                <div class="space-y-5">
                     <!-- NIDN Field -->
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
@@ -55,11 +55,11 @@
                     </div>
 
                     <!-- Sign in Button -->
-                    <button type="submit"
+                    <a href="/"
                         class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">
                         Sign in
-                    </button>
-                </form>
+                    </a>
+                </div>
             </div>
         </div>
     </body>

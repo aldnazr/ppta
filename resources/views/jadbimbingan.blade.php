@@ -64,6 +64,7 @@
                 <table class="w-full text-sm text-left">
                     <thead class="bg-gray-200 text-gray-700">
                         <tr>
+                            <th scope="col" class="px-6 py-4 font-medium">No</th>
                             <th scope="col" class="px-6 py-4 font-medium">Tanggal</th>
                             <th scope="col" class="px-6 py-4 font-medium">Jam Mulai</th>
                             <th scope="col" class="px-6 py-4 font-medium">Jam Selesai</th>
@@ -97,14 +98,14 @@
             list.classList.add("hidden");
             return;
         }
-        const suggestions = sortedList.filter(city => city.toLowerCase().includes(value.toLowerCase()));
+        const suggestions = sortedList.filter(dosen => dosen.toLowerCase().includes(value.toLowerCase()));
         if (suggestions.length > 0) {
-            suggestions.forEach(city => {
+            suggestions.forEach(dosen => {
                 const li = document.createElement("li");
-                li.textContent = city;
+                li.textContent = dosen;
                 li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
                 li.onclick = () => {
-                    document.getElementById("autocomplete-input").value = city;
+                    $('autocomplete-input').value = dosen;
                     list.classList.add("hidden");
                 };
                 list.appendChild(li);
@@ -128,7 +129,6 @@
 
     function clearInput() {
         inputField.value = "";
-        list.classList.add("hidden");
         toggleClearButton("");
     }
 
@@ -138,16 +138,16 @@
             list.classList.add("hidden");
             return;
         }
-        const suggestions = sortedList.filter(city => city.toLowerCase().includes(value.toLowerCase()));
+        const suggestions = sortedList.filter(dosen => dosen.toLowerCase().includes(value.toLowerCase()));
         if (suggestions.length > 0) {
-            suggestions.forEach(city => {
+            suggestions.forEach(dosen => {
                 const li = document.createElement("li");
-                li.textContent = city;
+                li.textContent = dosen;
                 li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
                 li.onclick = () => {
-                    document.getElementById("autocomplete-input").value = city;
+                    document.getElementById("autocomplete-input").value = dosen;
                     list.classList.add("hidden");
-                    loadSchedule(city); // Panggil fungsi untuk memuat jadwal
+                    loadSchedule(dosen); // Panggil fungsi untuk memuat jadwal
                 };
                 list.appendChild(li);
             });
@@ -163,12 +163,14 @@
             scheduleBody.innerHTML = ""; // Bersihkan jadwal sebelumnya
 
             if (response.schedules.length > 0) {
+                var nomor = 0;
                 response.schedules.forEach(schedule => {
                     const row = `
                     <tr class="bg-white border-b">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                        <td class="px-6 py-4">${nomor+=1}</td>
+                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             ${schedule.tanggal}
-                        </th>
+                        </td>
                         <td class="px-6 py-4">${schedule.jam_mulai}</td>
                         <td class="px-6 py-4">${schedule.jam_selesai}</td>
                         <td class="px-6 py-4">${schedule.ruang}</td>

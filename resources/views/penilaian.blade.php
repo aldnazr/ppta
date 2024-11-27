@@ -491,7 +491,7 @@
                         </div>
 
                         <!-- Penilaian Section -->
-                        <div class="mt-8 space-y-4">
+                        <div class="mt-8 space-y-4 mb-4">
                             <h2 class="text-black font-semibold">Penilaian</h2>
                             <div class="gap-4">
                                 <div class="p-4 md:p-6 bg-white shadow border rounded-lg">

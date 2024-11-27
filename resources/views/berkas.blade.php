@@ -13,11 +13,11 @@
             <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Terapkan</button>
         </form>
 
-        <div class="overflow-x-auto bg-white rounded-md shadow border border-gray-200">
+        <div class="overflow-x-auto bg-white rounded-lg">
             <table class="w-full text-sm text-left">
                 <thead class="bg-gray-200 text-gray-700">
                     <tr>
-                        <th class="px-6 py-4 font-medium">No</th>
+                        <th class="text-center px-6 py-4 font-medium">No</th>
                         <th class="px-6 py-4 font-medium">No Daftar</th>
                         <th class="px-6 py-4 font-medium">Pengajuan</th>
                         <th class="px-6 py-4 font-medium">NIM</th>
@@ -28,14 +28,14 @@
                         <th class="px-6 py-4 font-medium">Sidang Proposal</th>
                         <th class="px-6 py-4 font-medium">Revisi</th>
                         <th class="px-6 py-4 font-medium">File</th>
-                        <th class="px-6 py-4 font-medium">Hasil</th>
+                        <th class="text-center px-6 py-4 font-medium">Hasil</th>
                     </tr>
                 </thead>
                 <!-- Bagian tbody pada table di view -->
                 <tbody class="bg-white divide-y divide-gray-200">
                     @forelse($proposals as $index => $proposal)
                         <tr>
-                            <td class="border px-4 py-2">{{ $index + 1 }}</td>
+                            <td class="text-center border px-4 py-2">{{ $index + 1 }}</td>
                             <td class="border px-4 py-2">{{ $proposal['no_daftar'] }}</td>
                             <td class="border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}</td>
                             <td class="border px-4 py-2">{{ $proposal['nim'] }}</td>
@@ -43,7 +43,7 @@
                             <td class="border px-4 py-2">{{ $proposal['judul'] }}</td>
                             <td class="border px-4 py-2">{{ $proposal['pembimbing1'] }}</td>
                             <td class="border px-4 py-2">{{ $proposal['pembimbing2'] }}</td>
-                            <td class="border px-4 py-2">
+                            <td class="text-center border px-4 py-2">
                                 <span
                                     class="px-2 py-1 rounded text-sm 
                                     {{ $proposal['status'] === 'Disetujui'
@@ -55,23 +55,15 @@
                                 </span>
                             </td>
                             <td class="border px-4 py-2"></td>
-                            <td class="border px-4 py-2">
-                                <div class="flex space-x-2">
-                                    <button class="text-blue-600 hover:text-blue-800">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                        </svg>
-                                    </button>
-                                    <button class="text-green-600 hover:text-green-800">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                                        </svg>
-                                    </button>
-                                </div>
+                            <td class="text-center border px-4 py-2">
+                                <button class="text-blue-600 hover:text-blue-800">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </button>
                             </td>
                             <td class="border px-4 py-2">
                                 <div class="relative" x-data="{ open: false }">
