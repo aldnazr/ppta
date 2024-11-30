@@ -21,9 +21,7 @@ Route::get('/document', function () {
     return view('document', ['title' => 'Contact Page']);
 });
 
-Route::get('/penilaian', function () {
-    return view('penilaian');
-});
+Route::get('/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('penilaian');
 
 Route::get('/mhshome', function () {
     return view('mhshome', ['title' => 'Contact Page']);

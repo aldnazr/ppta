@@ -13,7 +13,7 @@
                     <div class="col-span-2">
                         <input type="text"
                             class="w-full border border-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
-                            value="18410100143" readonly>
+                            value="{{ $proposal['nim'] }}" readonly>
                     </div>
                 </div>
                 <div class="grid grid-cols-3 gap-4">
@@ -21,14 +21,14 @@
                     <div class="col-span-2">
                         <input type="text"
                             class="w-full border border-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
-                            value="Muhammad Alauddin Azhary" readonly>
+                            value="{{ $proposal['nama_mahasiswa'] }}" readonly>
                     </div>
                 </div>
                 <div class="grid grid-cols-3 gap-4">
                     <div class="text-sm text-gray-900">Judul</div>
                     <div class="col-span-2">
                         <textarea class="w-full border border-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
-                            rows="2" readonly>RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA    </textarea>
+                            rows="2" readonly>{{ $proposal['judul'] }}</textarea>
                     </div>
                 </div>
                 <div class="grid grid-cols-3 gap-4">

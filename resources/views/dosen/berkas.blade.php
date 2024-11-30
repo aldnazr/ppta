@@ -80,13 +80,15 @@
                                         {{ $proposal['tgl_pengajuan_ta'] ? date('d-m-Y', strtotime($proposal['tgl_pengajuan_ta'])) : '' }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $proposal['mahasiswa'] }}
+                                        {{ $proposal['nim'] }}
+                                        {{ $proposal['nama_mahasiswa'] }}
                                     </td>
                                     <td class="px-6 py-4">
                                         {{ $proposal['judul'] }}
                                     </td>
                                     <td class="px-6 py-4">
-                                        {{ $proposal['pembimbing'] }}
+                                        1. {{ $proposal['pembimbing1'] }}
+                                        2. {{ $proposal['pembimbing2'] }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         {{ $proposal['penguji'] }}
@@ -95,7 +97,7 @@
                                         {{ $proposal['siap_transfer'] ?? '' }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <a href="/penilaian"
+                                        <a href="{{ route('penilaian', $proposal['id']) }}"
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
                                             Nilai
                                         </a>
