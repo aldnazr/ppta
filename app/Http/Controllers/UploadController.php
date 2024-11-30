@@ -8,9 +8,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class UploadController extends Controller
 {
-    public function index(Request $request)
+    public function getDummyProposals()
     {
-        $proposals = collect([
+        return collect([
             [
                 'no_daftar' => '2024110005',
                 'tgl_pengajuan' => '11-11-2024',
@@ -372,28 +372,42 @@ class UploadController extends Controller
                 'status' => 'Disetujui'
             ]
         ]);
+    }
+
+    public function index(Request $request)
+    {
+        $proposals = $this->getDummyProposals();
+
+        $perPage = $request->input('per_page', 10);
 
         // Pencarian berdasarkan nama atau judul
-        $search = $request->input('search');
-        if ($search) {
-            $proposals = $proposals->filter(function ($proposal) use ($search) {
-                return str_contains(strtolower($proposal['nama']), strtolower($search)) ||
-                    str_contains(strtolower($proposal['judul']), strtolower($search));
+        if ($request->has('search') && $request->search) {
+            $searchTerm = strtolower($request->search);
+            $proposals = $proposals->filter(function ($proposal) use ($searchTerm) {
+                return
+                    str_contains(strtolower($proposal['nama']), strtolower($searchTerm)) ||
+                    str_contains(strtolower($proposal['judul']), strtolower($searchTerm));
             });
         }
 
+        // Convert to collection for pagination
+        $proposals = $proposals->values();
+
         // Pagination (menggunakan LengthAwarePaginator secara manual karena data berupa array)
-        $perPage = $request->input('filter', 10); // Default 10 item per halaman
-        $page = $request->input('page', 1);
+        $currentPage = $request->input('page', 1); // Default 10 item per halaman
+        $slicedProposals = $proposals->slice(($currentPage - 1) * $perPage, $perPage);
         $total = $proposals->count();
         $paginatedProposals = new LengthAwarePaginator(
-            $proposals->slice(($page - 1) * $perPage, $perPage),
+            $slicedProposals,
             $total,
             $perPage,
-            $page,
+            $currentPage,
             ['path' => $request->url(), 'query' => $request->query()]
         );
 
-        return view('ppta.upload', ['proposals' => $paginatedProposals]);
+        return view('ppta.upload', [
+            'proposals' => $paginatedProposals,
+            'perPage' => $perPage
+        ]);
     }
 }

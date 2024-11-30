@@ -237,9 +237,10 @@ class BerkasController extends Controller
         // Create a custom paginator
         $currentPage = $request->input('page', 1);
         $slicedProposals = $proposals->slice(($currentPage - 1) * $perPage, $perPage);
+        $total = $proposals->count();
         $paginatedProposals = new LengthAwarePaginator(
             $slicedProposals,
-            $proposals->count(),
+            $total,
             $perPage,
             $currentPage,
             ['path' => $request->url(), 'query' => $request->query()]
