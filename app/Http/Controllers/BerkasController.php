@@ -7,392 +7,183 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class BerkasController extends Controller
 {
-    public function index(Request $request)
+
+    private function getDummyProposals()
     {
-        $proposals = collect([
+        return collect([
             [
-                'no_daftar' => '2024110005',
-                'tgl_pengajuan' => '11-11-2024',
-                'nim' => '20410100045',
-                'nama' => 'Ananda Rizky Kurniawan',
-                'judul' => 'Perencanaan Persediaan yang Optimal berdasarkan Metode Economic Order Quantity dan Reorder Point dengan Merancang dan Membangun Software Application',
-                'pembimbing1' => 'Sulistiowati, S.Si., M.M.',
-                'pembimbing2' => 'Yoppy Mirza Maulana, S.Kom., M.MT.',
-                'status' => 'Pending'
+                'id' => 1,
+                'tgl_pengajuan_proposal' => '2024-10-25',
+                'tgl_pengajuan_ta' => null,
+                'mahasiswa' => '18410100143 Muhammad Alauddin Azhary',
+                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
+                'pembimbing' => "1. Tan Amelia\n2. M.J. Dewiyani Dewiyani Sunarto",
+                'penguji' => 'Erwin Sutomo',
+                'siap_transfer' => null,
+                'status' => 'Proses'
             ],
             [
-                'no_daftar' => '2024110004',
-                'tgl_pengajuan' => '08-11-2024',
-                'nim' => '18410100159',
-                'nama' => 'Adamas Relian Subagia',
-                'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
-                'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
-                'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
+                'id' => 2,
+                'tgl_pengajuan_proposal' => '2024-10-20',
+                'tgl_pengajuan_ta' => '2024-11-15',
+                'mahasiswa' => '18410100144 Siti Nurhaliza',
+                'judul' => 'ANALISIS KEAMANAN JARINGAN MENGGUNAKAN METODE PENETRATION TESTING',
+                'pembimbing' => "1. Dr. Ahmad Zaki\n2. Mirza Prasetya",
+                'penguji' => 'Budi Setiawan',
+                'siap_transfer' => 'Ya',
                 'status' => 'Disetujui'
             ],
             [
-                'no_daftar' => '2024110003',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '21420200005',
-                'nama' => 'Firqin Qolbi Al Fatah',
-                'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
+                'id' => 3,
+                'tgl_pengajuan_proposal' => '2024-10-15',
+                'tgl_pengajuan_ta' => null,
+                'mahasiswa' => '18410100145 Rudi Hartono',
+                'judul' => 'IMPLEMENTASI MACHINE LEARNING UNTUK PREDIKSI PENJUALAN ONLINE',
+                'pembimbing' => "1. Dr. Indah Permatasari\n2. Joko Widodo",
+                'penguji' => 'Ani Yuningsih',
+                'siap_transfer' => null,
+                'status' => 'Draft'
             ],
             [
-                'no_daftar' => '2024110002',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '20420200001',
-                'nama' => 'Kristian Eka Winarto',
-                'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
+                'id' => 4,
+                'tgl_pengajuan_proposal' => '2024-10-10',
+                'tgl_pengajuan_ta' => '2024-11-10',
+                'mahasiswa' => '18410100146 Lisa Permana',
+                'judul' => 'PENGEMBANGAN APLIKASI MOBILE UNTUK MANAJEMEN KEUANGAN PRIBADI',
+                'pembimbing' => "1. Rina Susanti\n2. Hendri Kurniawan",
+                'penguji' => 'Putra Samudra',
+                'siap_transfer' => 'Ya',
                 'status' => 'Disetujui'
             ],
             [
-                'no_daftar' => '2024110001',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100089',
-                'nama' => 'Ahmad Fauzi',
-                'judul' => 'Pengembangan Sistem Informasi Manajemen Perpustakaan Berbasis Web',
-                'pembimbing1' => 'Dr. Jusak, S.T., M.Kom.',
-                'pembimbing2' => 'Tony Soebijono, S.E., S.H., M.Ak.',
-                'status' => 'Pending'
+                'id' => 5,
+                'tgl_pengajuan_proposal' => '2024-10-05',
+                'tgl_pengajuan_ta' => null,
+                'mahasiswa' => '18410100147 Ahmad Fauzi',
+                'judul' => 'SISTEM REKOMENDASI PARIWISATA BERBASIS KECERDASAN BUATAN',
+                'pembimbing' => "1. Dr. Sri Wahyuni\n2. Bambang Priyanto",
+                'penguji' => 'Dewi Kartika',
+                'siap_transfer' => null,
+                'status' => 'Proses'
             ],
             [
-                'no_daftar' => '2024110000',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100090',
-                'nama' => 'Bella Safira',
-                'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
-                'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
+                'id' => 6,
+                'tgl_pengajuan_proposal' => '2024-10-25',
+                'tgl_pengajuan_ta' => null,
+                'mahasiswa' => '18410100143 Muhammad Alauddin Azhary',
+                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
+                'pembimbing' => "1. Tan Amelia\n2. M.J. Dewiyani Dewiyani Sunarto",
+                'penguji' => 'Erwin Sutomo',
+                'siap_transfer' => null,
+                'status' => 'Proses'
+            ],
+            [
+                'id' => 7,
+                'tgl_pengajuan_proposal' => '2024-10-20',
+                'tgl_pengajuan_ta' => '2024-11-15',
+                'mahasiswa' => '18410100144 Siti Nurhaliza',
+                'judul' => 'ANALISIS KEAMANAN JARINGAN MENGGUNAKAN METODE PENETRATION TESTING',
+                'pembimbing' => "1. Dr. Ahmad Zaki\n2. Mirza Prasetya",
+                'penguji' => 'Budi Setiawan',
+                'siap_transfer' => 'Ya',
                 'status' => 'Disetujui'
             ],
             [
-                'no_daftar' => '2024110005',
-                'tgl_pengajuan' => '11-11-2024',
-                'nim' => '20410100045',
-                'nama' => 'Ananda Rizky Kurniawan',
-                'judul' => 'Perencanaan Persediaan yang Optimal berdasarkan Metode Economic Order Quantity dan Reorder Point dengan Merancang dan Membangun Software Application',
-                'pembimbing1' => 'Sulistiowati, S.Si., M.M.',
-                'pembimbing2' => 'Yoppy Mirza Maulana, S.Kom., M.MT.',
-                'status' => 'Pending'
+                'id' => 8,
+                'tgl_pengajuan_proposal' => '2024-10-15',
+                'tgl_pengajuan_ta' => null,
+                'mahasiswa' => '18410100145 Rudi Hartono',
+                'judul' => 'IMPLEMENTASI MACHINE LEARNING UNTUK PREDIKSI PENJUALAN ONLINE',
+                'pembimbing' => "1. Dr. Indah Permatasari\n2. Joko Widodo",
+                'penguji' => 'Ani Yuningsih',
+                'siap_transfer' => null,
+                'status' => 'Draft'
             ],
             [
-                'no_daftar' => '2024110004',
-                'tgl_pengajuan' => '08-11-2024',
-                'nim' => '18410100159',
-                'nama' => 'Adamas Relian Subagia',
-                'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
-                'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
-                'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
+                'id' => 9,
+                'tgl_pengajuan_proposal' => '2024-10-10',
+                'tgl_pengajuan_ta' => '2024-11-10',
+                'mahasiswa' => '18410100146 Lisa Permana',
+                'judul' => 'PENGEMBANGAN APLIKASI MOBILE UNTUK MANAJEMEN KEUANGAN PRIBADI',
+                'pembimbing' => "1. Rina Susanti\n2. Hendri Kurniawan",
+                'penguji' => 'Putra Samudra',
+                'siap_transfer' => 'Ya',
                 'status' => 'Disetujui'
             ],
             [
-                'no_daftar' => '2024110003',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '21420200005',
-                'nama' => 'Firqin Qolbi Al Fatah',
-                'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
+                'id' => 10,
+                'tgl_pengajuan_proposal' => '2024-10-05',
+                'tgl_pengajuan_ta' => null,
+                'mahasiswa' => '18410100147 Ahmad Fauzi',
+                'judul' => 'SISTEM REKOMENDASI PARIWISATA BERBASIS KECERDASAN BUATAN',
+                'pembimbing' => "1. Dr. Sri Wahyuni\n2. Bambang Priyanto",
+                'penguji' => 'Dewi Kartika',
+                'siap_transfer' => null,
+                'status' => 'Proses'
             ],
             [
-                'no_daftar' => '2024110002',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '20420200001',
-                'nama' => 'Kristian Eka Winarto',
-                'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110001',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100089',
-                'nama' => 'Ahmad Fauzi',
-                'judul' => 'Pengembangan Sistem Informasi Manajemen Perpustakaan Berbasis Web',
-                'pembimbing1' => 'Dr. Jusak, S.T., M.Kom.',
-                'pembimbing2' => 'Tony Soebijono, S.E., S.H., M.Ak.',
-                'status' => 'Pending'
-            ],
-            [
-                'no_daftar' => '2024110000',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100090',
-                'nama' => 'Bella Safira',
-                'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
-                'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110005',
-                'tgl_pengajuan' => '11-11-2024',
-                'nim' => '20410100045',
-                'nama' => 'Ananda Rizky Kurniawan',
-                'judul' => 'Perencanaan Persediaan yang Optimal berdasarkan Metode Economic Order Quantity dan Reorder Point dengan Merancang dan Membangun Software Application',
-                'pembimbing1' => 'Sulistiowati, S.Si., M.M.',
-                'pembimbing2' => 'Yoppy Mirza Maulana, S.Kom., M.MT.',
-                'status' => 'Pending'
-            ],
-            [
-                'no_daftar' => '2024110004',
-                'tgl_pengajuan' => '08-11-2024',
-                'nim' => '18410100159',
-                'nama' => 'Adamas Relian Subagia',
-                'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
-                'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
-                'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110003',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '21420200005',
-                'nama' => 'Firqin Qolbi Al Fatah',
-                'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
-            ],
-            [
-                'no_daftar' => '2024110002',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '20420200001',
-                'nama' => 'Kristian Eka Winarto',
-                'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110001',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100089',
-                'nama' => 'Ahmad Fauzi',
-                'judul' => 'Pengembangan Sistem Informasi Manajemen Perpustakaan Berbasis Web',
-                'pembimbing1' => 'Dr. Jusak, S.T., M.Kom.',
-                'pembimbing2' => 'Tony Soebijono, S.E., S.H., M.Ak.',
-                'status' => 'Pending'
-            ],
-            [
-                'no_daftar' => '2024110000',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100090',
-                'nama' => 'Bella Safira',
-                'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
-                'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110005',
-                'tgl_pengajuan' => '11-11-2024',
-                'nim' => '20410100045',
-                'nama' => 'Ananda Rizky Kurniawan',
-                'judul' => 'Perencanaan Persediaan yang Optimal berdasarkan Metode Economic Order Quantity dan Reorder Point dengan Merancang dan Membangun Software Application',
-                'pembimbing1' => 'Sulistiowati, S.Si., M.M.',
-                'pembimbing2' => 'Yoppy Mirza Maulana, S.Kom., M.MT.',
-                'status' => 'Pending'
-            ],
-            [
-                'no_daftar' => '2024110004',
-                'tgl_pengajuan' => '08-11-2024',
-                'nim' => '18410100159',
-                'nama' => 'Adamas Relian Subagia',
-                'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
-                'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
-                'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110003',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '21420200005',
-                'nama' => 'Firqin Qolbi Al Fatah',
-                'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
-            ],
-            [
-                'no_daftar' => '2024110002',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '20420200001',
-                'nama' => 'Kristian Eka Winarto',
-                'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110001',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100089',
-                'nama' => 'Ahmad Fauzi',
-                'judul' => 'Pengembangan Sistem Informasi Manajemen Perpustakaan Berbasis Web',
-                'pembimbing1' => 'Dr. Jusak, S.T., M.Kom.',
-                'pembimbing2' => 'Tony Soebijono, S.E., S.H., M.Ak.',
-                'status' => 'Pending'
-            ],
-            [
-                'no_daftar' => '2024110000',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100090',
-                'nama' => 'Bella Safira',
-                'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
-                'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110005',
-                'tgl_pengajuan' => '11-11-2024',
-                'nim' => '20410100045',
-                'nama' => 'Ananda Rizky Kurniawan',
-                'judul' => 'Perencanaan Persediaan yang Optimal berdasarkan Metode Economic Order Quantity dan Reorder Point dengan Merancang dan Membangun Software Application',
-                'pembimbing1' => 'Sulistiowati, S.Si., M.M.',
-                'pembimbing2' => 'Yoppy Mirza Maulana, S.Kom., M.MT.',
-                'status' => 'Pending'
-            ],
-            [
-                'no_daftar' => '2024110004',
-                'tgl_pengajuan' => '08-11-2024',
-                'nim' => '18410100159',
-                'nama' => 'Adamas Relian Subagia',
-                'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
-                'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
-                'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110003',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '21420200005',
-                'nama' => 'Firqin Qolbi Al Fatah',
-                'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
-            ],
-            [
-                'no_daftar' => '2024110002',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '20420200001',
-                'nama' => 'Kristian Eka Winarto',
-                'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110001',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100089',
-                'nama' => 'Ahmad Fauzi',
-                'judul' => 'Pengembangan Sistem Informasi Manajemen Perpustakaan Berbasis Web',
-                'pembimbing1' => 'Dr. Jusak, S.T., M.Kom.',
-                'pembimbing2' => 'Tony Soebijono, S.E., S.H., M.Ak.',
-                'status' => 'Pending'
-            ],
-            [
-                'no_daftar' => '2024110000',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100090',
-                'nama' => 'Bella Safira',
-                'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
-                'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110005',
-                'tgl_pengajuan' => '11-11-2024',
-                'nim' => '20410100045',
-                'nama' => 'Ananda Rizky Kurniawan',
-                'judul' => 'Perencanaan Persediaan yang Optimal berdasarkan Metode Economic Order Quantity dan Reorder Point dengan Merancang dan Membangun Software Application',
-                'pembimbing1' => 'Sulistiowati, S.Si., M.M.',
-                'pembimbing2' => 'Yoppy Mirza Maulana, S.Kom., M.MT.',
-                'status' => 'Pending'
-            ],
-            [
-                'no_daftar' => '2024110004',
-                'tgl_pengajuan' => '08-11-2024',
-                'nim' => '18410100159',
-                'nama' => 'Adamas Relian Subagia',
-                'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
-                'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
-                'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110003',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '21420200005',
-                'nama' => 'Firqin Qolbi Al Fatah',
-                'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
-            ],
-            [
-                'no_daftar' => '2024110002',
-                'tgl_pengajuan' => '04-11-2024',
-                'nim' => '20420200001',
-                'nama' => 'Kristian Eka Winarto',
-                'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
-                'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
-                'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
-                'status' => 'Disetujui'
-            ],
-            [
-                'no_daftar' => '2024110001',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100089',
-                'nama' => 'Ahmad Fauzi',
-                'judul' => 'Pengembangan Sistem Informasi Manajemen Perpustakaan Berbasis Web',
-                'pembimbing1' => 'Dr. Jusak, S.T., M.Kom.',
-                'pembimbing2' => 'Tony Soebijono, S.E., S.H., M.Ak.',
-                'status' => 'Pending'
-            ],
-            [
-                'no_daftar' => '2024110000',
-                'tgl_pengajuan' => '01-11-2024',
-                'nim' => '20410100090',
-                'nama' => 'Bella Safira',
-                'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
-                'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
-                'status' => 'Disetujui'
+                'id' => 11,
+                'tgl_pengajuan_proposal' => '2024-10-05',
+                'tgl_pengajuan_ta' => null,
+                'mahasiswa' => '18410100147 Ahmad Fauzi',
+                'judul' => 'SISTEM REKOMENDASI PARIWISATA BERBASIS KECERDASAN BUATAN',
+                'pembimbing' => "1. Dr. Sri Wahyuni\n2. Bambang Priyanto",
+                'penguji' => 'Dewi Kartika',
+                'siap_transfer' => null,
+                'status' => 'Proses'
             ]
         ]);
+    }
 
-        // Pencarian berdasarkan nama atau judul
-        $search = $request->input('search');
-        if ($search) {
-            $proposals = $proposals->filter(function ($proposal) use ($search) {
-                return str_contains(strtolower($proposal['nama']), strtolower($search)) ||
-                    str_contains(strtolower($proposal['judul']), strtolower($search));
+    public function index(Request $request)
+    {
+        // Get the number of items per page from the request, default to 10
+        $perPage = $request->input('per_page', 10);
+
+        // Start with dummy proposals
+        $proposals = $this->getDummyProposals();
+
+        // Apply search if search term is provided
+        if ($request->has('search') && $request->search) {
+            $searchTerm = strtolower($request->search);
+            $proposals = $proposals->filter(function ($proposal) use ($searchTerm) {
+                return
+                    str_contains(strtolower($proposal['mahasiswa']), $searchTerm) ||
+                    str_contains(strtolower($proposal['judul']), $searchTerm) ||
+                    str_contains(strtolower($proposal['pembimbing']), $searchTerm) ||
+                    str_contains(strtolower($proposal['penguji']), $searchTerm);
             });
         }
 
-        // Pagination (menggunakan LengthAwarePaginator secara manual karena data berupa array)
-        $perPage = $request->input('filter', 10); // Default 10 item per halaman
-        $page = $request->input('page', 1);
-        $total = $proposals->count();
+        // Convert to collection for pagination
+        $proposals = $proposals->values();
+
+        // Create a custom paginator
+        $currentPage = $request->input('page', 1);
+        $slicedProposals = $proposals->slice(($currentPage - 1) * $perPage, $perPage);
         $paginatedProposals = new LengthAwarePaginator(
-            $proposals->slice(($page - 1) * $perPage, $perPage),
-            $total,
+            $slicedProposals,
+            $proposals->count(),
             $perPage,
-            $page,
+            $currentPage,
             ['path' => $request->url(), 'query' => $request->query()]
         );
 
-        return view('berkas', ['proposals' => $paginatedProposals]);
+        return view('dosen.berkas', [
+            'proposals' => $paginatedProposals,
+            'perPage' => $perPage,
+        ]);
     }
+
+    // public function penilaian($proposalId)
+    // {
+    //     // Find the proposal by ID in dummy data
+    //     $proposal = $this->getDummyProposals()->firstWhere('id', $proposalId);
+
+    //     if (!$proposal) {
+    //         abort(404, 'Proposal not found');
+    //     }
+
+    //     return view('proposals.penilaian', ['proposal' => $proposal]);
+    // }
 }

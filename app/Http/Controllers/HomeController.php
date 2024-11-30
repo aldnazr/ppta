@@ -29,6 +29,6 @@ class HomeController extends Controller
             ]
         ];
 
-        return view('home', compact('schedules'));
+        return view('mahasiswa.home', compact('schedules'));
     }
 }

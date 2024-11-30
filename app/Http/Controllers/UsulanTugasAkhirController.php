@@ -31,7 +31,7 @@ class UsulanTugasAkhirController extends Controller
             ['path' => request()->url()]
         );
 
-        return view('usulan', compact('paginatedJudulTugasAkhir'))->with([
+        return view('mahasiswa.usulan', compact('paginatedJudulTugasAkhir'))->with([
             'paginationView' => 'pagination.custom-pagination', // Nama file custom
         ]);
     }

@@ -2,15 +2,23 @@
     <div class="bg-white rounded-lg shadow-md p-6">
         <h2 class="text-xl font-bold mb-4">Antrian Proposal Tugas Akhir</h2>
 
-        <form id="searchForm" method="GET" action="{{ url()->current() }}" class="flex gap-4 mb-4">
-            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama atau judul..."
-                class="border rounded px-2 py-1" />
-            <select name="filter" class="border rounded px-2 py-1">
-                <option value="10" {{ request('filter') == 10 ? 'selected' : '' }}>10</option>
-                <option value="25" {{ request('filter') == 25 ? 'selected' : '' }}>25</option>
-                <option value="50" {{ request('filter') == 50 ? 'selected' : '' }}>50</option>
-            </select>
-            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Terapkan</button>
+        <form id="searchForm" method="GET" action="{{ url()->current() }}" class="flex justify-between mb-4">
+            <div class="flex items-center">
+                <label for="per-page" class="mr-2">Show:</label>
+                <select name="filter" class="bg-gray-200 rounded-md px-2 py-1">
+                    <option value="10" {{ request('filter') == 10 ? 'selected' : '' }}>10</option>
+                    <option value="25" {{ request('filter') == 25 ? 'selected' : '' }}>25</option>
+                    <option value="50" {{ request('filter') == 50 ? 'selected' : '' }}>50</option>
+                </select>
+            </div>
+            <div class="flex items-center">
+                <input type="text" name="search" value="{{ request('search') }}"
+                    placeholder="Cari nama atau judul..." class="bg-gray-200 rounded-md px-2 py-1 mr-2" />
+
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
         </form>
 
         <div class="overflow-x-auto bg-white rounded-lg">
@@ -184,7 +192,6 @@
         </div>
     </div>
 </x-layout>
-
 
 <script>
     let searchTimeout;

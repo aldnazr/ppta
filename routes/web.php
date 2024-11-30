@@ -8,7 +8,7 @@ use App\Http\Controllers\TAPerangkatanController;
 use App\Http\Controllers\JadwalBimbinganController;
 use App\Http\Controllers\UsulanTugasAkhirController;
 use App\Http\Controllers\PencarianPembimbingController;
-
+use App\Http\Controllers\UploadController;
 
 Route::get('/blog', function () {
     return view('blog', [
@@ -50,6 +50,8 @@ Route::get('/login', function () {
 });
 
 Route::get('/berkas', [BerkasController::class, 'index']);
+
+Route::get('/upload', [UploadController::class, 'index']);
 
 // Handle login submissions
 // Route::post('/login', [LoginController::class, 'login'])->name('login.post');

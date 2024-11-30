@@ -1,73 +1,54 @@
 @if ($paginator->hasPages())
-    <nav aria-label="Page navigation example">
-        <ul class="inline-flex -space-x-px text-base h-10">
-            {{-- Previous Page Link --}}
-            @if ($paginator->onFirstPage())
-                <li>
-                    <span
-                        class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-gray-200 border border-gray-300 rounded-s-lg cursor-not-allowed">
-                        Previous
-                    </span>
-                </li>
-            @else
-                <li>
-                    <a href="{{ $paginator->previousPageUrl() }}"
-                        class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">
-                        Previous
-                    </a>
-                </li>
+    <nav aria-label="Pagination"
+        class="relative z-0 inline-flex rounded-md border border-gray-200 shadow-sm -space-x-px p-1">
+        {{-- Previous Page Link --}}
+        @if ($paginator->onFirstPage())
+            <span class="px-3 py-1 text-gray-400 bg-gray-100 rounded-md cursor-not-allowed">
+                <i class="fas fa-chevron-left"></i>
+            </span>
+        @else
+            <a href="{{ $paginator->previousPageUrl() }}"
+                class="px-3 py-1 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+        @endif
+
+        {{-- Pagination Elements --}}
+        @foreach ($elements as $element)
+            {{-- "Three Dots" Separator --}}
+            @if (is_string($element))
+                <span class="px-3 py-1 text-gray-400 bg-gray-100 rounded-md">
+                    {{ $element }}
+                </span>
             @endif
 
-            {{-- Pagination Elements --}}
-            @foreach ($elements as $element)
-                {{-- "Three Dots" Separator --}}
-                @if (is_string($element))
-                    <li>
-                        <span
-                            class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-gray-200 border border-gray-300 cursor-not-allowed">
-                            {{ $element }}
+            {{-- Array Of Links --}}
+            @if (is_array($element))
+                @foreach ($element as $page => $url)
+                    @if ($page == $paginator->currentPage())
+                        <span aria-current="page" class="px-3 py-1 bg-blue-500 text-white rounded-md font-semibold">
+                            {{ $page }}
                         </span>
-                    </li>
-                @endif
-
-                {{-- Array Of Links --}}
-                @if (is_array($element))
-                    @foreach ($element as $page => $url)
-                        @if ($page == $paginator->currentPage())
-                            <li>
-                                <span aria-current="page"
-                                    class="flex items-center justify-center px-4 h-10 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
-                                    {{ $page }}
-                                </span>
-                            </li>
-                        @else
-                            <li>
-                                <a href="{{ $url }}"
-                                    class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
-                                    {{ $page }}
-                                </a>
-                            </li>
-                        @endif
-                    @endforeach
-                @endif
-            @endforeach
-
-            {{-- Next Page Link --}}
-            @if ($paginator->hasMorePages())
-                <li>
-                    <a href="{{ $paginator->nextPageUrl() }}"
-                        class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
-                        Next
-                    </a>
-                </li>
-            @else
-                <li>
-                    <span
-                        class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-gray-200 border border-gray-300 rounded-e-lg cursor-not-allowed">
-                        Next
-                    </span>
-                </li>
+                    @else
+                        <a href="{{ $url }}"
+                            class="px-3 py-1 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors">
+                            {{ $page }}
+                        </a>
+                    @endif
+                @endforeach
             @endif
-        </ul>
+        @endforeach
+
+        {{-- Next Page Link --}}
+        @if ($paginator->hasMorePages())
+            <a href="{{ $paginator->nextPageUrl() }}"
+                class="px-3 py-1 text-gray-600 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors">
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        @else
+            <span class="px-3 py-1 text-gray-400 bg-gray-100 rounded-md cursor-not-allowed">
+                <i class="fas fa-chevron-right"></i>
+            </span>
+        @endif
     </nav>
 @endif

@@ -59,7 +59,7 @@ class JadwalBimbinganController extends Controller
         // Ambil nama dosen sebagai key untuk ditampilkan di view (tanpa jadwal)
         $dosens = array_keys($this->dosensWithSchedules);
 
-        return view('jadbimbingan', compact('dosens'));
+        return view('mahasiswa.jadbimbingan', compact('dosens'));
     }
 
     // Metode untuk menangani permintaan AJAX berdasarkan dosen

@@ -116,7 +116,7 @@ class PencarianPembimbingController extends Controller
             ]);
         }
 
-        return view('pencarianpembimbing', [
+        return view('mahasiswa.pencarianpembimbing', [
             'paginatedDataBimbingan' => $paginatedDataBimbingan,
             'lecturer' => $lecturer,
             'dosens' => $dosens

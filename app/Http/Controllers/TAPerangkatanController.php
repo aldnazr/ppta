@@ -98,7 +98,7 @@ class TAPerangkatanController extends Controller
         $jurusan = array_keys($this->data);
         $angkatan = $this->data[$activeJurusan];
 
-        return view('taperangkatan', compact('jurusan', 'angkatan', 'activeJurusan'));
+        return view('mahasiswa.taperangkatan', compact('jurusan', 'angkatan', 'activeJurusan'));
     }
 
     public function getByJurusan(Request $request)
