@@ -1,14 +1,9 @@
 <?php
 
+use App\Http\Controllers\Dosen\BerkasController;
+use App\Http\Controllers\PPTA\SidangTaController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\BerkasController;
-use App\Http\Controllers\TAPerangkatanController;
-use App\Http\Controllers\JadwalBimbinganController;
-use App\Http\Controllers\UsulanTugasAkhirController;
-use App\Http\Controllers\PencarianPembimbingController;
-use App\Http\Controllers\UploadController;
 
 Route::get('/blog', function () {
     return view('blog', [
@@ -22,6 +17,9 @@ Route::get('/document', function () {
 });
 
 Route::get('/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('penilaian');
+
+Route::get('/ppta/sidangta', [SidangTaController::class, 'index'])->name('penilaian');
+
 
 Route::get('/mhshome', function () {
     return view('mhshome', ['title' => 'Contact Page']);
