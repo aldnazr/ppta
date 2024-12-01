@@ -14,7 +14,7 @@ window.addEventListener('resize', () => {
         class="w-72 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
         <!-- Open Close Button -->
         <button @click="isOpen = !isOpen"
-            class="mt-[0.73rem] ml-3 flex justify-center items-center pt-1 rounded-lg hover:border hover:bg-zinc-50 w-10 h-10 text-zinc-700 hover:text-zinc-500 hover:shadow-xs">
+            class="mt-[0.73rem] ml-3 flex justify-center items-center pt-1 rounded-lg w-10 h-10 text-zinc-500 hover:text-indigo-600 hover:bg-sky-100">
             {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
             <i class="fa-light fa-bars-sort fa-lg"></i>
         </button>
@@ -102,7 +102,7 @@ window.addEventListener('resize', () => {
 
             <!-- Button Toggle Sidebar -->
             <button :class="{ 'hidden': isOpen }" @click="isOpen = !isOpen"
-                class="flex justify-center items-center pt-1 rounded-lg hover:border hover:bg-zinc-50 w-10 h-10 text-zinc-700 hover:text-zinc-500 hover:shadow-xs">
+                class="flex justify-center items-center pt-1 rounded-lg w-10 h-10 text-zinc-500 hover:text-indigo-600 hover:bg-sky-100">
                 <i class="fa-light fa-bars-sort fa-lg"></i>
             </button>
 
