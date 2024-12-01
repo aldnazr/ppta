@@ -1,9 +1,15 @@
 <?php
 
-use App\Http\Controllers\Dosen\BerkasController;
-use App\Http\Controllers\PPTA\SidangTaController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PPTA\UploadController;
+use App\Http\Controllers\Dosen\BerkasController;
+use App\Http\Controllers\PPTA\SidangTaController;
+use App\Http\Controllers\Mahasiswa\HomeController;
+use App\Http\Controllers\Mahasiswa\TAPerangkatanController;
+use App\Http\Controllers\Mahasiswa\JadwalBimbinganController;
+use App\Http\Controllers\Mahasiswa\UsulanTugasAkhirController;
+use App\Http\Controllers\Mahasiswa\PencarianPembimbingController;
 
 Route::get('/blog', function () {
     return view('blog', [
