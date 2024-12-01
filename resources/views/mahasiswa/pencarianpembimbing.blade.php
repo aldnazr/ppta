@@ -168,8 +168,8 @@
             </div>
 
             <!-- Pagination Links -->
-            <div class="flex mt-8 w-full justify-center">
-                {{ $paginatedDataBimbingan->appends(request()->input())->links() }}
+            <div class="mt-8 w-full">
+                {{ $paginatedDataBimbingan->links('vendor.pagination.custom-pagination') }}
             </div>
         @else
             <!-- Empty State -->

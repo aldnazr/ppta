@@ -195,24 +195,19 @@
                 </table>
             </div>
 
-            <div class="min-w-full mx-auto">
-                <div class="py-3">
-                    <div class="flex justify-between items-center">
-                        <div class="flex-1 flex items-center justify-between">
-                            <p class="text-sm text-gray-700">
-                                Menampilkan
-                                <span class="font-medium">{{ $proposals->firstItem() }}</span>
-                                sampai
-                                <span class="font-medium">{{ $proposals->lastItem() }}</span>
-                                dari
-                                <span class="font-medium">{{ $proposals->total() }}</span>
-                                hasil
-                            </p>
-                            <div>
-                                {{ $proposals->links('vendor.pagination.custom-pagination') }}
-                            </div>
-                        </div>
-                    </div>
+            {{-- Pagination Links --}}
+            <div class="min-w-full mx-auto py-3 flex justify-between items-center">
+                <p class="text-sm text-gray-700">
+                    Menampilkan
+                    <span class="font-medium">{{ $proposals->firstItem() }}</span>
+                    sampai
+                    <span class="font-medium">{{ $proposals->lastItem() }}</span>
+                    dari
+                    <span class="font-medium">{{ $proposals->total() }}</span>
+                    hasil
+                </p>
+                <div>
+                    {{ $proposals->links('vendor.pagination.custom-pagination') }}
                 </div>
             </div>
         </div>
