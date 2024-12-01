@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="p-4 md:p-6 bg-white rounded-lg shadow-lg">
+    <div class="p-4 md:p-6 bg-white rounded-xl border border-gray-200 shadow-lg">
         <h1 class="text-xl flex justify-center md:justify-start md:text-2xl text-blue-800 font-semibold mb-6 mt-2">Daftar
             Sidang Tugas Akhir
         </h1>
