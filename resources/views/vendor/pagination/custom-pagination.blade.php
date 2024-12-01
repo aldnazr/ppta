@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav aria-label="Pagination" class="relative inline-flex rounded-xl border border-gray-300 space-x-1 p-1">
+    <nav aria-label="Pagination" class="bg-zinc-100 relative inline-flex rounded-xl border border-gray-300 space-x-1 p-1">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
             <span class="px-3 py-1 text-gray-400 bg-gray-100 rounded-lg cursor-not-allowed">

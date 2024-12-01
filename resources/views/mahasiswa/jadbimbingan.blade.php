@@ -182,7 +182,7 @@
             } else {
                 const noDataRow = `
                 <tr>
-                    <td colspan="5" class="px-6 py-4 text-center text-gray-500">Tidak ada jadwal tersedia</td>
+                    <td colspan="6" class="p-6 text-center text-gray-500">Tidak ada jadwal tersedia</td>
                 </tr>
             `;
                 scheduleBody.insertAdjacentHTML("beforeend", noDataRow);
