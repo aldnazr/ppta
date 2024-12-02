@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container mx-auto p-4">
+    <div class="container bg-white rounded-lg shadow-xl border border-gray-200 mx-auto p-4 lg:p-6">
         <h1 class="text-2xl font-bold text-gray-800 mb-4">Antrian Sidang Tugas Akhir</h1>
 
         <div class="overflow-x-auto shadow-lg rounded-lg">
@@ -60,7 +60,6 @@
                                 rows="2" placeholder="Keterangan jika ditolak"></textarea>
                         </td>
                     </tr>
-                    <!-- Tambahkan data lainnya -->
                 </tbody>
             </table>
         </div>

@@ -1,3 +1,5 @@
+@props(['user'])
+
 <div class="flex h-full w-full" x-data="{ isOpen: true }" x-init="isOpen = window.innerWidth >= 768;
 window.addEventListener('resize', () => {
     if (window.innerWidth < 768) {
@@ -33,30 +35,60 @@ window.addEventListener('resize', () => {
         </div> --}}
 
         <!-- Main Navigation -->
-        <nav class="mt-1 md:mt-5 px-3">
-            <x-nav-link href="/" :active="request()->is('/')" iconClass="fa-regular fa-house fa-lg">
-                Home
-            </x-nav-link>
+        <nav class="mt-1 md:mt-5 px-3" x-data="{ role: '{{ $user }}' }">
+            {{-- Menu khusus Mahasiswa --}}
+            <template x-if="role === 'mahasiswa'">
+                <div>
+                    <x-nav-link href="/" :active="request()->is('/')" iconClass="fa-regular fa-house fa-lg">
+                        Home
+                    </x-nav-link>
 
-            <x-nav-link href="/pencarianpembimbing" :active="request()->is('pencarianpembimbing')" iconClass="fa-regular fa-users-medical fa-lg">
-                Pencarian Pembimbing
-            </x-nav-link>
+                    <x-nav-link href="/pencarianpembimbing" :active="request()->is('pencarianpembimbing')"
+                        iconClass="fa-regular fa-users-medical fa-lg">
+                        Pencarian Pembimbing
+                    </x-nav-link>
 
-            <x-nav-link href="/taperangkatan" :active="request()->is('taperangkatan')" iconClass="fa-regular fa-subtitles fa-lg">
-                Judul TA Perangkatan
-            </x-nav-link>
+                    <x-nav-link href="/taperangkatan" :active="request()->is('taperangkatan')" iconClass="fa-regular fa-subtitles fa-lg">
+                        Judul TA Perangkatan
+                    </x-nav-link>
 
-            <x-nav-link href="/document" :active="request()->is('document')" iconClass="fa-regular fa-folder-open fa-lg">
-                Dokumen-Dokumen
-            </x-nav-link>
+                    <x-nav-link href="/document" :active="request()->is('document')" iconClass="fa-regular fa-folder-open fa-lg">
+                        Dokumen-Dokumen
+                    </x-nav-link>
 
-            <x-nav-link href="/jadbimbingan" :active="request()->is('jadbimbingan')" iconClass="fa-regular fa-calendar-days fa-lg">
-                Jadwal Bimbingan
-            </x-nav-link>
+                    <x-nav-link href="/jadbimbingan" :active="request()->is('jadbimbingan')" iconClass="fa-regular fa-calendar-days fa-lg">
+                        Jadwal Bimbingan
+                    </x-nav-link>
 
-            <x-nav-link href="/usulan" :active="request()->is('usulan')" iconClass="fa-solid fa-list-radio fa-lg">
-                Usulan
-            </x-nav-link>
+                    <x-nav-link href="/usulan" :active="request()->is('usulan')" iconClass="fa-solid fa-list-radio fa-lg">
+                        Usulan
+                    </x-nav-link>
+                </div>
+            </template>
+
+            {{-- Menu khusus Dosen --}}
+            <template x-if="role === 'dosen'">
+                <div>
+                    <x-nav-link href="/document" :active="request()->is('document')" iconClass="fa-regular fa-folder-open fa-lg">
+                        Dokumen-Dokumen
+                    </x-nav-link>
+                    <x-nav-link href="/jadbimbingan" :active="request()->is('jadbimbingan')" iconClass="fa-regular fa-calendar-days fa-lg">
+                        Jadwal Bimbingan
+                    </x-nav-link>
+                </div>
+            </template>
+
+            {{-- Menu khusus PPTA --}}
+            <template x-if="role === 'ppta'">
+                <div>
+                    <x-nav-link href="/usulan" :active="request()->is('usulan')" iconClass="fa-solid fa-list-radio fa-lg">
+                        Usulan
+                    </x-nav-link>
+                    <x-nav-link href="/management" :active="request()->is('management')" iconClass="fa-solid fa-user-cog fa-lg">
+                        Manajemen Pengguna
+                    </x-nav-link>
+                </div>
+            </template>
         </nav>
 
         <!-- Teams Section -->

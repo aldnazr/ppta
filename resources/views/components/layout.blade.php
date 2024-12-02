@@ -1,3 +1,5 @@
+@props(['user' => 'mahasiswa'])
+
 <!DOCTYPE html>
 <html lang="en" class="bg-gray-50">
 
@@ -15,7 +17,7 @@
     </head>
 
     <body class="h-screen overflow-hidden">
-        <x-navbar>
+        <x-navbar :user="$user">
             {{ $slot }}
         </x-navbar>
     </body>
