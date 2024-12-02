@@ -22,10 +22,9 @@ Route::get('/document', function () {
     return view('mahasiswa.document', ['title' => 'Contact Page']);
 });
 
-Route::get('/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('penilaian');
+Route::get('/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('dosen.penilaian');
 
-Route::get('/ppta/sidangta', [SidangTaController::class, 'index'])->name('penilaian');
-
+Route::get('/ppta/sidangta', [SidangTaController::class, 'index'])->name('ppta.sidangta');
 
 Route::get('/mhshome', function () {
     return view('mhshome', ['title' => 'Contact Page']);
