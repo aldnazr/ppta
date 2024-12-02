@@ -23,7 +23,7 @@
                     class="w-full lg:w-auto flex flex-col lg:flex-row lg:items-center space-y-3 lg:space-y-0 lg:space-x-2">
                     <!-- Search Form -->
                     <form id="searchForm" method="GET" action="{{ url()->current() }}"
-                        class="w-auto flex items-center space-x-2">
+                        class="w-auto flex items-center space-x-1.5">
                         <div class="flex-grow md:flex-grow-0 md:w-64">
                             <input type="text" name="search" value="{{ request('search') }}"
                                 placeholder="Pencarian..."
@@ -35,7 +35,7 @@
                         <input type="hidden" name="filter" value="{{ request('filter') }}">
 
                         <button type="submit"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer">
                             <i class="fa-solid fa-search"></i>
                         </button>
                     </form>
@@ -43,7 +43,7 @@
                     <!-- Filter Form -->
                     <form method="GET" action="{{ url()->current() }}" class="relative">
                         <button type="button" data-filter-toggle
-                            class="bg-blue-100 text-blue-600 px-3 py-1.5 rounded flex items-center hover:text-blue-700 hover:bg-blue-200">
+                            class="bg-blue-100 text-blue-600 px-3 py-1.5 rounded flex items-center hover:text-blue-700 hover:bg-blue-200 cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
                                 fill="currentColor">
                                 <path fill-rule="evenodd"

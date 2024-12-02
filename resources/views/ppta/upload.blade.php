@@ -21,7 +21,8 @@
                     <input type="text" name="search" value="{{ request('search') }}"
                         placeholder="Cari nama atau judul..."
                         class="bg-gray-200 rounded-md px-2 py-1 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                    <button type="submit"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer">
                         <i class="fa-solid fa-search"></i>
                     </button>
                 </div>
