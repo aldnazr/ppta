@@ -2,7 +2,7 @@
     <div class="bg-white rounded-lg shadow-md p-6">
         <h2 class="text-xl font-bold mb-4">Antrian Proposal Tugas Akhir</h2>
 
-        <div class="flex justify-between mb-4">
+        <div class="flex flex-col lg:flex-row justify-between my-4 space-y-3 md:space-y-0">
             <form action="{{ url()->current() }}" id="perPageForm">
                 <div class="flex items-center">
                     <label for="per-page" class="mr-2">Tampilkan:</label>
@@ -17,10 +17,12 @@
                 </div>
             </form>
             <form id="searchForm" method="GET" action="{{ url()->current() }}">
-                <div class="flex items-center">
-                    <input type="text" name="search" value="{{ request('search') }}"
-                        placeholder="Cari nama atau judul..."
-                        class="bg-gray-200 rounded-md px-2 py-1 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <div class="flex items-center space-x-2">
+                    <div class="flex-grow md:flex-grow-0 md:w-64">
+                        <input type="text" name="search" value="{{ request('search') }}"
+                            placeholder="Cari nama atau judul..."
+                            class="w-full bg-gray-200 rounded-md px-2 py-1 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
                     <button type="submit"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer">
                         <i class="fa-solid fa-search"></i>
