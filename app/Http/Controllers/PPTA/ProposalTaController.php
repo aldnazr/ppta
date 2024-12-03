@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class UploadController extends Controller
+class ProposalTaController extends Controller
 {
     public function getDummyProposals()
     {

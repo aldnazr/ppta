@@ -2,14 +2,16 @@
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PPTA\UploadController;
 use App\Http\Controllers\Dosen\BerkasController;
 use App\Http\Controllers\PPTA\SidangTaController;
 use App\Http\Controllers\Mahasiswa\HomeController;
+use App\Http\Controllers\Dosen\DashboardController;
 use App\Http\Controllers\Mahasiswa\TAPerangkatanController;
 use App\Http\Controllers\Mahasiswa\JadwalBimbinganController;
 use App\Http\Controllers\Mahasiswa\UsulanTugasAkhirController;
 use App\Http\Controllers\Mahasiswa\PencarianPembimbingController;
+use App\Http\Controllers\PPTA\MaintenanceController;
+use App\Http\Controllers\PPTA\ProposalTaController;
 
 Route::get('/blog', function () {
     return view('blog', [
@@ -21,14 +23,6 @@ Route::get('/blog', function () {
 Route::get('/document', function () {
     return view('mahasiswa.document', ['title' => 'Contact Page']);
 });
-
-Route::get('/laporanfk', function () {
-    return view('ppta.laporanfk', ['title' => 'Contact Page']);
-});
-
-Route::get('/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('dosen.penilaian');
-
-Route::get('/ppta/sidangta', [SidangTaController::class, 'index'])->name('ppta.sidangta');
 
 Route::get('/mhshome', function () {
     return view('mhshome', ['title' => 'Contact Page']);
@@ -54,10 +48,27 @@ Route::get('/login', function () {
     return view('login'); // Replace with your login page
 });
 
-Route::get('/berkas', [BerkasController::class, 'index']);
+// Dosen Route
+Route::redirect('/dosen', '/dosen/dashboard');
+Route::get('/dosen/dashboard', [DashboardController::class, 'index']);
+Route::get('/dosen/berkas', [BerkasController::class, 'index']);
+Route::get('/dosen/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('dosen.penilaian');
 
-Route::get('/upload', [UploadController::class, 'index']);
 
+//PPTA Route
+Route::redirect('/ppta', '/ppta/proposal_ta');
+Route::get('/ppta/proposal_ta', [ProposalTaController::class, 'index']);
+Route::get('/ppta/sidang_ta', [SidangTaController::class, 'index'])->name('ppta.sidangta');
+Route::get('/ppta/laporan_fk', function () {
+    return view('ppta.laporanfk');
+});
+Route::get('/ppta/laporan_proposal', function () {
+    return view('ppta.laporanproposal');
+});
+Route::get('/ppta/laporan_ta', function () {
+    return view('ppta.laporanta');
+});
+Route::get('/ppta/maintenance', [MaintenanceController::class, 'index']);
 // Handle login submissions
 // Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 

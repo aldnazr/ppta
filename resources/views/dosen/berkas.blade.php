@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout user="dosen">
     <div class="flex flex-col bg-white">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg px-6">
             <div class="flex flex-col lg:flex-row justify-between items-center my-4 space-y-3 md:space-y-0">

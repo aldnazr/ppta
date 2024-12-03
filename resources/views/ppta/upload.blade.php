@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout user="ppta">
     <div class="bg-white rounded-lg shadow-md p-6">
         <h2 class="text-xl font-bold mb-4">Antrian Proposal Tugas Akhir</h2>
 

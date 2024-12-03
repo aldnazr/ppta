@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout user="dosen">
     <!-- Header Card -->
     <div class="bg-white rounded-md shadow-md mb-6 p-6">
         <div class="grid grid-cols-1 gap-4">
@@ -97,7 +97,7 @@
                     id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
                     <li class="w-full md:w-auto" role="presentation">
                         <button
-                            class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                            class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
                             id="profile-tab" data-tabs-target="#proposal" type="button" role="tab"
                             aria-controls="profile" aria-selected="false">
                             <span class="block md:inline">Proposal</span>
@@ -106,7 +106,7 @@
                     </li>
                     <li class="w-full md:w-auto" role="presentation">
                         <button
-                            class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                            class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
                             id="dashboard-tab" data-tabs-target="#bimbingan" type="button" role="tab"
                             aria-controls="dashboard" aria-selected="false">
                             <span class="block md:inline">Bimbingan</span>
@@ -115,7 +115,7 @@
                     </li>
                     <li class="w-full md:w-auto" role="presentation">
                         <button
-                            class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                            class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
                             id="settings-tab" data-tabs-target="#sidang" type="button" role="tab"
                             aria-controls="settings" aria-selected="false">
                             <span class="block md:inline">Sidang</span>

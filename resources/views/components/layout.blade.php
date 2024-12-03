@@ -1,4 +1,4 @@
-@props(['user' => 'mahasiswa'])
+@props(['user' => 'mahasiswa', 'pageTitle' => ''])
 
 <!DOCTYPE html>
 <html lang="en" class="bg-gray-50">
@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Home</title>
+        <title>{{ $pageTitle }}</title>
         @vite('resources/css/app.css')
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
         <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.1/css/all.css">

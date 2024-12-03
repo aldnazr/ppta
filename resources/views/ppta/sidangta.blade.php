@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout user="ppta">
     <div class="container bg-white rounded-lg shadow-xl border border-gray-200 mx-auto p-4 lg:p-6">
         <h1 class="text-2xl font-bold text-gray-800 mb-4">Antrian Sidang Tugas Akhir</h1>
 

@@ -29,7 +29,7 @@
                             NIDN
                         </label>
                         <input id="email" name="email" type="text" autocomplete="email" required
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder-gray-400 text-sm"
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder-gray-400 text-sm"
                             placeholder="Masukkan NIDN Anda">
                     </div>
 
@@ -39,7 +39,7 @@
                             Password
                         </label>
                         <input id="password" name="password" type="password" autocomplete="current-password" required
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder-gray-400 text-sm"
+                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder-gray-400 text-sm"
                             placeholder="••••••••">
                     </div>
 
