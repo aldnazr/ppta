@@ -10,8 +10,8 @@ window.addEventListener('resize', () => {
 })">
     <!-- Sidebar -->
     <div id="sidebar" x-show="isOpen" :class="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
-        x-transition:enter="transition transform duration-300 ease-in-out" x-transition:enter-start="-translate-x-full"
-        x-transition:enter-end="translate-x-0" x-transition:leave="transition transform duration-300 ease-in-out"
+        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
+        x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
         class="w-72 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
         <!-- Open Close Button -->
@@ -117,7 +117,7 @@ window.addEventListener('resize', () => {
         </div> --}}
 
         <!-- Logout -->
-        <div class="group mb-4 mt-auto px-3">
+        <div x-show="$role !== 'mahasiswa'" class="group mb-4 mt-auto px-3">
             <a href="/login"
                 class="flex w-full gap-x-4 font-semibold items-center  rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-sky-50">
                 <i class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>
