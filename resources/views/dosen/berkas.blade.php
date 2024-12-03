@@ -184,7 +184,7 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <a href="{{ route('dosen.penilaian', ['id' => $proposal['id']]) }}"
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-2.5 rounded">
                                             Nilai
                                         </a>
                                     </td>
