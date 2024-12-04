@@ -49,11 +49,11 @@ window.addEventListener('resize', () => {
                         Pencarian Pembimbing
                     </x-nav-link>
 
-                    <x-nav-link href="/taperangkatan" :active="request()->is('taperangkatan')" iconClass="fa-regular fa-subtitles fa-lg">
+                    <x-nav-link href="/taperangkatan" :active="request()->is('taperangkatan')" iconClass="fa-regular fa-books fa-lg">
                         Judul TA Perangkatan
                     </x-nav-link>
 
-                    <x-nav-link href="/document" :active="request()->is('document')" iconClass="fa-regular fa-folder-open fa-lg">
+                    <x-nav-link href="/document" :active="request()->is('document')" iconClass="fa-regular fa-folders fa-lg">
                         Dokumen-Dokumen
                     </x-nav-link>
 
@@ -61,7 +61,7 @@ window.addEventListener('resize', () => {
                         Jadwal Bimbingan
                     </x-nav-link>
 
-                    <x-nav-link href="/usulan" :active="request()->is('usulan')" iconClass="fa-solid fa-list-radio fa-lg">
+                    <x-nav-link href="/usulan" :active="request()->is('usulan')" iconClass="fa-regular fa-list-radio fa-lg">
                         Usulan
                     </x-nav-link>
                 </div>
