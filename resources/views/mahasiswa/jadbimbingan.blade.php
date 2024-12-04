@@ -1,4 +1,6 @@
-<x-layout>
+@extends('layouts.app')
+
+@section('content')
     <div class="min-h-[75vh] p-4 md:p-6 bg-white rounded-lg shadow-lg">
         <!-- Header Section -->
         <div class="max-w-xl mx-auto">
@@ -80,93 +82,90 @@
             </div>
         </div>
     </div>
-</x-layout>
+    <script>
+        const dosen = @json($dosens);
+        const list = document.getElementById("autocomplete-list");
+        const clearButton = document.getElementById("clear-button");
+        const inputField = document.getElementById("autocomplete-input");
+        const sortedList = dosen.sort();
+        const scheduleBody = document.getElementById("schedule-body");
+        const table = document.getElementById("schedule-table");
+        const emptyState = document.getElementById('empty-state');
 
-
-<script>
-    const dosen = @json($dosens);
-    const list = document.getElementById("autocomplete-list");
-    const clearButton = document.getElementById("clear-button");
-    const inputField = document.getElementById("autocomplete-input");
-    const sortedList = dosen.sort();
-    const scheduleBody = document.getElementById("schedule-body");
-    const table = document.getElementById("schedule-table");
-    const emptyState = document.getElementById('empty-state');
-
-    function showSuggestions(value) {
-        list.innerHTML = ""; // Clear previous suggestions
-        if (value.trim() === "") {
-            list.classList.add("hidden");
-            return;
+        function showSuggestions(value) {
+            list.innerHTML = ""; // Clear previous suggestions
+            if (value.trim() === "") {
+                list.classList.add("hidden");
+                return;
+            }
+            const suggestions = sortedList.filter(dosen => dosen.toLowerCase().includes(value.toLowerCase()));
+            if (suggestions.length > 0) {
+                suggestions.forEach(dosen => {
+                    const li = document.createElement("li");
+                    li.textContent = dosen;
+                    li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
+                    li.onclick = () => {
+                        $('autocomplete-input').value = dosen;
+                        list.classList.add("hidden");
+                    };
+                    list.appendChild(li);
+                });
+                list.classList.remove("hidden");
+            } else {
+                list.classList.add("hidden");
+            }
         }
-        const suggestions = sortedList.filter(dosen => dosen.toLowerCase().includes(value.toLowerCase()));
-        if (suggestions.length > 0) {
-            suggestions.forEach(dosen => {
-                const li = document.createElement("li");
-                li.textContent = dosen;
-                li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
-                li.onclick = () => {
-                    $('autocomplete-input').value = dosen;
-                    list.classList.add("hidden");
-                };
-                list.appendChild(li);
-            });
-            list.classList.remove("hidden");
-        } else {
-            list.classList.add("hidden");
+
+        function toggleClearButton(value) {
+            if (value.trim() !== "") {
+                clearButton.classList.remove("hidden");
+                emptyState.classList.add("hidden");
+            } else {
+                emptyState.classList.remove("hidden");
+                table.classList.add("hidden");
+                clearButton.classList.add("hidden");
+            }
         }
-    }
 
-    function toggleClearButton(value) {
-        if (value.trim() !== "") {
-            clearButton.classList.remove("hidden");
-            emptyState.classList.add("hidden");
-        } else {
-            emptyState.classList.remove("hidden");
-            table.classList.add("hidden");
-            clearButton.classList.add("hidden");
+        function clearInput() {
+            inputField.value = "";
+            toggleClearButton("");
         }
-    }
 
-    function clearInput() {
-        inputField.value = "";
-        toggleClearButton("");
-    }
-
-    function showSuggestions(value) {
-        list.innerHTML = ""; // Clear previous suggestions
-        if (value.trim() === "") {
-            list.classList.add("hidden");
-            return;
+        function showSuggestions(value) {
+            list.innerHTML = ""; // Clear previous suggestions
+            if (value.trim() === "") {
+                list.classList.add("hidden");
+                return;
+            }
+            const suggestions = sortedList.filter(dosen => dosen.toLowerCase().includes(value.toLowerCase()));
+            if (suggestions.length > 0) {
+                suggestions.forEach(dosen => {
+                    const li = document.createElement("li");
+                    li.textContent = dosen;
+                    li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
+                    li.onclick = () => {
+                        document.getElementById("autocomplete-input").value = dosen;
+                        list.classList.add("hidden");
+                        loadSchedule(dosen); // Panggil fungsi untuk memuat jadwal
+                    };
+                    list.appendChild(li);
+                });
+                list.classList.remove("hidden");
+            } else {
+                list.classList.add("hidden");
+            }
         }
-        const suggestions = sortedList.filter(dosen => dosen.toLowerCase().includes(value.toLowerCase()));
-        if (suggestions.length > 0) {
-            suggestions.forEach(dosen => {
-                const li = document.createElement("li");
-                li.textContent = dosen;
-                li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
-                li.onclick = () => {
-                    document.getElementById("autocomplete-input").value = dosen;
-                    list.classList.add("hidden");
-                    loadSchedule(dosen); // Panggil fungsi untuk memuat jadwal
-                };
-                list.appendChild(li);
-            });
-            list.classList.remove("hidden");
-        } else {
-            list.classList.add("hidden");
-        }
-    }
 
-    function loadSchedule(dosen) {
-        // Kirim permintaan ke server untuk mendapatkan jadwal berdasarkan dosen
-        $.get(`/jadbimbingan-dosen?dosen=${encodeURIComponent(dosen)}`, function(response) {
-            scheduleBody.innerHTML = ""; // Bersihkan jadwal sebelumnya
+        function loadSchedule(dosen) {
+            // Kirim permintaan ke server untuk mendapatkan jadwal berdasarkan dosen
+            $.get(`/jadbimbingan-dosen?dosen=${encodeURIComponent(dosen)}`, function(response) {
+                scheduleBody.innerHTML = ""; // Bersihkan jadwal sebelumnya
 
-            if (response.schedules.length > 0) {
-                var nomor = 0;
-                response.schedules.forEach(schedule => {
-                    const row = `
+                if (response.schedules.length > 0) {
+                    var nomor = 0;
+                    response.schedules.forEach(schedule => {
+                        const row = `
                     <tr class="bg-white border-b">
                         <td class="px-6 py-4">${nomor+=1}</td>
                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
@@ -178,21 +177,22 @@
                         <td class="px-6 py-4">${schedule.ket}</td>
                     </tr>
                 `;
-                    scheduleBody.insertAdjacentHTML("beforeend", row);
-                });
-            } else {
-                const noDataRow = `
+                        scheduleBody.insertAdjacentHTML("beforeend", row);
+                    });
+                } else {
+                    const noDataRow = `
                 <tr>
                     <td colspan="6" class="p-6 text-center text-gray-500">Tidak ada jadwal tersedia</td>
                 </tr>
             `;
-                scheduleBody.insertAdjacentHTML("beforeend", noDataRow);
-            }
+                    scheduleBody.insertAdjacentHTML("beforeend", noDataRow);
+                }
 
-            // Tampilkan tabel
-            table.classList.remove("hidden");
-        }).fail(function() {
-            alert("Gagal memuat jadwal. Coba lagi.");
-        });
-    }
-</script>
+                // Tampilkan tabel
+                table.classList.remove("hidden");
+            }).fail(function() {
+                alert("Gagal memuat jadwal. Coba lagi.");
+            });
+        }
+    </script>
+@endsection

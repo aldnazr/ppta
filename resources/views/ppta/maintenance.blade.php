@@ -1,4 +1,6 @@
-<x-layout user="ppta">
+@extends('layouts.app')
+
+@section('content')
     <div class="container bg-white border border-gray-200 rounded-xl shadow-lg p-6">
         <div class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold">Employee List</h1>
@@ -53,4 +55,4 @@
             </table>
         </div>
     </div>
-</x-layout>
+@endsection

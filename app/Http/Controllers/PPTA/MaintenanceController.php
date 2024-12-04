@@ -10,7 +10,9 @@ class MaintenanceController extends Controller
     public function index()
     {
         $employees = $this->getDummyEmployees();
-        return view('ppta.maintenance', compact('employees'));
+        return view('ppta.maintenance', compact('employees'))->with([
+            'user' => 'ppta'
+        ]);
     }
 
     public function edit($id)

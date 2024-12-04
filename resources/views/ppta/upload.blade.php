@@ -1,4 +1,6 @@
-<x-layout user="ppta">
+@extends('layouts.app')
+
+@section('content')
     <div class="bg-white rounded-lg shadow-md p-6">
         <h2 class="text-xl font-bold mb-4">Antrian Proposal Tugas Akhir</h2>
 
@@ -87,8 +89,7 @@
                                         class="px-3 py-1 text-gray-600 hover:text-gray-800 border rounded-md hover:bg-gray-50 focus:outline-none inline-flex items-center"
                                         type="button">
                                         <span>Update Status</span>
-                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
+                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M19 9l-7 7-7-7" />
                                         </svg>
@@ -132,8 +133,7 @@
 
                                             <!-- ACC Bersyarat Sidang Ulang -->
                                             <div>
-                                                <input type="hidden" name="status"
-                                                    value="ACC Bersyarat Sidang Ulang">
+                                                <input type="hidden" name="status" value="ACC Bersyarat Sidang Ulang">
                                                 <button
                                                     class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-purple-50 hover:text-purple-700 flex items-center">
                                                     <svg class="w-4 h-4 mr-2 text-purple-500" fill="none"
@@ -199,20 +199,19 @@
             </div>
         </div>
     </div>
-</x-layout>
+    <script>
+        let searchTimeout;
 
-<script>
-    let searchTimeout;
+        function submitSearchForm() {
+            const form = document.getElementById('searchForm');
 
-    function submitSearchForm() {
-        const form = document.getElementById('searchForm');
+            // Hentikan timeout sebelumnya (debouncing)
+            clearTimeout(searchTimeout);
 
-        // Hentikan timeout sebelumnya (debouncing)
-        clearTimeout(searchTimeout);
-
-        // Tetapkan timeout baru
-        searchTimeout = setTimeout(() => {
-            form.submit();
-        }, 300); // Tunggu 300ms setelah pengguna berhenti mengetik
-    }
-</script>
+            // Tetapkan timeout baru
+            searchTimeout = setTimeout(() => {
+                form.submit();
+            }, 300); // Tunggu 300ms setelah pengguna berhenti mengetik
+        }
+    </script>
+@endsection

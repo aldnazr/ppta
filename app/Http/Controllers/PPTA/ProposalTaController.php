@@ -408,6 +408,8 @@ class ProposalTaController extends Controller
         return view('ppta.upload', [
             'proposals' => $paginatedProposals,
             'perPage' => $perPage
+        ])->with([
+            'user' => 'ppta'
         ]);
     }
 }

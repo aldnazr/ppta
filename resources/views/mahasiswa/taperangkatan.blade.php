@@ -1,4 +1,6 @@
-<x-layout>
+@extends('layouts.app')
+
+@section('content')
     <div class="bg-white rounded-xl border border-gray-200 shadow-lg py-2 mb-0.5">
         <div class="grid gap-y-5 border-b border-gray-200 p-6">
             <h1 class="text-2xl text-center lg:text-start flex md:text-3xl font-semibold text-blue-800">Daftar Judul
@@ -52,33 +54,31 @@
             </div>
         </div>
     </div>
-</x-layout>
+    <script>
+        $(document).ready(function() {
+            $('.filter-btn').click(function() {
+                const jurusan = $(this).data('jurusan');
 
-<script>
-    $(document).ready(function() {
-        $('.filter-btn').click(function() {
-            const jurusan = $(this).data('jurusan');
+                // Update active state
+                $('.filter-btn').removeClass('bg-blue-100 text-blue-800').addClass(
+                    'bg-gray-200 text-gray-700');
+                $(this).removeClass('bg-gray-200 text-gray-700').addClass('bg-blue-100 text-blue-800');
 
-            // Update active state
-            $('.filter-btn').removeClass('bg-blue-100 text-blue-800').addClass(
-                'bg-gray-200 text-gray-700');
-            $(this).removeClass('bg-gray-200 text-gray-700').addClass('bg-blue-100 text-blue-800');
+                // Fetch data
+                $.get(`/taperangkatan/jurusan?jurusan=${jurusan}`, function(response) {
+                    const data = response.data;
+                    let html = '';
+                    let total = 0;
 
-            // Fetch data
-            $.get(`/taperangkatan/jurusan?jurusan=${jurusan}`, function(response) {
-                const data = response.data;
-                let html = '';
-                let total = 0;
+                    // Update title
+                    $('#jurusan-title').text(jurusan);
 
-                // Update title
-                $('#jurusan-title').text(jurusan);
-
-                // Generate new grid items
-                Object.entries(data)
-                    .sort(([tahunA], [tahunB]) => tahunB - tahunA)
-                    .forEach(([tahun, jumlah]) => {
-                        total += jumlah;
-                        html += `
+                    // Generate new grid items
+                    Object.entries(data)
+                        .sort(([tahunA], [tahunB]) => tahunB - tahunA)
+                        .forEach(([tahun, jumlah]) => {
+                            total += jumlah;
+                            html += `
                                 <div class="group">
                                     <a href="#" class="block p-4 border border-gray-200 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
                                         <div class="flex items-center justify-between">
@@ -92,16 +92,17 @@
                                         </div>
                                     </a>
                                 </div>`;
-                    });
+                        });
 
-                // Update grid and total
-                $('#angkatan-grid').html(html);
-                $('#total-mahasiswa').text(`Total Mahasiswa: ${total}`);
+                    // Update grid and total
+                    $('#angkatan-grid').html(html);
+                    $('#total-mahasiswa').text(`Total Mahasiswa: ${total}`);
 
-            }).fail(function() {
-                // Show error
-                alert('Gagal memuat data. Coba lagi.');
+                }).fail(function() {
+                    // Show error
+                    alert('Gagal memuat data. Coba lagi.');
+                });
             });
         });
-    });
-</script>
+    </script>
+@endsection

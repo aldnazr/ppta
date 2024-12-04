@@ -1,4 +1,6 @@
-<x-layout>
+@extends('layouts.app')
+
+@section('content')
     <div class="p-4 md:p-6 bg-white rounded-xl border border-gray-200 shadow-lg">
         <h1 class="text-xl flex justify-center md:justify-start md:text-2xl text-blue-800 font-semibold mb-6 mt-2">Daftar
             Sidang Tugas Akhir
@@ -8,8 +10,7 @@
             <form id="searchForm" method="GET" action="{{ url()->current() }}"
                 class="flex items-center space-x-1 lg:space-x-2">
                 <div class="flex-grow lg:flex-grow-0 lg:w-64">
-                    <input type="text" name="search" value="{{ request('search') }}"
-                        placeholder="Cari nama atau judul..."
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama atau judul..."
                         class="w-full bg-gray-200 text-sm rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                 </div>
                 <button type="submit"
@@ -67,4 +68,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+@endsection

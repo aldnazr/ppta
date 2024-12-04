@@ -1,4 +1,6 @@
-<x-layout user="ppta">
+@extends('layouts.app')
+
+@section('content')
     <div class="bg-white max-w-4xl mx-auto py-12">
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
             <div class="px-6 py-4">
@@ -38,4 +40,4 @@
             </div>
         </div>
     </div>
-</x-layout>
+@endsection

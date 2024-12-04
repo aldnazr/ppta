@@ -58,6 +58,8 @@ class SidangTaController extends Controller
         return view('ppta.sidangta', [
             'tugasAkhir' => $paginatedTugasAkhir,
             'perPage' => $perPage
+        ])->with([
+            'user' => 'ppta'
         ]);
     }
 }

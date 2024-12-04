@@ -1,4 +1,6 @@
-<x-layout>
+@extends('layouts.app')
+
+@section('content')
     <div class="p-4 md:p-6 bg-white rounded-md shadow-md" x-data="{ open: false, title: '', pengusul: '', description: '' }">
         <h1 class="text-2xl font-semibold text-blue-800 mb-6 mt-2">Daftar Usulan Tugas Akhir</h1>
 
@@ -34,4 +36,4 @@
         </div>
 
     </div>
-</x-layout>
+@endsection

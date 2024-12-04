@@ -1,4 +1,6 @@
-<x-layout>
+@extends('layouts.app')
+
+@section('content')
     <div class="min-h-[75vh] p-4 md:p-6 bg-white rounded-lg shadow-lg">
         <div class="max-w-xl mx-auto">
             <h1 class="text-xl md:text-2xl font-semibold text-center text-gray-800 mb-6">
@@ -87,9 +89,8 @@
                                     <h3 class="text-md md:text-lg font-medium text-gray-700 mb-3">Pembimbing</h3>
                                     <div class="space-y-2 text-gray-600">
                                         <div class="flex items-center">
-                                            <svg class="w-5 h-5 mr-2 text-green-500" fill="none"
-                                                stroke="currentColor" viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
+                                            <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
                                                 </path>
@@ -97,9 +98,8 @@
                                             <span>Pembimbing 1: {{ $tugasAkhir->pembimbing1 }}</span>
                                         </div>
                                         <div class="flex items-center">
-                                            <svg class="w-5 h-5 mr-2 text-green-500" fill="none"
-                                                stroke="currentColor" viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
+                                            <svg class="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
                                                 </path>
@@ -189,73 +189,74 @@
                 </div>
             </div>
         @endif
-</x-layout>
 
-<script>
-    const lecturerInput = document.getElementById("lecturer-input");
-    const dosenList = document.getElementById("dosen-list");
-    const clearButton = document.getElementById("clear-button");
-    const searchForm = document.querySelector("form");
+        <script>
+            const lecturerInput = document.getElementById("lecturer-input");
+            const dosenList = document.getElementById("dosen-list");
+            const clearButton = document.getElementById("clear-button");
+            const searchForm = document.querySelector("form");
 
-    document.addEventListener("DOMContentLoaded", () => {
-        // Function to toggle clear button visibility
-        function setClearButtonVisibility() {
-            if (lecturerInput.value.trim() !== "") {
-                clearButton.classList.remove("hidden");
-            } else {
-                clearButton.classList.add("hidden");
-            }
-        }
+            document.addEventListener("DOMContentLoaded", () => {
+                // Function to toggle clear button visibility
+                function setClearButtonVisibility() {
+                    if (lecturerInput.value.trim() !== "") {
+                        clearButton.classList.remove("hidden");
+                    } else {
+                        clearButton.classList.add("hidden");
+                    }
+                }
 
-        // Sembunyikan datalist di awal
-        dosenList.style.display = "none";
-
-        // Tampilkan datalist saat input diisi
-        lecturerInput.addEventListener("input", () => {
-            if (lecturerInput.value.trim() !== "") {
-                dosenList.style.display = "block";
-                setClearButtonVisibility();
-            } else {
+                // Sembunyikan datalist di awal
                 dosenList.style.display = "none";
-                setClearButtonVisibility();
-            }
-        });
 
-        // Sembunyikan datalist saat klik di luar
-        document.addEventListener("click", (event) => {
-            if (!lecturerInput.contains(event.target) && !dosenList.contains(event.target)) {
-                dosenList.style.display = "none";
-            }
-        });
+                // Tampilkan datalist saat input diisi
+                lecturerInput.addEventListener("input", () => {
+                    if (lecturerInput.value.trim() !== "") {
+                        dosenList.style.display = "block";
+                        setClearButtonVisibility();
+                    } else {
+                        dosenList.style.display = "none";
+                        setClearButtonVisibility();
+                    }
+                });
 
-        // Tambahkan interaksi saat item dipilih
-        dosenList.addEventListener("click", (event) => {
-            if (event.target.tagName === "LI") {
-                lecturerInput.value = event.target.textContent;
-                dosenList.style.display = "none";
+                // Sembunyikan datalist saat klik di luar
+                document.addEventListener("click", (event) => {
+                    if (!lecturerInput.contains(event.target) && !dosenList.contains(event.target)) {
+                        dosenList.style.display = "none";
+                    }
+                });
+
+                // Tambahkan interaksi saat item dipilih
+                dosenList.addEventListener("click", (event) => {
+                    if (event.target.tagName === "LI") {
+                        lecturerInput.value = event.target.textContent;
+                        dosenList.style.display = "none";
+                        setClearButtonVisibility();
+                        searchForm.submit();
+                    }
+                });
+
                 setClearButtonVisibility();
+            });
+
+            function clearInput() {
+                lecturerInput.value = "";
+                toggleClearButton("");
                 searchForm.submit();
             }
-        });
 
-        setClearButtonVisibility();
-    });
-
-    function clearInput() {
-        lecturerInput.value = "";
-        toggleClearButton("");
-        searchForm.submit();
-    }
-
-    function toggleClearButton(value) {
-        if (value.trim() !== "") {
-            clearButton.classList.remove("hidden");
-            emptyState.classList.add("hidden");
-        } else {
-            clearButton.classList.add("hidden");
-            emptyState.classList.remove("hidden");
-            studentList.classList.add("hidden");
-            list.classList.add("hidden");
-        }
-    }
-</script>
+            function toggleClearButton(value) {
+                if (value.trim() !== "") {
+                    clearButton.classList.remove("hidden");
+                    emptyState.classList.add("hidden");
+                } else {
+                    clearButton.classList.add("hidden");
+                    emptyState.classList.remove("hidden");
+                    studentList.classList.add("hidden");
+                    list.classList.add("hidden");
+                }
+            }
+        </script>
+    </div>
+@endsection
