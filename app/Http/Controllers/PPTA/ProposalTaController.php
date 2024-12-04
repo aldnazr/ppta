@@ -405,7 +405,7 @@ class ProposalTaController extends Controller
             ['path' => $request->url(), 'query' => $request->query()]
         );
 
-        return view('ppta.upload', [
+        return view('ppta.proposalta', [
             'proposals' => $paginatedProposals,
             'perPage' => $perPage
         ])->with([
