@@ -53,19 +53,8 @@
             </table>
         </div>
         {{-- Pagination Links --}}
-        <div class="min-w-full mt-1 mx-auto py-3 flex justify-between items-center">
-            <p class="text-sm text-gray-700">
-                Menampilkan
-                <span class="font-medium">{{ $schedules->firstItem() }}</span>
-                sampai
-                <span class="font-medium">{{ $schedules->lastItem() }}</span>
-                dari
-                <span class="font-medium">{{ $schedules->total() }}</span>
-                hasil
-            </p>
-            <div>
-                {{ $schedules->links('vendor.pagination.custom-pagination') }}
-            </div>
+        <div>
+            {{ $schedules->links('vendor.pagination.custom-pagination') }}
         </div>
     </div>
 @endsection

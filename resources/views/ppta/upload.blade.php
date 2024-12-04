@@ -188,15 +188,9 @@
             </table>
         </div>
 
-        <div class="mt-8 flex justify-between items-center">
-            <div class="text-gray-600">
-                Menampilkan {{ $proposals->firstItem() }}-{{ $proposals->lastItem() }} dari
-                {{ $proposals->total() }} hasil
-            </div>
-            <!-- Pagination Links -->
-            <div>
-                {{ $proposals->links('vendor.pagination.custom-pagination') }}
-            </div>
+        <!-- Pagination Links -->
+        <div>
+            {{ $proposals->links('vendor.pagination.custom-pagination') }}
         </div>
     </div>
     <script>

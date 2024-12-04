@@ -3,7 +3,7 @@
 @section('content')
     <div class="container bg-white border border-gray-200 rounded-xl shadow-lg p-6">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-2xl font-bold">Employee List</h1>
+            <p class="text-2xl font-bold">Employee List</p>
             <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded">
                 Add Employee
             </a>

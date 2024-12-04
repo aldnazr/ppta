@@ -20,6 +20,11 @@
             @endforeach
         </ul>
 
+        {{-- Pagination Links --}}
+        <div>
+            {{ $paginatedJudulTugasAkhir->links('vendor.pagination.custom-pagination') }}
+        </div>
+
         <!-- Popup Window -->
         <x-popup-window>
             <div class="flex flex-col">
@@ -29,11 +34,6 @@
                 <p class="text-gray-700" x-text="description"></p>
             </div>
         </x-popup-window>
-
-        <!-- Pagination Links -->
-        <div class="flex mt-6 w-full justify-center">
-            {{ $paginatedJudulTugasAkhir->links('vendor.pagination.custom-pagination') }}
-        </div>
 
     </div>
 @endsection
