@@ -100,7 +100,7 @@
             </div>
         </div>
 
-        <div class="min-h-[35vh] overflow-x-auto bg-white rounded-lg">
+        <div class="min-h-[35vh] overflow-x-auto bg-white rounded-md border border-gray-200">
             <table class="w-full text-sm text-left">
                 <thead class="bg-gray-200 text-gray-700">
                     <tr>
