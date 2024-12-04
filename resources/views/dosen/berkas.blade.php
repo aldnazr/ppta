@@ -1,4 +1,6 @@
-<x-layout user="dosen">
+@extends('layouts.app')
+
+@section('content')
     <div class="flex flex-col bg-white">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg px-6">
             <div class="flex flex-col lg:flex-row justify-between items-center my-4 space-y-3 md:space-y-0">
@@ -19,14 +21,12 @@
                     <input type="hidden" name="filter" value="{{ request('filter') }}">
                 </form>
 
-                <div
-                    class="w-full lg:w-auto flex flex-col lg:flex-row lg:items-center space-y-3 lg:space-y-0 lg:space-x-2">
+                <div class="w-full lg:w-auto flex flex-col lg:flex-row lg:items-center space-y-3 lg:space-y-0 lg:space-x-2">
                     <!-- Search Form -->
                     <form id="searchForm" method="GET" action="{{ url()->current() }}"
                         class="w-auto flex items-center space-x-1.5">
                         <div class="flex-grow md:flex-grow-0 md:w-64">
-                            <input type="text" name="search" value="{{ request('search') }}"
-                                placeholder="Pencarian..."
+                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Pencarian..."
                                 class="w-full bg-gray-200 text-sm rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                         </div>
 
@@ -72,8 +72,7 @@
                                     </li>
                                     <li class="w-full border-b border-gray-200 rounded-t-lg">
                                         <div class="flex items-center ps-3">
-                                            <input id="list-radio-proposal" type="radio" value="proposal"
-                                                name="filter"
+                                            <input id="list-radio-proposal" type="radio" value="proposal" name="filter"
                                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
                                                 {{ request('filter') == 'proposal' ? 'checked' : '' }}
                                                 onchange="this.closest('form').submit()">
@@ -213,7 +212,7 @@
         </div>
     </div>
     </div>
-</x-layout>
+@endsection
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
