@@ -18,7 +18,7 @@
 
     <body class="h-screen overflow-hidden">
         <x-navbar :user="$user">
-            {{ $slot }}
+            @yield('content')
         </x-navbar>
     </body>
 

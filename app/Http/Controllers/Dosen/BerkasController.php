@@ -94,6 +94,8 @@ class BerkasController extends Controller
             'proposals' => $paginatedProposals,
             'perPage' => $perPage,
             'currentFilter' => $request->input('filter', 'semua')
+        ])->with([
+            'user' => 'dosen'
         ]);
     }
 
@@ -106,6 +108,8 @@ class BerkasController extends Controller
             abort(404, 'Proposal not found');
         }
 
-        return view('dosen.penilaian', ['proposal' => $proposal]);
+        return view('dosen.penilaian', ['proposal' => $proposal])->with([
+            'user' => 'dosen'
+        ]);
     }
 }
