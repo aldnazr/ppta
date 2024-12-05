@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white max-w-4xl mx-auto py-12">
+    <div class="bg-white mx-auto p-6">
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
             <div class="px-6 py-4">
-                <h1 class="text-2xl font-bold text-gray-800 mb-4">Proposal Tugas Akhir</h1>
+                <p class="text-2xl font-bold text-gray-800 mb-4">Form Konfirmasi Proposal</p>
                 <form class="space-y-4">
                     <div>
                         <label for="tanggal-awal" class="block text-gray-700 font-medium">Tanggal Awal:</label>
