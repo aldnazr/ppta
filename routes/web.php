@@ -10,6 +10,9 @@ use App\Http\Controllers\Mahasiswa\TAPerangkatanController;
 use App\Http\Controllers\Mahasiswa\JadwalBimbinganController;
 use App\Http\Controllers\Mahasiswa\UsulanTugasAkhirController;
 use App\Http\Controllers\Mahasiswa\PencarianPembimbingController;
+use App\Http\Controllers\PPTA\LaporanFkController;
+use App\Http\Controllers\PPTA\LaporanProposalController;
+use App\Http\Controllers\PPTA\LaporanTaController;
 use App\Http\Controllers\PPTA\MaintenanceController;
 use App\Http\Controllers\PPTA\ProposalTaController;
 
@@ -59,15 +62,9 @@ Route::get('/dosen/penilaian/{id}', [BerkasController::class, 'penilaian'])->nam
 Route::redirect('/ppta', '/ppta/proposal_ta');
 Route::get('/ppta/proposal_ta', [ProposalTaController::class, 'index']);
 Route::get('/ppta/sidang_ta', [SidangTaController::class, 'index'])->name('ppta.sidangta');
-Route::get('/ppta/laporan_fk', function () {
-    return view('ppta.laporanfk');
-});
-Route::get('/ppta/laporan_proposal', function () {
-    return view('ppta.laporanproposal');
-});
-Route::get('/ppta/laporan_ta', function () {
-    return view('ppta.laporanta');
-});
+Route::get('/ppta/laporan_fk', [LaporanFkController::class, 'index']);
+Route::get('/ppta/laporan_proposal', [LaporanProposalController::class, 'index']);
+Route::get('/ppta/laporan_ta', [LaporanTaController::class, 'index']);
 Route::get('/ppta/maintenance', [MaintenanceController::class, 'index']);
 // Handle login submissions
 // Route::post('/login', [LoginController::class, 'login'])->name('login.post');
