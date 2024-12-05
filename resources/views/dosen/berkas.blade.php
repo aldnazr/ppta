@@ -40,8 +40,8 @@
                 </form>
 
                 <!-- Filter Form -->
-                <form method="GET" action="{{ url()->current() }}" class="relative">
-                    <button type="button" data-filter-toggle
+                <form method="GET" action="{{ url()->current() }}" class="relative" x-data="{ isMenuOpen: false }">
+                    <button type ="button" @click="isMenuOpen = !isMenuOpen"
                         class="bg-blue-100 text-blue-600 px-3 py-1.5 rounded flex items-center hover:text-blue-700 hover:bg-blue-200 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
                             fill="currentColor">
@@ -53,8 +53,8 @@
                     </button>
 
                     <!-- Advanced Filter Dropdown -->
-                    <div id="advancedFilterDropdown"
-                        class="hidden absolute z-10 mt-1 lg:-ml-[8.5rem] bg-zinc-50 shadow-md rounded-md p-4 border border-gray-200">
+                    <div id="advancedFilterDropdown" x-show="isMenuOpen" @click.outside = "isMenuOpen = false"
+                        class="absolute z-10 mt-1 lg:-ml-[8.5rem] bg-zinc-50 shadow-md rounded-md p-4 border border-gray-200">
                         <h3 class="mb-2 font-semibold text-gray-900">Berkas</h3>
                         <div class="grid gap-4">
                             <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
@@ -196,21 +196,4 @@
             {{ $proposals->links('vendor.pagination.custom-pagination') }}
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterToggle = document.querySelector('[data-filter-toggle]');
-            const filterDropdown = document.getElementById('advancedFilterDropdown');
-
-            filterToggle.addEventListener('click', () => {
-                filterDropdown.classList.toggle('hidden');
-            });
-
-            // Close dropdown when clicking outside
-            document.addEventListener('click', (event) => {
-                if (!filterToggle.contains(event.target) && !filterDropdown.contains(event.target)) {
-                    filterDropdown.classList.add('hidden');
-                }
-            });
-        });
-    </script>
 @endsection
