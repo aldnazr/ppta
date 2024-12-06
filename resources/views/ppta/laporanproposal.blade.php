@@ -5,7 +5,7 @@
         <div class="bg-white shadow-md rounded-lg overflow-hidden">
             <div class="px-6 py-4">
                 <p class="text-2xl font-bold text-gray-800 mb-4">Laporan Proposal Tugas Akhir</p>
-                <form class="space-y-4">
+                <form action="{{ route('ppta.proposalta_pdf') }}" method="GET" class="space-y-4">
                     <div>
                         <label for="tanggal-awal" class="block text-gray-700 font-medium">Tanggal Awal:</label>
                         <input type="date" id="tanggal-awal" name="tanggal-awal"

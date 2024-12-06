@@ -63,7 +63,10 @@ Route::redirect('/ppta', '/ppta/proposal_ta');
 Route::get('/ppta/proposal_ta', [ProposalTaController::class, 'index']);
 Route::get('/ppta/sidang_ta', [SidangTaController::class, 'index'])->name('ppta.sidangta');
 Route::get('/ppta/laporan_fk', [LaporanFkController::class, 'index']);
+
 Route::get('/ppta/laporan_proposal', [LaporanProposalController::class, 'index']);
+Route::get('/ppta/proposal_ta_pdf', [LaporanProposalController::class, 'generatePdf'])->name('ppta.proposalta_pdf');
+
 Route::get('/ppta/laporan_ta', [LaporanTaController::class, 'index']);
 Route::get('/ppta/maintenance', [MaintenanceController::class, 'index']);
 // Handle login submissions
