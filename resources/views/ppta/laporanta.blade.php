@@ -3,11 +3,9 @@
 @section('content')
     <div class="mx-auto px-4 py-8">
         <div class="max-w-2xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
-            <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-6">
-                <h1 class="text-3xl font-extrabold text-white text-center tracking-tight">
-                    Laporan Sidang Tugas Akhir
-                </h1>
-            </div>
+            <x-header>
+                Laporan Sidang Tugas Akhir
+            </x-header>
 
             <form action="{{ route('ppta.laporan_ta_pdf') }}" method="GET" class="p-8 space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

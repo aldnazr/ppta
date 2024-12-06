@@ -2,11 +2,9 @@
 
 @section('content')
     <div class="bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
-        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-6">
-            <h1 class="text-3xl font-extrabold text-white text-center tracking-tight">
-                Maintenance Data Penguji
-            </h1>
-        </div>
+        <x-header>
+            Maintenance Data Penguji
+        </x-header>
         <div class="p-6">
             <div class="flex flex-col mb-6 space-y-2">
                 <div
