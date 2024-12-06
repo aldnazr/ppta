@@ -103,9 +103,12 @@ window.addEventListener('resize', () => {
             <div class="mt-8">
                 <div class="px-5 text-xs font-semibold text-gray-500">Laporan</div>
                 <nav class="mt-2 px-3">
-                    <x-sub-nav-link href="/ppta/laporan_fk" tabName="Form Konfirmasi Proposal"></x-sub-nav-link>
-                    <x-sub-nav-link href="/ppta/laporan_proposal" tabName="Laporan Proposal TA"></x-sub-nav-link>
-                    <x-sub-nav-link href="/ppta/laporan_ta" tabName="Laporan Sidang TA"></x-sub-nav-link>
+                    <x-sub-nav-link href="/ppta/laporan_fk" :active="request()->is('ppta/laporan_fk')"
+                        tabName="Form Konfirmasi Proposal"></x-sub-nav-link>
+                    <x-sub-nav-link href="/ppta/laporan_proposal" :active="request()->is('ppta/laporan_proposal')"
+                        tabName="Laporan Proposal TA"></x-sub-nav-link>
+                    <x-sub-nav-link href="/ppta/laporan_ta" :active="request()->is('ppta/laporan_ta')"
+                        tabName="Laporan Sidang TA"></x-sub-nav-link>
                 </nav>
             </div>
         </template>
