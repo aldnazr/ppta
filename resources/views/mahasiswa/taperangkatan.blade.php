@@ -1,13 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl border border-gray-200 shadow-lg py-2 mb-0.5">
-        <div class="grid gap-y-5 border-b border-gray-200 p-6">
-            <h1 class="text-2xl text-center lg:text-start flex md:text-3xl font-semibold text-blue-800">Daftar Judul
-                Tugas Akhir Per Jurusan</h1>
+    <div class="bg-white rounded-xl border border-gray-200 shadow-lg mb-0.5 overflow-hidden">
+        <div class="grid border-b border-gray-200">
+            <x-header>Judul TA Perangkatan</x-header>
 
             <!-- Filter Chips -->
-            <div class="flex flex-wrap gap-2">
+            <div class="flex flex-wrap gap-2 p-6">
                 @foreach ($jurusan as $jur)
                     <button data-jurusan="{{ $jur }}"
                         class="text-sm lg:text-base filter-btn px-4 py-2 rounded-full font-medium transition-colors hover:bg-blue-100 {{ $jur === $activeJurusan ? 'bg-blue-100 text-blue-800' : 'bg-gray-200 text-gray-700' }}">

@@ -3,11 +3,11 @@
 @section('content')
     <div class="bg-white rounded-xl shadow-sm overflow-hidden">
         <!-- Header Section with Gradient -->
-        <div class="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-8">
-            <h1 class="text-2xl md:text-3xl font-bold text-white">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-6 lg:py-8">
+            <h1 class="text-2xl lg:text-3xl font-bold text-white">
                 Dokumen Tugas Akhir (TA)
             </h1>
-            <p class="mt-2 text-blue-100 text-sm md:text-base">
+            <p class="mt-2 text-blue-100">
                 Panduan dan dokumen pendukung untuk penyelesaian Tugas Akhir
             </p>
         </div>
@@ -16,7 +16,7 @@
         <div class="p-6 md:p-8">
             <!-- Introduction -->
             <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg mb-8">
-                <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+                <p class="text-gray-700 leading-relaxed">
                     Tugas Akhir adalah mata kuliah 6 sks, bertujuan untuk membekali mahasiswa Program S1
                     dengan pengalaman mengaplikasikan ilmu pengetahuan dan ketrampilan yang diperoleh
                     selama masa studi, mulai kegiatan analisa, perancangan dan atau implementasi sistem,
