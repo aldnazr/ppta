@@ -151,7 +151,7 @@ window.addEventListener('resize', () => {
 
         <!-- Content Area -->
         <div class="flex-1 mt-16 overflow-auto">
-            <main class="p-4 md:p-5 max-w-7xl mx-auto">
+            <main class="container p-3 lg:p-5 max-w-7xl mx-auto">
                 {{ $slot }}
             </main>
         </div>

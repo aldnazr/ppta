@@ -1,5 +1,5 @@
-<header class="bg-white shadow-sm">
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $slot }}</h1>
-    </div>
-</header>
+<div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-5 lg:p-6">
+    <h1 class="text-2xl font-bold lg:text-3xl text-white text-center tracking-tight">
+        {{ $slot }}
+    </h1>
+</div>

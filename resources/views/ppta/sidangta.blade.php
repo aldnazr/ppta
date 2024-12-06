@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container bg-white rounded-lg shadow-xl border border-gray-200 mx-auto p-4 lg:p-6">
-        <h1 class="text-2xl font-bold text-gray-800 mb-4">Antrian Sidang Tugas Akhir</h1>
-
-        <div class="overflow-x-auto shadow-lg rounded-lg">
+    <div class="bg-white rounded-lg shadow-xl border border-gray-200 mx-auto overflow-hidden">
+        <x-header>Antrian Sidang Tugas Akhir</x-header>
+        <div class="overflow-x-auto shadow-lg rounded-lg p-4 lg:p-6">
             <table class="w-full table-auto border border-gray-300 rounded-lg">
                 <thead class="bg-gray-100">
                     <tr>
