@@ -9,7 +9,7 @@
                 </h1>
             </div>
 
-            <form action="{{ route('ppta.proposalta_pdf') }}" method="GET" class="p-8 space-y-6">
+            <form action="{{ route('ppta.laporan_ta_pdf') }}" method="GET" class="p-8 space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label for="tanggal-awal" class="block text-sm font-semibold text-gray-700 mb-2">

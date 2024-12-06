@@ -62,13 +62,18 @@ Route::get('/dosen/penilaian/{id}', [BerkasController::class, 'penilaian'])->nam
 Route::redirect('/ppta', '/ppta/proposal_ta');
 Route::get('/ppta/proposal_ta', [ProposalTaController::class, 'index']);
 Route::get('/ppta/sidang_ta', [SidangTaController::class, 'index'])->name('ppta.sidangta');
+Route::get('/ppta/maintenance', [MaintenanceController::class, 'index']);
+
 Route::get('/ppta/laporan_fk', [LaporanFkController::class, 'index']);
+Route::get('/ppta/laporan_fk_pdf', [LaporanFkController::class, 'generatePdf'])->name('ppta.laporan_fk_pdf');
 
 Route::get('/ppta/laporan_proposal', [LaporanProposalController::class, 'index']);
-Route::get('/ppta/proposal_ta_pdf', [LaporanProposalController::class, 'generatePdf'])->name('ppta.proposalta_pdf');
+Route::get('/ppta/laporan_proposal_pdf', [LaporanProposalController::class, 'generatePdf'])->name('ppta.laporan_proposal_pdf');
 
 Route::get('/ppta/laporan_ta', [LaporanTaController::class, 'index']);
-Route::get('/ppta/maintenance', [MaintenanceController::class, 'index']);
+Route::get('/ppta/laporan_ta_pdf', [LaporanTaController::class, 'generatePdf'])->name('ppta.laporan_ta_pdf');;
+
+
 // Handle login submissions
 // Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 

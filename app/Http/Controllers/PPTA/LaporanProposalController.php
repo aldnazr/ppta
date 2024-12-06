@@ -15,10 +15,10 @@ class LaporanProposalController extends Controller
                 'nim' => '18410100100',
                 'nama' => 'Josh Doe',
                 'judul' => 'Analisis Sentimen Msyarakat dengan Metode Naive Bayes',
-                'pembimbing1' => 'Alex',
-                'pembimbing2' => 'Ajax',
-                'penguji1' => 'Lexa',
-                'penguji2' => '',
+                'pembimbing_1' => 'Alex',
+                'pembimbing_2' => 'Ajax',
+                'penguji_1' => 'Lexa',
+                'penguji_2' => '',
                 'tgl_sidang' => '18-01-2023',
                 'hasil' => 'Belum'
             ],
@@ -26,10 +26,10 @@ class LaporanProposalController extends Controller
                 'nim' => '18410100101',
                 'nama' => 'Josh Doe',
                 'judul' => 'Analisis Sentimen Msyarakat dengan Metode Naive Bayes',
-                'pembimbing1' => 'Alex',
-                'pembimbing2' => 'Ajax',
-                'penguji1' => 'Lexa',
-                'penguji2' => '',
+                'pembimbing_1' => 'Alex',
+                'pembimbing_2' => 'Ajax',
+                'penguji_1' => 'Lexa',
+                'penguji_2' => '',
                 'tgl_sidang' => '01-01-2023',
                 'hasil' => 'Belum'
             ],
@@ -37,10 +37,10 @@ class LaporanProposalController extends Controller
                 'nim' => '18410100102',
                 'nama' => 'Josh Doe',
                 'judul' => 'Analisis Sentimen Msyarakat dengan Metode Naive Bayes',
-                'pembimbing1' => 'Alex',
-                'pembimbing2' => 'Ajax',
-                'penguji1' => 'Lexa',
-                'penguji2' => 'aXela',
+                'pembimbing_1' => 'Alex',
+                'pembimbing_2' => 'Ajax',
+                'penguji_1' => 'Lexa',
+                'penguji_2' => 'aXela',
                 'tgl_sidang' => '23-11-2024',
                 'hasil' => 'Belum'
             ],
@@ -59,7 +59,8 @@ class LaporanProposalController extends Controller
         $data = $this->dummyData();
 
         // Load view dan passing data
-        $pdf = Pdf::loadView('ppta.laporan.proposal', compact('data'));
+        $pdf = Pdf::loadView('ppta.laporan.proposal', compact('data'))
+            ->setPaper('a4', 'landscape');;
 
         // Download PDF
         return $pdf->download('laporan_dummy.pdf');

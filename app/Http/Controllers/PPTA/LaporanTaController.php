@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\PPTA;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Controllers\Controller;
 
 class LaporanTaController extends Controller
 {
@@ -83,5 +84,17 @@ class LaporanTaController extends Controller
         return view('ppta.laporanta', [])->with([
             'user' => 'ppta'
         ]);
+    }
+
+    public function generatePdf()
+    {
+        $data = $this->dummyMahasiswa();
+
+        // Load view dan passing data
+        $pdf = Pdf::loadView('ppta.laporan.ta', compact('data'))
+            ->setPaper('a4', 'landscape');;
+
+        // Download PDF
+        return $pdf->download('laporan_dummy.pdf');
     }
 }

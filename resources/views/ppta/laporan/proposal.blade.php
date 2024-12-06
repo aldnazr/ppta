@@ -61,15 +61,15 @@
                         </td>
                         <td>{{ $item['judul'] }}</td>
                         <td>
-                            1. {{ $item['pembimbing1'] }}
+                            1. {{ $item['pembimbing_1'] }}
                             <br>
-                            2. {{ $item['pembimbing2'] }}
+                            2. {{ $item['pembimbing_2'] }}
                         </td>
                         <td>
-                            1. {{ $item['penguji1'] }}
-                            @if ($item['penguji2'] !== '')
+                            1. {{ $item['penguji_1'] }}
+                            @if ($item['penguji_2'] !== '')
                                 <br>
-                                2. {{ $item['penguji2'] }}
+                                2. {{ $item['penguji_2'] }}
                             @endif
                         </td>
                         <td>{{ $item['tgl_sidang'] }}</td>
