@@ -11,7 +11,7 @@
                             pengusul = '{{ $ta->pengusul }}';
                             description = '{{ $ta->deskripsi }}';
                             open = true;"
-                        class="p-4 bg-zinc-50 border border-zinc-200 rounded-md lg:rounded-lg shadow-xs hover:shadow-md transition-shadow duration-200 cursor-pointer">
+                        class="p-4 border border-zinc-200 rounded-md lg:rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 cursor-pointer">
                         <h2 class="text-lg font-semibold text-blue-600">Judul TA: {{ $ta->judul }}</h2>
                         <p class="text-sm text-gray-600 mt-2"><strong>Pengusul:</strong> {{ $ta->pengusul }}</p>
                         <p class="text-sm text-gray-600 mt-2"><strong>Deskripsi:</strong>

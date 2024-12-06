@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl border border-gray-200 shadow-lg mb-0.5 overflow-hidden">
+    <div class="bg-white rounded-xl border border-gray-200 shadow-lg mb-0.5 overflow-hidden" x-data="{ open: false, title: '' }">
         <div class="grid border-b border-gray-200">
             <x-header>Judul TA Perangkatan</x-header>
 
@@ -22,14 +22,14 @@
                 <h2 class="text-xl lg:text-2xl font-semibold text-gray-800" id="jurusan-title">{{ $activeJurusan }}</h2>
                 <div id="total-mahasiswa"
                     class="bg-blue-100 text-blue-800 px-3 lg:px-4 py-2 rounded-lg text-sm font-medium">
-                    Total Mahasiswa: {{ array_sum($angkatan) }}
+                    Total Mahasiswa: {{ $totalData }}
                 </div>
             </div>
 
             <!-- List Angkatan -->
             <div id="angkatan-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 @if (!empty($angkatan))
-                    @foreach ($angkatan as $tahun => $total)
+                    @foreach ($angkatan as $tahun => $mahasiswaTa)
                         <div class="group">
                             <a href="#"
                                 class="block p-4 border border-gray-200 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
@@ -41,7 +41,7 @@
                                     </div>
                                     <div
                                         class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium group-hover:bg-blue-100">
-                                        {{ $total }}
+                                        {{ count($mahasiswaTa) }}
                                     </div>
                                 </div>
                             </a>
@@ -50,6 +50,7 @@
                 @else
                     <div class="col-span-full text-center text-gray-500">Tidak ada data untuk jurusan ini.</div>
                 @endif
+                {{-- <x-popup-window></x-popup-window> --}}
             </div>
         </div>
     </div>
@@ -75,8 +76,10 @@
                     // Generate new grid items
                     Object.entries(data)
                         .sort(([tahunA], [tahunB]) => tahunB - tahunA)
-                        .forEach(([tahun, jumlah]) => {
-                            total += jumlah;
+                        .forEach(([tahun, mahasiswaTa]) => {
+                            const mahasiswaCount = mahasiswaTa.length;
+                            total += mahasiswaCount;
+
                             html += `
                                 <div class="group">
                                     <a href="#" class="block p-4 border border-gray-200 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
@@ -86,7 +89,7 @@
                                                 <h3 class="text-lg font-semibold text-gray-800 group-hover:text-blue-600">${tahun}</h3>
                                             </div>
                                             <div class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium group-hover:bg-blue-100">
-                                                ${jumlah}
+                                                ${mahasiswaCount}
                                             </div>
                                         </div>
                                     </a>
