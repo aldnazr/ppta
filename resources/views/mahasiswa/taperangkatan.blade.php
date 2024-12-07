@@ -32,7 +32,7 @@
                             'bg-blue-100 text-blue-800': activeJurusan === '{{ $jur }}',
                             'bg-gray-200 text-gray-700': activeJurusan !== '{{ $jur }}'
                         }"
-                        class="text-sm lg:text-base filter-btn px-4 py-2 rounded-full font-medium transition-colors hover:text-blue-800 hover:bg-blue-100">
+                        class="cursor-pointer text-sm lg:text-base filter-btn px-4 py-2 rounded-full font-medium transition-colors hover:text-blue-800 hover:bg-blue-100">
                         {{ $jur }}
                     </button>
                 @endforeach
