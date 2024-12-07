@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl border border-gray-200 shadow-lg mb-0.5 overflow-hidden" x-data="{ open: false, title: '', dataTaMhs: [] }">
+    <div class="bg-white rounded-xl border border-gray-200 shadow-lg mb-0.5 overflow-hidden" x-data="{ open: false, titleData: '', title() { return 'Angkatan: ' + this.titleData; }, dataTaMhs: [] }">
         <div class="grid border-b border-gray-200">
             <x-header>Judul TA Perangkatan</x-header>
 
@@ -32,7 +32,7 @@
                     @foreach ($angkatan as $tahun => $mahasiswaTa)
                         <div class="group">
                             <div @click="
-                                    title = {{ $tahun }};
+                                    titleData = '{{ $tahun }}';
                                     dataTaMhs = @js($mahasiswaTa);
                                     open = true;"
                                 class="cursor-pointer block p-4 border border-gray-200 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
@@ -53,10 +53,10 @@
                 @else
                     <div class="col-span-full text-center text-gray-500">Tidak ada data untuk jurusan ini.</div>
                 @endif
-                <x-popup-window css=''>
+                <x-popup-window css="">
                     <template x-for="mahasiswa in dataTaMhs" :key="mahasiswa.nim">
                         <div class="mb-4 pb-4 border-b last:border-b-0">
-                            <h4 class="font-semibold text-gray-700" x-text="mahasiswa.judul"></h4>
+                            <h4 class="font-semibold text-gray-700" x-text="'Angkatan: '+ mahasiswa.judul"></h4>
                             <div class="text-sm text-gray-600 mt-1">
                                 <p><strong>Nama:</strong> <span x-text="mahasiswa.nama"></span></p>
                                 <p><strong>NIM:</strong> <span x-text="mahasiswa.nim"></span></p>
