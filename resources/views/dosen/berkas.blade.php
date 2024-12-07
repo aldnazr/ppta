@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="shadow bg-white overflow-hidden border-b border-gray-200 rounded-lg overflow-hidden">
+    <div class="bg-white overflow-hidden border-b border-gray-200 rounded-xl shadow-lg overflow-hidden">
         <x-header>Berkas</x-header>
         <div class="p-4 lg:p-6">
-            <div class="flex flex-col lg:flex-row justify-between items-center mb-4 space-y-3 md:space-y-0">
+            <div class="flex flex-col lg:flex-row justify-between items-center mb-6 space-y-3 md:space-y-0">
                 <!-- Per Page Selector -->
                 <form method="GET" action="{{ url()->current() }}" id="perPageForm"
                     class="w-full md:w-auto flex items-center justify-start gap-2">
@@ -104,9 +104,9 @@
                 </div>
             </div>
 
-            <div class="min-h-[35vh] overflow-x-auto bg-white rounded-md border border-gray-200">
-                <table class="w-full text-sm text-left">
-                    <thead class="bg-gray-200 text-gray-700">
+            <div class="overflow-x-auto rounded-md border border-gray-200">
+                <table class="min-h-[35vh] w-full text-sm text-left divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
                         <tr>
                             <th scope="col"
                                 class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -149,7 +149,7 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @if ($proposals->isEmpty())
                             <tr>
-                                <td colspan="9" class="px-6 pt-8 text-center text-gray-500">Tidak ada
+                                <td colspan="9" class="px-6 text-base pt-8 text-center text-gray-500">Tidak ada
                                     data
                                     tersedia</td>
                             </tr>

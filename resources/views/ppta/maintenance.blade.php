@@ -5,7 +5,7 @@
         <x-header>
             Maintenance Data Penguji
         </x-header>
-        <div class="p-6">
+        <div class="p-4 lg:p-6">
             <div class="flex flex-col mb-6 space-y-2">
                 <div
                     class="w-full justify-end lg:w-auto flex flex-col lg:flex-row lg:items-center space-y-3 lg:space-y-0 lg:space-x-2">
@@ -74,8 +74,8 @@
                     </form>
                 </div>
             </div>
-            <div class="overflow-x-auto">
-                <table class="min-w-full divide-y divide-gray-200">
+            <div class="overflow-x-auto rounded-md border border-gray-200">
+                <table class="min-h-[35vh] w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -96,27 +96,35 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        @foreach ($employees as $employee)
+                        @if ($employees->isEmpty())
                             <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                    {{ $employee['nik'] }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $employee['name'] }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $employee['tingkat'] }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $employee['status'] }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                    <a href="#" class="text-blue-600 hover:text-blue-900">
-                                        Edit
-                                    </a>
-                                </td>
+                                <td colspan="5" class="px-6 pt-8 text-center text-gray-500">Tidak ada
+                                    data
+                                    tersedia</td>
                             </tr>
-                        @endforeach
+                        @else
+                            @foreach ($employees as $employee)
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                        {{ $employee['nik'] }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $employee['name'] }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $employee['tingkat'] }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $employee['status'] }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <a href="#" class="text-blue-600 hover:text-blue-900">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
