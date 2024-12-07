@@ -7,8 +7,33 @@
         activeJurusan: '{{ $activeJurusan }}',
         angkatan: @js($angkatan),
         totalData: {{ $totalData }},
+        currentPage: 1,
+        itemsPerPage: 5,
         title() { return 'Angkatan: ' + this.titleData; },
         dataTaMhs: [],
+        get paginatedMahasiswa() {
+            const start = (this.currentPage - 1) * this.itemsPerPage;
+            const end = start + this.itemsPerPage;
+            return this.dataTaMhs.slice(start, end);
+        },
+        get totalPages() {
+            return Math.ceil(this.dataTaMhs.length / this.itemsPerPage);
+        },
+        nextPage() {
+            if (this.currentPage < this.totalPages) {
+                this.currentPage++;
+            }
+        },
+        prevPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--;
+            }
+        },
+        goToPage(page) {
+            if (page >= 1 && page <= this.totalPages) {
+                this.currentPage = page;
+            }
+        },
         async fetchJurusan(jurusan) {
             try {
                 const response = await fetch(`/taperangkatan/jurusan?jurusan=${jurusan}`);
@@ -16,6 +41,7 @@
                 this.angkatan = result.data;
                 this.activeJurusan = jurusan;
                 this.totalData = Object.values(this.angkatan).flat().length;
+                this.currentPage = 1; // Reset to first page when changing jurusan
             } catch (error) {
                 console.error('Error fetching jurusan data:', error);
             }
@@ -78,16 +104,48 @@
             </div>
 
             <x-popup-window>
-                <template x-for="mahasiswa in dataTaMhs" :key="mahasiswa.nim">
-                    <div class="mb-4 pb-4 border-b last:border-b-0">
-                        <h4 class="font-semibold text-gray-700" x-text="mahasiswa.judul"></h4>
-                        <div class="text-sm text-gray-600 space-y-0.5">
-                            <p><strong>Nama:</strong> <span x-text="mahasiswa.nama"></span></p>
-                            <p><strong>NIM:</strong> <span x-text="mahasiswa.nim"></span></p>
-                            <p><strong>Pembimbing 1:</strong> <span x-text="mahasiswa.pembimbing_1"></span></p>
-                            <p><strong>Pembimbing 2:</strong> <span x-text="mahasiswa.pembimbing_2"></span></p>
+                <template x-if="dataTaMhs.length > 0">
+                    <div>
+                        <template x-for="mahasiswa in paginatedMahasiswa" :key="mahasiswa.nim">
+                            <div class="mb-4 pb-4 border-b last:border-b-0">
+                                <h4 class="font-semibold text-gray-700" x-text="mahasiswa.judul"></h4>
+                                <div class="text-sm text-gray-600 space-y-0.5">
+                                    <p><strong>Nama:</strong> <span x-text="mahasiswa.nama"></span></p>
+                                    <p><strong>NIM:</strong> <span x-text="mahasiswa.nim"></span></p>
+                                    <p><strong>Pembimbing 1:</strong> <span x-text="mahasiswa.pembimbing_1"></span></p>
+                                    <p><strong>Pembimbing 2:</strong> <span x-text="mahasiswa.pembimbing_2"></span></p>
+                                </div>
+                            </div>
+                        </template>
+
+                        <!-- Pagination Controls -->
+                        <div class="flex justify-center items-center space-x-2 mt-4">
+                            <button @click="prevPage" :disabled="currentPage === 1"
+                                class="px-4 py-2 bg-gray-200 rounded disabled:opacity-50">
+                                Previous
+                            </button>
+
+                            <template x-for="page in totalPages" :key="page">
+                                <button @click="goToPage(page)"
+                                    :class="{
+                                        'bg-blue-500 text-white': currentPage === page,
+                                        'bg-gray-200': currentPage !== page
+                                    }"
+                                    class="px-4 py-2 rounded mx-1">
+                                    <span x-text="page"></span>
+                                </button>
+                            </template>
+
+                            <button @click="nextPage" :disabled="currentPage === totalPages"
+                                class="px-4 py-2 bg-gray-200 rounded disabled:opacity-50">
+                                Next
+                            </button>
                         </div>
                     </div>
+                </template>
+
+                <template x-if="dataTaMhs.length === 0">
+                    <div class="text-center text-gray-500">Tidak ada data mahasiswa.</div>
                 </template>
             </x-popup-window>
         </div>
