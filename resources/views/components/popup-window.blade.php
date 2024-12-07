@@ -3,7 +3,8 @@
     x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0">
     <div @click.outside="open = false"
-        class="relative w-full lg:max-w-4xl mx-auto max-h-[80vh] overflow-auto bg-white border border-gray-200 rounded-xl shadow-lg">
+        class="relative w-full lg:max-w-4xl mx-auto max-h-[80vh] overflow-hidden bg-white border border-gray-200 rounded-xl shadow-lg">
+
         <!-- Sticky header section -->
         <div
             class="sticky top-0 z-10 border-b border-gray-200 bg-white flex justify-between items-center px-4 py-3 md:px-6 md:py-4">
@@ -16,7 +17,7 @@
         </div>
 
         <!-- Scrollable content -->
-        <div class="p-4 md:p-6">
+        <div class="p-4 md:p-6 overflow-y-auto max-h-[calc(80vh-57px)]">
             {{ $slot }}
         </div>
     </div>
