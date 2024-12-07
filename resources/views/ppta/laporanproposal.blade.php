@@ -21,7 +21,7 @@
                                 class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm 
                                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                                 text-sm text-gray-900 transition-all duration-300 ease-in-out"
-                                value="{{ request('tanggal-awal') }}">
+                                value="{{ $tanggal_awal }}">
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@
                                 class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm 
                                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                                 text-sm text-gray-900 transition-all duration-300 ease-in-out"
-                                value="{{ request('tanggal-akhir') }}">
+                                value="{{ $tanggal_akhir }}">
                         </div>
                     </div>
                 </div>
@@ -84,11 +84,9 @@
                                     {{ request('prodi') == 'sistem_informasi' ? 'selected' : '' }}>
                                     Sistem Informasi
                                 </option>
-                                <option value="sistem_informasi_manajemen"
-                                    {{ request('prodi') == 'sistem_informasi_manajemen' ? 'selected' : '' }}>Manajemen
+                                <option value="manajemen" {{ request('prodi') == 'manajemen' ? 'selected' : '' }}>Manajemen
                                 </option>
-                                <option value="sistem_informasi_akuntansi"
-                                    {{ request('prodi') == 'sistem_informasi_akuntansi' ? 'selected' : '' }}>Akuntansi
+                                <option value="akuntansi" {{ request('prodi') == 'akuntansi' ? 'selected' : '' }}>Akuntansi
                                 </option>
                                 <option value="teknik_komputer"
                                     {{ request('prodi') == 'teknik_komputer' ? 'selected' : '' }}>
@@ -117,11 +115,14 @@
                         class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold py-3 px-4 
                         rounded-lg shadow-md hover:from-blue-600 hover:to-indigo-700 
                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
-                        transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+                        transition-all duration-300 ease-in-out transform cursor-pointer">
                         Tampilkan Laporan
                     </button>
                 </div>
             </form>
+            @if (session('error'))
+                <x-alert type="error" title="{{ session('error.title') }}" message="{{ session('error.message') }}" />
+            @endif
         </div>
     </div>
 @endsection
