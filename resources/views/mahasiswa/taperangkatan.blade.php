@@ -80,8 +80,8 @@
             <x-popup-window>
                 <template x-for="mahasiswa in dataTaMhs" :key="mahasiswa.nim">
                     <div class="mb-4 pb-4 border-b last:border-b-0">
-                        <h4 class="font-semibold text-gray-700" x-text="'Angkatan: '+ mahasiswa.judul"></h4>
-                        <div class="text-sm text-gray-600 mt-1">
+                        <h4 class="font-semibold text-gray-700" x-text="mahasiswa.judul"></h4>
+                        <div class="text-sm text-gray-600 space-y-0.5">
                             <p><strong>Nama:</strong> <span x-text="mahasiswa.nama"></span></p>
                             <p><strong>NIM:</strong> <span x-text="mahasiswa.nim"></span></p>
                             <p><strong>Pembimbing 1:</strong> <span x-text="mahasiswa.pembimbing_1"></span></p>

@@ -35,8 +35,5 @@
                 </div>
             </x-popup-window>
         </div>
-
-
-
     </div>
 @endsection

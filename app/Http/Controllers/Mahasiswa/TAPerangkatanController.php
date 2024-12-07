@@ -12,10 +12,10 @@ class TAPerangkatanController extends Controller
             '2021' => [
                 [
                     'judul' => 'Penerapan Gamifikasi pada Aplikasi Pencucian Mobil Kenzou Drive Thru Car Wash',
-                    'nama' => 'Erick Winata',
-                    'nim' => '20410100005',
-                    'pembimbing_1' => 'Ayuningtyas, S.Kom., M.MT, MOS',
-                    'pembimbing_2' => 'Ayouvi Poerna Wardhanie, S.M.B., M.M.'
+                    'nama' => 'Muhammad Afriza Hanif',
+                    'nim' => '21410100013',
+                    'pembimbing_1' => 'Endra Rahmawati, M.Kom.',
+                    'pembimbing_2' => 'Ayuningtyas, S.Kom., M.MT, MOS'
                 ],
             ],
             '2020' => [
@@ -54,6 +54,124 @@ class TAPerangkatanController extends Controller
                     'pembimbing_1' => 'Sulistiowati, S.Si., M.M.',
                     'pembimbing_2' => 'Ir. Henry Bambang Setyawan, M.M.'
                 ],
+            ],
+            '2019' => [
+                [
+                    'judul' => 'Perancangan Desain UI/UX Website Fumigasi untuk Meningkatkan Customer Experience pada PT. Prana Argentum Corporation',
+                    'nama' => 'Faisal Maulana Akbar',
+                    'nim' => '19410100039',
+                    'pembimbing_1' => 'Ayouvi Poerna Wardhanie, S.M.B., M.M.',
+                    'pembimbing_2' => 'Tan Amelia, S.Kom., M.MT., MCP'
+                ],
+                [
+                    'judul' => 'Rekomendasi Desain User Interface berdasarkan Hasil Analisis Pengaruh Faktor Minat terhadap Penggunaan Aplikasi Seabank menggunakan Model UTAUT2',
+                    'nama' => 'Shavira Khofifah Azka',
+                    'nim' => '19410100041',
+                    'pembimbing_1' => 'Sulistiowati, S.Si., M.M.',
+                    'pembimbing_2' => 'Ir. Henry Bambang Setyawan, M.M.'
+                ],
+                [
+                    'judul' => 'Sistem Informasi Persediaan Alat Kesehatan menggunakan Metode Fifo dan Min-Max pada Website PT. Dakonan Mas',
+                    'nama' => 'Ichsan Ghaniy Rosyidi',
+                    'nim' => '19410100044',
+                    'pembimbing_1' => 'Dr. M.J. Dewiyani Sunarto',
+                    'pembimbing_2' => 'Tony Soebijono, S.E., S.H., M.Ak.'
+                ],
+                [
+                    'judul' => 'Perancangan UI/UX Website Laksmi Muslimah menggunakan Metode Design Thinking untuk Memudahkan Transaksi Klien Memilih Paket Pernikahan',
+                    'nama' => 'Adelia Nurokiaviany Wisan Putri',
+                    'nim' => '19410100045',
+                    'pembimbing_1' => 'Tri Sagirani, S.Kom., M.MT.',
+                    'pembimbing_2' => 'Dr. Anjik Sukmaaji, S.Kom., M.Eng.'
+                ],
+                [
+                    'judul' => 'Rancang Bangun Aplikasi Pengendalian Persediaan Spare Part pada Bengkel Aufa Motor menggunakan Metode Min Max',
+                    'nama' => 'Slamet Purdopo',
+                    'nim' => '19410100047',
+                    'pembimbing_1' => 'Sulistiowati, S.Si., M.M.',
+                    'pembimbing_2' => 'Endra Rahmawati, M.Kom.'
+                ]
+            ],
+            '2018' => [
+                [
+                    'judul' => 'Penerapan Gamifikasi pada Aplikasi Pencucian Mobil Kenzou Drive Thru Car Wash',
+                    'nama' => 'Erick Winata',
+                    'nim' => '20410100005',
+                    'pembimbing_1' => 'Ayuningtyas, S.Kom., M.MT, MOS',
+                    'pembimbing_2' => 'Ayouvi Poerna Wardhanie, S.M.B., M.M.'
+                ],
+                [
+                    'judul' => 'Penerapan Algoritma Content-Based Filtering untuk Rekomendasi Destinasi Wisata pada Aplikasi Picnicker',
+                    'nama' => 'Aprianto',
+                    'nim' => '18410100002',
+                    'pembimbing_1' => 'Julianto Lemantara, S.Kom., M.Eng, OCA., MCTS',
+                    'pembimbing_2' => 'Tri Sagirani, S.Kom., M.MT.'
+                ],
+                [
+                    'judul' => 'Peran Perceived Usability, Satisfaction, dan Customer Trust dalam Merancang dan Mengembangkan Loyalitas Pengguna Website Edutech',
+                    'nama' => 'Michael Vinsent Djulianto',
+                    'nim' => '18410100003',
+                    'pembimbing_1' => 'Ayouvi Poerna Wardhanie, S.M.B., M.M.',
+                    'pembimbing_2' => 'Candraningrat, S.E., M.SM.'
+                ],
+                [
+                    'judul' => 'Analisis dan Perancangan User Interface dan User Experience pada Startup Picnicker dengan Pendekatan User Persona Berbasis Design Thinking',
+                    'nama' => 'Reva Eka Prasetyo',
+                    'nim' => '18410100004',
+                    'pembimbing_1' => 'Tan Amelia, S.Kom., M.MT., MCP',
+                    'pembimbing_2' => 'Julianto Lemantara, S.Kom., M.Eng, OCA., MCTS'
+                ],
+                [
+                    'judul' => 'Rancang Bangun Sistem Pendukung Keputusan Penentuan Jumlah Pengadaan Stok Bahan Baku dengan Metode Fuzzy Sugeno pada UMKM Pembawa Kopi',
+                    'nama' => 'Abyan Akbar Indroyono',
+                    'nim' => '18410100005',
+                    'pembimbing_1' => 'Agus Dwi Churniawan, S.Si., M.Kom.',
+                    'pembimbing_2' => 'Vivine Nurcahyawati, M.Kom, OCP'
+                ],
+                [
+                    'judul' => 'Perancangan Strategi Digital Marketing melalui Instagram dan Tiktok dengan Metode Sostac guna Meningkatkan Jumlah Marchant yang Bergabung pada Startup Picnicker',
+                    'nama' => 'Indana Nazulfa',
+                    'nim' => '18410100006',
+                    'pembimbing_1' => 'Sri Hariani Eko Wulandari, S.Kom., M.MT.',
+                    'pembimbing_2' => 'Rudi Santoso, S.Sos., M.M.'
+                ]
+            ],
+            '2017' => [
+                [
+                    'judul' => 'Sistem Informasi Smart RT/RW menggunakan Metode Statistik Deskriptif Berbasis Website pada Perumahan Pakal Residence Surabaya',
+                    'nama' => 'Arif Prasetiyo Utomo',
+                    'nim' => '17410100001',
+                    'pembimbing_1' => 'Dr. Anjik Sukmaaji, S.Kom., M.Eng.',
+                    'pembimbing_2' => 'Agus Dwi Churniawan, S.Si., M.Kom.'
+                ],
+                [
+                    'judul' => 'Sistem Pendukung Keputusan Pemilihan Laptop dengan Metode AHP (Studi Kasus pada CV Maju Bersama)',
+                    'nama' => 'Noel Nicolaz Godzallez',
+                    'nim' => '17410100002',
+                    'pembimbing_1' => 'Sulistiowati, S.Si., M.M.',
+                    'pembimbing_2' => 'Tony Soebijono, S.E., S.H., M.Ak.'
+                ],
+                [
+                    'judul' => 'RANCANG BANGUN APLIKASI PENGENDALIAN STOK ATK DAN ALAT KEBERSIHAN MENGGUNAKAN METODE REORDER POINT BERBASIS WEB PADA CV. AMIIN NUGERAHA',
+                    'nama' => 'Achmad Lukman Hakim',
+                    'nim' => '17410100004',
+                    'pembimbing_1' => 'Agus Dwi Churniawan, S.Si., M.Kom.',
+                    'pembimbing_2' => 'Vivine Nurcahyawati, M.Kom, OCP'
+                ],
+                [
+                    'judul' => 'Analisis dan Desain Sistem E-Commerce Penjualan Produk Kecantikan pada CV E-Smart B',
+                    'nama' => 'Dwiky Rachman Hidayat',
+                    'nim' => '17410100009',
+                    'pembimbing_1' => 'Dr. Anjik Sukmaaji, S.Kom., M.Eng.',
+                    'pembimbing_2' => 'Sri Hariani Eko Wulandari, S.Kom., M.MT.'
+                ],
+                [
+                    'judul' => 'Analisis dan Perancangan User Interface Aplikasi Transaksi Pemesanan dan Pemasaran pada Kunokini Cafe & Resto Berbasis User Centered Design (UCD)',
+                    'nama' => 'Heryawan Wisnuyana',
+                    'nim' => '17410100010',
+                    'pembimbing_1' => 'Sulistiowati, S.Si., M.M.',
+                    'pembimbing_2' => 'Nunuk Wahyuningtyas, M.Kom, OCJA'  // Data pembimbing 2 tidak terlihat di gambar
+                ]
             ]
         ],
         'Teknik Komputer' => [

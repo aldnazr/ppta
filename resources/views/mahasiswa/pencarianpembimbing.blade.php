@@ -189,74 +189,74 @@
                 </div>
             </div>
         @endif
+    </div>
 
-        <script>
-            const lecturerInput = document.getElementById("lecturer-input");
-            const dosenList = document.getElementById("dosen-list");
-            const clearButton = document.getElementById("clear-button");
-            const searchForm = document.querySelector("form");
+    <script>
+        const lecturerInput = document.getElementById("lecturer-input");
+        const dosenList = document.getElementById("dosen-list");
+        const clearButton = document.getElementById("clear-button");
+        const searchForm = document.querySelector("form");
 
-            document.addEventListener("DOMContentLoaded", () => {
-                // Function to toggle clear button visibility
-                function setClearButtonVisibility() {
-                    if (lecturerInput.value.trim() !== "") {
-                        clearButton.classList.remove("hidden");
-                    } else {
-                        clearButton.classList.add("hidden");
-                    }
-                }
-
-                // Sembunyikan datalist di awal
-                dosenList.style.display = "none";
-
-                // Tampilkan datalist saat input diisi
-                lecturerInput.addEventListener("input", () => {
-                    if (lecturerInput.value.trim() !== "") {
-                        dosenList.style.display = "block";
-                        setClearButtonVisibility();
-                    } else {
-                        dosenList.style.display = "none";
-                        setClearButtonVisibility();
-                    }
-                });
-
-                // Sembunyikan datalist saat klik di luar
-                document.addEventListener("click", (event) => {
-                    if (!lecturerInput.contains(event.target) && !dosenList.contains(event.target)) {
-                        dosenList.style.display = "none";
-                    }
-                });
-
-                // Tambahkan interaksi saat item dipilih
-                dosenList.addEventListener("click", (event) => {
-                    if (event.target.tagName === "LI") {
-                        lecturerInput.value = event.target.textContent;
-                        dosenList.style.display = "none";
-                        setClearButtonVisibility();
-                        searchForm.submit();
-                    }
-                });
-
-                setClearButtonVisibility();
-            });
-
-            function clearInput() {
-                lecturerInput.value = "";
-                toggleClearButton("");
-                searchForm.submit();
-            }
-
-            function toggleClearButton(value) {
-                if (value.trim() !== "") {
+        document.addEventListener("DOMContentLoaded", () => {
+            // Function to toggle clear button visibility
+            function setClearButtonVisibility() {
+                if (lecturerInput.value.trim() !== "") {
                     clearButton.classList.remove("hidden");
-                    emptyState.classList.add("hidden");
                 } else {
                     clearButton.classList.add("hidden");
-                    emptyState.classList.remove("hidden");
-                    studentList.classList.add("hidden");
-                    list.classList.add("hidden");
                 }
             }
-        </script>
-    </div>
+
+            // Sembunyikan datalist di awal
+            dosenList.style.display = "none";
+
+            // Tampilkan datalist saat input diisi
+            lecturerInput.addEventListener("input", () => {
+                if (lecturerInput.value.trim() !== "") {
+                    dosenList.style.display = "block";
+                    setClearButtonVisibility();
+                } else {
+                    dosenList.style.display = "none";
+                    setClearButtonVisibility();
+                }
+            });
+
+            // Sembunyikan datalist saat klik di luar
+            document.addEventListener("click", (event) => {
+                if (!lecturerInput.contains(event.target) && !dosenList.contains(event.target)) {
+                    dosenList.style.display = "none";
+                }
+            });
+
+            // Tambahkan interaksi saat item dipilih
+            dosenList.addEventListener("click", (event) => {
+                if (event.target.tagName === "LI") {
+                    lecturerInput.value = event.target.textContent;
+                    dosenList.style.display = "none";
+                    setClearButtonVisibility();
+                    searchForm.submit();
+                }
+            });
+
+            setClearButtonVisibility();
+        });
+
+        function clearInput() {
+            lecturerInput.value = "";
+            toggleClearButton("");
+            searchForm.submit();
+        }
+
+        function toggleClearButton(value) {
+            if (value.trim() !== "") {
+                clearButton.classList.remove("hidden");
+                emptyState.classList.add("hidden");
+            } else {
+                clearButton.classList.add("hidden");
+                emptyState.classList.remove("hidden");
+                studentList.classList.add("hidden");
+                list.classList.add("hidden");
+            }
+        }
+    </script>
 @endsection

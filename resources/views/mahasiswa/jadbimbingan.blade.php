@@ -82,7 +82,10 @@
             </div>
         </div>
     </div>
-    <script>
+@endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
         const dosen = @json($dosens);
         const list = document.getElementById("autocomplete-list");
         const clearButton = document.getElementById("clear-button");
@@ -98,16 +101,20 @@
                 list.classList.add("hidden");
                 return;
             }
-            const suggestions = sortedList.filter(dosen => dosen.toLowerCase().includes(value.toLowerCase()));
+            const suggestions = sortedList.filter(dosenName =>
+                dosenName.toLowerCase().includes(value.toLowerCase())
+            );
+
             if (suggestions.length > 0) {
-                suggestions.forEach(dosen => {
+                suggestions.forEach(dosenName => {
                     const li = document.createElement("li");
-                    li.textContent = dosen;
+                    li.textContent = dosenName;
                     li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
-                    li.onclick = () => {
-                        $('autocomplete-input').value = dosen;
+                    li.addEventListener('click', () => {
+                        inputField.value = dosenName;
                         list.classList.add("hidden");
-                    };
+                        loadSchedule(dosenName);
+                    });
                     list.appendChild(li);
                 });
                 list.classList.remove("hidden");
@@ -132,67 +139,59 @@
             toggleClearButton("");
         }
 
-        function showSuggestions(value) {
-            list.innerHTML = ""; // Clear previous suggestions
-            if (value.trim() === "") {
-                list.classList.add("hidden");
-                return;
-            }
-            const suggestions = sortedList.filter(dosen => dosen.toLowerCase().includes(value.toLowerCase()));
-            if (suggestions.length > 0) {
-                suggestions.forEach(dosen => {
-                    const li = document.createElement("li");
-                    li.textContent = dosen;
-                    li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
-                    li.onclick = () => {
-                        document.getElementById("autocomplete-input").value = dosen;
-                        list.classList.add("hidden");
-                        loadSchedule(dosen); // Panggil fungsi untuk memuat jadwal
-                    };
-                    list.appendChild(li);
+        function loadSchedule(dosenName) {
+            // Fetch schedule data from server using Fetch API
+            fetch(`/jadbimbingan-dosen?dosen=${encodeURIComponent(dosenName)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    scheduleBody.innerHTML = ""; // Clear previous schedules
+
+                    if (data.schedules && data.schedules.length > 0) {
+                        let nomor = 0;
+                        data.schedules.forEach(schedule => {
+                            const row = `
+                            <tr class="bg-white border-b">
+                                <td class="px-6 py-4">${++nomor}</td>
+                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                    ${schedule.tanggal}
+                                </td>
+                                <td class="px-6 py-4">${schedule.jam_mulai}</td>
+                                <td class="px-6 py-4">${schedule.jam_selesai}</td>
+                                <td class="px-6 py-4">${schedule.ruang}</td>
+                                <td class="px-6 py-4">${schedule.ket}</td>
+                            </tr>
+                        `;
+                            scheduleBody.insertAdjacentHTML("beforeend", row);
+                        });
+                    } else {
+                        const noDataRow = `
+                        <tr>
+                            <td colspan="6" class="p-6 text-center text-gray-500">Tidak ada jadwal tersedia</td>
+                        </tr>
+                    `;
+                        scheduleBody.insertAdjacentHTML("beforeend", noDataRow);
+                    }
+
+                    // Show table
+                    table.classList.remove("hidden");
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Gagal memuat jadwal. Coba lagi.");
                 });
-                list.classList.remove("hidden");
-            } else {
-                list.classList.add("hidden");
-            }
         }
 
-        function loadSchedule(dosen) {
-            // Kirim permintaan ke server untuk mendapatkan jadwal berdasarkan dosen
-            $.get(`/jadbimbingan-dosen?dosen=${encodeURIComponent(dosen)}`, function(response) {
-                scheduleBody.innerHTML = ""; // Bersihkan jadwal sebelumnya
+        // Event Listeners
+        inputField.addEventListener('input', (e) => {
+            showSuggestions(e.target.value);
+            toggleClearButton(e.target.value);
+        });
 
-                if (response.schedules.length > 0) {
-                    var nomor = 0;
-                    response.schedules.forEach(schedule => {
-                        const row = `
-                    <tr class="bg-white border-b">
-                        <td class="px-6 py-4">${nomor+=1}</td>
-                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            ${schedule.tanggal}
-                        </td>
-                        <td class="px-6 py-4">${schedule.jam_mulai}</td>
-                        <td class="px-6 py-4">${schedule.jam_selesai}</td>
-                        <td class="px-6 py-4">${schedule.ruang}</td>
-                        <td class="px-6 py-4">${schedule.ket}</td>
-                    </tr>
-                `;
-                        scheduleBody.insertAdjacentHTML("beforeend", row);
-                    });
-                } else {
-                    const noDataRow = `
-                <tr>
-                    <td colspan="6" class="p-6 text-center text-gray-500">Tidak ada jadwal tersedia</td>
-                </tr>
-            `;
-                    scheduleBody.insertAdjacentHTML("beforeend", noDataRow);
-                }
-
-                // Tampilkan tabel
-                table.classList.remove("hidden");
-            }).fail(function() {
-                alert("Gagal memuat jadwal. Coba lagi.");
-            });
-        }
-    </script>
-@endsection
+        clearButton.addEventListener('click', clearInput);
+    });
+</script>
