@@ -24,13 +24,13 @@
                     <thead class="bg-gray-200 text-gray-700">
                         <tr>
                             <th class="px-6 py-4 font-medium">
-                                <a href="{{ request()->has('sort') && request()->get('sort') === 'date_asc'
+                                <a href="{{ $currentSort === 'date_asc'
                                     ? request()->fullUrlWithQuery(['sort' => 'date_desc'])
                                     : request()->fullUrlWithQuery(['sort' => 'date_asc']) }}"
                                     class="flex items-center gap-x-2">
-                                    Waktu
+                                    Tanggal
                                     <i
-                                        class="fa-duotone fa-solid fa-sort {{ request()->get('sort') === 'date_desc' ? 'fa-rotate-180' : '' }}"></i>
+                                        class="fa-duotone fa-solid fa-sort {{ $currentSort === 'date_desc' ? 'fa-rotate-180' : '' }}"></i>
                                 </a>
                             </th>
                             <th class="px-6 py-4 font-medium">
@@ -42,7 +42,8 @@
                         @foreach ($schedules as $schedule)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 align-top w-48">
-                                    <div class="font-medium">{{ $schedule['date'] }}</div>
+                                    <div class="font-medium">{{ \Carbon\Carbon::parse($schedule['date'])->format('d-m-Y') }}
+                                    </div>
                                     <div class="text-gray-600">Jam {{ $schedule['time'] }}</div>
                                     <div class="text-gray-600">Ruang {{ $schedule['room'] }}</div>
                                 </td>
