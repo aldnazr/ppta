@@ -24,8 +24,14 @@
                     <thead class="bg-gray-200 text-gray-700">
                         <tr>
                             <th class="px-6 py-4 font-medium">
-                                <a href="#" class="w-max flex items-center gap-x-2">Waktu <i
-                                        class="fa-solid fa-sort fa-sm"></i></a>
+                                <a href="{{ request()->has('sort') && request()->get('sort') === 'date_asc'
+                                    ? request()->fullUrlWithQuery(['sort' => 'date_desc'])
+                                    : request()->fullUrlWithQuery(['sort' => 'date_asc']) }}"
+                                    class="flex items-center gap-x-2">
+                                    Waktu
+                                    <i
+                                        class="fa-duotone fa-solid fa-sort {{ request()->get('sort') === 'date_desc' ? 'fa-rotate-180' : '' }}"></i>
+                                </a>
                             </th>
                             <th class="px-6 py-4 font-medium">
                                 Tugas Akhir
@@ -37,8 +43,8 @@
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 align-top w-48">
                                     <div class="font-medium">{{ $schedule['date'] }}</div>
-                                    <div class="text-gray-600">{{ $schedule['time'] }}</div>
-                                    <div class="text-gray-600">{{ $schedule['room'] }}</div>
+                                    <div class="text-gray-600">Jam {{ $schedule['time'] }}</div>
+                                    <div class="text-gray-600">Ruang {{ $schedule['room'] }}</div>
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-900">
                                     <div class="font-medium mb-2">{{ $schedule['title'] }}</div>
