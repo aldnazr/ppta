@@ -91,36 +91,33 @@
         </div>
 
         {{-- Tab Layout --}}
-        <div class="bg-white rounded-md shadow-md p-4 mx-auto">
+        <div x-data="{ activeTab: 'proposal' }" class="bg-white rounded-md shadow-md p-4 mx-auto">
             {{-- Tab Menu --}}
             <div
                 class="mx-auto p-2 flex justify-center bg-zinc-100 rounded-lg mb-4 border-b border-gray-200 overflow-x-auto">
                 <div class="my-1 w-full">
                     <ul class="flex flex-wrap md:flex-nowrap justify-center gap-2 text-sm font-medium text-center"
                         id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
-                        <li class="w-full md:w-auto" role="presentation">
-                            <button
-                                class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
-                                id="profile-tab" data-tabs-target="#proposal" type="button" role="tab"
-                                aria-controls="profile" aria-selected="false">
+                        <li class="w-full md:w-auto">
+                            <button @click="activeTab = 'proposal'"
+                                :class="{ 'bg-white shadow-sm': activeTab === 'proposal' }"
+                                class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
                                 <span class="block md:inline">Proposal</span>
                                 <span class="block md:inline md:ml-1">(10%): 0</span>
                             </button>
                         </li>
-                        <li class="w-full md:w-auto" role="presentation">
-                            <button
-                                class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
-                                id="dashboard-tab" data-tabs-target="#bimbingan" type="button" role="tab"
-                                aria-controls="dashboard" aria-selected="false">
+                        <li class="w-full md:w-auto">
+                            <button @click="activeTab = 'bimbingan'"
+                                :class="{ 'bg-white shadow-sm': activeTab === 'bimbingan' }"
+                                class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
                                 <span class="block md:inline">Bimbingan</span>
                                 <span class="block md:inline md:ml-1">(40%): 0</span>
                             </button>
                         </li>
-                        <li class="w-full md:w-auto" role="presentation">
-                            <button
-                                class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
-                                id="settings-tab" data-tabs-target="#sidang" type="button" role="tab"
-                                aria-controls="settings" aria-selected="false">
+                        <li class="w-full md:w-auto">
+                            <button @click="activeTab = 'sidang'"
+                                :class="{ 'bg-white shadow-sm': activeTab === 'sidang' }"
+                                class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
                                 <span class="block md:inline">Sidang</span>
                                 <span class="block md:inline md:ml-1">(100%): 0</span>
                             </button>
@@ -131,8 +128,9 @@
 
             {{-- Tab Content --}}
             <div id="default-tab-content">
-                {{-- Tab Content 1 --}}
-                <div class="hidden rounded-lg pb-3" id="proposal" role="tabpanel" aria-labelledby="profile-tab">
+                {{-- Content for Proposal Tab --}}
+                <div x-show="activeTab === 'proposal'" class="rounded-lg pb-3" id="proposal" role="tabpanel"
+                    aria-labelledby="profile-tab">
                     <!-- Supervision Forms -->
                     <div class="grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-8">
                         <!-- Pembimbing Section -->
@@ -187,7 +185,7 @@
                                 </div>
                             </div>
 
-                            <!-- Buttons -->
+                            <!-- Save Button -->
                             <div class="mt-6">
                                 <button type="button"
                                     class="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
@@ -352,8 +350,9 @@
                         </div>
                     </div>
                 </div>
-                {{-- Tab Content 2 --}}
-                <div class="hidden rounded-lg pb-3" id="bimbingan" role="tabpanel" aria-labelledby="dashboard-tab">
+                {{-- Content for Bimbingan Tab --}}
+                <div x-show="activeTab === 'bimbingan'" class="rounded-lg pb-3" id="bimbingan" role="tabpanel"
+                    aria-labelledby="dashboard-tab">
                     <div class="grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-8">
                         {{-- Pembimbing 1 --}}
                         <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
@@ -466,8 +465,9 @@
                         </div>
                     </div>
                 </div>
-                {{-- Tab Content 3 --}}
-                <div class="hidden rounded-lg pb-3" id="sidang" role="tabpanel" aria-labelledby="settings-tab">
+                {{-- Content for Sidang Tab --}}
+                <div x-show="activeTab === 'sidang'" class="rounded-lg pb-3" id="sidang" role="tabpanel"
+                    aria-labelledby="settings-tab">
                     <!-- Pembimbing Section -->
                     <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
                         <!-- Top Bar -->
@@ -610,41 +610,4 @@
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
-            // Get all tab buttons and content
-            const tabButtons = $('[role="tab"]');
-            const tabContents = $('[role="tabpanel"]');
-
-            // Function to set active tab
-            function setActiveTab(tabId) {
-                // Hide all tab contents
-                tabContents.addClass('hidden');
-
-                // Remove active states from all tabs
-                tabButtons.removeClass('bg-white shadow-sm').attr('aria-selected', 'false');
-
-                // Show selected tab content
-                const selectedContent = $(tabId);
-                if (selectedContent.length) {
-                    selectedContent.removeClass('hidden');
-                }
-
-                // Set active state for the selected tab
-                const selectedTab = $(`[data-tabs-target="${tabId}"]`);
-                if (selectedTab.length) {
-                    selectedTab.addClass('bg-white shadow-sm').attr('aria-selected', 'true');
-                }
-            }
-
-            // Add click event listeners to all tabs
-            tabButtons.on('click', function() {
-                const tabTarget = $(this).data('tabs-target');
-                setActiveTab(tabTarget);
-            });
-
-            // Set initial active tab (Profile tab)
-            setActiveTab('#proposal');
-        });
-    </script>
 @endsection
