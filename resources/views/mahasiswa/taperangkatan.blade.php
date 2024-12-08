@@ -121,7 +121,7 @@
                         <!-- Pagination Controls -->
                         <div class="flex justify-center items-center space-x-2 mt-4">
                             <button @click="prevPage" :disabled="currentPage === 1"
-                                class="px-4 py-2 bg-gray-200 rounded disabled:opacity-50">
+                                class="px-4 py-2 bg-gray-200 rounded disabled:opacity-50 cursor-pointer">
                                 Previous
                             </button>
 
@@ -131,13 +131,13 @@
                                         'bg-blue-500 text-white': currentPage === page,
                                         'bg-gray-200': currentPage !== page
                                     }"
-                                    class="px-4 py-2 rounded mx-1">
+                                    class="px-4 py-2 rounded mx-1 cursor-pointer">
                                     <span x-text="page"></span>
                                 </button>
                             </template>
 
                             <button @click="nextPage" :disabled="currentPage === totalPages"
-                                class="px-4 py-2 bg-gray-200 rounded disabled:opacity-50">
+                                class="px-4 py-2 bg-gray-200 rounded disabled:opacity-50 cursor-pointer">
                                 Next
                             </button>
                         </div>
