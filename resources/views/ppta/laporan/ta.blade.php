@@ -74,8 +74,8 @@
                             @endif
                         </td>
                         <td>
-                            {{ $item['pengajuan'] }}
-                            {{ $item['sidang'] }}
+                            {{ $item['tgl_pengajuan'] }}
+                            {{ $item['tgl_sidang'] }}
                         </td>
                         <td>{{ $item['ruang'] }}</td>
                         <td>{{ $item['hasil'] }}</td>
