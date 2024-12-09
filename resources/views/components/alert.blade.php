@@ -45,8 +45,8 @@
     x-transition:leave-end="opacity-0 scale-90" x-init="setTimeout(() => show = false, 5000)"
     {{ $attributes->merge([
         'class' => "fixed top-4 right-4 max-w-full w-96 max-w-[calc(100%-2rem)] z-50 flex items-start space-x-4 p-4 rounded-lg shadow-lg {$colors['bg']} 
-                    sm:w-80 md:w-96 
-                    transition-all duration-300 ease-in-out",
+                            sm:w-80 md:w-96 
+                            transition-all duration-300 ease-in-out",
     ]) }}>
     {{-- Icon --}}
     <div class="shrink-0">
@@ -96,7 +96,7 @@
 
     {{-- Close Button --}}
     <button @click="show = false"
-        class="shrink-0 text-opacity-50 hover:text-opacity-75 transition-all duration-200 {{ $colors['icon'] }}">
+        class="cursor-pointer shrink-0 text-opacity-50 hover:text-opacity-75 transition-all duration-200 {{ $colors['icon'] }}">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
             stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
