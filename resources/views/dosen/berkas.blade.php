@@ -4,7 +4,7 @@
     <div class="bg-white overflow-hidden border-b border-gray-200 rounded-xl shadow-lg overflow-hidden">
         <x-header>Berkas</x-header>
         <div class="p-4 lg:p-6">
-            <div class="flex flex-col lg:flex-row justify-between items-center mb-6 space-y-3 md:space-y-0">
+            <div class="flex flex-col lg:flex-row justify-between mb-6 space-y-3 lg:space-y-0">
                 <!-- Per Page Selector -->
                 <form method="GET" action="{{ url()->current() }}" id="perPageForm"
                     class="w-full md:w-auto flex items-center justify-start gap-2">
@@ -26,9 +26,9 @@
                     <!-- Search Form -->
                     <form id="searchForm" method="GET" action="{{ url()->current() }}"
                         class="w-auto flex items-center space-x-1.5">
-                        <div class="flex-grow md:flex-grow-0 md:w-64">
+                        <div class="flex-grow lg:flex-grow-0 lg:w-64">
                             <input type="text" name="search" value="{{ request('search') }}" placeholder="Pencarian..."
-                                class="w-full bg-gray-200 text-sm rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                class="w-full h-10 lg:h-auto bg-gray-200 text-sm rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                         </div>
 
                         <!-- Keep existing per_page and filter values to maintain state -->
@@ -36,7 +36,7 @@
                         <input type="hidden" name="filter" value="{{ request('filter') }}">
 
                         <button type="submit"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer">
+                            class="bg-blue-500 w-10 lg:w-auto h-10 lg:h-auto hover:bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer">
                             <i class="fa-solid fa-search"></i>
                         </button>
                     </form>
@@ -56,7 +56,7 @@
 
                         <!-- Advanced Filter Dropdown -->
                         <div id="advancedFilterDropdown" x-show="isMenuOpen" @click.outside = "isMenuOpen = false"
-                            class="absolute z-10 mt-1 lg:-ml-[8.5rem] bg-zinc-50 shadow-md rounded-md p-4 border border-gray-200">
+                            class="absolute lg:right-0 z-10 mt-1 bg-zinc-50 shadow-md rounded-md p-4 border border-gray-200">
                             <h3 class="mb-2 font-semibold text-gray-900">Berkas</h3>
                             <div class="grid gap-4">
                                 <ul

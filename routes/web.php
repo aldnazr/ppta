@@ -23,9 +23,6 @@ Route::get('/blog', function () {
     ]);
 });
 
-Route::get('/document', function () {
-    return view('mahasiswa.document', ['title' => 'Contact Page']);
-});
 
 Route::get('/mhshome', function () {
     return view('mhshome', ['title' => 'Contact Page']);
@@ -37,6 +34,9 @@ Route::get('/post/{id}', function ($id) {
     return view('post', ['title' => 'Full Post', 'post' => $post]);
 });
 
+Route::get('/document', function () {
+    return view('mahasiswa.document', ['title' => 'Contact Page']);
+});
 Route::get('/taperangkatan', [TAPerangkatanController::class, 'index'])->name('taperangkatan');
 Route::get('/taperangkatan/jurusan', [TAPerangkatanController::class, 'getByJurusan'])->name('taperangkatanjurusan');
 

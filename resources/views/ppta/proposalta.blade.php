@@ -98,7 +98,7 @@
                                         </button>
 
                                         <!-- Dropdown menu -->
-                                        <div x-show="open" @click.away="open = false"
+                                        <div x-show="open" @click.outside="open = false"
                                             class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-50 border"
                                             x-transition:enter="transition ease-out duration-100"
                                             x-transition:enter-start="transform opacity-0 scale-95"
