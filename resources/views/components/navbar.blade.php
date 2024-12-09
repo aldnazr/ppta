@@ -1,25 +1,35 @@
 @props(['user'])
 
-<div class="flex h-full w-full" x-data="{ isOpen: true }" x-init="isOpen = window.innerWidth >= 768;
-window.addEventListener('resize', () => {
-    if (window.innerWidth < 768) {
-        isOpen = false;
-    } else {
-        isOpen = true;
+<div class="flex h-full w-full" x-data="{
+    isOpen: true,
+    role: '{{ $user }}',
+    getContentMarginClass() {
+        if (this.role === 'mahasiswa') {
+            return this.isOpen ? 'mt-16 md:mt-0' : 'mt-16 2xl:mt-0';
+        }
+        return 'mt-16';
+    },
+    getTopNavClass() {
+        if (this.role === 'mahasiswa') {
+            return 'bg-transparent border-b md:border-0';
+        }
+        return 'border-b bg-white';
     }
+}" x-init="isOpen = window.innerWidth >= 768;
+window.addEventListener('resize', () => {
+    isOpen = window.innerWidth >= 768;
 })">
     <!-- Sidebar -->
     <div id="sidebar" x-show="isOpen" :class="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
         x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
         x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
         x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
-        class="w-72 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white"
-        x-data="{ role: '{{ $user }}' }">
+        class="w-72 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
         <!-- Open Close Button -->
         <button @click="isOpen = !isOpen"
-            class="mt-[0.73rem] ml-3 flex justify-center items-center pt-1 rounded-lg w-10 h-10 text-zinc-500 hover:text-indigo-600 hover:bg-sky-100 cursor-pointer">
+            class="mt-[0.73rem] ml-3 flex justify-center items-center rounded-full w-10 h-10 text-zinc-500 hover:text-zinc-600 hover:bg-zinc-100 cursor-pointer">
             {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
-            <i class="fa-light fa-bars-sort fa-lg"></i>
+            <i class="fa-solid fa-bars"></i>
         </button>
 
         <!-- Search Bar -->
@@ -129,17 +139,17 @@ window.addEventListener('resize', () => {
     <!-- Main Content Area -->
     <div :class="{ 'md:pl-72': isOpen }" class="flex flex-1 flex-col h-full w-full">
         <!-- Top Navigation -->
-        <div :class="{ 'justify-between': !isOpen, 'justify-end': isOpen }"
-            class="fixed top-0 left-0 right-0 z-30 flex h-16 items-center bg-white border-b border-gray-200 px-3">
+        <div :class="getTopNavClass()"
+            class="fixed top-0 left-0 right-0 z-30 flex justify-between h-16 items-center px-3 border-gray-200">
 
             <!-- Button Toggle Sidebar -->
-            <button :class="{ 'hidden': isOpen }" @click="isOpen = !isOpen"
-                class="flex justify-center items-center pt-1 rounded-lg w-10 h-10 text-zinc-500 hover:text-indigo-600 hover:bg-sky-100 cursor-pointer">
-                <i class="fa-light fa-bars-sort fa-lg"></i>
+            <button :class="{ isOpen ? 'hidden' : '' }" @click="isOpen = !isOpen"
+                class="flex justify-center items-center rounded-full w-10 h-10 text-zinc-500 hover:text-zinc-600 hover:bg-zinc-100 cursor-pointer">
+                <i class="fa-solid fa-bars"></i>
             </button>
 
             <!-- Right Section -->
-            <div class="flex items-center gap-x-4">
+            <div class="{{ $user == 'mahasiswa' ? 'hidden' : '' }} flex items-center gap-x-4">
                 <!-- User Info -->
                 <div class="flex items-center gap-x-2 pr-1">
                     <img class="h-8 w-8 rounded-full object-cover"
@@ -153,7 +163,7 @@ window.addEventListener('resize', () => {
         </div>
 
         <!-- Content Area -->
-        <div class="flex-1 mt-16 overflow-auto">
+        <div :class="getContentMarginClass()" class="flex-1 overflow-auto">
             <main class="container p-3 lg:p-5 max-w-7xl mx-auto">
                 {{ $slot }}
             </main>
