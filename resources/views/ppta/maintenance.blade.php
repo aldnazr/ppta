@@ -12,13 +12,13 @@
                     <!-- Search Form -->
                     <form id="searchForm" method="GET" action="{{ url()->current() }}"
                         class="w-auto flex items-center space-x-1.5">
-                        <div class="flex-grow md:flex-grow-0 md:w-64">
+                        <div class="flex-grow lg:flex-grow-0 lg:w-64">
                             <input type="text" name="search" value="{{ request('search') }}" placeholder="Pencarian..."
-                                class="w-full bg-gray-200 text-sm rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                class="w-full h-10 lg:h-auto bg-gray-200 text-sm rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                         </div>
 
                         <button type="submit"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer">
+                            class="bg-blue-500 w-10 lg:w-auto h-10 lg:h-auto hover:bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer">
                             <i class="fa-solid fa-search"></i>
                         </button>
                     </form>
