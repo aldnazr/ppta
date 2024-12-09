@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\PPTA;
 
 use Carbon\Carbon;
+use App\Data\Prodi;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
@@ -147,8 +148,9 @@ class LaporanTaController extends Controller
 
         // Filter by Program Studi
         if ($prodi !== 'semua') {
+            $prodiMapping = Prodi::$getProdi;
             // Use the mapping to get the correct prodi name
-            $prodiName = $this->prodiMapping[$prodi] ?? $prodi;
+            $prodiName = $prodiMapping[$prodi] ?? $prodi;
 
             $data = array_filter($data, function ($item) use ($prodiName) {
                 return $item['prodi'] === $prodiName;
@@ -169,6 +171,6 @@ class LaporanTaController extends Controller
             ->setPaper('a4', 'landscape');
 
         // Download PDF
-        return $pdf->download('laporan_proposal.pdf');
+        return $pdf->download('laporan_TA.pdf');
     }
 }

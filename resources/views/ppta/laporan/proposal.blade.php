@@ -52,9 +52,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $index => $item)
+                @php
+                    $no = 1;
+                @endphp
+                @foreach ($data as $item)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $no++ }}</td>
                         <td>
                             {{ $item['nim'] }}
                             {{ $item['nama'] }}

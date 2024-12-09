@@ -20,7 +20,8 @@
                             <input type="date" id="tanggal-awal" name="tanggal-awal"
                                 class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm 
                                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
-                                text-sm text-gray-900 transition-all duration-300 ease-in-out">
+                                text-sm text-gray-900 transition-all duration-300 ease-in-out"
+                                value="{{ $tanggal_awal }}">
                         </div>
                     </div>
 
@@ -35,7 +36,8 @@
                             <input type="date" id="tanggal-akhir" name="tanggal-akhir"
                                 class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg shadow-sm 
                                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
-                                text-sm text-gray-900 transition-all duration-300 ease-in-out">
+                                text-sm text-gray-900 transition-all duration-300 ease-in-out"
+                                value="{{ $tanggal_akhir }}">
                         </div>
                     </div>
                 </div>
@@ -50,10 +52,15 @@
                                 class="block w-full pl-3 pr-10 py-2 border border-gray-300 rounded-lg shadow-sm 
                                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                                 text-sm text-gray-900 appearance-none transition-all duration-300 ease-in-out">
-                                <option value="semua">Semua</option>
+                                <option value="semua" {{ request('krs') == 'semua' ? 'selected' : '' }}>Semua
+                                </option>
+                                <option value="sudah" {{ request('krs') == 'sudah' ? 'selected' : '' }}>Sudah
+                                </option>
+                                <option value="belum" {{ request('krs') == 'belum' ? 'selected' : '' }}>Belum
+                                </option>
                             </select>
                             <div
-                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                class="pointer-events-none absolute inset-y-0 right-1 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                                 </svg>
@@ -70,16 +77,31 @@
                                 class="block w-full pl-3 pr-10 py-2 border border-gray-300 rounded-lg shadow-sm 
                                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                                 text-sm text-gray-900 appearance-none transition-all duration-300 ease-in-out">
-                                <option value="semua">Semua Program Studi</option>
-                                <option value="sistem_informasi">Sistem Informasi</option>
-                                <option value="sistem_informasi_manajemen">Manajemen</option>
-                                <option value="sistem_informasi_akuntansi">Akuntansi</option>
-                                <option value="teknik_komputer">Teknik Komputer</option>
-                                <option value="desain_komunikasi_visual">Desain Komunikasi Visual</option>
-                                <option value="desain_produk">Desain Produk</option>
+                                <option value="semua" {{ request('prodi') == 'semua' ? 'selected' : '' }}>Semua Program
+                                    Studi
+                                </option>
+                                <option value="sistem_informasi"
+                                    {{ request('prodi') == 'sistem_informasi' ? 'selected' : '' }}>
+                                    Sistem Informasi
+                                </option>
+                                <option value="manajemen" {{ request('prodi') == 'manajemen' ? 'selected' : '' }}>Manajemen
+                                </option>
+                                <option value="akuntansi" {{ request('prodi') == 'akuntansi' ? 'selected' : '' }}>Akuntansi
+                                </option>
+                                <option value="teknik_komputer"
+                                    {{ request('prodi') == 'teknik_komputer' ? 'selected' : '' }}>
+                                    Teknik Komputer
+                                </option>
+                                <option value="desain_komunikasi_visual"
+                                    {{ request('prodi') == 'desain_komunikasi_visual' ? 'selected' : '' }}>Desain
+                                    Komunikasi Visual
+                                </option>
+                                <option value="desain_produk" {{ request('prodi') == 'desain_produk' ? 'selected' : '' }}>
+                                    Desain Produk
+                                </option>
                             </select>
                             <div
-                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                class="pointer-events-none absolute inset-y-0 right-1 flex items-center px-2 text-gray-700">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                                 </svg>
@@ -93,11 +115,14 @@
                         class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold py-3 px-4 
                         rounded-lg shadow-md hover:from-blue-600 hover:to-indigo-700 
                         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 
-                        transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer">
+                        transition-all duration-300 ease-in-out transform cursor-pointer">
                         Tampilkan Laporan
                     </button>
                 </div>
             </form>
+            @if (session('error'))
+                <x-alert type="error" title="{{ session('error.title') }}" message="{{ session('error.message') }}" />
+            @endif
         </div>
     </div>
 @endsection
