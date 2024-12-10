@@ -19,21 +19,23 @@
 window.addEventListener('resize', () => {
     isOpen = window.innerWidth >= 768;
 })">
-    <!-- Sidebar -->
-    <div id="sidebar" x-show="isOpen" :class="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
-        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
-        x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
-        x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
-        class="w-72 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
-        <!-- Open Close Button -->
-        <button @click="isOpen = !isOpen"
-            class="mt-[0.73rem] ml-3 flex justify-center items-center rounded-full w-10 h-10 text-zinc-500 hover:text-zinc-600 hover:bg-zinc-100 cursor-pointer">
-            {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
-            <i class="fa-solid fa-bars"></i>
-        </button>
+    <!-- Desktop Sidebar -->
+    <div class="hidden md:block">
+        <div id="sidebar" x-show="isOpen" :class="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
+            x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
+            x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
+            class="w-80 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
+            <!-- Open Close Button -->
+            <button @click="isOpen = !isOpen"
+                class="mt-[0.75rem] ml-3 flex justify-center items-center rounded-full w-10 h-10 text-zinc-500 hover:text-zinc-600 hover:bg-zinc-100 cursor-pointer">
+                {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
+                <img src="https://www.avoskinbeauty.com/assets/images/menu-bar.svg" alt="menu" width="20"
+                    height="20">
+            </button>
 
-        <!-- Search Bar -->
-        {{-- <div class="mt-2 px-4">
+            <!-- Search Bar -->
+            {{-- <div class="mt-2 px-4">
             <div class="relative">
                 <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-2 top-2.5 h-4 w-4 text-gray-400"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -45,107 +47,232 @@ window.addEventListener('resize', () => {
             </div>
         </div> --}}
 
-        <!-- Main Navigation -->
-        <nav class="mt-1 md:mt-5 px-3">
-            {{-- Menu khusus Mahasiswa --}}
-            <template x-if="role === 'mahasiswa'">
-                <div>
-                    <x-nav-link href="/" :active="request()->is('/')" iconClass="fa-regular fa-house fa-lg">
-                        Home
-                    </x-nav-link>
+            <!-- Main Navigation -->
+            <nav class="mt-1 md:mt-5 px-3">
+                {{-- Menu khusus Mahasiswa --}}
+                <template x-if="role === 'mahasiswa'">
+                    <div>
+                        <x-nav-link href="/" :active="request()->is('/')" iconClass="fa-regular fa-house fa-lg">
+                            Home
+                        </x-nav-link>
 
-                    <x-nav-link href="/pencarianpembimbing" :active="request()->is('pencarianpembimbing')"
-                        iconClass="fa-regular fa-users-medical fa-lg">
-                        Pencarian Pembimbing
-                    </x-nav-link>
+                        <x-nav-link href="/pencarianpembimbing" :active="request()->is('pencarianpembimbing')"
+                            iconClass="fa-regular fa-users-medical fa-lg">
+                            Pencarian Pembimbing
+                        </x-nav-link>
 
-                    <x-nav-link href="/taperangkatan" :active="request()->is('taperangkatan')" iconClass="fa-regular fa-books fa-lg">
-                        Judul TA Perangkatan
-                    </x-nav-link>
+                        <x-nav-link href="/taperangkatan" :active="request()->is('taperangkatan')" iconClass="fa-regular fa-books fa-lg">
+                            Judul TA Perangkatan
+                        </x-nav-link>
 
-                    <x-nav-link href="/document" :active="request()->is('document')" iconClass="fa-regular fa-folders fa-lg">
-                        Dokumen-Dokumen
-                    </x-nav-link>
+                        <x-nav-link href="/document" :active="request()->is('document')" iconClass="fa-regular fa-folders fa-lg">
+                            Dokumen-Dokumen
+                        </x-nav-link>
 
-                    <x-nav-link href="/jadbimbingan" :active="request()->is('jadbimbingan')" iconClass="fa-regular fa-calendar-days fa-lg">
-                        Jadwal Bimbingan
-                    </x-nav-link>
+                        <x-nav-link href="/jadbimbingan" :active="request()->is('jadbimbingan')"
+                            iconClass="fa-regular fa-calendar-days fa-lg">
+                            Jadwal Bimbingan
+                        </x-nav-link>
 
-                    <x-nav-link href="/usulan" :active="request()->is('usulan')" iconClass="fa-regular fa-list-radio fa-lg">
-                        Usulan
-                    </x-nav-link>
-                </div>
-            </template>
+                        <x-nav-link href="/usulan" :active="request()->is('usulan')" iconClass="fa-regular fa-list-radio fa-lg">
+                            Usulan
+                        </x-nav-link>
+                    </div>
+                </template>
 
-            {{-- Menu khusus Dosen --}}
-            <template x-if="role === 'dosen'">
-                <div>
-                    <x-nav-link href="/dosen/dashboard" :active="request()->is('dosen/dashboard')"
-                        iconClass="fa-duotone fa-solid fa-grid-2 fa-lg">
-                        Dashboard
-                    </x-nav-link>
-                    <x-nav-link href="/dosen/berkas" :active="request()->is('dosen/berkas')"
-                        iconClass="fa-duotone fa-solid fa-folder-open fa-lg">
-                        Berkas
-                    </x-nav-link>
-                </div>
-            </template>
+                {{-- Menu khusus Dosen --}}
+                <template x-if="role === 'dosen'">
+                    <div>
+                        <x-nav-link href="/dosen/dashboard" :active="request()->is('dosen/dashboard')"
+                            iconClass="fa-duotone fa-solid fa-grid-2 fa-lg">
+                            Dashboard
+                        </x-nav-link>
+                        <x-nav-link href="/dosen/berkas" :active="request()->is('dosen/berkas')"
+                            iconClass="fa-duotone fa-solid fa-folder-open fa-lg">
+                            Berkas
+                        </x-nav-link>
+                    </div>
+                </template>
 
-            {{-- Menu khusus PPTA --}}
+                {{-- Menu khusus PPTA --}}
+                <template x-if="role === 'ppta'">
+                    <div>
+                        <x-nav-link href="/ppta/proposal_ta" :active="request()->is('ppta/proposal_ta')" iconClass="fa-solid fa-book fa-lg">
+                            Proposal TA
+                        </x-nav-link>
+                        <x-nav-link href="/ppta/sidang_ta" :active="request()->is('ppta/sidang_ta')" iconClass="fa-solid fa-gavel fa-lg">
+                            Sidang TA
+                        </x-nav-link>
+                        <x-nav-link href="/ppta/maintenance" :active="request()->is('ppta/maintenance')"
+                            iconClass="fa-solid fa-screwdriver-wrench fa-lg">
+                            Maintenance Data Penguji
+                        </x-nav-link>
+                    </div>
+                </template>
+            </nav>
+
+            <!-- PPTA advance menu section -->
             <template x-if="role === 'ppta'">
-                <div>
-                    <x-nav-link href="/ppta/proposal_ta" :active="request()->is('ppta/proposal_ta')" iconClass="fa-solid fa-book fa-lg">
-                        Proposal TA
-                    </x-nav-link>
-                    <x-nav-link href="/ppta/sidang_ta" :active="request()->is('ppta/sidang_ta')" iconClass="fa-solid fa-gavel fa-lg">
-                        Sidang TA
-                    </x-nav-link>
-                    <x-nav-link href="/ppta/maintenance" :active="request()->is('ppta/maintenance')"
-                        iconClass="fa-solid fa-screwdriver-wrench fa-lg">
-                        Maintenance Data Penguji
-                    </x-nav-link>
+                <div class="mt-8">
+                    <div class="px-5 text-xs font-semibold text-gray-500">Laporan</div>
+                    <nav class="mt-2 px-3">
+                        <x-sub-nav-link href="/ppta/laporan_fk" :active="request()->is('ppta/laporan_fk')"
+                            tabName="Form Konfirmasi Proposal"></x-sub-nav-link>
+                        <x-sub-nav-link href="/ppta/laporan_proposal" :active="request()->is('ppta/laporan_proposal')"
+                            tabName="Laporan Proposal TA"></x-sub-nav-link>
+                        <x-sub-nav-link href="/ppta/laporan_ta" :active="request()->is('ppta/laporan_ta')"
+                            tabName="Laporan Sidang TA"></x-sub-nav-link>
+                    </nav>
                 </div>
             </template>
-        </nav>
 
-        <!-- PPTA advance menu section -->
-        <template x-if="role === 'ppta'">
-            <div class="mt-8">
-                <div class="px-5 text-xs font-semibold text-gray-500">Laporan</div>
-                <nav class="mt-2 px-3">
-                    <x-sub-nav-link href="/ppta/laporan_fk" :active="request()->is('ppta/laporan_fk')"
-                        tabName="Form Konfirmasi Proposal"></x-sub-nav-link>
-                    <x-sub-nav-link href="/ppta/laporan_proposal" :active="request()->is('ppta/laporan_proposal')"
-                        tabName="Laporan Proposal TA"></x-sub-nav-link>
-                    <x-sub-nav-link href="/ppta/laporan_ta" :active="request()->is('ppta/laporan_ta')"
-                        tabName="Laporan Sidang TA"></x-sub-nav-link>
-                </nav>
-            </div>
-        </template>
+            <!-- Logout -->
+            <template x-if="role !== 'mahasiswa'">
+                <div class="group mb-4 mt-auto px-3">
+                    <a href="/login"
+                        class="flex w-full gap-x-4 font-semibold items-center  rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-gray-50">
+                        <i
+                            class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>
+                        Logout
+                    </a>
+                </div>
+            </template>
+        </div>
+    </div>
 
-        <!-- Logout -->
-        <template x-if="role !== 'mahasiswa'">
-            <div class="group mb-4 mt-auto px-3">
-                <a href="/login"
-                    class="flex w-full gap-x-4 font-semibold items-center  rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-gray-50">
-                    <i
-                        class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>
-                    Logout
-                </a>
+    {{-- Mobile Sidebar --}}
+    <div x-show="isOpen" class="md:hidden z-50 backdrop-contrast-75 absolute h-screen w-screen bg bg-white/10">
+        <div id="sidebar" @click.outside = "isOpen = false" x-show="isOpen"
+            :class="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
+            x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
+            x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
+            class="w-[55vh] max-w-96 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
+            <!-- Open Close Button -->
+            <div class="flex justify-end mr-3"><button @click="isOpen = !isOpen"
+                    class="mt-[0.73rem] flex justify-center items-center rounded-full w-10 h-10 text-zinc-500 hover:text-zinc-600 hover:bg-zinc-100 cursor-pointer">
+                    {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
+                    <i class="fa-regular fa-xmark fa-xl"></i>
+                </button></div>
+
+
+            <!-- Search Bar -->
+            {{-- <div class="mt-2 px-4">
+            <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-2 top-2.5 h-4 w-4 text-gray-400"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" placeholder="Search..."
+                    class="w-full rounded-lg border border-gray-200 bg-gray-50 py-2 pl-8 pr-4 text-sm" />
             </div>
-        </template>
+        </div> --}}
+
+            <!-- Main Navigation -->
+            <nav class="mt-1 px-3">
+                {{-- Menu khusus Mahasiswa --}}
+                <template x-if="role === 'mahasiswa'">
+                    <div>
+                        <x-nav-link href="/" :active="request()->is('/')" iconClass="fa-regular fa-house fa-lg">
+                            Home
+                        </x-nav-link>
+
+                        <x-nav-link href="/pencarianpembimbing" :active="request()->is('pencarianpembimbing')"
+                            iconClass="fa-regular fa-users-medical fa-lg">
+                            Pencarian Pembimbing
+                        </x-nav-link>
+
+                        <x-nav-link href="/taperangkatan" :active="request()->is('taperangkatan')" iconClass="fa-regular fa-books fa-lg">
+                            Judul TA Perangkatan
+                        </x-nav-link>
+
+                        <x-nav-link href="/document" :active="request()->is('document')" iconClass="fa-regular fa-folders fa-lg">
+                            Dokumen-Dokumen
+                        </x-nav-link>
+
+                        <x-nav-link href="/jadbimbingan" :active="request()->is('jadbimbingan')"
+                            iconClass="fa-regular fa-calendar-days fa-lg">
+                            Jadwal Bimbingan
+                        </x-nav-link>
+
+                        <x-nav-link href="/usulan" :active="request()->is('usulan')" iconClass="fa-regular fa-list-radio fa-lg">
+                            Usulan
+                        </x-nav-link>
+                    </div>
+                </template>
+
+                {{-- Menu khusus Dosen --}}
+                <template x-if="role === 'dosen'">
+                    <div>
+                        <x-nav-link href="/dosen/dashboard" :active="request()->is('dosen/dashboard')"
+                            iconClass="fa-duotone fa-solid fa-grid-2 fa-lg">
+                            Dashboard
+                        </x-nav-link>
+                        <x-nav-link href="/dosen/berkas" :active="request()->is('dosen/berkas')"
+                            iconClass="fa-duotone fa-solid fa-folder-open fa-lg">
+                            Berkas
+                        </x-nav-link>
+                    </div>
+                </template>
+
+                {{-- Menu khusus PPTA --}}
+                <template x-if="role === 'ppta'">
+                    <div>
+                        <x-nav-link href="/ppta/proposal_ta" :active="request()->is('ppta/proposal_ta')" iconClass="fa-solid fa-book fa-lg">
+                            Proposal TA
+                        </x-nav-link>
+                        <x-nav-link href="/ppta/sidang_ta" :active="request()->is('ppta/sidang_ta')" iconClass="fa-solid fa-gavel fa-lg">
+                            Sidang TA
+                        </x-nav-link>
+                        <x-nav-link href="/ppta/maintenance" :active="request()->is('ppta/maintenance')"
+                            iconClass="fa-solid fa-screwdriver-wrench fa-lg">
+                            Maintenance Data Penguji
+                        </x-nav-link>
+                    </div>
+                </template>
+            </nav>
+
+            <!-- PPTA advance menu section -->
+            <template x-if="role === 'ppta'">
+                <div class="mt-8">
+                    <div class="px-5 text-xs font-semibold text-gray-500">Laporan</div>
+                    <nav class="mt-2 px-3">
+                        <x-sub-nav-link href="/ppta/laporan_fk" :active="request()->is('ppta/laporan_fk')"
+                            tabName="Form Konfirmasi Proposal"></x-sub-nav-link>
+                        <x-sub-nav-link href="/ppta/laporan_proposal" :active="request()->is('ppta/laporan_proposal')"
+                            tabName="Laporan Proposal TA"></x-sub-nav-link>
+                        <x-sub-nav-link href="/ppta/laporan_ta" :active="request()->is('ppta/laporan_ta')"
+                            tabName="Laporan Sidang TA"></x-sub-nav-link>
+                    </nav>
+                </div>
+            </template>
+
+            <!-- Logout -->
+            <template x-if="role !== 'mahasiswa'">
+                <div class="group mb-4 mt-auto px-3">
+                    <a href="/login"
+                        class="flex w-full gap-x-4 font-semibold items-center  rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-gray-50">
+                        <i
+                            class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>
+                        Logout
+                    </a>
+                </div>
+            </template>
+        </div>
     </div>
 
     <!-- Main Content Area -->
-    <div :class="{ 'md:pl-72': isOpen }" class="flex flex-1 flex-col h-full w-full">
+    <div :class="{ 'md:pl-80': isOpen }" class="flex flex-1 flex-col h-full w-full">
         <!-- Top Navigation -->
         <div :class="getTopNavClass()"
             class="fixed top-0 left-0 right-0 z-30 flex justify-between h-16 items-center px-3 border-gray-200">
 
             <!-- Button Toggle Sidebar -->
-            <button :class="{ isOpen ? 'hidden' : '' }" @click="isOpen = !isOpen"
-                class="flex justify-center items-center rounded-full w-10 h-10 text-zinc-500 hover:text-zinc-600 hover:bg-zinc-100 cursor-pointer">
-                <i class="fa-solid fa-bars"></i>
+            <button x-show="!isOpen" @click="isOpen = !isOpen"
+                class="flex justify-center items-center rounded-full w-10 h-10 bg-white text-zinc-500 hover:text-zinc-600 hover:bg-zinc-100 cursor-pointer">
+                <img src="https://www.avoskinbeauty.com/assets/images/menu-bar.svg" alt="menu" width="20"
+                    height="20">
             </button>
 
             <!-- Right Section -->
