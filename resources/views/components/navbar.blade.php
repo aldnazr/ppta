@@ -28,7 +28,7 @@ window.addEventListener('resize', () => {
             class="w-80 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
             <!-- Open Close Button -->
             <button @click="isOpen = !isOpen"
-                class="mt-[0.75rem] ml-3 flex justify-center items-center rounded-full w-10 h-10 text-zinc-500 hover:text-zinc-600 hover:bg-zinc-100 cursor-pointer">
+                class="mt-[0.73rem] ml-3 flex justify-center items-center rounded-full w-10 h-10 text-zinc-500 hover:text-zinc-600 hover:bg-zinc-100 cursor-pointer">
                 {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
                 <img src="https://www.avoskinbeauty.com/assets/images/menu-bar.svg" alt="menu" width="20"
                     height="20">
