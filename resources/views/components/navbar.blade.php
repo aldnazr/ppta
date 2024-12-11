@@ -264,7 +264,6 @@ window.addEventListener('resize', () => {
         </div>
     </div>
 
-
     <!-- Main Content Area -->
     <div :class="{ 'md:pl-80': isOpen }" class="flex flex-1 flex-col h-full w-full">
         <!-- Top Navigation -->
