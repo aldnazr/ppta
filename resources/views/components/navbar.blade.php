@@ -15,9 +15,9 @@
         }
         return 'border-gray-200 bg-white';
     }
-}" x-init="isOpen = window.innerWidth >= 768;
+}" x-init="isOpen = window.innerWidth >= 1024;
 window.addEventListener('resize', () => {
-    isOpen = window.innerWidth >= 768;
+    isOpen = window.innerWidth >= 1024;
 })">
     <!-- Desktop Sidebar -->
     <div class="hidden md:block">
