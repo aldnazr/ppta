@@ -5,15 +5,14 @@
         <x-header>Home</x-header>
         <div class="p-4 lg:p-6">
             <div class="w-full lg:w-auto mb-4 flex flex-col lg:justify-end lg:flex-row space-y-3 lg:space-y-0 lg:space-x-2">
-                <form id="searchForm" method="GET" action="{{ url()->current() }}"
-                    class="flex items-center space-x-1 lg:space-x-2">
+                <form id="searchForm" method="GET" action="{{ url()->current() }}" class="flex items-center space-x-1.5">
                     <div class="flex-grow lg:flex-grow-0 lg:w-64">
                         <input type="text" name="search" value="{{ request('search') }}"
                             placeholder="Cari nama atau judul..."
-                            class="w-full bg-gray-200 text-sm rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            class="w-full h-10 lg:h-auto bg-gray-200 text-sm rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
                     <button type="submit"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer">
+                        class="bg-blue-500 w-10 lg:w-auto h-10 lg:h-auto hover:bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer">
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
