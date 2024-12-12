@@ -30,8 +30,12 @@ window.addEventListener('resize', () => {
             <button @click="isOpen = !isOpen"
                 class="mt-[0.73rem] ml-3 flex justify-center items-center rounded-full w-10 h-10 hover:bg-zinc-100 cursor-pointer">
                 {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
-                <img src="https://www.avoskinbeauty.com/assets/images/menu-bar.svg" alt="menu" width="20"
-                    height="20">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                    fill="#52525b">
+                    <path
+                        d="M4 6a1 1 0 0 0 0 2h16a1 1 0 1 0 0-2H4zM3 12a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zM3 17a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1z">
+                    </path>
+                </svg>
             </button>
 
             <!-- Search Bar -->
@@ -149,11 +153,11 @@ window.addEventListener('resize', () => {
                 x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
                 class="w-[55vh] max-w-96 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
-                <!-- Open Close Button -->
+                <!-- Close Button -->
                 <div class="flex justify-end mr-3"><button @click="isOpen = !isOpen"
-                        class="mt-[0.73rem] flex justify-center items-center rounded-full w-10 h-10 text-zinc-500 hover:text-zinc-600 hover:bg-zinc-100 cursor-pointer">
+                        class="mt-[0.73rem] flex justify-center items-center px-2 py-1.5 rounded-lg border border-zinc-300 text-zinc-600 hover:bg-zinc-100 cursor-pointer">
                         {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
-                        <i class="fa-regular fa-xmark fa-xl"></i>
+                        <i class="fa-regular fa-xmark"></i>
                     </button></div>
 
 
@@ -273,8 +277,12 @@ window.addEventListener('resize', () => {
             <!-- Button Toggle Sidebar -->
             <button @click="isOpen = !isOpen"
                 class="flex justify-center items-center rounded-full w-10 h-10 bg-white hover:bg-zinc-100 cursor-pointer">
-                <img src="https://www.avoskinbeauty.com/assets/images/menu-bar.svg" alt="menu" width="20"
-                    height="20">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
+                    fill="#52525b">
+                    <path
+                        d="M4 6a1 1 0 0 0 0 2h16a1 1 0 1 0 0-2H4zM3 12a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zM3 17a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1z">
+                    </path>
+                </svg>
             </button>
 
             <!-- Right Section -->
