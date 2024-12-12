@@ -28,7 +28,7 @@
                     <!-- Filter Form -->
                     <form method="GET" action="{{ url()->current() }}" class="relative" x-data="{ isMenuOpen: false }">
                         <button type="button" @click="isMenuOpen = !isMenuOpen"
-                            class="bg-blue-100 text-blue-600 px-3 py-1.5 rounded flex items-center hover:text-blue-700 hover:bg-blue-200 cursor-pointer">
+                            class="bg-blue-100 text-blue-600 px-3 py-1.5 rounded-md flex items-center hover:text-blue-700 hover:bg-blue-200 cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
                                 fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -40,7 +40,7 @@
 
                         <!-- Advanced Filter Dropdown -->
                         <div id="advancedFilterDropdown" x-show="isMenuOpen" @click.outside = "isMenuOpen = false"
-                            class="absolute z-10 mt-1 bg-zinc-50 lg:-ml-[7rem] shadow-md rounded-md p-4 border border-gray-200">
+                            class="absolute z-10 mt-1 bg-zinc-50 lg:-ml-[7rem] shadow-md rounded-lg p-4 border border-gray-200">
                             <h3 class="mb-2 font-semibold text-gray-900">Filter</h3>
                             <div class="space-y-2 text-sm">
                                 <select name="tingkat"

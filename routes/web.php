@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dosen\BerkasController;
 use App\Http\Controllers\PPTA\SidangTaController;
@@ -15,24 +14,6 @@ use App\Http\Controllers\PPTA\LaporanProposalController;
 use App\Http\Controllers\PPTA\LaporanTaController;
 use App\Http\Controllers\PPTA\MaintenanceController;
 use App\Http\Controllers\PPTA\ProposalTaController;
-
-Route::get('/blog', function () {
-    return view('blog', [
-        'title' => 'Blog Page',
-        'posts' => Post::all()
-    ]);
-});
-
-
-Route::get('/mhshome', function () {
-    return view('mhshome', ['title' => 'Contact Page']);
-});
-
-Route::get('/post/{id}', function ($id) {
-    $post = Post::find($id);
-
-    return view('post', ['title' => 'Full Post', 'post' => $post]);
-});
 
 Route::get('/document', function () {
     return view('mahasiswa.document', ['title' => 'Contact Page']);
