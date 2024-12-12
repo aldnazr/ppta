@@ -1,7 +1,7 @@
 @props(['active' => false, 'iconClass' => ''])
 
 @php
-    $linkClass = $active ? 'text-indigo-600' : 'text-slate-700 hover:text-indigo-600 hover:bg-gray-50';
+    $linkClass = $active ? 'text-indigo-600' : 'text-slate-700 hover:text-indigo-600 hover:bg-zinc-100';
     $iconClass = trim(($active ? 'text-indigo-600' : 'text-gray-400 group-hover:text-indigo-600') . ' ' . $iconClass);
 @endphp
 

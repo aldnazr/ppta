@@ -25,10 +25,10 @@ window.addEventListener('resize', () => {
             x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
             x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
             x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
-            class="w-80 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
+            class="w-80 fixed flex px-4 flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
             <!-- Open Close Button -->
             <button @click="isOpen = !isOpen"
-                class="mt-[0.73rem] ml-3 flex justify-center items-center rounded-full w-10 h-10 hover:bg-zinc-100 cursor-pointer">
+                class="mt-[0.73rem] flex justify-center items-center rounded-full w-10 h-10 hover:bg-zinc-100 cursor-pointer">
                 {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                     fill="currentColor" class="text-gray-600">
@@ -38,7 +38,7 @@ window.addEventListener('resize', () => {
             </button>
 
             <!-- Main Navigation -->
-            <nav class="mt-5 px-3">
+            <nav class="mt-5">
                 {{-- Menu khusus Mahasiswa --}}
                 <template x-if="role === 'mahasiswa'">
                     <div>
@@ -104,8 +104,8 @@ window.addEventListener('resize', () => {
             <!-- PPTA advance menu section -->
             <template x-if="role === 'ppta'">
                 <div class="mt-8">
-                    <div class="px-5 text-xs font-semibold text-gray-500">Laporan</div>
-                    <nav class="mt-2 px-3">
+                    <div class="pl-2 text-xs font-semibold text-gray-500">Laporan</div>
+                    <nav class="mt-2">
                         <x-sub-nav-link href="/ppta/laporan_fk" :active="request()->is('ppta/laporan_fk')"
                             tabName="Form Konfirmasi Proposal"></x-sub-nav-link>
                         <x-sub-nav-link href="/ppta/laporan_proposal" :active="request()->is('ppta/laporan_proposal')"
@@ -118,9 +118,9 @@ window.addEventListener('resize', () => {
 
             <!-- Logout -->
             <template x-if="role !== 'mahasiswa'">
-                <div class="group mb-4 mt-auto px-3">
+                <div class="group mb-4 mt-auto">
                     <a href="/login"
-                        class="flex w-full gap-x-4 font-semibold items-center  rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-gray-50">
+                        class="flex w-full gap-x-4 font-semibold items-center rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-zinc-100">
                         <i
                             class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>
                         Logout
@@ -132,36 +132,23 @@ window.addEventListener('resize', () => {
 
     {{-- Mobile Sidebar --}}
     <div class="md:hidden ">
-        <div x-show="isOpen" class="z-50 backdrop-contrast-75 absolute h-screen w-screen bg bg-white/10">
+        <div x-show="isOpen" class="z-50 backdrop-contrast-75 absolute h-screen w-screen bg-white/10">
             <div id="sidebar" @click.outside = "isOpen = false" x-show="isOpen"
                 :class="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
                 x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
-                class="w-[55vh] max-w-96 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
+                class="w-[55vh] max-w-80 pt-2 pl-4 pr-6 fixed flex flex-col pt-2.5 inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
                 <!-- Close Button -->
-                <div class="flex justify-end mr-3"><button @click="isOpen = !isOpen"
-                        class="mt-[0.73rem] flex justify-center items-center px-2 py-1.5 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 cursor-pointer">
+                <div class="flex justify-end"><button @click="isOpen = !isOpen"
+                        class="mt-[0.73rem] flex justify-center pt-[0.1rem] items-center h-6 w-6 rounded-lg border border-gray-300 text-gray-500 hover:bg-gray-100 cursor-pointer">
                         {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
-                        <i class="fa-regular fa-xmark"></i>
-                    </button></div>
-
-
-                <!-- Search Bar -->
-                {{-- <div class="mt-2 px-4">
-            <div class="relative">
-                <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-2 top-2.5 h-4 w-4 text-gray-400"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <input type="text" placeholder="Search..."
-                    class="w-full rounded-lg border border-gray-200 bg-gray-50 py-2 pl-8 pr-4 text-sm" />
-            </div>
-        </div> --}}
+                        <i class="fa-regular fa-xmark fa-sm"></i>
+                    </button>
+                </div>
 
                 <!-- Main Navigation -->
-                <nav class="mt-1 px-3">
+                <nav class="mt-1">
                     {{-- Menu khusus Mahasiswa --}}
                     <template x-if="role === 'mahasiswa'">
                         <div>
@@ -228,7 +215,7 @@ window.addEventListener('resize', () => {
                 <template x-if="role === 'ppta'">
                     <div class="mt-8">
                         <div class="px-5 text-xs font-semibold text-gray-500">Laporan</div>
-                        <nav class="mt-2 px-3">
+                        <nav class="mt-2">
                             <x-sub-nav-link href="/ppta/laporan_fk" :active="request()->is('ppta/laporan_fk')"
                                 tabName="Form Konfirmasi Proposal"></x-sub-nav-link>
                             <x-sub-nav-link href="/ppta/laporan_proposal" :active="request()->is('ppta/laporan_proposal')"
@@ -241,7 +228,7 @@ window.addEventListener('resize', () => {
 
                 <!-- Logout -->
                 <template x-if="role !== 'mahasiswa'">
-                    <div class="group mb-4 mt-auto px-3">
+                    <div class="group mb-4 mt-auto">
                         <a href="/login"
                             class="flex w-full gap-x-4 font-semibold items-center  rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-gray-50">
                             <i
@@ -258,7 +245,7 @@ window.addEventListener('resize', () => {
     <div :class="{ 'md:pl-80': isOpen }" class="flex flex-1 flex-col h-full w-full">
         <!-- Top Navigation -->
         <div :class="getTopNavClass()"
-            class="fixed justify-between top-0 left-0 right-0 z-30 flex h-16 items-center px-3  border-b">
+            class="fixed justify-between top-0 left-0 right-0 z-30 flex h-16 items-center px-4 border-b">
 
             <!-- Button Toggle Sidebar -->
             <button @click="isOpen = !isOpen"
