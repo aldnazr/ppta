@@ -5,7 +5,7 @@
         <x-header>Antrian Proposal Tugas Akhir</x-header>
 
         <div class="pb-6 px-6 pt-2">
-            <div class="flex flex-col lg:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
+            <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
                 <form action="{{ url()->current() }}" id="perPageForm">
                     <div class="flex items-center">
                         <label for="per-page" class="mr-2">Tampilkan:</label>
@@ -19,17 +19,19 @@
                         <input type="hidden" name="search" value="{{ request('search') }}">
                     </div>
                 </form>
-                <form id="searchForm" method="GET" action="{{ url()->current() }}"
-                    class="w-auto flex items-center space-x-1.5">
-                    <div class="flex-grow lg:flex-grow-0 lg:w-64">
+                <form id="searchForm" method="GET" action="{{ url()->current() }}" class="w-auto flex items-center">
+                    <!-- Search Bar -->
+                    <div class="relative w-full md:w-72">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="absolute h-full left-2 flex items-center h-4 w-4 text-gray-400" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
                         <input type="text" name="search" value="{{ request('search') }}"
-                            placeholder="Cari nama atau judul..."
-                            class="w-full h-10 lg:h-auto bg-gray-200 text-sm rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            @keydown.enter="event.target.form.submit()" placeholder="Pencarian..."
+                            class="w-full rounded-lg border border-gray-400 outline-blue-500 bg-gray-50 py-2 pl-8 pr-4 text-sm" />
                     </div>
-                    <button type="submit"
-                        class="bg-blue-500 w-10 lg:w-auto h-10 lg:h-auto hover:bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer">
-                        <i class="fa-solid fa-search"></i>
-                    </button>
                 </form>
             </div>
 

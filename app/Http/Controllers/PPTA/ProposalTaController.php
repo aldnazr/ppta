@@ -385,8 +385,11 @@ class ProposalTaController extends Controller
             $searchTerm = strtolower($request->search);
             $proposals = $proposals->filter(function ($proposal) use ($searchTerm) {
                 return
+                    str_contains(strtolower($proposal['nim']), strtolower($searchTerm)) ||
                     str_contains(strtolower($proposal['nama']), strtolower($searchTerm)) ||
-                    str_contains(strtolower($proposal['judul']), strtolower($searchTerm));
+                    str_contains(strtolower($proposal['judul']), strtolower($searchTerm)) ||
+                    str_contains(strtolower($proposal['pembimbing1']), strtolower($searchTerm)) ||
+                    str_contains(strtolower($proposal['pembimbing2']), strtolower($searchTerm));
             });
         }
 

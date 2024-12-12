@@ -4,7 +4,7 @@
     <div class="bg-white overflow-hidden border-b border-gray-200 rounded-xl shadow-lg overflow-hidden">
         <x-header>Berkas</x-header>
         <div class="p-4 lg:p-6">
-            <div class="flex flex-col lg:flex-row justify-between mb-6 space-y-3 lg:space-y-0">
+            <div class="flex flex-col md:flex-row justify-between mb-6 space-y-3 md:space-y-0">
                 <!-- Per Page Selector -->
                 <form method="GET" action="{{ url()->current() }}" id="perPageForm"
                     class="w-full md:w-auto flex items-center justify-start gap-2">
@@ -22,23 +22,24 @@
                     <input type="hidden" name="filter" value="{{ request('filter') }}">
                 </form>
 
-                <div class="w-full lg:w-auto flex flex-col lg:flex-row lg:items-center space-y-3 lg:space-y-0 lg:space-x-2">
+                <div class="w-full md:w-auto flex flex-col md:flex-row md:items-center space-y-3 md:space-y-0 md:space-x-2">
                     <!-- Search Form -->
-                    <form id="searchForm" method="GET" action="{{ url()->current() }}"
-                        class="w-auto flex items-center space-x-1.5">
-                        <div class="flex-grow lg:flex-grow-0 lg:w-64">
-                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Pencarian..."
-                                class="w-full h-10 lg:h-auto bg-gray-200 text-sm rounded-md px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    <form id="searchForm" method="GET" action="{{ url()->current() }}" class="w-auto flex items-center">
+                        <div class="relative w-full md:w-72">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="absolute h-full left-2 flex items-center h-4 w-4 text-gray-400" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                            <input type="text" name="search" value="{{ request('search') }}"
+                                @keydown.enter="event.target.form.submit()" placeholder="Pencarian..."
+                                class="w-full rounded-lg border border-gray-400 outline-blue-500 bg-gray-50 py-2 pl-8 pr-4 text-sm" />
                         </div>
 
                         <!-- Keep existing per_page and filter values to maintain state -->
                         <input type="hidden" name="per_page" value="{{ request('per_page', 10) }}">
                         <input type="hidden" name="filter" value="{{ request('filter') }}">
-
-                        <button type="submit"
-                            class="bg-blue-500 w-10 lg:w-auto h-10 lg:h-auto hover:bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer">
-                            <i class="fa-solid fa-search"></i>
-                        </button>
                     </form>
 
                     <!-- Filter Form -->
