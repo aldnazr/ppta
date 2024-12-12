@@ -22,7 +22,7 @@
                     </span>
                 @else
                     <a href="{{ $paginator->previousPageUrl() }}"
-                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 group px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors">
+                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 group px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors duration-500 ease-in-out">
                         <i class="fa-regular fa-chevron-left"></i>
                     </a>
                 @endif
@@ -46,7 +46,7 @@
                                 </span>
                             @else
                                 <a href="{{ $url }}"
-                                    class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-center bg-zinc-100 hover:bg-indigo-100 text-gray-500 hover:text-blue-600 rounded-lg transition-colors">
+                                    class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-center bg-zinc-100 hover:bg-indigo-100 text-gray-500 hover:text-blue-600 rounded-lg transition-colors duration-500 ease-in-out">
                                     {{ $page }}
                                 </a>
                             @endif
@@ -57,7 +57,7 @@
                 {{-- Next Page Link --}}
                 @if ($paginator->hasMorePages())
                     <a href="{{ $paginator->nextPageUrl() }}"
-                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 bg-zinc-100 hover:bg-indigo-100 text-gray-500 hover:text-blue-600 rounded-lg transition-colors">
+                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 bg-zinc-100 hover:bg-indigo-100 text-gray-500 hover:text-blue-600 rounded-lg transition-colors duration-500 ease-in-out">
                         <i class="fa-regular fa-chevron-right"></i>
                     </a>
                 @else
