@@ -141,7 +141,7 @@ window.addEventListener('resize', () => {
                 class="w-[55vh] max-w-96 fixed flex flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
                 <!-- Close Button -->
                 <div class="flex justify-end mr-3"><button @click="isOpen = !isOpen"
-                        class="mt-[0.73rem] flex justify-center items-center px-2 py-1.5 rounded-lg border border-zinc-300 text-zinc-600 hover:bg-zinc-100 cursor-pointer">
+                        class="mt-[0.73rem] flex justify-center items-center px-2 py-1.5 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100 cursor-pointer">
                         {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
                         <i class="fa-regular fa-xmark"></i>
                     </button></div>
