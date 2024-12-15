@@ -28,7 +28,7 @@ window.addEventListener('resize', () => {
             class="w-80 fixed flex px-4 flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
             <!-- Open Close Button -->
             <button @click="isOpen = !isOpen"
-                class="mt-[0.73rem] flex justify-center items-center rounded-full w-10 h-10 hover:bg-zinc-100 cursor-pointer">
+                class="mt-[0.73rem] flex justify-center items-center rounded-full w-10 h-10 bg-white hover:bg-zinc-100 cursor-pointer">
                 {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                     fill="currentColor" class="text-gray-600">
