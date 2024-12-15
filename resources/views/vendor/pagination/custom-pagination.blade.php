@@ -13,7 +13,7 @@
         </div>
         <div>
             <nav aria-label="Pagination"
-                class="bg-white relative inline-flex rounded-xl border border-gray-200 shadow-sm space-x-1 px-2 py-1.5">
+                class="bg-white relative inline-flex rounded-xl border border-gray-200 shadow-sm space-x-1 p-1.5">
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
                     <span

@@ -35,8 +35,9 @@ Route::get('/login', function () {
 // Dosen Route
 Route::redirect('/dosen', '/dosen/dashboard');
 Route::get('/dosen/dashboard', [DashboardController::class, 'index']);
+Route::get('/dosen/dashboard/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('dashboard.penilaian');
 Route::get('/dosen/berkas', [BerkasController::class, 'index']);
-Route::get('/dosen/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('dosen.penilaian');
+Route::get('/dosen/berkas/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('berkas.penilaian');
 
 
 //PPTA Route
