@@ -139,13 +139,13 @@
                 </table>
             </div>
             <x-popup-window maxWidthLG="max-w-2xl">
-                <form method="POST" action="#" class="space-y-4">
+                <form method="POST" action="#" class="-mt-3 space-y-4">
                     @csrf
 
                     <div class="space-y-1">
                         <label for="nik" class="block text-sm font-medium text-gray-700">NIK</label>
                         <input disabled type="number" id="nik" name="nik" :value="nik"
-                            class="w-full h-10 px-1.5 bg-gray-200 rounded-md border border-gray-200 shadow-sm opacity-70">
+                            class="w-full h-10 px-1.5 bg-gray-200 rounded-md border border-gray-300 shadow-sm opacity-70">
                         </input>
                         @error('nik')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -155,7 +155,7 @@
                     <div class="space-y-1">
                         <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
                         <input disabled type="text" id="nama" name="nama" :value="nama"
-                            class="w-full h-10 px-1.5 bg-gray-200 rounded-md border border-gray-200 shadow-sm opacity-70">
+                            class="w-full h-10 px-1.5 bg-gray-200 rounded-md border border-gray-300 shadow-sm opacity-70">
                         </input>
                         @error('nama')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -167,8 +167,8 @@
                         <select id="tingkat" name="tingkat" :value="tingkat"
                             class="w-full h-10 px-1.5 text-slate-800 rounded-md border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
                             <option value="">Select Level</option>
-                            <option value="1">Level 1</option>
-                            <option value="2">Level 2</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
                         </select>
                         @error('tingkat')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
