@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden">
+    <div class="bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden" x-data="{ open: false, title() { return 'Data Penguji' }, nik: '', nama: '', tingkat: '', status: '' }">
         <x-header>
             Maintenance Data Penguji
         </x-header>
@@ -120,9 +120,17 @@
                                         {{ $employee['status'] }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <a href="#" class="text-blue-600 hover:text-blue-900">
+                                        <button
+                                            @click="
+                                                open = true;
+                                                nik = '{{ $employee['nik'] }}';
+                                                nama = '{{ $employee['name'] }}';
+                                                tingkat = '{{ $employee['tingkat'] }}';
+                                                status = '{{ $employee['status'] }}';
+                                            "
+                                            class="cursor-pointer bg-blue-500 px-2 py-0.5 rounded text-white hover:bg-blue-700">
                                             Edit
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -130,6 +138,62 @@
                     </tbody>
                 </table>
             </div>
+            <x-popup-window maxWidthLG="max-w-2xl">
+                <form method="POST" action="#" class="space-y-4">
+                    @csrf
+
+                    <div class="space-y-1">
+                        <label for="nik" class="block text-sm font-medium text-gray-700">NIK</label>
+                        <input disabled type="number" id="nik" name="nik" :value="nik"
+                            class="w-full h-10 px-1.5 bg-gray-200 rounded-md border border-gray-200 shadow-sm opacity-70">
+                        </input>
+                        @error('nik')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="space-y-1">
+                        <label for="nama" class="block text-sm font-medium text-gray-700">Nama</label>
+                        <input disabled type="text" id="nama" name="nama" :value="nama"
+                            class="w-full h-10 px-1.5 bg-gray-200 rounded-md border border-gray-200 shadow-sm opacity-70">
+                        </input>
+                        @error('nama')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="space-y-1">
+                        <label for="tingkat" class="block text-sm font-medium text-gray-700">Tingkat</label>
+                        <select id="tingkat" name="tingkat" :value="tingkat"
+                            class="w-full h-10 px-1.5 text-slate-800 rounded-md border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
+                            <option value="">Select Level</option>
+                            <option value="1">Level 1</option>
+                            <option value="2">Level 2</option>
+                        </select>
+                        @error('tingkat')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="space-y-1">
+                        <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
+                        <select id="status" name="status" x-model="status"
+                            class="w-full h-10 px-1.5 text-slate-800 border rounded-md border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
+                            <option value="">Select Status</option>
+                            <option value="Y">Aktif</option>
+                            <option value="N">Nonaktif</option>
+                        </select>
+                        @error('status')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <button type="submit"
+                        class="cursor-pointer w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                        Simpan
+                    </button>
+                </form>
+            </x-popup-window>
         </div>
     </div>
 @endsection

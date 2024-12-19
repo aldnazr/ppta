@@ -1,9 +1,11 @@
+@props(['maxWidthLG' => 'lg:max-w-4xl'])
+
 <div class="fixed inset-0 z-50 overflow-hidden flex items-center justify-center p-4 backdrop-blur-sm bg-black/40"
     x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
     x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100"
     x-transition:leave-end="opacity-0">
     <div @click.outside="open = false"
-        class="relative w-full lg:max-w-4xl mx-auto max-h-[80vh] overflow-hidden bg-white border border-gray-200 rounded-xl shadow-lg">
+        class="relative w-full {{ $maxWidthLG }} mx-auto max-h-[80vh] overflow-hidden bg-white border border-gray-200 rounded-xl shadow-lg">
 
         <!-- Sticky header section -->
         <div
