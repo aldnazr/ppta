@@ -373,7 +373,6 @@ class ProposalTaController extends Controller
             ]
         ]);
     }
-
     public function index(Request $request)
     {
         $proposals = $this->getDummyProposals();

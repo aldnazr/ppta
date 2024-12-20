@@ -58,7 +58,7 @@
             {{-- </div> --}}
             {{-- Pagination Links --}}
             <div>
-                {{ $paginated->links('vendor.pagination.custom-pagination') }}
+                {{ $paginated->links() }}
             </div>
         </div>
 

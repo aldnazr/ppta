@@ -60,7 +60,7 @@
             </div>
             {{-- Pagination Links --}}
             <div>
-                {{ $schedules->links('vendor.pagination.custom-pagination') }}
+                {{ $schedules->links() }}
             </div>
         </div>
 

@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="rounded-lg shadow-xl border border-gray-200  overflow-hidden">
         <x-header>Antrian Proposal Tugas Akhir</x-header>
-
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
                 <form action="{{ url()->current() }}" id="perPageForm">
@@ -34,7 +33,6 @@
                     </div>
                 </form>
             </div>
-
             <div class="overflow-x-auto bg-white rounded-lg">
                 <table class="w-full text-sm text-left">
                     <thead class="bg-gray-200 text-gray-700">
@@ -53,11 +51,10 @@
                             <th class="text-center px-6 py-4 font-medium">Hasil</th>
                         </tr>
                     </thead>
-                    <!-- Bagian tbody pada table di view -->
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @forelse($proposals as $index => $proposal)
+                    <tbody>
+                        @forelse ($proposals as $index => $proposal)
                             <tr>
-                                <td class="text-center border px-4 py-2">{{ $index + 1 }}</td>
+                                <td class="border text-center px-4 py-2">{{ $index + 1 }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['no_daftar'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['nim'] }}</td>
@@ -65,7 +62,7 @@
                                 <td class="border px-4 py-2">{{ $proposal['judul'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['pembimbing1'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['pembimbing2'] }}</td>
-                                <td class="text-center border px-4 py-2">
+                                <td class="border text-center px-4 py-2">
                                     <span
                                         class="px-2 py-1 rounded text-sm 
                                     {{ $proposal['status'] === 'Disetujui'
@@ -187,7 +184,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="10" class="border px-4 py-2 text-center">Tidak ada data proposal</td>
+                                <td colspan="12" class="border py-12 text-center">Tidak ada data proposal</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -196,7 +193,7 @@
 
             <!-- Pagination Links -->
             <div>
-                {{ $proposals->links('vendor.pagination.custom-pagination') }}
+                {{ $proposals->links() }}
             </div>
         </div>
 
