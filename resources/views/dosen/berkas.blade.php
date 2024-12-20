@@ -198,7 +198,7 @@
 
             {{-- Pagination Links --}}
             <div>
-                {{ $proposals->links('vendor.pagination.custom-pagination') }}
+                {{ $proposals->links() }}
             </div>
         </div>
 

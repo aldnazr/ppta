@@ -22,7 +22,7 @@
 
             {{-- Pagination Links --}}
             <div>
-                {{ $paginatedJudulTugasAkhir->links('vendor.pagination.custom-pagination') }}
+                {{ $paginatedJudulTugasAkhir->links() }}
             </div>
 
             <!-- Popup Window -->
