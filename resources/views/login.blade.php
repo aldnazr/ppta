@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
         @vite('resources/css/app.css')
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs/dist/cdn.min.js"></script>
     </head>
 
     <body class="bg-gradient-to-r from-blue-100 to-purple-100 min-h-screen flex items-center justify-center p-4">
@@ -22,13 +23,27 @@
                     </p>
                 </div>
 
-                <div class="space-y-5">
+                <!-- Display Error Messages -->
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <x-alert type="warning" title="Error" message="{{ $error }}" />
+                    @endforeach
+                @endif
+
+                <!-- Display Flash Messages -->
+                @if (session('error'))
+                    <x-alert type="error" title="Error" message="{{ session('error') }}" />
+                @endif
+
+                <form action="{{ route('login.post') }}" method="POST" class="space-y-5">
+                    @csrf
+
                     <!-- NIDN Field -->
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                        <label for="username" class="block text-sm font-medium text-gray-700 mb-1">
                             NIDN
                         </label>
-                        <input id="email" name="email" type="text" autocomplete="email" required
+                        <input id="username" name="username" type="text" autocomplete="username" required
                             class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder:text-slate-400 text-sm"
                             placeholder="Masukkan NIDN Anda">
                     </div>
@@ -55,11 +70,11 @@
                     </div>
 
                     <!-- Sign in Button -->
-                    <a href="/"
+                    <button type="submit"
                         class="w-full flex justify-center py-2.5 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-200">
                         Sign in
-                    </a>
-                </div>
+                    </button>
+                </form>
             </div>
         </div>
     </body>

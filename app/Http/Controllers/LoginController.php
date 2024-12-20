@@ -12,38 +12,40 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'username' => 'required|string',
+            'password' => 'required|string',
         ]);
 
-        // Data statis untuk autentikasi
-        $staticUser = [
-            'email' => 'admin',
-            'password' => 'admin',
+        $staticUsers = [
+            'ppta' => [
+                'username' => 'ppta',
+                'password' => 'ppta',
+                'redirect' => '/ppta',
+            ],
+            'dosen' => [
+                'username' => 'dosen',
+                'password' => 'dosen',
+                'redirect' => '/dosen',
+            ],
         ];
 
-        // Validasi kredensial
-        if (
-            $request->input('email') === $staticUser['email'] &&
-            $request->input('password') === $staticUser['password']
-        ) {
-            // Simpan informasi login ke sesi
-            session(['is_logged_in' => true]);
-            return redirect()->intended('/'); // Arahkan ke halaman utama
+        $username = $request->input('username');
+        $password = $request->input('password');
+
+        foreach ($staticUsers as $user) {
+            if ($username === $user['username'] && $password === $user['password']) {
+                session(['is_logged_in' => true]);
+                return redirect()->intended($user['redirect'])->with('success', 'Berhasil login!');
+            }
         }
 
-        // Jika kredensial salah
-        return back()->withErrors([
-            'email' => 'Email atau password salah.',
-        ])->onlyInput('email');
+        // Jika tidak cocok dengan kredensial di atas
+        return redirect()->back()->withErrors(['error' => 'Username atau password salah!']);
     }
 
     public function logout(Request $request)
     {
-        $request->session()->forget('is_logged_in'); // Hapus informasi login
-        $request->session()->invalidate(); // Hancurkan sesi
-        $request->session()->regenerateToken(); // Regenerate CSRF token
-
-        return redirect()->route('login'); // Arahkan ke halaman login
+        $request->session()->flush();
+        return redirect()->route('login')->with('success', 'Berhasil logout.');
     }
 }

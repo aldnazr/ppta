@@ -119,12 +119,15 @@ window.addEventListener('resize', () => {
             <!-- Logout -->
             <template x-if="role !== 'mahasiswa'">
                 <div class="group mb-4 mt-auto">
-                    <a href="/login"
-                        class="flex w-full gap-x-4 font-semibold items-center rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-zinc-100">
-                        <i
-                            class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>
-                        Logout
-                    </a>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit"
+                            class="flex w-full gap-x-4 font-semibold items-center rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-zinc-100">
+                            <i
+                                class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>
+                            Logout
+                        </button>
+                    </form>
                 </div>
             </template>
         </div>
@@ -197,7 +200,8 @@ window.addEventListener('resize', () => {
                     {{-- Menu khusus PPTA --}}
                     <template x-if="role === 'ppta'">
                         <div>
-                            <x-nav-link href="/ppta/proposal_ta" :active="request()->is('ppta/proposal_ta')" iconClass="fa-solid fa-book fa-lg">
+                            <x-nav-link href="/ppta/proposal_ta" :active="request()->is('ppta/proposal_ta')"
+                                iconClass="fa-solid fa-book fa-lg">
                                 Proposal TA
                             </x-nav-link>
                             <x-nav-link href="/ppta/sidang_ta" :active="request()->is('ppta/sidang_ta')" iconClass="fa-solid fa-gavel fa-lg">
@@ -229,7 +233,7 @@ window.addEventListener('resize', () => {
                 <!-- Logout -->
                 <template x-if="role !== 'mahasiswa'">
                     <div class="group mb-4 mt-auto">
-                        <a href="/login"
+                        <a href="route('logout')"
                             class="flex w-full gap-x-4 font-semibold items-center  rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-gray-50">
                             <i
                                 class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>

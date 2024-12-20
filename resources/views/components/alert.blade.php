@@ -44,9 +44,7 @@
     x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100"
     x-transition:leave-end="opacity-0 scale-90" x-init="setTimeout(() => show = false, 5000)"
     {{ $attributes->merge([
-        'class' => "fixed top-4 right-4 max-w-full w-96 max-w-[calc(100%-2rem)] z-50 flex items-start space-x-4 p-4 rounded-lg shadow-lg {$colors['bg']} 
-                            sm:w-80 md:w-96 
-                            transition-all duration-300 ease-in-out",
+        'class' => "fixed top-4 right-4 max-w-full min-w-96 max-w-[calc(100%-2rem)] z-50 flex items-start space-x-4 p-4 rounded-lg shadow-lg {$colors['bg']} transition-all duration-300 ease-in-out",
     ]) }}>
     {{-- Icon --}}
     <div class="shrink-0">
@@ -86,11 +84,11 @@
     {{-- Content --}}
     <div class="flex-1 min-w-0">
         @if ($title)
-            <p class="font-bold mb-1 truncate {{ $colors['title'] }}">{{ $title }}</p>
+            <p class="font-bold mb-1 {{ $colors['title'] }}">{{ $title }}</p>
         @endif
 
         @if ($message)
-            <p class="text-sm truncate {{ $colors['message'] }}">{{ $message }}</p>
+            <p class="text-sm {{ $colors['message'] }}">{{ $message }}</p>
         @endif
     </div>
 

@@ -85,7 +85,7 @@
                                     <a href="#" class="text-blue-500 underline">
                                         <i class="fa-solid fa-download fa-lg"></i></a>
                                 </td>
-                                <td class="px-4 py-2 space-y-2">
+                                <td class="border px-4 py-2 space-y-2">
                                     <select class="border border-gray-300 rounded-md px-2 py-1 text-sm">
                                         <option value="diterima">Diterima</option>
                                         <option value="ditolak">Ditolak</option>

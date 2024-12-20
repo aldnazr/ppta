@@ -16,7 +16,7 @@ class EnsureLoggedIn
     public function handle(Request $request, Closure $next): Response
     {
         if (!$request->session()->has('is_logged_in')) {
-            return redirect()->route('login'); // Arahkan ke login jika belum login
+            return redirect()->route('login')->with('error', 'Silakan login untuk mengakses halaman ini.');
         }
 
         return $next($request);
