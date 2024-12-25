@@ -39,8 +39,9 @@
                         </button>
 
                         <!-- Advanced Filter Dropdown -->
-                        <div id="advancedFilterDropdown" x-show="isMenuOpen" @click.outside = "isMenuOpen = false"
-                            class="absolute z-10 mt-1 bg-zinc-50 lg:-ml-[7rem] shadow-md rounded-lg p-4 border border-gray-200">
+                        <div id="advancedFilterDropdown" x-show="isMenuOpen" x-transition
+                            @click.outside = "isMenuOpen = false"
+                            class="absolute z-10 mt-2 bg-zinc-50 lg:-ml-[7rem] shadow-md rounded-lg p-4 border border-gray-200">
                             <h3 class="mb-2 font-semibold text-gray-900">Filter</h3>
                             <div class="space-y-2 text-sm">
                                 <select name="tingkat"

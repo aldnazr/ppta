@@ -56,8 +56,9 @@
                         </button>
 
                         <!-- Advanced Filter Dropdown -->
-                        <div id="advancedFilterDropdown" x-show="isMenuOpen" @click.outside = "isMenuOpen = false"
-                            class="absolute lg:right-0 z-10 mt-1 bg-zinc-50 shadow-md rounded-lg p-4 border border-gray-200">
+                        <div id="advancedFilterDropdown" x-transition x-show="isMenuOpen"
+                            @click.outside = "isMenuOpen = false"
+                            class="absolute lg:right-0 z-10 mt-2 bg-zinc-50 shadow-md rounded-lg p-4 border border-gray-200">
                             <h3 class="mb-2 font-semibold text-gray-900">Berkas</h3>
                             <div class="grid gap-4">
                                 <ul
