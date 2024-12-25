@@ -59,7 +59,7 @@
                     </div>
 
                     <!-- Remember Me & Forgot Password -->
-                    <div class="flex items-center justify-between">
+                    {{-- <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <input id="remember-me" name="remember-me" type="checkbox"
                                 class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
@@ -67,7 +67,7 @@
                                 Remember me
                             </label>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Sign in Button -->
                     <button type="submit"
