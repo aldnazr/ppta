@@ -15,7 +15,7 @@
                     </svg>
                     <input type="text" name="search" value="{{ request('search') }}"
                         @keydown.enter="event.target.form.submit()" placeholder="Pencarian..."
-                        class="w-full rounded-lg border border-gray-400 outline-blue-500 bg-gray-50 py-2 pl-8 pr-4 text-sm" />
+                        class="w-full rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-normal duration-300 bg-gray-50 py-2 pl-8 pr-4 text-sm" />
                 </div>
             </form>
 
