@@ -42,7 +42,6 @@
                             <th class="px-6 py-4 font-medium">Pengajuan</th>
                             <th class="px-6 py-4 font-medium">NIM</th>
                             <th class="px-6 py-4 font-medium">Nama</th>
-                            <th class="px-6 py-4 font-medium">Judul</th>
                             <th class="px-6 py-4 font-medium">Pembimbing 1</th>
                             <th class="px-6 py-4 font-medium">Pembimbing 2</th>
                             <th class="px-6 py-4 font-medium">Sidang Proposal</th>
@@ -53,13 +52,13 @@
                     </thead>
                     <tbody>
                         @forelse ($proposals as $index => $proposal)
+                            <td rowspan="2" class="border text-center px-4 py-2">{{ $index + 1 }}
+                            <td colspan="11" class="border px-4 py-4 font-medium">{{ $proposal['judul'] }}</td>
                             <tr>
-                                <td class="border text-center px-4 py-2">{{ $index + 1 }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['no_daftar'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['nim'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['nama'] }}</td>
-                                <td class="border px-4 py-2">{{ $proposal['judul'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['pembimbing1'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['pembimbing2'] }}</td>
                                 <td class="border text-center px-4 py-2">
@@ -182,9 +181,11 @@
                                     </div>
                                 </td>
                             </tr>
+                            </td>
+
                         @empty
                             <tr>
-                                <td colspan="12" class="border py-12 text-center">Tidak ada data proposal</td>
+                                <td colspan="14" class="border py-12 text-center">Tidak ada data proposal</td>
                             </tr>
                         @endforelse
                     </tbody>

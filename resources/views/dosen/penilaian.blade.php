@@ -189,7 +189,7 @@
                             <div class="mt-6">
                                 <button type="button"
                                     class="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
-                                    Simpan Berita Acara Pembimbing
+                                    Simpan Berita Acara
                                 </button>
                             </div>
 
@@ -240,7 +240,7 @@
                             <div class="mt-6">
                                 <button type="button"
                                     class="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
-                                    Simpan Nilai Pembimbing
+                                    Simpan Nilai
                                 </button>
                             </div>
                         </div>
@@ -408,7 +408,7 @@
                             <div class="mt-6">
                                 <button type="button"
                                     class="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
-                                    Simpan Nilai Pembimbing
+                                    Simpan Nilai
                                 </button>
                             </div>
                         </div>
@@ -469,136 +469,289 @@
                 <div x-show="activeTab === 'sidang'" class="rounded-lg pb-3" id="sidang" role="tabpanel"
                     aria-labelledby="settings-tab">
                     <!-- Pembimbing Section -->
-                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                        <!-- Top Bar -->
-                        <x-dosen.profile-bobot role="Pembahas" bobot="60" />
+                    <div class="grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-8">
+                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                            <!-- Top Bar -->
+                            <x-dosen.profile-bobot role="Pembahas 1" bobot="20" />
 
-                        <!-- Form Section -->
-                        <div class="space-y-4">
-                            <h2 class="text-black font-semibold">Berita Acara</h2>
-                            <div>
-                                <label for="penulisan_masalah"
-                                    class="block text-gray-900 text-sm font-medium mb-2.5">Penulisan
-                                    masalah</label>
-                                <textarea id="penulisan_masalah" name="penulisan_masalah"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                    placeholder="Masukkan penulisan masalah..."></textarea>
-                            </div>
+                            <!-- Form Section -->
+                            <div class="space-y-4">
+                                <h2 class="text-black font-semibold">Berita Acara</h2>
+                                <div>
+                                    <label for="pembahas1" class="block text-gray-900 text-sm font-medium mb-2.5">Pembahas
+                                        1</label>
+                                    <textarea id="pembahas1" name="pembahas1"
+                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"></textarea>
+                                </div>
 
-                            <div>
-                                <label for="penulisan_masalah"
-                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian pustaka</label>
-                                <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                    placeholder="Masukkan kajian pustaka..."></input>
-                            </div>
+                                <div>
+                                    <label for="tanggal_revisi"
+                                        class="block text-gray-900 text-sm font-medium mb-2.5">Tanggal Revisi
+                                    </label>
+                                    <input id="tanggal_revisi" type="text" name="tanggal_revisi"
+                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"></input>
+                                </div>
 
-                            <!-- Penilaian Section -->
-                            <div class="mt-8 space-y-4 mb-4">
-                                <h2 class="text-black font-semibold">Penilaian</h2>
-                                <div class="gap-4">
-                                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                        <!-- Top Bar -->
-                                        <x-dosen.profile-bobot :isRole="false" role="Presentasi" bobot="20" />
+                                <!-- Save Button -->
+                                <div class="mt-6">
+                                    <button type="button"
+                                        class="cursor-pointer w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                        Simpan Berita Acara
+                                    </button>
+                                </div>
 
-                                        <!-- Form Section -->
-                                        <div class="space-y-4">
-                                            <div>
-                                                <label for="penulisan_masalah"
-                                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                    pustaka</label>
-                                                <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                    placeholder="Masukkan kajian pustaka..."></input>
+                                <!-- Penilaian Section -->
+                                <div class="mt-8 space-y-4 mb-4">
+                                    <h2 class="text-black font-semibold">Penilaian</h2>
+                                    <div class="gap-4">
+                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                            <!-- Top Bar -->
+                                            <x-dosen.profile-bobot :isRole="false" role="Presentasi" bobot="20" />
+
+                                            <!-- Form Section -->
+                                            <div class="space-y-4">
+                                                <div>
+                                                    <label for="persiapan_penyajian"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Persiapan,
+                                                        sistematika pemakaian bahasa, dan pengaturan waktu penyajian (50%)
+                                                    </label>
+                                                    <input id="persiapan_penyajian" type="text"
+                                                        name="persiapan_penyajian"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="sikap_penampilan"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Sikap dan
+                                                        penampilan (50%)</label>
+                                                    <input id="sikap_penampilan" type="text" name="sikap_penampilan"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
                                             </div>
-                                            <div>
-                                                <label for="penulisan_masalah"
-                                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                    pustaka</label>
-                                                <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                    placeholder="Masukkan kajian pustaka..."></input>
+                                        </div>
+                                    </div>
+                                    <div class="gap-4">
+                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                            <!-- Top Bar -->
+                                            <x-dosen.profile-bobot :isRole="false" role="Buku" bobot="40" />
+
+                                            <!-- Form Section -->
+                                            <div class="space-y-4">
+                                                <div>
+                                                    <label for="sistematika_kelengkapan"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Sistematika
+                                                        dan kelengkapan naskah (25%)</label>
+                                                    <input id="sistematika_kelengkapan" type="text"
+                                                        name="sistematika_kelengkapan"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="kompleksitas_manfaat"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Kompleksitas
+                                                        dan manfaat (25%)</label>
+                                                    <input id="kompleksitas_manfaat" type="text"
+                                                        name="kompleksitas_manfaat"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="analisis_metodologi"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Analisis dan
+                                                        metodologi (25%)</label>
+                                                    <input id="analisis_metodologi" type="text"
+                                                        name="analisis_metodologi"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="kreativitas"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Kreativitas
+                                                        (15%)</label>
+                                                    <input id="kreativitas" type="text" name="kreativitas"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="format_tata_tulis"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Format dan
+                                                        tata tulis (10%)</label>
+                                                    <input id="format_tata_tulis" type="text" name="format_tata_tulis"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="gap-4">
+                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                            <!-- Top Bar -->
+                                            <x-dosen.profile-bobot :isRole="false" role="Tanya-jawab" bobot="40" />
+
+                                            <!-- Form Section -->
+                                            <div class="space-y-4">
+                                                <div>
+                                                    <label for="penguasaan_materi"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Penguasaan
+                                                        materi (60%)</label>
+                                                    <input id="penguasaan_materi" type="text" name="penguasaan_materi"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="ketepatan_objektivitas"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Ketepatan
+                                                        jawaban dan objektivitas dalam menanggapi permasalahan (40%)</label>
+                                                    <input id="ketepatan_objektivitas" type="text"
+                                                        name="ketepatan_objektivitas"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="gap-4">
-                                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                        <!-- Top Bar -->
-                                        <x-dosen.profile-bobot :isRole="false" role="Buku" bobot="40" />
+                            </div>
+                        </div>
+                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                            <!-- Top Bar -->
+                            <x-dosen.profile-bobot role="Pembahas 2" bobot="20" />
 
-                                        <!-- Form Section -->
-                                        <div class="space-y-4">
-                                            <div>
-                                                <label for="penulisan_masalah"
-                                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                    pustaka</label>
-                                                <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                    placeholder="Masukkan kajian pustaka..."></input>
-                                            </div>
+                            <!-- Form Section -->
+                            <div class="space-y-4">
+                                <h2 class="text-black font-semibold">Berita Acara</h2>
+                                <div>
+                                    <label for="pembahas2" class="block text-gray-900 text-sm font-medium mb-2.5">Pembahas
+                                        1</label>
+                                    <textarea id="pembahas2" name="pembahas2"
+                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"></textarea>
+                                </div>
 
-                                            <div>
-                                                <label for="penulisan_masalah"
-                                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                    pustaka</label>
-                                                <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                    placeholder="Masukkan kajian pustaka..."></input>
-                                            </div>
+                                <div>
+                                    <label for="tanggal_revisi"
+                                        class="block text-gray-900 text-sm font-medium mb-2.5">Tanggal Revisi
+                                    </label>
+                                    <input id="tanggal_revisi" type="text" name="tanggal_revisi"
+                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"></input>
+                                </div>
 
-                                            <div>
-                                                <label for="penulisan_masalah"
-                                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                    pustaka</label>
-                                                <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                    placeholder="Masukkan kajian pustaka..."></input>
-                                            </div>
+                                <!-- Save Button -->
+                                <div class="mt-6">
+                                    <button type="button"
+                                        class="cursor-pointer w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                        Simpan Berita Acara
+                                    </button>
+                                </div>
 
-                                            <div>
-                                                <label for="penulisan_masalah"
-                                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                    pustaka</label>
-                                                <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                    placeholder="Masukkan kajian pustaka..."></input>
-                                            </div>
+                                <!-- Penilaian Section -->
+                                <div class="mt-8 space-y-4 mb-4">
+                                    <h2 class="text-black font-semibold">Penilaian</h2>
+                                    <div class="gap-4">
+                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                            <!-- Top Bar -->
+                                            <x-dosen.profile-bobot :isRole="false" role="Presentasi" bobot="20" />
 
-                                            <div>
-                                                <label for="penulisan_masalah"
-                                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                    pustaka</label>
-                                                <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                    placeholder="Masukkan kajian pustaka..."></input>
+                                            <!-- Form Section -->
+                                            <div class="space-y-4">
+                                                <div>
+                                                    <label for="persiapan_penyajian"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Persiapan,
+                                                        sistematika pemakaian bahasa, dan pengaturan waktu penyajian (50%)
+                                                    </label>
+                                                    <input id="persiapan_penyajian" type="text"
+                                                        name="persiapan_penyajian"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="sikap_penampilan"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Sikap dan
+                                                        penampilan (50%)</label>
+                                                    <input id="sikap_penampilan" type="text" name="sikap_penampilan"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="gap-4">
-                                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                        <!-- Top Bar -->
-                                        <x-dosen.profile-bobot :isRole="false" role="Tanya-jawab" bobot="40" />
+                                    <div class="gap-4">
+                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                            <!-- Top Bar -->
+                                            <x-dosen.profile-bobot :isRole="false" role="Buku" bobot="40" />
 
-                                        <!-- Form Section -->
-                                        <div class="space-y-4">
-                                            <div>
-                                                <label for="penulisan_masalah"
-                                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                    pustaka</label>
-                                                <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                    placeholder="Masukkan kajian pustaka..."></input>
+                                            <!-- Form Section -->
+                                            <div class="space-y-4">
+                                                <div>
+                                                    <label for="sistematika_kelengkapan"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Sistematika
+                                                        dan kelengkapan naskah (25%)</label>
+                                                    <input id="sistematika_kelengkapan" type="text"
+                                                        name="sistematika_kelengkapan"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="kompleksitas_manfaat"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Kompleksitas
+                                                        dan manfaat (25%)</label>
+                                                    <input id="kompleksitas_manfaat" type="text"
+                                                        name="kompleksitas_manfaat"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="analisis_metodologi"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Analisis dan
+                                                        metodologi (25%)</label>
+                                                    <input id="analisis_metodologi" type="text"
+                                                        name="analisis_metodologi"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="kreativitas"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Kreativitas
+                                                        (15%)</label>
+                                                    <input id="kreativitas" type="text" name="kreativitas"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="format_tata_tulis"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Format dan
+                                                        tata tulis (10%)</label>
+                                                    <input id="format_tata_tulis" type="text" name="format_tata_tulis"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="gap-4">
+                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                            <!-- Top Bar -->
+                                            <x-dosen.profile-bobot :isRole="false" role="Tanya-jawab" bobot="40" />
 
-                                            <div>
-                                                <label for="penulisan_masalah"
-                                                    class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                                    pustaka</label>
-                                                <input id="penulisan_masalah" type="text" name="penulisan_masalah"
-                                                    class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
-                                                    placeholder="Masukkan kajian pustaka..."></input>
+                                            <!-- Form Section -->
+                                            <div class="space-y-4">
+                                                <div>
+                                                    <label for="penguasaan_materi"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Penguasaan
+                                                        materi (60%)</label>
+                                                    <input id="penguasaan_materi" type="text" name="penguasaan_materi"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
+                                                <div>
+                                                    <label for="ketepatan_objektivitas"
+                                                        class="block text-gray-900 text-sm font-medium mb-2.5">Ketepatan
+                                                        jawaban dan objektivitas dalam menanggapi permasalahan (40%)</label>
+                                                    <input id="ketepatan_objektivitas" type="text"
+                                                        name="ketepatan_objektivitas"
+                                                        class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
+                                                        placeholder="0">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
