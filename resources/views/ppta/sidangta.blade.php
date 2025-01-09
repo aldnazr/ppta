@@ -37,33 +37,33 @@
                 <table class="w-full text-sm text-left">
                     <thead class="bg-gray-200 text-gray-700">
                         <tr>
-                            <th class="text-center px-6 py-4 font-medium">No</th>
-                            <th class="px-6 py-4 font-medium">No Daftar</th>
-                            <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">Tanggal Pengajuan</th>
-                            <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">NIM</th>
-                            <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">Nama</th>
-                            <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">Judul</th>
-                            <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">Pembimbing 1</th>
-                            <th class="px-6 py-4 text-left text-sm font-medium text-gray-600">Pembimbing 2</th>
-                            <th class="px-6 py-4 text-center text-sm font-medium text-gray-600">Proposal/Laporan</th>
-                            <th class="px-6 py-4 text-center text-sm font-medium text-gray-600">Jurnal/Seminar</th>
-                            <th class="px-6 py-4 text-center text-sm font-medium text-gray-600">Bukti Bimbingan</th>
-                            <th class="px-6 py-4 text-center text-sm font-medium text-gray-600">Poster</th>
-                            <th class="px-6 py-4 text-center text-sm font-medium text-gray-600">Bukti Ori/JurKesalian</th>
-                            <th class="px-6 py-4 text-center text-sm font-medium text-gray-600 w-2/3">Hasil</th>
+                            <th class="text-center px-6 py-4 font-medium">NO</th>
+                            <th class="px-6 py-4 font-medium">NO DAFTAR</th>
+                            <th class="px-6 py-4 text-left font-medium">TANGGAL PENGAJUAN</th>
+                            <th class="px-6 py-4 text-left font-medium">NIM</th>
+                            <th class="px-6 py-4 text-left font-medium">NAMA</th>
+                            <th class="px-6 py-4 text-left font-medium">PEMBIMBING 1</th>
+                            <th class="px-6 py-4 text-left font-medium">PEMBIMBING 2</th>
+                            <th class="px-6 py-4 text-center font-medium">PROPOSAL/LAPORAN</th>
+                            <th class="px-6 py-4 text-center font-medium">JURNAL/SEMINAR</th>
+                            <th class="px-6 py-4 text-center font-medium">BUKTI BIMBINGAN</th>
+                            <th class="px-6 py-4 text-center font-medium">POSTER</th>
+                            <th class="px-6 py-4 text-center font-medium">BUKTI ORI/JURKEASLIAN</th>
+                            <th class="px-6 py-4 text-center font-medium w-2/3">HASIL</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($tugasAkhir as $index => $item)
+                            <td rowspan="2" class="border text-center px-4 py-2">{{ $index + 1 }}
+                            <td colspan="12" class="border px-4 py-4 text-base">
+                                {{ $item['judul'] }}</td>
                             <tr>
-                                <td class="border text-center px-4 py-2">{{ $index + 1 }}</td>
-                                <td class="border px-4 py-2 text-sm text-gray-700">{{ $item['no_daftar'] }}</td>
-                                <td class="border px-4 py-2 text-sm text-gray-700">{{ $item['tgl_pengajuan'] }}</td>
-                                <td class="border px-4 py-2 text-sm text-gray-700">{{ $item['nim'] }}</td>
-                                <td class="border px-4 py-2 text-sm text-gray-700">{{ $item['nama'] }}</td>
-                                <td class="border px-4 py-2 text-sm text-gray-700">{{ $item['judul'] }}</td>
-                                <td class="border px-4 py-2 text-sm text-gray-700">{{ $item['pembimbing1'] }}</td>
-                                <td class="border px-4 py-2 text-sm text-gray-700">{{ $item['pembimbing2'] }}</td>
+                                <td class="border px-4 py-2">{{ $item['no_daftar'] }}</td>
+                                <td class="border px-4 py-2">{{ $item['tgl_pengajuan'] }}</td>
+                                <td class="border px-4 py-2">{{ $item['nim'] }}</td>
+                                <td class="border px-4 py-2">{{ $item['nama'] }}</td>
+                                <td class="border px-4 py-2">{{ $item['pembimbing1'] }}</td>
+                                <td class="border px-4 py-2">{{ $item['pembimbing2'] }}</td>
                                 <td class="border px-4 py-2 text-center">
                                     <a href="#" class="text-blue-500 underline">
                                         <i class="fa-solid fa-download fa-lg"></i>
@@ -94,9 +94,10 @@
                                         rows="2" placeholder="Keterangan jika ditolak"></textarea>
                                 </td>
                             </tr>
+                            </td>
                         @empty
                             <tr>
-                                <td colspan="14" class="border py-12 text-center">Tidak ada data proposal</td>
+                                <td colspan="13" class="border py-12 text-center">Tidak ada data proposal</td>
                             </tr>
                         @endforelse
                     </tbody>

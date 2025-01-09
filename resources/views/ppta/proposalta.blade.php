@@ -37,23 +37,23 @@
                 <table class="w-full text-sm text-left">
                     <thead class="bg-gray-200 text-gray-700">
                         <tr>
-                            <th class="text-center px-6 py-4 font-medium">No</th>
-                            <th class="px-6 py-4 font-medium">No Daftar</th>
-                            <th class="px-6 py-4 font-medium">Pengajuan</th>
+                            <th class="text-center px-6 py-4 font-medium">NO</th>
+                            <th class="px-6 py-4 font-medium">NO DAFTAR</th>
+                            <th class="px-6 py-4 font-medium">PENGAJUAN</th>
                             <th class="px-6 py-4 font-medium">NIM</th>
-                            <th class="px-6 py-4 font-medium">Nama</th>
-                            <th class="px-6 py-4 font-medium">Pembimbing 1</th>
-                            <th class="px-6 py-4 font-medium">Pembimbing 2</th>
-                            <th class="px-6 py-4 font-medium">Sidang Proposal</th>
-                            <th class="px-6 py-4 font-medium">Revisi</th>
-                            <th class="px-6 py-4 font-medium">File</th>
-                            <th class="text-center px-6 py-4 font-medium">Hasil</th>
+                            <th class="px-6 py-4 font-medium">NAMA</th>
+                            <th class="px-6 py-4 font-medium">PEMBIMBING 1</th>
+                            <th class="px-6 py-4 font-medium">PEMBIMBING 2</th>
+                            <th class="px-6 py-4 font-medium">SIDANG PROPOSAL</th>
+                            <th class="px-6 py-4 font-medium">REVISI</th>
+                            <th class="px-6 py-4 font-medium">FILE</th>
+                            <th class="text-center px-6 py-4 font-medium">HASIL</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($proposals as $index => $proposal)
                             <td rowspan="2" class="border text-center px-4 py-2">{{ $index + 1 }}
-                            <td colspan="11" class="border px-4 py-4 font-medium">{{ $proposal['judul'] }}</td>
+                            <td colspan="11" class="border text-base px-4 py-4">{{ $proposal['judul'] }}</td>
                             <tr>
                                 <td class="border px-4 py-2">{{ $proposal['no_daftar'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}</td>
