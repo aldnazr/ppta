@@ -31,10 +31,11 @@
 
             <!-- Unassessed Data Section -->
             <div class="bg-white rounded-lg p-4 lg:p-5 border border-gray-300">
-                <p class="text-xl font-semibold mb-4">Unassessed Data</p>
+                <p class="text-xl font-semibold mb-4">Data Yang Belum Dinilai</p>
                 <div class="bg-yellow-100 rounded-lg p-4 mb-4">
-                    <p class="text-yellow-800 font-medium">Pending Assessment: <span
-                            class="text-2xl">{{ $unassessedCount }}</span></p>
+                    <p class="items-center text-center flex text-yellow-800 font-medium">Penilaian Tertunda: <span
+                            class="text-2xl">{{ $unassessedCount }}</span>
+                    </p>
                 </div>
                 <ul class="divide-y divide-gray-200 px-2">
                     @foreach ($paginated as $item)
@@ -42,8 +43,8 @@
                             <div>
                                 <p class="font-medium">{{ $item['nama_mahasiswa'] }}</p>
                                 <p class="text-sm text-gray-600">Status: Pending</p>
-                                <p class="text-xs text-gray-500">Submitted on:
-                                    {{ date('M d, Y', strtotime($item['tgl_pengajuan_proposal'])) }}</p>
+                                <p class="text-xs text-gray-500">Sidang Pada:
+                                    {{ date('d M, Y', strtotime($item['tgl_pengajuan_proposal'])) }}</p>
                             </div>
 
                             <a href="{{ route('dashboard.penilaian', ['id' => $item['id']]) }}"
