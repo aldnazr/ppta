@@ -33,34 +33,51 @@
                     </div>
                 </form>
             </div>
-            <div class="overflow-x-auto bg-white rounded-lg">
-                <table class="w-full text-sm text-left">
-                    <thead class="bg-gray-200 text-gray-700">
+            <div class="overflow-x-auto bg-white rounded-md border border-gray-200">
+                <table class="w-full text-sm text-left divide-y divide-gray-200">
+                    <thead class="bg-gray-100 text-gray-700">
                         <tr>
-                            <th class="text-center px-6 py-4 font-medium">NO</th>
-                            <th class="px-6 py-4 font-medium">NO DAFTAR</th>
-                            <th class="px-6 py-4 text-left font-medium">TANGGAL PENGAJUAN</th>
-                            <th class="px-6 py-4 text-left font-medium">NIM</th>
-                            <th class="px-6 py-4 text-left font-medium">NAMA</th>
-                            <th class="px-6 py-4 text-left font-medium">PEMBIMBING 1</th>
-                            <th class="px-6 py-4 text-left font-medium">PEMBIMBING 2</th>
-                            <th class="px-6 py-4 text-center font-medium">PROPOSAL/LAPORAN</th>
-                            <th class="px-6 py-4 text-center font-medium">JURNAL/SEMINAR</th>
-                            <th class="px-6 py-4 text-center font-medium">BUKTI BIMBINGAN</th>
-                            <th class="px-6 py-4 text-center font-medium">POSTER</th>
-                            <th class="px-6 py-4 text-center font-medium">BUKTI ORI/JURKEASLIAN</th>
-                            <th class="px-6 py-4 text-center font-medium w-2/3">HASIL</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NO
+                            </th>
+                            <th
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                NO
+                                DAFTAR</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                TANGGAL PENGAJUAN</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">NIM
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NAMA
+                            </th>
+                            <th
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                PEMBIMBING 1</th>
+                            <th
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                PEMBIMBING 2</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                PROPOSAL/LAPORAN</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                JURNAL/SEMINAR</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                BUKTI BIMBINGAN</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                POSTER</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                BUKTI ORI/JURKEASLIAN</th>
+                            <th
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-2/3">
+                                HASIL</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($tugasAkhir as $index => $item)
-                            <td rowspan="2" class="border text-center px-4 py-2">{{ $index + 1 }}
-                            <td colspan="12" class="border px-4 py-4 text-base">
-                                {{ $item['judul'] }}</td>
+                            <td rowspan="2" class="text-center px-4 py-2 whitespace-nowrap">{{ $index + 1 }}
+                            <td colspan="12" class="border-s px-4 py-4">{{ $item['judul'] }}</td>
                             <tr>
-                                <td class="border px-4 py-2">{{ $item['no_daftar'] }}</td>
-                                <td class="border px-4 py-2">{{ $item['tgl_pengajuan'] }}</td>
-                                <td class="border px-4 py-2">{{ $item['nim'] }}</td>
+                                <td class="text-center border px-4 py-2">{{ $item['no_daftar'] }}</td>
+                                <td class="text-center border px-4 py-2">{{ $item['tgl_pengajuan'] }}</td>
+                                <td class="text-center border px-4 py-2">{{ $item['nim'] }}</td>
                                 <td class="border px-4 py-2">{{ $item['nama'] }}</td>
                                 <td class="border px-4 py-2">{{ $item['pembimbing1'] }}</td>
                                 <td class="border px-4 py-2">{{ $item['pembimbing2'] }}</td>
@@ -85,7 +102,7 @@
                                     <a href="#" class="text-blue-500 underline">
                                         <i class="fa-solid fa-download fa-lg"></i></a>
                                 </td>
-                                <td class="border px-4 py-2 space-y-2">
+                                <td class="px-4 py-2 space-y-2">
                                     <select class="border border-gray-300 rounded-md px-2 py-1 text-sm">
                                         <option value="diterima">Diterima</option>
                                         <option value="ditolak">Ditolak</option>

@@ -33,27 +33,41 @@
                     </div>
                 </form>
             </div>
-            <div class="overflow-x-auto bg-white rounded-lg">
-                <table class="w-full text-sm text-left">
-                    <thead class="bg-gray-200 text-gray-700">
+            <div class="overflow-x-auto bg-white rounded-md border border-gray-200">
+                <table class="w-full text-sm text-left divide-y divide-gray-200">
+                    <thead class="bg-gray-100 text-gray-700">
                         <tr>
-                            <th class="text-center px-6 py-4 font-medium">NO</th>
-                            <th class="px-6 py-4 font-medium">NO DAFTAR</th>
-                            <th class="px-6 py-4 font-medium">PENGAJUAN</th>
-                            <th class="px-6 py-4 font-medium">NIM</th>
-                            <th class="px-6 py-4 font-medium">NAMA</th>
-                            <th class="px-6 py-4 font-medium">PEMBIMBING 1</th>
-                            <th class="px-6 py-4 font-medium">PEMBIMBING 2</th>
-                            <th class="px-6 py-4 font-medium">SIDANG PROPOSAL</th>
-                            <th class="px-6 py-4 font-medium">REVISI</th>
-                            <th class="px-6 py-4 font-medium">FILE</th>
-                            <th class="text-center px-6 py-4 font-medium">HASIL</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">NO
+                            </th>
+                            <th
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                NO
+                                DAFTAR</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                PENGAJUAN</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">NIM
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NAMA
+                            </th>
+                            <th
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                PEMBIMBING 1</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                PEMBIMBING 2</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                SIDANG PROPOSAL</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                REVISI</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">FILE
+                            </th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                HASIL</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($proposals as $index => $proposal)
-                            <td rowspan="2" class="border text-center px-4 py-2">{{ $index + 1 }}
-                            <td colspan="11" class="border text-base px-4 py-4">{{ $proposal['judul'] }}</td>
+                            <td rowspan="2" class="text-center px-4 py-2">{{ $index + 1 }}
+                            <td colspan="11" class="border-s px-4 py-4">{{ $proposal['judul'] }}</td>
                             <tr>
                                 <td class="border px-4 py-2">{{ $proposal['no_daftar'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}</td>
@@ -83,7 +97,7 @@
                                         </svg>
                                     </button>
                                 </td>
-                                <td class="border px-4 py-2">
+                                <td class="px-4 py-2">
                                     <div class="relative" x-data="{ open: false }">
                                         <button @click="open = !open"
                                             class="px-3 py-1 text-gray-600 hover:text-gray-800 border rounded-md hover:bg-gray-50 focus:outline-none inline-flex items-center"

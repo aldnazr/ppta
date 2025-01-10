@@ -79,7 +79,7 @@
             </div>
             <div class="overflow-x-auto rounded-md border border-gray-200">
                 <table class="min-h-[35vh] w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
+                    <thead class="bg-gray-100 text-gray-700">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 NIK
