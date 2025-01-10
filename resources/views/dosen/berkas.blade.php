@@ -108,38 +108,37 @@
 
             <div class="overflow-x-auto rounded-md border border-gray-200">
                 <table class="min-h-[35vh] w-full text-sm text-left divide-y divide-gray-200">
-                    <thead class="bg-gray-200 text-gray-700">
+                    <thead class="bg-gray-100 text-gray-700">
                         <tr>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 No
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e p-4 text-center text-xs font-medium uppercase tracking-wider">
                                 Tgl Pengajuan Proposal
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e p-4 text-center text-xs font-medium uppercase tracking-wider">
                                 Tgl Pengajuan TA
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 Mahasiswa
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 Pembiming
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 Penguji
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 Siap Transfer
                             </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 Action
                             </th>
                         </tr>
@@ -147,39 +146,40 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @if ($proposals->isEmpty())
                             <tr>
-                                <td colspan="8" class="px-6 text-base pt-8 text-center text-gray-500">Tidak ada
+                                <td colspan="8" class="px-6 text-base pt-8 text-center">Tidak ada
                                     data
                                     tersedia</td>
                             </tr>
                         @else
                             @foreach ($proposals as $index => $proposal)
-                                <td rowspan="2" class="border px-4 py-4 whitespace-nowrap">
+                                <td rowspan="2" class="text-center p-4 whitespace-nowrap">
                                     {{ $proposals->firstItem() + $index }}
-                                <td colspan="8" class="px-4 py-4">
+                                <td colspan="8" class="border-s p-4">
                                     {{ $proposal['judul'] }}
                                 </td>
                                 <tr>
-                                    <td class="border px-4 py-4 whitespace-nowrap">
+                                    <td class="border text-center p-4 whitespace-nowrap">
                                         {{ $proposal['tgl_pengajuan_proposal'] ? date('d-m-Y', strtotime($proposal['tgl_pengajuan_proposal'])) : '' }}
                                     </td>
-                                    <td class="border px-4 py-4 whitespace-nowrap">
+                                    <td class="border text-center p-4 whitespace-nowrap">
                                         {{ $proposal['tgl_pengajuan_ta'] ? date('d-m-Y', strtotime($proposal['tgl_pengajuan_ta'])) : '' }}
                                     </td>
-                                    <td class="border px-4 py-4">
+                                    <td class="border p-4">
                                         {{ $proposal['nim'] }}
                                         {{ $proposal['nama_mahasiswa'] }}
                                     </td>
-                                    <td class="border px-4 py-4">
+                                    <td class="border p-4">
                                         1. {{ $proposal['pembimbing1'] }}
+                                        <br>
                                         2. {{ $proposal['pembimbing2'] }}
                                     </td>
-                                    <td class="border px-4 py-4 whitespace-nowrap">
+                                    <td class="border p-4 whitespace-nowrap">
                                         {{ $proposal['penguji'] }}
                                     </td>
-                                    <td class="border px-4 py-4 whitespace-nowrap">
+                                    <td class="border p-4 whitespace-nowrap">
                                         {{ $proposal['siap_transfer'] ?? '' }}
                                     </td>
-                                    <td class="border px-4 py-4 whitespace-nowrap">
+                                    <td class="border p-4 whitespace-nowrap">
                                         <a href="{{ route('berkas.penilaian', ['id' => $proposal['id']]) }}"
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-2.5 rounded">
                                             Nilai
