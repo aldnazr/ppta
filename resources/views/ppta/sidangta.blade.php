@@ -37,33 +37,45 @@
                 <table class="w-full text-sm text-left divide-y divide-gray-200">
                     <thead class="bg-gray-100 text-gray-700">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NO
+                            <th
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                NO
                             </th>
                             <th
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                                 NO
                                 DAFTAR</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 TANGGAL PENGAJUAN</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">NIM
-                            </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NAMA
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                NIM
                             </th>
                             <th
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                NAMA
+                            </th>
+                            <th
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                                 PEMBIMBING 1</th>
                             <th
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                                 PEMBIMBING 2</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 PROPOSAL/LAPORAN</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 JURNAL/SEMINAR</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 BUKTI BIMBINGAN</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 POSTER</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 BUKTI ORI/JURKEASLIAN</th>
                             <th
                                 class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-2/3">

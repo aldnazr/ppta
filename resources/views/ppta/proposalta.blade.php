@@ -37,28 +37,40 @@
                 <table class="w-full text-sm text-left divide-y divide-gray-200">
                     <thead class="bg-gray-100 text-gray-700">
                         <tr>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">NO
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                NO
                             </th>
                             <th
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                                 NO
                                 DAFTAR</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 PENGAJUAN</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">NIM
-                            </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NAMA
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                NIM
                             </th>
                             <th
-                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                NAMA
+                            </th>
+                            <th
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                                 PEMBIMBING 1</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 PEMBIMBING 2</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 SIDANG PROPOSAL</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 REVISI</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">FILE
+                            <th
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                FILE
                             </th>
                             <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 HASIL</th>
