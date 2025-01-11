@@ -43,8 +43,7 @@
                             </th>
                             <th
                                 class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
-                                NO
-                                DAFTAR</th>
+                                NO DAFTAR</th>
                             <th
                                 class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 PENGAJUAN</th>
@@ -82,7 +81,7 @@
                             <td colspan="11" class="border-s px-4 py-4">{{ $proposal['judul'] }}</td>
                             <tr>
                                 <td class="border px-4 py-2">{{ $proposal['no_daftar'] }}</td>
-                                <td class="border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}</td>
+                                <td class="text-center border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['nim'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['nama'] }}</td>
                                 <td class="border px-4 py-2">{{ $proposal['pembimbing1'] }}</td>
@@ -112,7 +111,7 @@
                                 <td class="px-4 py-2">
                                     <div class="relative" x-data="{ open: false }">
                                         <button @click="open = !open"
-                                            class="px-3 py-1 text-gray-600 hover:text-gray-800 border rounded-md hover:bg-gray-50 focus:outline-none inline-flex items-center"
+                                            class="cursor-pointer px-3 py-1 text-gray-600 hover:text-gray-800 border border-gray-400 rounded-md hover:bg-gray-100 focus:outline-none inline-flex items-center"
                                             type="button">
                                             <span>Update Status</span>
                                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
