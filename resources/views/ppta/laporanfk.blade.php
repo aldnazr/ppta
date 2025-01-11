@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-auto px-4 py-8">
-        <div class="max-w-2xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden">
+    <div class="mx-auto lg:px-4 lg:py-8">
+        <div class="max-w-2xl mx-auto bg-white shadow-xl rounded-xl lg:rounded-2xl overflow-hidden">
             <x-header>
                 Form Konfirmasi Proposal
             </x-header>
