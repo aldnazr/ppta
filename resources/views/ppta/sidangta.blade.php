@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="rounded-xl shadow-xl border border-gray-200 overflow-hidden">
+    <div class="rounded-xl shadow-lg border border-gray-200 overflow-hidden">
         <x-header>Antrian Sidang Tugas Akhir</x-header>
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
