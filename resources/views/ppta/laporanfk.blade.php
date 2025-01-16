@@ -54,9 +54,9 @@
                                 text-sm text-gray-900 appearance-none transition-all duration-300 ease-in-out">
                                 <option value="semua" {{ request('krs') == 'semua' ? 'selected' : '' }}>Semua
                                 </option>
-                                <option value="sudah" {{ request('krs') == 'sudah' ? 'selected' : '' }}>Sudah
+                                <option value="sudah" {{ request('krs') == 'sudah' ? 'selected' : '' }}>Sudah Tercatat
                                 </option>
-                                <option value="belum" {{ request('krs') == 'belum' ? 'selected' : '' }}>Belum
+                                <option value="belum" {{ request('krs') == 'belum' ? 'selected' : '' }}>Belum Tercatat
                                 </option>
                             </select>
                             <div
@@ -80,24 +80,35 @@
                                 <option value="semua" {{ request('prodi') == 'semua' ? 'selected' : '' }}>Semua Program
                                     Studi
                                 </option>
-                                <option value="sistem_informasi"
-                                    {{ request('prodi') == 'sistem_informasi' ? 'selected' : '' }}>
-                                    Sistem Informasi
+                                <option value="d3_sistem_informasi"
+                                    {{ request('prodi') == 'd3_sistem_informasi' ? 'selected' : '' }}>
+                                    D3 Sistem Informasi
                                 </option>
-                                <option value="manajemen" {{ request('prodi') == 'manajemen' ? 'selected' : '' }}>Manajemen
+                                <option value="s1_sistem_informasi"
+                                    {{ request('prodi') == 's1_sistem_informasi' ? 'selected' : '' }}>
+                                    S1 Sistem Informasi
                                 </option>
-                                <option value="akuntansi" {{ request('prodi') == 'akuntansi' ? 'selected' : '' }}>Akuntansi
+                                <option value="s1_manajemen" {{ request('prodi') == 's1_manajemen' ? 'selected' : '' }}>S1
+                                    Manajemen
                                 </option>
-                                <option value="teknik_komputer"
-                                    {{ request('prodi') == 'teknik_komputer' ? 'selected' : '' }}>
-                                    Teknik Komputer
+                                <option value="s1_akuntansi" {{ request('prodi') == 's1_akuntansi' ? 'selected' : '' }}>S1
+                                    Akuntansi
                                 </option>
-                                <option value="desain_komunikasi_visual"
-                                    {{ request('prodi') == 'desain_komunikasi_visual' ? 'selected' : '' }}>Desain
+                                <option value="s1_teknik_komputer"
+                                    {{ request('prodi') == 's1_teknik_komputer' ? 'selected' : '' }}>
+                                    S1 Teknik Komputer
+                                </option>
+                                <option value="s1_desain_komunikasi_visual"
+                                    {{ request('prodi') == 's1_desain_komunikasi_visual' ? 'selected' : '' }}>S1 Desain
                                     Komunikasi Visual
                                 </option>
-                                <option value="desain_produk" {{ request('prodi') == 'desain_produk' ? 'selected' : '' }}>
-                                    Desain Produk
+                                <option value="s1_desain_produk"
+                                    {{ request('prodi') == 's1_desain_produk' ? 'selected' : '' }}>
+                                    S1 Desain Produk
+                                </option>
+                                <option value="d4_produksi_film_dan_televisi"
+                                    {{ request('prodi') == 'd4_produksi_film_dan_televisi' ? 'selected' : '' }}>
+                                    D4 Produksi Film dan Televisi
                                 </option>
                             </select>
                             <div

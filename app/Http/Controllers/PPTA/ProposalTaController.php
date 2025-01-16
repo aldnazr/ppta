@@ -29,7 +29,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
                 'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
                 'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110003',
@@ -39,7 +39,7 @@ class ProposalTaController extends Controller
                 'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110002',
@@ -49,7 +49,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110001',
@@ -69,7 +69,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
                 'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
                 'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110005',
@@ -89,7 +89,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
                 'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
                 'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110003',
@@ -99,7 +99,7 @@ class ProposalTaController extends Controller
                 'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110002',
@@ -109,7 +109,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110001',
@@ -129,7 +129,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
                 'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
                 'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110005',
@@ -149,7 +149,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
                 'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
                 'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110003',
@@ -159,7 +159,7 @@ class ProposalTaController extends Controller
                 'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110002',
@@ -169,7 +169,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110001',
@@ -189,7 +189,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
                 'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
                 'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110005',
@@ -209,7 +209,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
                 'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
                 'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110003',
@@ -219,7 +219,7 @@ class ProposalTaController extends Controller
                 'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110002',
@@ -229,7 +229,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110001',
@@ -249,7 +249,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
                 'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
                 'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110005',
@@ -269,7 +269,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
                 'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
                 'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110003',
@@ -279,7 +279,7 @@ class ProposalTaController extends Controller
                 'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110002',
@@ -289,7 +289,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110001',
@@ -309,7 +309,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
                 'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
                 'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110005',
@@ -329,7 +329,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Redesign UI/UX penyedia jasa servis barang elektronik Urgensi.id dengan metode design sprint',
                 'pembimbing1' => 'Tri Sagirani, S.Kom., M.MT.',
                 'pembimbing2' => 'Pantjawati Sudarmaningtyas, S.Kom., M.Eng., OCA',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110003',
@@ -339,7 +339,7 @@ class ProposalTaController extends Controller
                 'judul' => 'DESAIN PRODUK RAK PENGERINGAN SEPATU DENGAN TEKNOLOGI AIR DRYER',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Karsam, MA., Ph.D.',
-                'status' => 'Revisi'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110002',
@@ -349,7 +349,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Desain Produk Lemari Pakaian Dengan Konsep Space Saving Untuk Ruangan Dengan Luas Terbatas',
                 'pembimbing1' => 'Darwin Yuwono Riyanto, S.T., M.Med.Kom., ACA',
                 'pembimbing2' => 'Yosef Richo Adrianto, S.T., M.SM.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110001',
@@ -369,7 +369,7 @@ class ProposalTaController extends Controller
                 'judul' => 'Implementasi Machine Learning untuk Prediksi Kelulusan Mahasiswa',
                 'pembimbing1' => 'Dr. M.J. Dewiyani Sunarto',
                 'pembimbing2' => 'Tan Amelia, S.Kom., M.MT.',
-                'status' => 'Disetujui'
+                'status' => 'Dijadwalkan'
             ]
         ]);
     }

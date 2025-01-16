@@ -18,7 +18,8 @@ class SidangTaController extends Controller
                 'nama' => 'Ananda Rizky Kurniawan',
                 'judul' => 'Perencanaan Persediaan yang Optimal berdasarkan Metode Economic Order Quantity dan Reorder Point dengan Merancang dan Membangun Software Application',
                 'pembimbing1' => 'Sulistiowati, S.Si., M.M.',
-                'pembimbing2' => 'Yoppy Mirza Maulana, S.Kom., M.MT.'
+                'pembimbing2' => 'Yoppy Mirza Maulana, S.Kom., M.MT.',
+                'status' => 'Pending'
             ],
             [
                 'no_daftar' => '2024110006',
@@ -27,7 +28,8 @@ class SidangTaController extends Controller
                 'nama' => 'Budi Santoso',
                 'judul' => 'Analisis Sistem Informasi Manajemen pada Perusahaan XYZ dengan Pendekatan Balanced Scorecard',
                 'pembimbing1' => 'Dewi Sartika, S.Kom., M.T.',
-                'pembimbing2' => 'Agus Salim, S.T., M.Eng.'
+                'pembimbing2' => 'Agus Salim, S.T., M.Eng.',
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110007',
@@ -36,7 +38,8 @@ class SidangTaController extends Controller
                 'nama' => 'Citra Dewi',
                 'judul' => 'Pengembangan Aplikasi Mobile untuk Monitoring Kesehatan dengan Teknologi IoT',
                 'pembimbing1' => 'Rina Suryani, S.T., M.T.',
-                'pembimbing2' => 'Bambang Setiawan, S.Kom., M.Kom.'
+                'pembimbing2' => 'Bambang Setiawan, S.Kom., M.Kom.',
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110008',
@@ -45,7 +48,8 @@ class SidangTaController extends Controller
                 'nama' => 'Dedi Prasetyo',
                 'judul' => 'Implementasi Algoritma Machine Learning untuk Prediksi Harga Saham',
                 'pembimbing1' => 'Siti Aminah, S.T., M.T.',
-                'pembimbing2' => 'Hendra Gunawan, S.Kom., M.Kom.'
+                'pembimbing2' => 'Hendra Gunawan, S.Kom., M.Kom.',
+                'status' => 'Pending'
             ],
             [
                 'no_daftar' => '2024110009',
@@ -54,7 +58,8 @@ class SidangTaController extends Controller
                 'nama' => 'Eka Putri',
                 'judul' => 'Sistem Informasi Geografis untuk Pemetaan Daerah Rawan Bencana',
                 'pembimbing1' => 'Dian Purnama, S.T., M.T.',
-                'pembimbing2' => 'Fajar Nugroho, S.Kom., M.Kom.'
+                'pembimbing2' => 'Fajar Nugroho, S.Kom., M.Kom.',
+                'status' => 'Pending'
             ],
             [
                 'no_daftar' => '2024110010',
@@ -63,7 +68,8 @@ class SidangTaController extends Controller
                 'nama' => 'Fajar Setiawan',
                 'judul' => 'Analisis Sentimen Media Sosial Menggunakan Teknik Text Mining',
                 'pembimbing1' => 'Lina Marlina, S.T., M.T.',
-                'pembimbing2' => 'Rudi Hartono, S.Kom., M.Kom.'
+                'pembimbing2' => 'Rudi Hartono, S.Kom., M.Kom.',
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110011',
@@ -72,7 +78,8 @@ class SidangTaController extends Controller
                 'nama' => 'Gita Pramesti',
                 'judul' => 'Pengembangan Sistem E-Commerce dengan Framework Laravel',
                 'pembimbing1' => 'Yuni Astuti, S.T., M.T.',
-                'pembimbing2' => 'Andi Wijaya, S.Kom., M.Kom.'
+                'pembimbing2' => 'Andi Wijaya, S.Kom., M.Kom.',
+                'status' => 'Pending'
             ],
             [
                 'no_daftar' => '2024110012',
@@ -81,7 +88,8 @@ class SidangTaController extends Controller
                 'nama' => 'Hadi Saputra',
                 'judul' => 'Optimasi Jaringan Komputer Menggunakan Algoritma Genetic',
                 'pembimbing1' => 'Rina Suryani, S.T., M.T.',
-                'pembimbing2' => 'Bambang Setiawan, S.Kom., M.Kom.'
+                'pembimbing2' => 'Bambang Setiawan, S.Kom., M.Kom.',
+                'status' => 'Pending'
             ],
             [
                 'no_daftar' => '2024110013',
@@ -90,7 +98,8 @@ class SidangTaController extends Controller
                 'nama' => 'Indah Permata',
                 'judul' => 'Pengembangan Sistem Informasi Akademik Berbasis Web',
                 'pembimbing1' => 'Siti Aminah, S.T., M.T.',
-                'pembimbing2' => 'Hendra Gunawan, S.Kom., M.Kom.'
+                'pembimbing2' => 'Hendra Gunawan, S.Kom., M.Kom.',
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110014',
@@ -99,7 +108,8 @@ class SidangTaController extends Controller
                 'nama' => 'Joko Susilo',
                 'judul' => 'Implementasi Sistem Pakar untuk Diagnosa Penyakit Tanaman',
                 'pembimbing1' => 'Dian Purnama, S.T., M.T.',
-                'pembimbing2' => 'Fajar Nugroho, S.Kom., M.Kom.'
+                'pembimbing2' => 'Fajar Nugroho, S.Kom., M.Kom.',
+                'status' => 'Pending'
             ],
             [
                 'no_daftar' => '2024110015',
@@ -108,7 +118,8 @@ class SidangTaController extends Controller
                 'nama' => 'Kiki Amalia',
                 'judul' => 'Pengembangan Aplikasi E-Learning Berbasis Android',
                 'pembimbing1' => 'Lina Marlina, S.T., M.T.',
-                'pembimbing2' => 'Rudi Hartono, S.Kom., M.Kom.'
+                'pembimbing2' => 'Rudi Hartono, S.Kom., M.Kom.',
+                'status' => 'Dijadwalkan'
             ],
             [
                 'no_daftar' => '2024110016',
@@ -117,7 +128,8 @@ class SidangTaController extends Controller
                 'nama' => 'Lukman Hakim',
                 'judul' => 'Sistem Pendukung Keputusan untuk Pemilihan Laptop Menggunakan Metode AHP',
                 'pembimbing1' => 'Yuni Astuti, S.T., M.T.',
-                'pembimbing2' => 'Andi Wijaya, S.Kom., M.Kom.'
+                'pembimbing2' => 'Andi Wijaya, S.Kom., M.Kom.',
+                'status' => 'Pending'
             ],
         ]);
     }

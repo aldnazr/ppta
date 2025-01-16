@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+    <div class="rounded-xl shadow-lg border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', title() { return this.titleData; } }">
         <x-header>Antrian Sidang Tugas Akhir</x-header>
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
@@ -64,10 +64,19 @@
                                 PEMBIMBING 2</th>
                             <th
                                 class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                PROPOSAL/LAPORAN</th>
+                                JADWAL SIDANG TA</th>
                             <th
                                 class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                JURNAL/SEMINAR</th>
+                                PROPOSAL TA</th>
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                LAPORAN TA</th>
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                JURNAL</th>
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                SEMINAR</th>
                             <th
                                 class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 BUKTI BIMBINGAN</th>
@@ -76,7 +85,13 @@
                                 POSTER</th>
                             <th
                                 class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                BUKTI ORI/JURKEASLIAN</th>
+                                BUKTI ORI</th>
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                BUKTI UPLOAD JURNAL</th>
+                            <th
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                BUKTI KEASLIAN</th>
                             <th
                                 class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-2/3">
                                 HASIL</th>
@@ -93,26 +108,48 @@
                                 <td class="border px-4 py-2">{{ $item['nama'] }}</td>
                                 <td class="border px-4 py-2">{{ $item['pembimbing1'] }}</td>
                                 <td class="border px-4 py-2">{{ $item['pembimbing2'] }}</td>
+                                <td class="border text-center px-4 py-2">
+                                    <button @click="open = true; titleData = 'Jadwal Sidang Tugas Akhir'"
+                                        class="cursor-pointer px-2.5 py-1.5 rounded text-sm {{ $item['status'] === 'Dijadwalkan' ? 'bg-green-200 text-green-800' : 'bg-yellow-200 text-yellow-800' }}">
+                                        {{ $item['status'] }}
+                                    </button>
+                                </td>
                                 <td class="border px-4 py-2 text-center">
-                                    <a href="#" class="text-blue-500 underline">
+                                    <button href="#" class="cursor-pointer text-blue-500">
                                         <i class="fa-solid fa-download fa-lg"></i>
-                                    </a>
+                                    </button>
                                 </td>
                                 <td class="border px-4 py-2 text-center">
-                                    <a href="#" class="text-blue-500 underline">
-                                        <i class="fa-solid fa-download fa-lg"></i></a>
+                                    <button href="#" class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
                                 <td class="border px-4 py-2 text-center">
-                                    <a href="#" class="text-blue-500 underline">
-                                        <i class="fa-solid fa-download fa-lg"></i></a>
+                                    <button href="#" class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
                                 <td class="border px-4 py-2 text-center">
-                                    <a href="#" class="text-blue-500 underline">
-                                        <i class="fa-solid fa-download fa-lg"></i></a>
+                                    <button href="#" class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
                                 <td class="border px-4 py-2 text-center">
-                                    <a href="#" class="text-blue-500 underline">
-                                        <i class="fa-solid fa-download fa-lg"></i></a>
+                                    <button href="#" class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                </td>
+                                <td class="border px-4 py-2 text-center">
+                                    <button href="#" class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                </td>
+                                <td class="border px-4 py-2 text-center">
+                                    <button href="#" class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                </td>
+                                <td class="border px-4 py-2 text-center">
+                                    <button href="#" class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                </td>
+                                <td class="border px-4 py-2 text-center">
+                                    <button href="#" class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
                                 <td class="px-4 py-2 space-y-2">
                                     <select class="border border-gray-300 rounded-md px-2 py-1 text-sm">
@@ -136,5 +173,91 @@
                 {{ $tugasAkhir->links() }}
             </div>
         </div>
+        <x-popup-window>
+            <form method="POST" class="space-y-4 mb-4">
+                @csrf
+                <!-- Registration Details -->
+                <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">No Daftar</label>
+                        <input type="text" value="2025010004" readonly
+                            class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">NIM</label>
+                        <input type="text" value="20410100030" readonly
+                            class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
+                    </div>
+                </div>
+
+                <!-- Student Name -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Nama</label>
+                    <input type="text" value="Reza Maulana Winardi" readonly
+                        class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
+                </div>
+
+                <!-- Thesis Title -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Judul</label>
+                    <textarea readonly
+                        class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600 resize-none"
+                        rows="3">Evaluasi Dan Redesain Aplikasi GOBIS Suroboyo Bus Dengan Pendekatan Design Thinking Untuk Meningkatkan Pengalaman Pengguna</textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Jadwal</label>
+                    <input type="text" readonly
+                        class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600 resize-none"
+                        value="Belum Di jadwalkan">
+                </div>
+
+                <!-- Schedule Details -->
+                <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Tanggal</label>
+                        <input type="date" name="defense_date" value="2025-01-16"
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Jam</label>
+                        <input type="time" name="defense_time" value="08:00"
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                </div>
+
+                <!-- Examiners -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Penguji</label>
+                    <select name="examiner1"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="1" selected>Dr. Anjik Sukmaaji, S.Kom., M.Eng.</option>
+                        <option value="2">Other Examiner 1</option>
+                        <option value="3">Other Examiner 2</option>
+                    </select>
+                </div>
+
+                <!-- Room -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Ruang</label>
+                    <select name="room"
+                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="M504" selected>M504</option>
+                        <option value="M505">M505</option>
+                        <option value="M506">M506</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type="submit"
+                        class="cursor-pointer w-full sm:w-auto px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md shadow-sm transition-colors">
+                        Simpan Jadwal
+                    </button>
+                </div>
+            </form>
+        </x-popup-window>
     </div>
 @endsection
