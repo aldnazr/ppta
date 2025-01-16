@@ -101,7 +101,7 @@
                         <li class="w-full md:w-auto">
                             <button @click="activeTab = 'proposal'"
                                 :class="{ 'bg-white shadow-sm': activeTab === 'proposal' }"
-                                class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                class="cursor-pointer w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
                                 <span class="block md:inline">Proposal</span>
                                 <span class="block md:inline md:ml-1">(10%): 0</span>
                             </button>
@@ -109,7 +109,7 @@
                         <li class="w-full md:w-auto">
                             <button @click="activeTab = 'bimbingan'"
                                 :class="{ 'bg-white shadow-sm': activeTab === 'bimbingan' }"
-                                class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                class="cursor-pointer w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
                                 <span class="block md:inline">Bimbingan</span>
                                 <span class="block md:inline md:ml-1">(40%): 0</span>
                             </button>
@@ -117,7 +117,7 @@
                         <li class="w-full md:w-auto">
                             <button @click="activeTab = 'sidang'"
                                 :class="{ 'bg-white shadow-sm': activeTab === 'sidang' }"
-                                class="w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                                class="cursor-pointer w-full inline-block px-4 py-2 rounded-md hover:bg-blue-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-300">
                                 <span class="block md:inline">Sidang</span>
                                 <span class="block md:inline md:ml-1">(100%): 0</span>
                             </button>
