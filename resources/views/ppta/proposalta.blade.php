@@ -45,8 +45,8 @@
                                 class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
                                 NO DAFTAR</th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                PENGAJUAN</th>
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                TANGGAL PENGAJUAN</th>
                             <th
                                 class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 NIM
