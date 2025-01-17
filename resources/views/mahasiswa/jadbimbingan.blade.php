@@ -4,7 +4,6 @@
     <div class="bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden">
         <x-header>Jadwal Bimbingan Dosen</x-header>
         <div class="min-h-[60vh] lg:min-h-[75vh] p-4 md:p-6 mt-4 lg:mt-8">
-            <!-- Header Section -->
             <div class="max-w-xl mx-auto">
                 <!-- Search Input -->
                 <div class="relative">
@@ -63,7 +62,7 @@
             <div id="schedule-table" class="hidden mt-8">
                 <div class="overflow-x-auto rounded-lg border border-gray-200">
                     <table class="w-full text-sm text-left">
-                        <thead class="bg-gray-200 text-gray-700">
+                        <thead class="bg-gray-200 text-gray-700 uppercase tracking-wider text-xs">
                             <tr>
                                 <th scope="col" class="px-6 py-4 font-medium">No</th>
                                 <th scope="col" class="px-6 py-4 font-medium">Tanggal</th>
@@ -155,14 +154,14 @@
                         data.schedules.forEach(schedule => {
                             const row = `
                             <tr class="bg-white border-b">
-                                <td class="px-6 py-4">${++nomor}</td>
-                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <td class="px-6 py-4 text-sm font-medium text-gray-900">${++nomor}</td>
+                                <td scope="row" class="px-6 py-4 text-sm text-gray-500">
                                     ${schedule.tanggal}
                                 </td>
-                                <td class="px-6 py-4">${schedule.jam_mulai}</td>
-                                <td class="px-6 py-4">${schedule.jam_selesai}</td>
-                                <td class="px-6 py-4">${schedule.ruang}</td>
-                                <td class="px-6 py-4">${schedule.ket}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">${schedule.jam_mulai}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">${schedule.jam_selesai}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">${schedule.ruang}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">${schedule.ket}</td>
                             </tr>
                         `;
                             scheduleBody.insertAdjacentHTML("beforeend", row);
