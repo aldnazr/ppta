@@ -139,7 +139,7 @@
 
         function loadSchedule(dosenName) {
             // Fetch schedule data from server using Fetch API
-            fetch(`/jadbimbingan-dosen?dosen=${encodeURIComponent(dosenName)}`)
+            fetch(`{{ route('jadbimbingan.dosen') }}?dosen=${encodeURIComponent(dosenName)}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');

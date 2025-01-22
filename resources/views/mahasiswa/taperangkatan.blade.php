@@ -36,7 +36,7 @@
         },
         async fetchJurusan(jurusan) {
             try {
-                const response = await fetch(`/taperangkatan/jurusan?jurusan=${jurusan}`);
+                const response = await fetch(`{{ route('taperangkatan.jurusan') }}?jurusan=${jurusan}`);
                 const result = await response.json();
                 this.angkatan = result.data;
                 this.activeJurusan = jurusan;

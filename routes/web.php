@@ -22,7 +22,7 @@ Route::get('/pencarianpembimbing', [PencarianPembimbingController::class, 'index
 Route::get('/taperangkatan', [TAPerangkatanController::class, 'index'])->name('taperangkatan');
 Route::get('/taperangkatan/jurusan', [TAPerangkatanController::class, 'getByJurusan'])->name('taperangkatan.jurusan');
 Route::get('/jadbimbingan', [JadwalBimbinganController::class, 'index'])->name('jadbimbingan');
-Route::get('/jadbimbingan-dosen', [JadwalBimbinganController::class, 'getJadwalDosen'])->name('jadbimbingan.dosen');
+Route::get('/jadbimbingan/dosen', [JadwalBimbinganController::class, 'getJadwalDosen'])->name('jadbimbingan.dosen');
 Route::get('/document', function () {
     return view('mahasiswa.document', ['title' => 'Contact Page']);
 })->name('document');

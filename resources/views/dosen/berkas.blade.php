@@ -180,7 +180,7 @@
                                         {{ $proposal['siap_transfer'] ?? '' }}
                                     </td>
                                     <td class="border p-4 whitespace-nowrap">
-                                        <a href="{{ route('berkas.penilaian', ['id' => $proposal['id']]) }}"
+                                        <a href="{{ route('dosen.berkas.penilaian', ['id' => $proposal['id']]) }}"
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-2.5 rounded">
                                             Nilai
                                         </a>
