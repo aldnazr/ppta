@@ -287,7 +287,7 @@ window.addEventListener('resize', () => {
 
         <!-- Content Area -->
         <div :class="getContentMarginClass()" class="flex-1 overflow-auto">
-            <main class="container p-3 lg:p-5 max-w-7xl mx-auto">
+            <main class="container mb-12 lg:mb-0 p-3 lg:p-5 max-w-7xl mx-auto">
                 {{ $slot }}
             </main>
         </div>

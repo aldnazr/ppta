@@ -49,9 +49,11 @@
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-900">
                                     <div class="font-medium mb-2">{{ $schedule['title'] }}</div>
-                                    <div class="text-gray-600 mb-1">{{ $schedule['student'] }}</div>
-                                    <div class="text-gray-600">Pembimbing 1: {{ $schedule['supervisor1'] }}</div>
-                                    <div class="text-gray-600">Pembimbing 2: {{ $schedule['supervisor2'] }}</div>
+                                    <div class="text-gray-600 mb-1 text-nowrap">{{ $schedule['student'] }}</div>
+                                    <div class="text-gray-600 text-nowrap">Pembimbing 1: {{ $schedule['supervisor1'] }}
+                                    </div>
+                                    <div class="text-gray-600 text-nowrap">Pembimbing 2: {{ $schedule['supervisor2'] }}
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

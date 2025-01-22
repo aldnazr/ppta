@@ -51,7 +51,7 @@
             <x-header>Judul TA Perangkatan</x-header>
 
             <!-- Filter Chips -->
-            <div class="flex flex-wrap gap-2 p-6">
+            <div class="flex flex-wrap gap-2 p-4 md:p-6">
                 @foreach ($jurusan as $jur)
                     <button @click="fetchJurusan('{{ $jur }}')"
                         :class="{
@@ -105,15 +105,75 @@
 
             <x-popup-window>
                 <template x-if="dataTaMhs.length > 0">
-                    <div class="mb-4">
+                    <div class="container mx-auto mb-4">
                         <template x-for="mahasiswa in paginatedMahasiswa" :key="mahasiswa.nim">
-                            <div class="mb-5 pb-4 border-b last:border-b-0">
-                                <h4 class="font-semibold text-gray-700" x-text="mahasiswa.judul"></h4>
-                                <div class="text-sm text-gray-600 space-y-0.5">
-                                    <p><strong>Nama:</strong> <span x-text="mahasiswa.nama"></span></p>
-                                    <p><strong>NIM:</strong> <span x-text="mahasiswa.nim"></span></p>
-                                    <p><strong>Pembimbing 1:</strong> <span x-text="mahasiswa.pembimbing_1"></span></p>
-                                    <p><strong>Pembimbing 2:</strong> <span x-text="mahasiswa.pembimbing_2"></span></p>
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 mb-6 p-6">
+                                <div class="space-y-4">
+                                    <!-- Judul -->
+                                    <div class="border-l-4 border-indigo-500 pl-4">
+                                        <h4 class="font-bold md:text-lg text-gray-800 line-clamp-2 hover:line-clamp-none transition-all duration-200"
+                                            x-text="mahasiswa.judul">
+                                        </h4>
+                                    </div>
+
+                                    <!-- Informasi Mahasiswa -->
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                                        <div class="space-y-3">
+                                            <!-- Nama -->
+                                            <div class="flex items-center space-x-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                                </svg>
+                                                <div>
+                                                    <span class="text-gray-600 font-medium">Nama:</span>
+                                                    <span class="text-gray-800 ml-1" x-text="mahasiswa.nama"></span>
+                                                </div>
+                                            </div>
+
+                                            <!-- NIM -->
+                                            <div class="flex items-center space-x-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1" />
+                                                </svg>
+                                                <div>
+                                                    <span class="text-gray-600 font-medium">NIM:</span>
+                                                    <span class="text-gray-800 ml-1" x-text="mahasiswa.nim"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Pembimbing -->
+                                        <div class="space-y-3">
+                                            <div class="flex items-center space-x-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                                </svg>
+                                                <div>
+                                                    <span class="text-gray-600 font-medium">Pembimbing 1:</span>
+                                                    <span class="text-gray-800 ml-1" x-text="mahasiswa.pembimbing_1"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex items-center space-x-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                                </svg>
+                                                <div>
+                                                    <span class="text-gray-600 font-medium">Pembimbing 2:</span>
+                                                    <span class="text-gray-800 ml-1" x-text="mahasiswa.pembimbing_2"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </template>
@@ -141,7 +201,6 @@
                                 Next
                             </button>
                         </div>
-                    </div>
                 </template>
 
                 <template x-if="dataTaMhs.length === 0">
