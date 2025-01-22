@@ -18,15 +18,15 @@ use App\Http\Controllers\Mahasiswa\PencarianPembimbingController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/taperangkatan', [TAPerangkatanController::class, 'index'])->name('taperangkatan');
-Route::get('/taperangkatan/jurusan', [TAPerangkatanController::class, 'getByJurusan'])->name('taperangkatanjurusan');
 Route::get('/pencarianpembimbing', [PencarianPembimbingController::class, 'index'])->name('pencarianpembimbing');
-Route::get('/usulan', [UsulanTugasAkhirController::class, 'index']);
-Route::get('/jadbimbingan', [JadwalBimbinganController::class, 'index']);
-Route::get('/jadbimbingan-dosen', [JadwalBimbinganController::class, 'getJadwalDosen']);
+Route::get('/taperangkatan', [TAPerangkatanController::class, 'index'])->name('taperangkatan');
+Route::get('/taperangkatan/jurusan', [TAPerangkatanController::class, 'getByJurusan'])->name('taperangkatan.jurusan');
+Route::get('/jadbimbingan', [JadwalBimbinganController::class, 'index'])->name('jadbimbingan');
+Route::get('/jadbimbingan-dosen', [JadwalBimbinganController::class, 'getJadwalDosen'])->name('jadbimbingan.dosen');
 Route::get('/document', function () {
     return view('mahasiswa.document', ['title' => 'Contact Page']);
-});
+})->name('document');
+Route::get('/usulan', [UsulanTugasAkhirController::class, 'index'])->name('usulan');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
@@ -39,22 +39,27 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 
 Route::middleware(['loggedin'])->group(function () {
     // Dosen Route
-    Route::redirect('/dosen', '/dosen/dashboard');
-    Route::get('/dosen/dashboard', [DashboardController::class, 'index']);
-    Route::get('/dosen/dashboard/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('dashboard.penilaian');
-    Route::get('/dosen/berkas', [BerkasController::class, 'index']);
-    Route::get('/dosen/berkas/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('berkas.penilaian');
+    Route::get('/dosen', function () {
+        return redirect()->route('dosen.dashboard');
+    });
+    Route::get('/dosen/dashboard', [DashboardController::class, 'index'])->name('dosen.dashboard');
+    Route::get('/dosen/dashboard/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('dosen.dashboard.penilaian');
+    Route::get('/dosen/berkas', [BerkasController::class, 'index'])->name('dosen.berkas');
+    Route::get('/dosen/berkas/penilaian/{id}', [BerkasController::class, 'penilaian'])->name('dosen.berkas.penilaian');
 
-    //PPTA Route
-    Route::redirect('/ppta', '/ppta/proposal_ta');
-    Route::get('/ppta/proposal_ta', [ProposalTaController::class, 'index']);
-    Route::get('/ppta/sidang_ta', [SidangTaController::class, 'index'])->name('ppta.sidangta');
-    Route::get('/ppta/maintenance', [MaintenanceController::class, 'index']);
+    // PPTA Route
+    Route::get('/ppta', function () {
+        return redirect()->route('ppta.proposal_ta');
+    });
+    Route::get('/ppta/proposal_ta', [ProposalTaController::class, 'index'])->name('ppta.proposal_ta');
+    Route::get('/ppta/sidang_ta', [SidangTaController::class, 'index'])->name('ppta.sidang_ta');
+    Route::get('/ppta/maintenance', [MaintenanceController::class, 'index'])->name('ppta.maintenance');
+
     // Laporan Route
-    Route::get('/ppta/laporan_fk', [LaporanFkController::class, 'index']);
+    Route::get('/ppta/laporan_fk', [LaporanFkController::class, 'index'])->name('ppta.laporan_fk');
     Route::get('/ppta/laporan_fk_pdf', [LaporanFkController::class, 'generatePdf'])->name('ppta.laporan_fk_pdf');
-    Route::get('/ppta/laporan_proposal', [LaporanProposalController::class, 'index']);
+    Route::get('/ppta/laporan_proposal', [LaporanProposalController::class, 'index'])->name('ppta.laporan_proposal');
     Route::get('/ppta/laporan_proposal_pdf', [LaporanProposalController::class, 'generatePdf'])->name('ppta.laporan_proposal_pdf');
-    Route::get('/ppta/laporan_ta', [LaporanTaController::class, 'index']);
-    Route::get('/ppta/laporan_ta_pdf', [LaporanTaController::class, 'generatePdf'])->name('ppta.laporan_ta_pdf');;
+    Route::get('/ppta/laporan_ta', [LaporanTaController::class, 'index'])->name('ppta.laporan_ta');
+    Route::get('/ppta/laporan_ta_pdf', [LaporanTaController::class, 'generatePdf'])->name('ppta.laporan_ta_pdf');
 });

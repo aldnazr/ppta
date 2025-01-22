@@ -42,29 +42,32 @@ window.addEventListener('resize', () => {
                 {{-- Menu khusus Mahasiswa --}}
                 <template x-if="role === 'mahasiswa'">
                     <div>
-                        <x-nav-link href="/" :active="request()->is('/')" iconClass="fa-regular fa-house fa-lg">
+                        <x-nav-link href="{{ route('home') }}" :active="request()->is('/')" iconClass="fa-regular fa-house fa-lg">
                             Home
                         </x-nav-link>
 
-                        <x-nav-link href="/pencarianpembimbing" :active="request()->is('pencarianpembimbing')"
+                        <x-nav-link href="{{ route('pencarianpembimbing') }}" :active="request()->is('pencarianpembimbing')"
                             iconClass="fa-regular fa-users-medical fa-lg">
                             Pencarian Pembimbing
                         </x-nav-link>
 
-                        <x-nav-link href="/taperangkatan" :active="request()->is('taperangkatan')" iconClass="fa-regular fa-books fa-lg">
+                        <x-nav-link href="{{ route('taperangkatan') }}" :active="request()->is('taperangkatan')"
+                            iconClass="fa-regular fa-books fa-lg">
                             Judul TA Perangkatan
                         </x-nav-link>
 
-                        <x-nav-link href="/document" :active="request()->is('document')" iconClass="fa-regular fa-folders fa-lg">
+                        <x-nav-link href="{{ route('document') }}" :active="request()->is('document')"
+                            iconClass="fa-regular fa-folders fa-lg">
                             Dokumen-Dokumen
                         </x-nav-link>
 
-                        <x-nav-link href="/jadbimbingan" :active="request()->is('jadbimbingan')"
+                        <x-nav-link href="{{ route('jadbimbingan') }}" :active="request()->is('jadbimbingan')"
                             iconClass="fa-regular fa-calendar-days fa-lg">
                             Jadwal Bimbingan
                         </x-nav-link>
 
-                        <x-nav-link href="/usulan" :active="request()->is('usulan')" iconClass="fa-regular fa-list-radio fa-lg">
+                        <x-nav-link href="{{ route('usulan') }}" :active="request()->is('usulan')"
+                            iconClass="fa-regular fa-list-radio fa-lg">
                             Usulan
                         </x-nav-link>
                     </div>
@@ -73,11 +76,11 @@ window.addEventListener('resize', () => {
                 {{-- Menu khusus Dosen --}}
                 <template x-if="role === 'dosen'">
                     <div>
-                        <x-nav-link href="/dosen/dashboard" :active="request()->is('dosen/dashboard')"
+                        <x-nav-link href="{{ route('dosen.dashboard') }}" :active="request()->is('dosen/dashboard')"
                             iconClass="fa-duotone fa-solid fa-grid-2 fa-lg">
                             Dashboard
                         </x-nav-link>
-                        <x-nav-link href="/dosen/berkas" :active="request()->is('dosen/berkas')"
+                        <x-nav-link href="{{ route('dosen.berkas') }}" :active="request()->is('dosen/berkas')"
                             iconClass="fa-duotone fa-solid fa-folder-open fa-lg">
                             Berkas
                         </x-nav-link>
@@ -87,13 +90,15 @@ window.addEventListener('resize', () => {
                 {{-- Menu khusus PPTA --}}
                 <template x-if="role === 'ppta'">
                     <div>
-                        <x-nav-link href="/ppta/proposal_ta" :active="request()->is('ppta/proposal_ta')" iconClass="fa-solid fa-book fa-lg">
+                        <x-nav-link href="{{ route('ppta.proposal_ta') }}" :active="request()->is('ppta/proposal_ta')"
+                            iconClass="fa-solid fa-book fa-lg">
                             Proposal TA
                         </x-nav-link>
-                        <x-nav-link href="/ppta/sidang_ta" :active="request()->is('ppta/sidang_ta')" iconClass="fa-solid fa-gavel fa-lg">
+                        <x-nav-link href="{{ route('ppta.sidang_ta') }}" :active="request()->is('ppta/sidang_ta')"
+                            iconClass="fa-solid fa-gavel fa-lg">
                             Sidang TA
                         </x-nav-link>
-                        <x-nav-link href="/ppta/maintenance" :active="request()->is('ppta/maintenance')"
+                        <x-nav-link href="{{ route('ppta.maintenance') }}" :active="request()->is('ppta/maintenance')"
                             iconClass="fa-solid fa-screwdriver-wrench fa-lg">
                             Maintenance Data Penguji
                         </x-nav-link>
@@ -106,11 +111,11 @@ window.addEventListener('resize', () => {
                 <div class="mt-8">
                     <div class="pl-2 text-xs font-semibold text-gray-500">Laporan</div>
                     <nav class="mt-2">
-                        <x-sub-nav-link href="/ppta/laporan_fk" :active="request()->is('ppta/laporan_fk')"
+                        <x-sub-nav-link href="{{ route('ppta.laporan_fk') }}" :active="request()->is('ppta/laporan_fk')"
                             tabName="Form Konfirmasi Proposal"></x-sub-nav-link>
-                        <x-sub-nav-link href="/ppta/laporan_proposal" :active="request()->is('ppta/laporan_proposal')"
+                        <x-sub-nav-link href="{{ route('ppta.laporan_proposal') }}" :active="request()->is('ppta/laporan_proposal')"
                             tabName="Laporan Proposal TA"></x-sub-nav-link>
-                        <x-sub-nav-link href="/ppta/laporan_ta" :active="request()->is('ppta/laporan_ta')"
+                        <x-sub-nav-link href="{{ route('ppta.laporan_ta') }}" :active="request()->is('ppta/laporan_ta')"
                             tabName="Laporan Sidang TA"></x-sub-nav-link>
                     </nav>
                 </div>
@@ -155,29 +160,33 @@ window.addEventListener('resize', () => {
                     {{-- Menu khusus Mahasiswa --}}
                     <template x-if="role === 'mahasiswa'">
                         <div>
-                            <x-nav-link href="/" :active="request()->is('/')" iconClass="fa-regular fa-house fa-lg">
+                            <x-nav-link href="{{ route('home') }}" :active="request()->is('/')"
+                                iconClass="fa-regular fa-house fa-lg">
                                 Home
                             </x-nav-link>
 
-                            <x-nav-link href="/pencarianpembimbing" :active="request()->is('pencarianpembimbing')"
+                            <x-nav-link href="{{ route('pencarianpembimbing') }}" :active="request()->is('pencarianpembimbing')"
                                 iconClass="fa-regular fa-users-medical fa-lg">
                                 Pencarian Pembimbing
                             </x-nav-link>
 
-                            <x-nav-link href="/taperangkatan" :active="request()->is('taperangkatan')" iconClass="fa-regular fa-books fa-lg">
+                            <x-nav-link href="{{ route('taperangkatan') }}" :active="request()->is('taperangkatan')"
+                                iconClass="fa-regular fa-books fa-lg">
                                 Judul TA Perangkatan
                             </x-nav-link>
 
-                            <x-nav-link href="/document" :active="request()->is('document')" iconClass="fa-regular fa-folders fa-lg">
+                            <x-nav-link href="{{ route('document') }}" :active="request()->is('document')"
+                                iconClass="fa-regular fa-folders fa-lg">
                                 Dokumen-Dokumen
                             </x-nav-link>
 
-                            <x-nav-link href="/jadbimbingan" :active="request()->is('jadbimbingan')"
+                            <x-nav-link href="{{ route('jadbimbingan') }}" :active="request()->is('jadbimbingan')"
                                 iconClass="fa-regular fa-calendar-days fa-lg">
                                 Jadwal Bimbingan
                             </x-nav-link>
 
-                            <x-nav-link href="/usulan" :active="request()->is('usulan')" iconClass="fa-regular fa-list-radio fa-lg">
+                            <x-nav-link href="{{ route('usulan') }}" :active="request()->is('usulan')"
+                                iconClass="fa-regular fa-list-radio fa-lg">
                                 Usulan
                             </x-nav-link>
                         </div>
@@ -186,11 +195,11 @@ window.addEventListener('resize', () => {
                     {{-- Menu khusus Dosen --}}
                     <template x-if="role === 'dosen'">
                         <div>
-                            <x-nav-link href="/dosen/dashboard" :active="request()->is('dosen/dashboard')"
+                            <x-nav-link href="{{ route('dosen.dashboard') }}" :active="request()->is('dosen/dashboard')"
                                 iconClass="fa-duotone fa-solid fa-grid-2 fa-lg">
                                 Dashboard
                             </x-nav-link>
-                            <x-nav-link href="/dosen/berkas" :active="request()->is('dosen/berkas')"
+                            <x-nav-link href="{{ route('dosen.berkas') }}" :active="request()->is('dosen/berkas')"
                                 iconClass="fa-duotone fa-solid fa-folder-open fa-lg">
                                 Berkas
                             </x-nav-link>
@@ -200,14 +209,15 @@ window.addEventListener('resize', () => {
                     {{-- Menu khusus PPTA --}}
                     <template x-if="role === 'ppta'">
                         <div>
-                            <x-nav-link href="/ppta/proposal_ta" :active="request()->is('ppta/proposal_ta')"
+                            <x-nav-link href="{{ route('ppta.proposal_ta') }}" :active="request()->is('ppta/proposal_ta')"
                                 iconClass="fa-solid fa-book fa-lg">
                                 Proposal TA
                             </x-nav-link>
-                            <x-nav-link href="/ppta/sidang_ta" :active="request()->is('ppta/sidang_ta')" iconClass="fa-solid fa-gavel fa-lg">
+                            <x-nav-link href="{{ route('ppta.sidang_ta') }}" :active="request()->is('ppta/sidang_ta')"
+                                iconClass="fa-solid fa-gavel fa-lg">
                                 Sidang TA
                             </x-nav-link>
-                            <x-nav-link href="/ppta/maintenance" :active="request()->is('ppta/maintenance')"
+                            <x-nav-link href="{{ route('ppta.maintenance') }}" :active="request()->is('ppta/maintenance')"
                                 iconClass="fa-solid fa-screwdriver-wrench fa-lg">
                                 Maintenance Data Penguji
                             </x-nav-link>
@@ -220,11 +230,11 @@ window.addEventListener('resize', () => {
                     <div class="mt-8">
                         <div class="px-5 text-xs font-semibold text-gray-500">Laporan</div>
                         <nav class="mt-2">
-                            <x-sub-nav-link href="/ppta/laporan_fk" :active="request()->is('ppta/laporan_fk')"
+                            <x-sub-nav-link href="{{ route('ppta.laporan_fk') }}" :active="request()->is('ppta/laporan_fk')"
                                 tabName="Form Konfirmasi Proposal"></x-sub-nav-link>
-                            <x-sub-nav-link href="/ppta/laporan_proposal" :active="request()->is('ppta/laporan_proposal')"
+                            <x-sub-nav-link href="{{ route('ppta.laporan_proposal') }}" :active="request()->is('ppta/laporan_proposal')"
                                 tabName="Laporan Proposal TA"></x-sub-nav-link>
-                            <x-sub-nav-link href="/ppta/laporan_ta" :active="request()->is('ppta/laporan_ta')"
+                            <x-sub-nav-link href="{{ route('ppta.laporan_ta') }}" :active="request()->is('ppta/laporan_ta')"
                                 tabName="Laporan Sidang TA"></x-sub-nav-link>
                         </nav>
                     </div>
