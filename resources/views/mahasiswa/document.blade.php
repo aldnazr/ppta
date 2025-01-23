@@ -3,11 +3,11 @@
 @section('content')
     <div class="bg-white rounded-xl shadow-sm overflow-hidden">
         <!-- Header Section with Gradient -->
-        <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-5 lg:p-8">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-5 lg:px-8 lg:py-6">
             <h1 class="text-xl lg:text-2xl font-bold text-white">
                 Dokumen Tugas Akhir (TA)
             </h1>
-            <p class="mt-2 text-blue-100 text-sm md:text-base ">
+            <p class="mt-1.5 md:mt-2 text-blue-100 text-sm md:text-base ">
                 Panduan dan dokumen pendukung untuk penyelesaian Tugas Akhir
             </p>
         </div>
