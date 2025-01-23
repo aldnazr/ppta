@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Dosen\BerkasController;
@@ -16,7 +17,10 @@ use App\Http\Controllers\Mahasiswa\JadwalBimbinganController;
 use App\Http\Controllers\Mahasiswa\UsulanTugasAkhirController;
 use App\Http\Controllers\Mahasiswa\PencarianPembimbingController;
 
-
+Route::get('/listdosen', function () {
+    $users = DB::connection('oracle')->table('dosen')->get(); // Mengambil semua data dari tabel mahasiswa
+    return view('listmhs', compact('users')); // Kirim data ke view 'listmhs'
+});
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/pencarianpembimbing', [PencarianPembimbingController::class, 'index'])->name('pencarianpembimbing');
 Route::get('/taperangkatan', [TAPerangkatanController::class, 'index'])->name('taperangkatan');
