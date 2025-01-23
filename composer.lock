@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad29f5fb04d25a99399047470f5d6711",
+    "content-hash": "ea721b4e0baa842762b6046755f82f90",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -6162,32 +6162,32 @@
         },
         {
             "name": "yajra/laravel-oci8",
-            "version": "v11.0.0",
+            "version": "v11.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-oci8.git",
-                "reference": "28a0db0e162ee78ef803f6d71ff9f58b78987700"
+                "reference": "4f5c5432fbe24521c85e7d36e0e5f6799a4a99a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-oci8/zipball/28a0db0e162ee78ef803f6d71ff9f58b78987700",
-                "reference": "28a0db0e162ee78ef803f6d71ff9f58b78987700",
+                "url": "https://api.github.com/repos/yajra/laravel-oci8/zipball/4f5c5432fbe24521c85e7d36e0e5f6799a4a99a2",
+                "reference": "4f5c5432fbe24521c85e7d36e0e5f6799a4a99a2",
                 "shasum": ""
             },
             "require": {
                 "ext-oci8": ">=3.0.1",
                 "ext-pdo": "*",
-                "illuminate/database": "^11.0",
-                "illuminate/pagination": "^11.0",
-                "illuminate/support": "^11.0",
-                "illuminate/validation": "^11.0",
+                "illuminate/database": "^11.15.0",
+                "illuminate/pagination": "^11.15.0",
+                "illuminate/support": "^11.15.0",
+                "illuminate/validation": "^11.15.0",
                 "php": "^8.2",
-                "yajra/laravel-pdo-via-oci8": "^3.0"
+                "yajra/laravel-pdo-via-oci8": "^3.4.4"
             },
             "require-dev": {
-                "mockery/mockery": "^1.6",
-                "orchestra/testbench": "^9.0",
-                "phpunit/phpunit": "^10.5|^11.0"
+                "mockery/mockery": "^1.6.12",
+                "orchestra/testbench": "^9.1.2",
+                "phpunit/phpunit": "^10.5|^11.2.7"
             },
             "type": "library",
             "extra": {
@@ -6229,7 +6229,7 @@
             ],
             "support": {
                 "issues": "https://github.com/yajra/laravel-oci8/issues",
-                "source": "https://github.com/yajra/laravel-oci8/tree/v11.0.0"
+                "source": "https://github.com/yajra/laravel-oci8/tree/v11.6.4"
             },
             "funding": [
                 {
@@ -6245,7 +6245,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-03-16T03:43:54+00:00"
+            "time": "2024-12-31T06:59:31+00:00"
         },
         {
             "name": "yajra/laravel-pdo-via-oci8",

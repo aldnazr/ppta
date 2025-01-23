@@ -11,7 +11,7 @@
         "laravel/tinker": "^2.9",
         "nesbot/carbon": "^3.8",
         "nette/schema": "*",
-        "yajra/laravel-oci8": "11.0"
+        "yajra/laravel-oci8": "^11.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
