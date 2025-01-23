@@ -123,4 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'providers' => [
+        Yajra\Oci8\Oci8ServiceProvider::class,
+    ],
 ];
