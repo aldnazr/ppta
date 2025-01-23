@@ -38,54 +38,55 @@
                     <thead class="bg-gray-100 text-gray-700">
                         <tr>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 NO
                             </th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider whitespace-nowrap">
                                 NO DAFTAR</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 TANGGAL PENGAJUAN</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 NIM
                             </th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 NAMA
                             </th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider whitespace-nowrap">
                                 PEMBIMBING 1</th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 PEMBIMBING 2</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 JADWAL SIDANG PROPOSAL</th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 REVISI</th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 FILE
                             </th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 HASIL</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($proposals as $index => $proposal)
                             <td rowspan="2" class="text-center px-4 py-2">{{ $index + 1 }}
-                            <td colspan="11" class="border-s px-4 py-4">{{ $proposal['judul'] }}</td>
+                            <td colspan="11" class="border-s px-4 py-4 font-medium">{{ $proposal['judul'] }}</td>
                             <tr>
-                                <td class="border px-4 py-2">{{ $proposal['no_daftar'] }}</td>
-                                <td class="text-center border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}</td>
-                                <td class="border px-4 py-2">{{ $proposal['nim'] }}</td>
-                                <td class="border px-4 py-2">{{ $proposal['nama'] }}</td>
-                                <td class="border px-4 py-2">{{ $proposal['pembimbing1'] }}</td>
-                                <td class="border px-4 py-2">{{ $proposal['pembimbing2'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['no_daftar'] }}</td>
+                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}
+                                </td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['nim'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['nama'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing1'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing2'] }}</td>
                                 <td class="border text-center px-4 py-2">
                                     <button @click="open = true; titleData = 'Jadwal Sidang Proposal TA'"
                                         class="cursor-pointer px-2.5 py-1.5 rounded text-sm
@@ -93,8 +94,8 @@
                                         {{ $proposal['status'] }}
                                     </button>
                                 </td>
-                                <td class="border px-4 py-2"></td>
-                                <td class="text-center border px-4 py-2">
+                                <td class="text-zinc-600 border px-4 py-2"></td>
+                                <td class="text-center text-zinc-600 border px-4 py-2">
                                     <button href="#" class="cursor-pointer text-blue-500 underline">
                                         <i class="fa-solid fa-download fa-lg"></i>
                                     </button>

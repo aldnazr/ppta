@@ -8,7 +8,7 @@
                 <!-- Per Page Selector -->
                 <form method="GET" action="{{ url()->current() }}" id="perPageForm"
                     class="w-full md:w-auto flex items-center justify-start gap-2">
-                    <label for="per-page" class="whitespace-nowrap">Tampilkan:</label>
+                    <label for="per-page" class="text-nowrap">Tampilkan:</label>
                     <select id="per-page" name="per_page"
                         class="w-20 bg-gray-200 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         onchange="this.form.submit()">
@@ -45,7 +45,7 @@
                     <!-- Filter Form -->
                     <form method="GET" action="{{ url()->current() }}" class="relative" x-data="{ isMenuOpen: false }">
                         <button type ="button" @click="isMenuOpen = !isMenuOpen"
-                            class="bg-blue-100 text-blue-600 px-3 py-1.5 rounded-md flex items-center hover:text-blue-700 hover:bg-blue-200 cursor-pointer">
+                            class="bg-blue-100 text-blue-700 px-3 py-1.5 rounded-md flex items-center hover:text-blue-700 hover:bg-blue-200 cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
                                 fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -66,7 +66,7 @@
                                     <li class="w-full border-b border-gray-200 rounded-t-lg">
                                         <div class="flex items-center ps-3">
                                             <input id="list-radio-semua" type="radio" value="" name="filter"
-                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+                                                class="w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
                                                 {{ request('filter') == '' ? 'checked' : '' }}
                                                 onchange="this.closest('form').submit()">
                                             <label for="list-radio-semua"
@@ -76,7 +76,7 @@
                                     <li class="w-full border-b border-gray-200 rounded-t-lg">
                                         <div class="flex items-center ps-3">
                                             <input id="list-radio-proposal" type="radio" value="proposal" name="filter"
-                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+                                                class="w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
                                                 {{ request('filter') == 'proposal' ? 'checked' : '' }}
                                                 onchange="this.closest('form').submit()">
                                             <label for="list-radio-proposal"
@@ -87,7 +87,7 @@
                                         <div class="flex items-center ps-3">
                                             <input id="list-radio-tugas_akhir" type="radio" value="tugas_akhir"
                                                 name="filter"
-                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
+                                                class="w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
                                                 {{ request('filter') == 'tugas_akhir' ? 'checked' : '' }}
                                                 onchange="this.closest('form').submit()">
                                             <label for="list-radio-tugas_akhir"
@@ -111,34 +111,35 @@
                     <thead class="bg-gray-100 text-gray-700">
                         <tr>
                             <th scope="col"
-                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 No
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-center text-xs font-medium uppercase tracking-wider">
+                                class="border-e p-4 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 Tgl Pengajuan Proposal
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-center text-xs font-medium uppercase tracking-wider">
+                                class="border-e p-4 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 Tgl Pengajuan TA
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 Mahasiswa
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 Pembiming
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 Penguji
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 Siap Transfer
                             </th>
-                            <th scope="col" class="p-4 text-left text-xs font-medium uppercase tracking-wider">
+                            <th scope="col"
+                                class="p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 Action
                             </th>
                         </tr>
@@ -152,34 +153,35 @@
                             </tr>
                         @else
                             @foreach ($proposals as $index => $proposal)
-                                <td rowspan="2" class="text-center p-4 whitespace-nowrap">
+                                <td rowspan="2" class="text-center p-4 text-nowrap">
                                     {{ $proposals->firstItem() + $index }}
-                                <td colspan="8" class="border-s p-4">
+                                <td colspan="8" class="border-s p-4 font-medium">
                                     {{ $proposal['judul'] }}
                                 </td>
                                 <tr>
-                                    <td class="border text-center p-4 whitespace-nowrap">
+                                    <td class="border text-zinc-700 text-center p-4 text-nowrap">
                                         {{ $proposal['tgl_pengajuan_proposal'] ? date('d-m-Y', strtotime($proposal['tgl_pengajuan_proposal'])) : '' }}
                                     </td>
-                                    <td class="border text-center p-4 whitespace-nowrap">
+                                    <td class="border text-zinc-700 text-center p-4 text-nowrap">
                                         {{ $proposal['tgl_pengajuan_ta'] ? date('d-m-Y', strtotime($proposal['tgl_pengajuan_ta'])) : '' }}
                                     </td>
-                                    <td class="border p-4">
+                                    <td class="border p-4 text-zinc-700">
                                         {{ $proposal['nim'] }}
+                                        <br>
                                         {{ $proposal['nama_mahasiswa'] }}
                                     </td>
-                                    <td class="border p-4">
+                                    <td class="border p-4 text-zinc-700 text-nowrap">
                                         1. {{ $proposal['pembimbing1'] }}
                                         <br>
                                         2. {{ $proposal['pembimbing2'] }}
                                     </td>
-                                    <td class="border p-4 whitespace-nowrap">
+                                    <td class="border p-4 text-zinc-700 text-nowrap">
                                         {{ $proposal['penguji'] }}
                                     </td>
-                                    <td class="border p-4 whitespace-nowrap">
+                                    <td class="border p-4 text-zinc-700 text-nowrap">
                                         {{ $proposal['siap_transfer'] ?? '' }}
                                     </td>
-                                    <td class="border p-4 whitespace-nowrap">
+                                    <td class="border p-4 text-zinc-700 text-nowrap">
                                         <a href="{{ route('dosen.berkas.penilaian', ['id' => $proposal['id']]) }}"
                                             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-2.5 rounded">
                                             Nilai

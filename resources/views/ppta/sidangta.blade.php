@@ -38,116 +38,116 @@
                     <thead class="bg-gray-100 text-gray-700">
                         <tr>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 NO
                             </th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider whitespace-nowrap">
                                 NO
                                 DAFTAR</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 TANGGAL PENGAJUAN</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 NIM
                             </th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 NAMA
                             </th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider whitespace-nowrap">
                                 PEMBIMBING 1</th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider whitespace-nowrap">
                                 PEMBIMBING 2</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 JADWAL SIDANG TA</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 PROPOSAL TA</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 LAPORAN TA</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 JURNAL</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 SEMINAR</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 BUKTI BIMBINGAN</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 POSTER</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 BUKTI ORI</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 BUKTI UPLOAD JURNAL</th>
                             <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 BUKTI KEASLIAN</th>
                             <th
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider w-2/3">
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider w-2/3">
                                 HASIL</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($tugasAkhir as $index => $item)
                             <td rowspan="2" class="text-center px-4 py-2 whitespace-nowrap">{{ $index + 1 }}
-                            <td colspan="12" class="border-s px-4 py-4">{{ $item['judul'] }}</td>
+                            <td colspan="12" class="border-s px-4 py-4 font-medium">{{ $item['judul'] }}</td>
                             <tr>
-                                <td class="text-center border px-4 py-2">{{ $item['no_daftar'] }}</td>
-                                <td class="text-center border px-4 py-2">{{ $item['tgl_pengajuan'] }}</td>
-                                <td class="text-center border px-4 py-2">{{ $item['nim'] }}</td>
-                                <td class="border px-4 py-2">{{ $item['nama'] }}</td>
-                                <td class="border px-4 py-2">{{ $item['pembimbing1'] }}</td>
-                                <td class="border px-4 py-2">{{ $item['pembimbing2'] }}</td>
+                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['no_daftar'] }}</td>
+                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['tgl_pengajuan'] }}</td>
+                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['nim'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $item['nama'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $item['pembimbing1'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $item['pembimbing2'] }}</td>
                                 <td class="border text-center px-4 py-2">
                                     <button @click="open = true; titleData = 'Jadwal Sidang Tugas Akhir'"
                                         class="cursor-pointer px-2.5 py-1.5 rounded text-sm {{ $item['status'] === 'Dijadwalkan' ? 'bg-green-200 text-green-800' : 'bg-yellow-200 text-yellow-800' }}">
                                         {{ $item['status'] }}
                                     </button>
                                 </td>
-                                <td class="border px-4 py-2 text-center">
+                                <td class="text-zinc-600 border px-4 py-2 text-center">
                                     <button href="#" class="cursor-pointer text-blue-500">
                                         <i class="fa-solid fa-download fa-lg"></i>
                                     </button>
                                 </td>
-                                <td class="border px-4 py-2 text-center">
+                                <td class="text-zinc-600 border px-4 py-2 text-center">
                                     <button href="#" class="cursor-pointer text-blue-500">
                                         <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
-                                <td class="border px-4 py-2 text-center">
+                                <td class="text-zinc-600 border px-4 py-2 text-center">
                                     <button href="#" class="cursor-pointer text-blue-500">
                                         <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
-                                <td class="border px-4 py-2 text-center">
+                                <td class="text-zinc-600 border px-4 py-2 text-center">
                                     <button href="#" class="cursor-pointer text-blue-500">
                                         <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
-                                <td class="border px-4 py-2 text-center">
+                                <td class="text-zinc-600 border px-4 py-2 text-center">
                                     <button href="#" class="cursor-pointer text-blue-500">
                                         <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
-                                <td class="border px-4 py-2 text-center">
+                                <td class="text-zinc-600 border px-4 py-2 text-center">
                                     <button href="#" class="cursor-pointer text-blue-500">
                                         <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
-                                <td class="border px-4 py-2 text-center">
+                                <td class="text-zinc-600 border px-4 py-2 text-center">
                                     <button href="#" class="cursor-pointer text-blue-500">
                                         <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
-                                <td class="border px-4 py-2 text-center">
+                                <td class="text-zinc-600 border px-4 py-2 text-center">
                                     <button href="#" class="cursor-pointer text-blue-500">
                                         <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
-                                <td class="border px-4 py-2 text-center">
+                                <td class="text-zinc-600 border px-4 py-2 text-center">
                                     <button href="#" class="cursor-pointer text-blue-500">
                                         <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>

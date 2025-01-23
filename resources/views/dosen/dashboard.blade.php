@@ -15,16 +15,16 @@
                 <ul class="divide-y divide-gray-200 space-y-4">
                     @foreach ($paginated as $item)
                         <li
-                            class="flex items-center justify-between p-4 g-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100">
+                            class="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg shadow-md border border-gray-100">
                             <div class="flex-1 min-w-0">
                                 <!-- Badge -->
                                 <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium {{ $item['tipe'] === 'proposal' ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/20' : 'bg-lime-50 text-lime-700 ring-1 ring-lime-600/20' }}">
+                                    class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium {{ $item['tipe'] === 'proposal' ? 'bg-emerald-100 text-emerald-700 ring-1 ring-emerald-600/20' : 'bg-lime-100 text-lime-700 ring-1 ring-lime-600/20' }}">
                                     {{ str_replace('_', ' ', Str::title($item['tipe'])) }}
                                 </span>
 
                                 <!-- Title -->
-                                <h3 class="mt-2 text-lg font-semibold text-gray-900 truncate">
+                                <h3 class="mt-2 text-base lg:text-lg font-semibold text-gray-900">
                                     {{ $item['judul'] }}
                                 </h3>
 
@@ -53,7 +53,7 @@
 
                             <!-- Action Button -->
                             <a href="{{ route('dosen.dashboard.penilaian', ['id' => $item['id']]) }}"
-                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 shadow-sm hover:shadow">
+                                class="inline-flex items-center justify-center mt-3 md:mt-0 w-full md:w-auto px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 shadow-sm hover:shadow">
                                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
