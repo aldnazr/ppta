@@ -42,7 +42,7 @@
                                 NO
                             </th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                                 NO DAFTAR</th>
                             <th
                                 class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">

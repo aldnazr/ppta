@@ -20,7 +20,7 @@
             </form>
 
             <div class="overflow-x-auto bg-white rounded-md shadow border border-gray-200">
-                <table class="w-full text-sm text-left">
+                <table class="w-full text-sm text-left divide-y divide-gray-200">
                     <thead class="bg-gray-200 text-gray-700">
                         <tr>
                             <th class="px-6 py-4 font-medium">
@@ -33,7 +33,7 @@
                                         class="fa-duotone fa-solid fa-sort {{ $currentSort === 'date_desc' ? 'fa-rotate-180' : '' }}"></i>
                                 </a>
                             </th>
-                            <th class="px-6 py-4 font-medium">
+                            <th class="px-6 py-4 font-medium tracking-wider">
                                 Tugas Akhir
                             </th>
                         </tr>
@@ -48,7 +48,7 @@
                                     <div class="text-gray-600">Ruang {{ $schedule['room'] }}</div>
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-900">
-                                    <div class="font-medium mb-2">{{ $schedule['title'] }}</div>
+                                    <div class="md:text-base font-medium mb-2">{{ $schedule['title'] }}</div>
                                     <div class="text-gray-600 mb-1 text-nowrap">{{ $schedule['student'] }}</div>
                                     <div class="text-gray-600 text-nowrap">Pembimbing 1: {{ $schedule['supervisor1'] }}
                                     </div>

@@ -107,8 +107,7 @@
                 <template x-if="dataTaMhs.length > 0">
                     <div class="container mx-auto mb-4">
                         <template x-for="mahasiswa in paginatedMahasiswa" :key="mahasiswa.nim">
-                            <div
-                                class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 mb-6 p-6">
+                            <div class="bg-white border border-gray-200 rounded-lg shadow-sm mb-6 p-6">
                                 <div class="space-y-4">
                                     <!-- Judul -->
                                     <div class="border-l-4 border-indigo-500 pl-4">
