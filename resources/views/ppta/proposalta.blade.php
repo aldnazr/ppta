@@ -82,8 +82,8 @@
                                 <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing2'] }}</td>
                                 <td class="border text-center px-4 py-2">
                                     <button @click="open = true; titleData = 'Jadwal Sidang Proposal TA'"
-                                        class="cursor-pointer px-2.5 py-1.5 rounded text-sm
-                                                {{ $proposal['status'] === 'Dijadwalkan' ? 'bg-green-200 text-green-800' : 'bg-yellow-200 text-yellow-800' }}">
+                                        class="cursor-pointer px-3 py-1.5 shadow-sm rounded-md text-sm
+                                                {{ $proposal['status'] === 'Dijadwalkan' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                         {{ $proposal['status'] }}
                                     </button>
                                 </td>
@@ -96,7 +96,7 @@
                                 <td class="px-4 py-2">
                                     <div class="relative" x-data="{ isUpdateopen: false }">
                                         <button @click="isUpdateopen = !isUpdateopen"
-                                            class="cursor-pointer px-3 py-1 text-gray-600 hover:text-gray-800 border border-gray-400 rounded-md hover:bg-gray-100 focus:outline-none inline-flex items-center"
+                                            class="cursor-pointer px-3 py-1 text-gray-800 hover:text-gray-800 ring ring-gray-300 rounded-md hover:bg-gray-100 focus:outline-none inline-flex items-center"
                                             type="button">
                                             <span>Update Status</span>
                                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"

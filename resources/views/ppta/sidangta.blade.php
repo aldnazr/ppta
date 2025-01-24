@@ -96,7 +96,7 @@
                                 <td class="text-zinc-600 border px-4 py-2">{{ $item['pembimbing2'] }}</td>
                                 <td class="border text-center px-4 py-2">
                                     <button @click="open = true; titleData = 'Jadwal Sidang Tugas Akhir'"
-                                        class="cursor-pointer px-3 py-1.5 rounded rounded-md text-sm shadow-xs {{ $item['status'] === 'Dijadwalkan' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
+                                        class="cursor-pointer px-3 py-1.5 rounded rounded-md text-sm shadow-sm {{ $item['status'] === 'Dijadwalkan' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                         {{ $item['status'] }}
                                     </button>
                                 </td>
@@ -138,11 +138,11 @@
                                         <i class="fa-solid fa-download fa-lg"></i></button>
                                 </td>
                                 <td class="px-4 py-2 space-y-2">
-                                    <select class="border border-gray-300 rounded-md px-2 py-1 text-sm">
+                                    <select class="ring ring-gray-300 rounded-md px-2 py-1 text-sm">
                                         <option value="diterima">Diterima</option>
                                         <option value="ditolak">Ditolak</option>
                                     </select>
-                                    <textarea class="w-full border border-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
+                                    <textarea class="w-full ring ring-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
                                         rows="2" placeholder="Keterangan jika ditolak"></textarea>
                                 </td>
                             </tr>
