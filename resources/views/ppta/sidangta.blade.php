@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="rounded-xl shadow-lg border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', title() { return this.titleData; } }">
+    <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', title() { return this.titleData; } }">
         <x-header>Antrian Sidang Tugas Akhir</x-header>
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
@@ -35,65 +35,50 @@
             </div>
             <div class="overflow-x-auto bg-white rounded-md border border-gray-200">
                 <table class="w-full text-sm text-left divide-y divide-gray-200">
-                    <thead class="bg-gray-100 text-gray-700">
+                    <thead class="bg-gray-200 text-gray-800">
                         <tr>
-                            <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                 NO
                             </th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider whitespace-nowrap">
                                 NO
                                 DAFTAR</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 TANGGAL PENGAJUAN</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 NIM
                             </th>
-                            <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                 NAMA
                             </th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider whitespace-nowrap">
                                 PEMBIMBING 1</th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider whitespace-nowrap">
                                 PEMBIMBING 2</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 JADWAL SIDANG TA</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 PROPOSAL TA</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 LAPORAN TA</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 JURNAL</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 SEMINAR</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 BUKTI BIMBINGAN</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 POSTER</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 BUKTI ORI</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 BUKTI UPLOAD JURNAL</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 BUKTI KEASLIAN</th>
-                            <th
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider w-2/3">
+                            <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider w-2/3">
                                 HASIL</th>
                         </tr>
                     </thead>

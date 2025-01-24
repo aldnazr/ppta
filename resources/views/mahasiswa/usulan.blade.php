@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="overflow-hidden rounded-xl shadow-lg" x-data="{ open: false, titleData: '', title() { return 'Judul: ' + this.titleData; }, pengusul: '', description: '' }">
+    <div class="overflow-hidden bg-white rounded-xl shadow-lg" x-data="{ open: false, titleData: '', title() { return 'Judul: ' + this.titleData; }, pengusul: '', description: '' }">
         <x-header>Usulan Judul Tugas Akhir</x-header>
         <div class="p-4 lg:p-6">
             <ul class="space-y-4">

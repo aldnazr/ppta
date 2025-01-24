@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="border border-gray-200 rounded-xl shadow-lg overflow-hidden" x-data="{ open: false, title() { return 'Data Penguji' }, nik: '', nama: '', tingkat: '', status: '' }">
+    <div class="bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden" x-data="{ open: false, title() { return 'Data Penguji' }, nik: '', nama: '', tingkat: '', status: '' }">
         <x-header>Maintenance Data Penguji</x-header>
         <div class="p-4 lg:p-6">
             <div class="flex flex-col mb-6 space-y-2">
@@ -75,23 +75,23 @@
                     </form>
                 </div>
             </div>
-            <div class="overflow-x-auto rounded-md border border-gray-200">
-                <table class="min-h-[35vh] w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-100 text-gray-700 uppercase tracking-wider">
+            <div class="overflow-x-auto rounded-md border border-gray-300">
+                <table class="min-h-[35vh] w-full divide-y divide-gray-300">
+                    <thead class="bg-gray-200 text-gray-800 uppercase tracking-wider">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">
+                            <th class="px-6 py-3 text-left text-xs font-medium">
                                 NIK
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">
+                            <th class="px-6 py-3 text-left text-xs font-medium">
                                 Nama
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">
+                            <th class="px-6 py-3 text-left text-xs font-medium">
                                 Tingkat
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">
+                            <th class="px-6 py-3 text-left text-xs font-medium">
                                 Status
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500">
+                            <th class="px-6 py-3 text-left text-xs font-medium">
                                 Aksi
                             </th>
                         </tr>

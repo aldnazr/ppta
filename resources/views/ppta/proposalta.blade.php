@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="rounded-xl shadow-lg border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', title() { return this.titleData; } }">
+    <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', title() { return this.titleData; } }">
         <x-header>Antrian Proposal Tugas Akhir</x-header>
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
@@ -35,43 +35,35 @@
             </div>
             <div class="overflow-x-auto bg-white rounded-md border border-gray-200">
                 <table class="w-full text-sm text-left divide-y divide-gray-200">
-                    <thead class="bg-gray-100 text-gray-700">
+                    <thead class="bg-gray-200 text-gray-800">
                         <tr>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 NO
                             </th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                                class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-nowrap">
                                 NO DAFTAR</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 TANGGAL PENGAJUAN</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 NIM
                             </th>
-                            <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                 NAMA
                             </th>
                             <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider whitespace-nowrap">
+                                class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider whitespace-nowrap">
                                 PEMBIMBING 1</th>
-                            <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                 PEMBIMBING 2</th>
-                            <th
-                                class="border-e px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 JADWAL SIDANG PROPOSAL</th>
-                            <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                 REVISI</th>
-                            <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                 FILE
                             </th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 HASIL</th>
                         </tr>
                     </thead>
@@ -124,7 +116,7 @@
                                                 <div>
                                                     <input type="hidden" name="status" value="ACC">
                                                     <button
-                                                        class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-green-50 hover:text-green-700 flex items-center">
+                                                        class="w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-green-50 hover:text-green-800 flex items-center">
                                                         <svg class="w-4 h-4 mr-2 text-green-500" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -138,7 +130,7 @@
                                                 <div>
                                                     <input type="hidden" name="status" value="ACC Bersyarat">
                                                     <button
-                                                        class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-blue-50 hover:text-blue-700 flex items-center">
+                                                        class="w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-blue-50 hover:text-blue-800 flex items-center">
                                                         <svg class="w-4 h-4 mr-2 text-blue-500" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -154,7 +146,7 @@
                                                     <input type="hidden" name="status"
                                                         value="ACC Bersyarat Sidang Ulang">
                                                     <button
-                                                        class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-purple-50 hover:text-purple-700 flex items-center">
+                                                        class="w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-purple-50 hover:text-purple-800 flex items-center">
                                                         <svg class="w-4 h-4 mr-2 text-purple-500" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -169,7 +161,7 @@
                                                 <div>
                                                     <input type="hidden" name="status" value="Materi Kurang">
                                                     <button
-                                                        class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-yellow-50 hover:text-yellow-700 flex items-center">
+                                                        class="w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-yellow-50 hover:text-yellow-800 flex items-center">
                                                         <svg class="w-4 h-4 mr-2 text-yellow-500" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -184,7 +176,7 @@
                                                 <div>
                                                     <input type="hidden" name="status" value="Ditolak">
                                                     <button
-                                                        class="w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-red-50 hover:text-red-700 flex items-center">
+                                                        class="w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-red-50 hover:text-red-800 flex items-center">
                                                         <svg class="w-4 h-4 mr-2 text-red-500" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -220,13 +212,13 @@
                 <!-- Registration Details -->
                 <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">No Daftar</label>
+                        <label class="block text-sm font-medium text-gray-800">No Daftar</label>
                         <input type="text" value="2025010004" readonly
                             class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">NIM</label>
+                        <label class="block text-sm font-medium text-gray-800">NIM</label>
                         <input type="text" value="20410100030" readonly
                             class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
                     </div>
@@ -234,21 +226,21 @@
 
                 <!-- Student Name -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Nama</label>
+                    <label class="block text-sm font-medium text-gray-800">Nama</label>
                     <input type="text" value="Reza Maulana Winardi" readonly
                         class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
                 </div>
 
                 <!-- Thesis Title -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Judul</label>
+                    <label class="block text-sm font-medium text-gray-800">Judul</label>
                     <textarea readonly
                         class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600 resize-none"
                         rows="3">Evaluasi Dan Redesain Aplikasi GOBIS Suroboyo Bus Dengan Pendekatan Design Thinking Untuk Meningkatkan Pengalaman Pengguna</textarea>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Jadwal</label>
+                    <label class="block text-sm font-medium text-gray-800">Jadwal</label>
                     <input type="text" readonly
                         class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600 resize-none"
                         value="Belum Di jadwalkan">
@@ -257,13 +249,13 @@
                 <!-- Schedule Details -->
                 <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Tanggal</label>
+                        <label class="block text-sm font-medium text-gray-800">Tanggal</label>
                         <input type="date" name="defense_date" value="2025-01-16"
                             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">Jam</label>
+                        <label class="block text-sm font-medium text-gray-800">Jam</label>
                         <input type="time" name="defense_time" value="08:00"
                             class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
                     </div>
@@ -271,7 +263,7 @@
 
                 <!-- Examiners -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Penguji</label>
+                    <label class="block text-sm font-medium text-gray-800">Penguji</label>
                     <select name="examiner1"
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
                         <option value="1" selected>Dr. Anjik Sukmaaji, S.Kom., M.Eng.</option>
@@ -282,7 +274,7 @@
 
                 <!-- Room -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Ruang</label>
+                    <label class="block text-sm font-medium text-gray-800">Ruang</label>
                     <select name="room"
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
                         <option value="M504" selected>M504</option>
@@ -294,7 +286,7 @@
                 <!-- Submit Button -->
                 <div>
                     <button type="submit"
-                        class="cursor-pointer w-full sm:w-auto px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md shadow-sm transition-colors">
+                        class="cursor-pointer w-full sm:w-auto px-4 py-2.5 bg-indigo-600 hover:bg-indigo-800 text-white font-medium rounded-md shadow-sm transition-colors">
                         Simpan Jadwal
                     </button>
                 </div>

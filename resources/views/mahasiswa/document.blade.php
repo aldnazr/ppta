@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="rounded-xl shadow-sm overflow-hidden">
+    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
         <!-- Header Section with Gradient -->
         <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-5 lg:px-8 lg:py-6">
             <h1 class="text-2xl font-bold text-white">

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mx-auto lg:px-4 lg:py-8">
-        <div class="max-w-2xl mx-auto shadow-xl rounded-xl lg:rounded-2xl overflow-hidden">
+        <div class="bg-white max-w-2xl mx-auto shadow-xl rounded-xl lg:rounded-2xl overflow-hidden">
             <x-header>
                 Form Konfirmasi Proposal
             </x-header>

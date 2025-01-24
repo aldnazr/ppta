@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="rounded-xl border border-gray-200 shadow-lg mb-0.5 overflow-hidden" x-data="{
+    <div class="bg-white rounded-xl border border-gray-200 shadow-lg mb-0.5 overflow-hidden" x-data="{
         open: false,
         titleData: '',
         activeJurusan: '{{ $activeJurusan }}',
