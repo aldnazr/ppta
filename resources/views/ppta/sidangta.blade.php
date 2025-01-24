@@ -96,7 +96,7 @@
                                 <td class="text-zinc-600 border px-4 py-2">{{ $item['pembimbing2'] }}</td>
                                 <td class="border text-center px-4 py-2">
                                     <button @click="open = true; titleData = 'Jadwal Sidang Tugas Akhir'"
-                                        class="cursor-pointer px-2.5 py-1.5 rounded text-sm {{ $item['status'] === 'Dijadwalkan' ? 'bg-green-200 text-green-800' : 'bg-yellow-200 text-yellow-800' }}">
+                                        class="cursor-pointer px-3 py-1.5 rounded rounded-md text-sm shadow-xs {{ $item['status'] === 'Dijadwalkan' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                         {{ $item['status'] }}
                                     </button>
                                 </td>
