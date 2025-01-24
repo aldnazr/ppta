@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden" x-data="{ open: false, title() { return 'Data Penguji' }, nik: '', nama: '', tingkat: '', status: '' }">
+    <div class="border border-gray-200 rounded-xl shadow-lg overflow-hidden" x-data="{ open: false, title() { return 'Data Penguji' }, nik: '', nama: '', tingkat: '', status: '' }">
         <x-header>Maintenance Data Penguji</x-header>
         <div class="p-4 lg:p-6">
             <div class="flex flex-col mb-6 space-y-2">

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mx-auto lg:px-4 lg:py-8">
-        <div class="max-w-2xl mx-auto bg-white shadow-xl rounded-xl lg:rounded-2xl overflow-hidden">
+        <div class="max-w-2xl mx-auto shadow-xl rounded-xl lg:rounded-2xl overflow-hidden">
             <x-header>
                 Laporan Sidang Tugas Akhir
             </x-header>

@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+    <div class="rounded-xl shadow-sm overflow-hidden">
         <!-- Header Section with Gradient -->
         <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-5 lg:px-8 lg:py-6">
-            <h1 class="text-xl lg:text-2xl font-bold text-white">
+            <h1 class="text-2xl font-bold text-white">
                 Dokumen Tugas Akhir (TA)
             </h1>
-            <p class="mt-1.5 md:mt-2 text-blue-100 text-sm md:text-base ">
+            <p class="mt-1.5 text-blue-100 ">
                 Panduan dan dokumen pendukung untuk penyelesaian Tugas Akhir
             </p>
         </div>
@@ -16,7 +16,7 @@
         <div class="p-5 md:p-8">
             <!-- Introduction -->
             <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg mb-8">
-                <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+                <p class="text-gray-700 text-justify md:text-left leading-relaxed">
                     Tugas Akhir adalah mata kuliah 6 sks, bertujuan untuk membekali mahasiswa Program S1
                     dengan pengalaman mengaplikasikan ilmu pengetahuan dan ketrampilan yang diperoleh
                     selama masa studi, mulai kegiatan analisa, perancangan dan atau implementasi sistem,
@@ -25,7 +25,7 @@
             </div>
 
             <div class="mb-8">
-                <h2 class="flex items-center text-base md:text-lg font-semibold text-gray-800 mb-4">
+                <h2 class="flex items-center text-lg font-semibold text-gray-800 mb-4">
                     <span class="bg-blue-100 p-2 rounded-lg mr-3">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 lg:h-5 lg:w-5 text-blue-600" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor">
@@ -35,7 +35,7 @@
                     </span>
                     Prasyarat Menempuh Tugas Akhir
                 </h2>
-                <ul class="space-y-2 text-gray-600 ml-11 text-sm md:text-base">
+                <ul class="space-y-2 text-gray-600 ml-11">
                     <li class="flex items-center space-x-2">
                         <div class="w-2 h-2 bg-blue-500 rounded-full shrink-0"></div>
                         <span>Mencantumkan mata kuliah Tugas Akhir di KRS (Kartu Rencana Studi)</span>
@@ -56,10 +56,10 @@
             </div>
 
             <!-- Documents Grid -->
-            <div class="grid md:grid-cols-2 gap-6 text-sm md:text-base">
+            <div class="grid md:grid-cols-2 gap-6">
                 <!-- Document Card 1 -->
                 <div class="bg-white rounded-lg border border-gray-200 p-5 hover:shadow-md transition-shadow">
-                    <h2 class="flex items-center text-base md:text-lg font-semibold text-gray-800 mb-3">
+                    <h2 class="flex items-center text-lg font-semibold text-gray-800 mb-3">
                         <span class="text-blue-600 mr-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -93,7 +93,7 @@
 
                 <!-- Document Card 2 -->
                 <div class="bg-white rounded-lg border border-gray-200 p-5 hover:shadow-md transition-shadow">
-                    <h2 class="flex items-center text-base md:text-lg font-semibold text-gray-800 mb-3">
+                    <h2 class="flex items-center text-lg font-semibold text-gray-800 mb-3">
                         <span class="text-blue-600 mr-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">

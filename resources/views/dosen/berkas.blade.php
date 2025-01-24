@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white overflow-hidden border-b border-gray-200 rounded-xl shadow-lg overflow-hidden">
+    <div class="overflow-hidden border-b border-gray-200 rounded-xl shadow-lg overflow-hidden">
         <x-header>Berkas</x-header>
         <div class="p-4 lg:p-6">
             <div class="flex flex-col md:flex-row justify-between mb-6 space-y-3 md:space-y-0">

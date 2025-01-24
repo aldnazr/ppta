@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl border border-gray-200 shadow-lg overflow-hidden">
+    <div class="rounded-xl border border-gray-200 shadow-lg overflow-hidden">
         <x-header>Pencarian Pembimbing</x-header>
         <div class="min-h-[60vh] lg:min-h-[75vh] p-4 md:p-6 mt-4 lg:mt-8">
             <div class="max-w-xl mx-auto">

@@ -19,7 +19,7 @@ use App\Http\Controllers\Mahasiswa\PencarianPembimbingController;
 
 Route::get('/listdosen', function () {
     $users = DB::connection('oracle')->table('dosen')->get(); // Mengambil semua data dari tabel mahasiswa
-    return view('listmhs', compact('users')); // Kirim data ke view 'listmhs'
+    return view('listdosen', compact('users')); // Kirim data ke view 'listmhs'
 });
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/pencarianpembimbing', [PencarianPembimbingController::class, 'index'])->name('pencarianpembimbing');

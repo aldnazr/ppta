@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container bg-white rounded-xl shadow-lg border border-gray-200 mx-auto overflow-hidden">
+    <div class="rounded-xl shadow-lg border border-gray-200 mx-auto overflow-hidden">
         <x-header>Dashboard</x-header>
         <div class="p-4 lg:p-6">
             <!-- Unassessed Data Section -->
