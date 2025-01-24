@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', title() { return this.titleData; } }">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', title() { return this.titleData; } }">
         <x-header>Antrian Sidang Tugas Akhir</x-header>
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
@@ -85,7 +85,8 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($tugasAkhir as $index => $item)
                             <td rowspan="2" class="text-center px-4 py-2 whitespace-nowrap">{{ $index + 1 }}
-                            <td colspan="12" class="border-s px-4 py-4 font-medium">{{ $item['judul'] }}</td>
+                            <td colspan="12" class="border-s px-4 py-4 text-gray-900 font-medium">{{ $item['judul'] }}
+                            </td>
                             <tr>
                                 <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['no_daftar'] }}</td>
                                 <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['tgl_pengajuan'] }}</td>

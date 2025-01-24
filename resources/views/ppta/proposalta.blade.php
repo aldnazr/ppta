@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', title() { return this.titleData; } }">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', title() { return this.titleData; } }">
         <x-header>Antrian Proposal Tugas Akhir</x-header>
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
@@ -70,7 +70,8 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($proposals as $index => $proposal)
                             <td rowspan="2" class="text-center px-4 py-2">{{ $index + 1 }}
-                            <td colspan="11" class="border-s px-4 py-4 font-medium">{{ $proposal['judul'] }}</td>
+                            <td colspan="11" class="border-s px-4 py-4 text-gray-900 font-medium">{{ $proposal['judul'] }}
+                            </td>
                             <tr>
                                 <td class="text-zinc-600 border px-4 py-2">{{ $proposal['no_daftar'] }}</td>
                                 <td class="text-center text-zinc-600 border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}
@@ -107,7 +108,7 @@
 
                                         <!-- Dropdown menu -->
                                         <div x-show="isUpdateopen" @click.outside="isUpdateopen = false"
-                                            class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-lg z-50 border"
+                                            class="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-sm z-50 border"
                                             x-transition:enter="transition ease-out duration-100"
                                             x-transition:enter-start="transform opacity-0 scale-95"
                                             x-transition:enter-end="transform opacity-100 scale-100">

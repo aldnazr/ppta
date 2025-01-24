@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="overflow-hidden border-b border-gray-200 rounded-xl shadow-lg overflow-hidden">
+    <div class="bg-white border-b border-gray-200 rounded-xl shadow-sm overflow-hidden">
         <x-header>Berkas</x-header>
-        <div class="p-4 lg:p-6">
+        <div class="p-5 lg:p-8">
             <div class="flex flex-col md:flex-row justify-between mb-6 space-y-3 md:space-y-0">
                 <!-- Per Page Selector -->
                 <form method="GET" action="{{ url()->current() }}" id="perPageForm"
@@ -106,40 +106,39 @@
                 </div>
             </div>
 
-            <div class="overflow-x-auto rounded-md border border-gray-200">
-                <table class="min-h-[35vh] w-full text-sm text-left divide-y divide-gray-200">
-                    <thead class="bg-gray-100 text-gray-700">
+            <div class="overflow-x-auto rounded-md border border-gray-300">
+                <table class="min-h-[35vh] w-full text-sm text-left divide-y divide-gray-300">
+                    <thead class="bg-gray-200 text-gray-800">
                         <tr>
                             <th scope="col"
-                                class="border-e p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 No
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                                class="border-e p-4 text-center text-xs font-medium uppercase tracking-wider">
                                 Tgl Pengajuan Proposal
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-center text-xs font-medium text-gray-700 uppercase tracking-wider">
+                                class="border-e p-4 text-center text-xs font-medium uppercase tracking-wider">
                                 Tgl Pengajuan TA
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 Mahasiswa
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 Pembiming
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 Penguji
                             </th>
                             <th scope="col"
-                                class="border-e p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                                class="border-e p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 Siap Transfer
                             </th>
-                            <th scope="col"
-                                class="p-4 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
+                            <th scope="col" class="p-4 text-left text-xs font-medium uppercase tracking-wider">
                                 Action
                             </th>
                         </tr>
@@ -147,15 +146,13 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @if ($proposals->isEmpty())
                             <tr>
-                                <td colspan="8" class="px-6 text-base pt-8 text-center">Tidak ada
-                                    data
-                                    tersedia</td>
+                                <td colspan="8" class="px-6 text-base pt-8 text-center">Tidak ada data tersedia</td>
                             </tr>
                         @else
                             @foreach ($proposals as $index => $proposal)
                                 <td rowspan="2" class="text-center p-4 text-nowrap">
                                     {{ $proposals->firstItem() + $index }}
-                                <td colspan="8" class="border-s p-4 font-medium">
+                                <td colspan="8" class="border-s p-4 text-gray-900 font-medium">
                                     {{ $proposal['judul'] }}
                                 </td>
                                 <tr>

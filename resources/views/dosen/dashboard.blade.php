@@ -1,30 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="rounded-xl shadow-lg border border-gray-200 mx-auto overflow-hidden">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 mx-auto overflow-hidden">
         <x-header>Dashboard</x-header>
         <div class="p-4 lg:p-6">
             <!-- Unassessed Data Section -->
-            <div class="bg-white rounded-lg p-4 lg:p-5 border border-gray-300">
-                <p class="text-xl font-semibold mb-4">Data Yang Belum Dinilai</p>
-                <div class="bg-yellow-100 rounded-lg p-4 mb-4">
+            <div class="bg-white rounded-lg p-2 lg:p-2">
+                <div class="bg-yellow-100 rounded-lg p-4 mb-4 border border-yellow-200">
                     <p class="items-center text-center flex text-yellow-800 font-medium">Penilaian Tertunda: <span
                             class="text-2xl">{{ $unassessedCount }}</span>
                     </p>
                 </div>
-                <ul class="divide-y divide-gray-200 space-y-4">
+                <ul class="space-y-4">
                     @foreach ($paginated as $item)
                         <li
-                            class="flex flex-col md:flex-row items-center justify-between p-4 rounded-lg shadow-md border border-gray-100">
+                            class="border border-gray-200 flex flex-col md:flex-row items-center justify-between py-5 px-4 lg:p-5 rounded-xl">
                             <div class="flex-1 min-w-0">
                                 <!-- Badge -->
                                 <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium {{ $item['tipe'] === 'proposal' ? 'bg-emerald-100 text-emerald-700 ring-1 ring-emerald-600/20' : 'bg-lime-100 text-lime-700 ring-1 ring-lime-600/20' }}">
+                                    class="inline-flex items-center px-2.5 py-1.5 md:px-3 rounded-md text-xs font-medium ring-1 ring-inset {{ $item['tipe'] === 'proposal' ? 'bg-green-50 text-green-700 ring-green-600/20' : 'bg-yellow-50 text-yellow-800 ring-yellow-600/20' }}">
                                     {{ str_replace('_', ' ', Str::title($item['tipe'])) }}
                                 </span>
 
                                 <!-- Title -->
-                                <h3 class="mt-2 text-base lg:text-lg font-semibold text-gray-900">
+                                <h3 class="mt-2 text-base font-semibold text-gray-900">
                                     {{ $item['judul'] }}
                                 </h3>
 

@@ -3,7 +3,7 @@
 @section('content')
     <div>
         <!-- Header Card -->
-        <div class="bg-white rounded-md shadow-md mb-6 p-6">
+        <div class="border border-gray-200 bg-white rounded-lg shadow-md mb-6 p-6">
             <div class="grid grid-cols-1 gap-4">
                 <div class="flex justify-between items-center">
                     <h1 class="text-xl font-semibold text-gray-900">Nilai Detail</h1>
@@ -91,7 +91,7 @@
         </div>
 
         {{-- Tab Layout --}}
-        <div x-data="{ activeTab: 'proposal' }" class="bg-white rounded-md shadow-md p-4 mx-auto">
+        <div x-data="{ activeTab: 'proposal' }" class="border border-gray-200 bg-white rounded-lg shadow-md p-4 mx-auto">
             {{-- Tab Menu --}}
             <div
                 class="mx-auto p-2 flex justify-center bg-zinc-100 rounded-lg mb-4 border-b border-gray-200 overflow-x-auto">
