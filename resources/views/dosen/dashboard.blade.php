@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200 mx-auto overflow-hidden">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-300 mx-auto overflow-hidden">
         <x-header>Dashboard</x-header>
-        <div class="p-4 lg:p-6">
+        <div class="p-3 lg:p-6">
             <!-- Unassessed Data Section -->
             <div class="bg-white rounded-lg p-2 lg:p-2">
                 <div class="bg-yellow-100 rounded-lg p-4 mb-4 border border-yellow-200">
@@ -23,12 +23,12 @@
                                 </span>
 
                                 <!-- Title -->
-                                <h3 class="mt-2 text-base font-semibold text-gray-900">
+                                <h3 class="mt-2 text-base font-medium text-gray-900">
                                     {{ $item['judul'] }}
                                 </h3>
 
                                 <!-- Student Info -->
-                                <div class="mt-2 space-y-1">
+                                <div class="mt-1 md:mt-1.5 space-y-1">
                                     <div class="flex items-center text-sm text-gray-700">
                                         <svg class="w-4 h-4 mr-2 text-gray-400" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -54,7 +54,7 @@
                             <a href="{{ route('dosen.dashboard.penilaian', ['id' => $item['id']]) }}"
                                 class="inline-flex items-center justify-center mt-3 md:mt-0 w-full md:w-auto px-3 py-1.5 md:px-4 md:py-2 text-sm font-semibold text-white bg-blue-700/90 rounded-md md:rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 shadow-sm hover:shadow">
                                 Nilai
-                                <i class="fa-regular fa-arrow-right ml-3 hidden"></i>
+                                <i class="fa-solid fa-arrow-right fa-sm ml-1.5"></i>
                             </a>
                         </li>
                     @endforeach
