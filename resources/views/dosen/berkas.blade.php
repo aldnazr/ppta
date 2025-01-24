@@ -180,7 +180,7 @@
                                     </td>
                                     <td class="border p-4 text-zinc-700 text-nowrap">
                                         <a href="{{ route('dosen.berkas.penilaian', ['id' => $proposal['id']]) }}"
-                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-2.5 rounded">
+                                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1.5 px-2.5 rounded">
                                             Nilai
                                         </a>
                                     </td>
