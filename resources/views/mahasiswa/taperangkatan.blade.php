@@ -83,7 +83,7 @@
                                     titleData = tahun;
                                     dataTaMhs = mahasiswaTa;
                                     open = true;"
-                                class="cursor-pointer block p-4 border border-gray-200 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
+                                class="cursor-pointer block p-4 border border-gray-300 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <span class="text-gray-500 text-sm">Angkatan</span>
