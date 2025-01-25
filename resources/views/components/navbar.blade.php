@@ -25,7 +25,7 @@ window.addEventListener('resize', () => {
             x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
             x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
             x-transition:leave-end="-translate-x-full"
-            class="w-80 fixed flex pl-3 pr-4 flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
+            class="w-80 fixed flex pl-3 pr-4 flex-col inset-y-0 left-0 z-40 transform border-r border-gray-300 bg-white">
             <!-- Open Close Button -->
             <button @click="isOpen = !isOpen"
                 class="mt-[0.73rem] flex justify-center items-center rounded-full w-10 h-10 hover:bg-gray-200 cursor-pointer">
@@ -145,7 +145,7 @@ window.addEventListener('resize', () => {
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
                 x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
-                class="w-[55vh] max-w-80 pt-2 pl-2 pr-6 fixed flex flex-col pt-2.5 inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
+                class="w-[55vh] max-w-80 pt-2 pl-2 pr-6 fixed flex flex-col pt-2.5 inset-y-0 left-0 z-40 transform border-r border-gray-300 bg-white">
                 <!-- Close Button -->
                 <div class="flex justify-end"><button @click="isOpen = !isOpen"
                         class="mt-[0.73rem] flex justify-center pt-[0.1rem] items-center h-6 w-6 rounded-lg border border-gray-300 text-gray-500 hover:bg-gray-100 cursor-pointer">
