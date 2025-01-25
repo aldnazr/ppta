@@ -30,7 +30,7 @@
                     @endforeach
                 @endif
 
-                <!-- Tampilkan Pesan Flash -->
+                <!-- Tampilkan Pesan Alert -->
                 @if (session('error'))
                     <x-alert type="error" title="Error" message="{{ session('error') }}" />
                 @endif
@@ -44,7 +44,7 @@
                             NIDN
                         </label>
                         <input id="username" name="username" type="text" autocomplete="username" required
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder:text-slate-400 text-sm"
+                            class="w-full mt-1 px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder:text-slate-400 text-sm"
                             placeholder="Masukkan NIDN Anda">
                     </div>
 
@@ -54,7 +54,7 @@
                             Kata Sandi
                         </label>
                         <input id="password" name="password" type="password" autocomplete="current-password" required
-                            class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder:text-slate-400 text-sm"
+                            class="w-full mt-1 px-4 py-2.5 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 placeholder:text-slate-400 text-sm"
                             placeholder="••••••••">
                     </div>
 

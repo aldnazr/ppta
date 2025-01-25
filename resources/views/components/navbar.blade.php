@@ -11,7 +11,7 @@
     },
     getTopNavClass() {
         if (this.role === 'mahasiswa') {
-            return 'border-gray-200 md:border-transparent';
+            return 'border-gray-200 md:border-transparent bg-white md:bg-transparent';
         }
         return 'border-gray-200 bg-white';
     }
@@ -21,14 +21,14 @@ window.addEventListener('resize', () => {
 })">
     <!-- Desktop Sidebar -->
     <div class="hidden md:block">
-        <div id="sidebar" x-show="isOpen" :class="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
-            x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
-            x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
-            x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
-            class="w-80 fixed flex pl-2 pr-4 flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
+        <div id="sidebar" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="-translate-x-full"
+            class="w-80 fixed flex pl-3 pr-4 flex-col inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
             <!-- Open Close Button -->
             <button @click="isOpen = !isOpen"
-                class="mt-[0.73rem] flex justify-center items-center rounded-full w-10 h-10 hover:bg-zinc-200 cursor-pointer">
+                class="mt-[0.73rem] flex justify-center items-center rounded-full w-10 h-10 hover:bg-gray-200 cursor-pointer">
                 {{-- <i class="fa-regular fa-sidebar fa-xl"></i> --}}
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                     fill="currentColor" class="text-gray-600">
@@ -142,11 +142,10 @@ window.addEventListener('resize', () => {
     <div class="md:hidden ">
         <div x-show="isOpen" class="z-50 backdrop-contrast-75 absolute h-screen w-screen bg-white/10">
             <div id="sidebar" @click.outside = "isOpen = false" x-show="isOpen"
-                :class="{ '-translate-x-full': !isOpen, 'translate-x-0': isOpen }"
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
                 x-transition:enter-end="translate-x-0" x-transition:leave="transition ease-in duration-300"
                 x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
-                class="w-[55vh] max-w-80 pt-2 pl-4 pr-6 fixed flex flex-col pt-2.5 inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
+                class="w-[55vh] max-w-80 pt-2 pl-2 pr-6 fixed flex flex-col pt-2.5 inset-y-0 left-0 z-40 transform border-r border-gray-200 bg-white">
                 <!-- Close Button -->
                 <div class="flex justify-end"><button @click="isOpen = !isOpen"
                         class="mt-[0.73rem] flex justify-center pt-[0.1rem] items-center h-6 w-6 rounded-lg border border-gray-300 text-gray-500 hover:bg-gray-100 cursor-pointer">
@@ -259,11 +258,11 @@ window.addEventListener('resize', () => {
     <main :class="{ 'md:pl-80': isOpen }" class="flex bg-zinc-100 flex-1 flex-col h-full w-full">
         <!-- Top Navigation -->
         <div :class="getTopNavClass()"
-            class="fixed justify-between top-0 left-0 right-0 z-30 flex h-16 items-center pl-2 pr-4 border-b">
+            class="fixed justify-between top-0 left-0 right-0 z-30 flex h-16 items-center pl-2 lg:pl-3 pr-4 border-b">
 
             <!-- Button Toggle Sidebar -->
             <button @click="isOpen = !isOpen"
-                class="flex justify-center items-center rounded-full w-10 h-10 hover:bg-zinc-200 cursor-pointer">
+                class="flex justify-center items-center rounded-full w-10 h-10 hover:bg-gray-200 cursor-pointer {{ $user === 'mahasiswa' ? 'bg-transparent md:bg-white' : 'bg-transparent' }}">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
                     fill="currentColor" class="text-gray-600">
                     <path
@@ -287,7 +286,7 @@ window.addEventListener('resize', () => {
 
         <!-- Content Area -->
         <div :class="getContentMarginClass()" class="flex-1 overflow-auto">
-            <div class="bg-zinc-100 container mt-3 mb-12 lg:m-0 p-4 lg:p-8 max-w-7xl mx-auto">
+            <div class="bg-zinc-100 container mt-3 mb-12 lg:mt-0 lg:mb-0 p-4 lg:p-8 max-w-7xl mx-auto">
                 {{ $slot }}
             </div>
         </div>
