@@ -77,7 +77,7 @@
             </div>
             <div class="overflow-x-auto rounded-md border border-gray-300">
                 <table class="min-h-[35vh] w-full divide-y divide-gray-300">
-                    <thead class="bg-gray-200 text-gray-800 uppercase tracking-wider">
+                    <thead class="bg-gray-200 text-gray-700 uppercase tracking-wider">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium">
                                 NIK

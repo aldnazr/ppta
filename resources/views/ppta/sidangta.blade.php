@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', title() { return this.titleData; } }">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', jadwal: '', title() { return this.titleData; } }">
         <x-header>Antrian Sidang Tugas Akhir</x-header>
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
@@ -35,50 +35,46 @@
             </div>
             <div class="overflow-x-auto bg-white rounded-md border border-gray-200">
                 <table class="w-full text-sm text-left divide-y divide-gray-200">
-                    <thead class="bg-gray-200 text-gray-800">
+                    <thead class="bg-gray-200 text-gray-700 uppercase tracking-wider">
                         <tr>
-                            <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-left text-xs font-medium">
                                 NO
                             </th>
-                            <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider whitespace-nowrap">
-                                NO
-                                DAFTAR</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-left text-xs font-medium whitespace-nowrap">
+                                NO DAFTAR</th>
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 TANGGAL PENGAJUAN</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 NIM
                             </th>
-                            <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-left text-xs font-medium">
                                 NAMA
                             </th>
-                            <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider whitespace-nowrap">
+                            <th class="border-e px-6 py-3 text-left text-xs font-medium whitespace-nowrap">
                                 PEMBIMBING 1</th>
-                            <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider whitespace-nowrap">
+                            <th class="border-e px-6 py-3 text-left text-xs font-medium whitespace-nowrap">
                                 PEMBIMBING 2</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 JADWAL SIDANG TA</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 PROPOSAL TA</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 LAPORAN TA</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 JURNAL</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 SEMINAR</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 BUKTI BIMBINGAN</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 POSTER</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 BUKTI ORI</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 BUKTI UPLOAD JURNAL</th>
-                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 BUKTI KEASLIAN</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider w-2/3">
+                            <th class="px-6 py-3 text-center text-xs font-medium w-2/3">
                                 HASIL</th>
                         </tr>
                     </thead>
@@ -95,7 +91,8 @@
                                 <td class="text-zinc-600 border px-4 py-2">{{ $item['pembimbing1'] }}</td>
                                 <td class="text-zinc-600 border px-4 py-2">{{ $item['pembimbing2'] }}</td>
                                 <td class="border text-center px-4 py-2">
-                                    <button @click="open = true; titleData = 'Jadwal Sidang Tugas Akhir'"
+                                    <button
+                                        @click="open = true; titleData = 'Jadwal Sidang Tugas Akhir'; jadwal = '{{ $item['status'] === 'Dijadwalkan' ? '05-02-2025' : 'Belum dijadwalkan' }}'"
                                         class="cursor-pointer px-3 py-1.5 rounded rounded-md text-sm shadow-sm {{ $item['status'] === 'Dijadwalkan' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                         {{ $item['status'] }}
                                     </button>
@@ -196,7 +193,7 @@
                     <label class="block text-sm font-medium text-gray-700">Jadwal</label>
                     <input type="text" readonly
                         class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600 resize-none"
-                        value="Belum Di jadwalkan">
+                        x-model="jadwal">
                 </div>
 
                 <!-- Schedule Details -->

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', title() { return this.titleData; } }">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', jadwal: '', title() { return this.titleData; } }">
         <x-header>Antrian Proposal Tugas Akhir</x-header>
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
@@ -35,7 +35,7 @@
             </div>
             <div class="overflow-x-auto bg-white rounded-md border border-gray-200">
                 <table class="w-full text-sm text-left divide-y divide-gray-200">
-                    <thead class="bg-gray-200 text-gray-800">
+                    <thead class="bg-gray-200 text-gray-700">
                         <tr>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 NO
@@ -81,7 +81,8 @@
                                 <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing1'] }}</td>
                                 <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing2'] }}</td>
                                 <td class="border text-center px-4 py-2">
-                                    <button @click="open = true; titleData = 'Jadwal Sidang Proposal TA'"
+                                    <button
+                                        @click="open = true; titleData = 'Jadwal Sidang Proposal TA'; jadwal = '{{ $proposal['status'] === 'Dijadwalkan' ? '05-02-2025' : 'Belum dijadwalkan' }}'"
                                         class="cursor-pointer px-3 py-1.5 shadow-sm rounded-md text-sm
                                                 {{ $proposal['status'] === 'Dijadwalkan' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
                                         {{ $proposal['status'] }}
@@ -244,7 +245,7 @@
                     <label class="block text-sm font-medium text-gray-800">Jadwal</label>
                     <input type="text" readonly
                         class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600 resize-none"
-                        value="Belum Di jadwalkan">
+                        x-model="jadwal">
                 </div>
 
                 <!-- Schedule Details -->
