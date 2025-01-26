@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="overflow-hidden bg-white rounded-xl shadow-sm" x-data="{ open: false, titleData: '', title() { return 'Judul: ' + this.titleData; }, pengusul: '', description: '' }">
+    <div class="pb-2 overflow-hidden bg-white rounded-xl shadow-sm" x-data="{ open: false, titleData: '', title() { return 'Judul: ' + this.titleData; }, pengusul: '', description: '' }">
         <x-header>Usulan Judul Tugas Akhir</x-header>
         <div class="p-4 lg:p-6">
             <ul class="space-y-4">
@@ -11,7 +11,7 @@
                             pengusul = '{{ $ta->pengusul }}';
                             description = '{{ $ta->deskripsi }}';
                             open = true;"
-                        class="p-4 border border-zinc-200 rounded-md lg:rounded-lg shadow-sm transition-shadow duration-200 cursor-pointer">
+                        class="p-4 border border-zinc-200 hover:border-blue-300 rounded-md lg:rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-200 cursor-pointer">
                         <h2 class="text-lg font-semibold text-blue-600">Judul TA: {{ $ta->judul }}</h2>
                         <p class="text-sm text-gray-600 mt-2"><strong>Pengusul:</strong> {{ $ta->pengusul }}</p>
                         <p class="text-sm text-gray-600 mt-2 line-clamp-1"><strong>Deskripsi:</strong>
