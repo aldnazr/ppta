@@ -5,13 +5,13 @@
     role: '{{ $user }}',
     getContentMarginClass() {
         if (this.role === 'mahasiswa') {
-            return this.isOpen ? 'mt-16 md:mt-0' : 'mt-16 2xl:mt-0';
+            return this.isOpen ? 'mt-16 lg:mt-0' : 'mt-16 2xl:mt-0';
         }
         return 'mt-16';
     },
     getTopNavClass() {
         if (this.role === 'mahasiswa') {
-            return 'border-gray-200 md:border-transparent bg-white md:bg-transparent';
+            return 'border-gray-200 lg:border-transparent bg-white lg:bg-transparent';
         }
         return 'border-gray-200 bg-white';
     }
@@ -20,7 +20,7 @@ window.addEventListener('resize', () => {
     isOpen = window.innerWidth >= 1024;
 })">
     <!-- Desktop Sidebar -->
-    <div class="hidden md:block">
+    <div class="hidden lg:block">
         <div id="sidebar" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
             x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
@@ -139,7 +139,7 @@ window.addEventListener('resize', () => {
     </div>
 
     {{-- Mobile Sidebar --}}
-    <div class="md:hidden ">
+    <div class="lg:hidden ">
         <div x-show="isOpen" class="z-50 backdrop-contrast-75 absolute h-screen w-screen bg-white/10">
             <div id="sidebar" @click.outside = "isOpen = false" x-show="isOpen"
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
@@ -227,7 +227,7 @@ window.addEventListener('resize', () => {
                 <!-- PPTA advance menu section -->
                 <template x-if="role === 'ppta'">
                     <div class="mt-8">
-                        <div class="px-5 text-xs font-semibold text-gray-500">Laporan</div>
+                        <div class="px-2 text-xs font-semibold text-gray-500">Laporan</div>
                         <nav class="mt-2">
                             <x-sub-nav-link href="{{ route('ppta.laporan_fk') }}" :active="request()->is('ppta/laporan_fk')"
                                 tabName="Form Konfirmasi Proposal"></x-sub-nav-link>
@@ -255,10 +255,10 @@ window.addEventListener('resize', () => {
     </div>
 
     <!-- Main Content Area -->
-    <main :class="{ 'md:pl-80': isOpen }" class="flex bg-zinc-100 flex-1 flex-col h-full w-full">
+    <main :class="{ 'lg:pl-80': isOpen }" class="flex bg-zinc-100 flex-1 flex-col h-full w-full">
         <!-- Top Navigation -->
         <div :class="getTopNavClass()"
-            class="fixed justify-between top-0 left-0 right-0 z-30 flex h-16 items-center pl-2 lg:pl-3 pr-4 border-b shadow-md">
+            class="fixed justify-between top-0 left-0 right-0 z-30 flex h-16 items-center pl-2 lg:pl-3 pr-4 border-b shadow-md lg:shadow-none">
 
             <!-- Button Toggle Sidebar -->
             <button @click="isOpen = !isOpen"
