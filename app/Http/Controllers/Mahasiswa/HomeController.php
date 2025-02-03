@@ -32,7 +32,7 @@ class HomeController extends Controller
                     str_contains(strtolower($proposal['nama']), $searchTerm) ||
                     str_contains(strtolower($proposal['nim']), $searchTerm) ||
                     str_contains(strtolower($proposal['pembimbing_1_nama']), $searchTerm) ||
-                    str_contains(strtolower($proposal['pembimbing_1_nama']), $searchTerm);
+                    str_contains(strtolower($proposal['pembimbing_2_nama']), $searchTerm);
             });
         }
 

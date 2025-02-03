@@ -11,9 +11,9 @@
     },
     getTopNavClass() {
         if (this.role === 'mahasiswa') {
-            return 'border-gray-200 lg:border-transparent bg-white lg:bg-transparent';
+            return 'lg:border-transparent bg-white lg:bg-transparent';
         }
-        return 'border-gray-200 bg-white';
+        return 'bg-white';
     }
 }" x-init="isOpen = window.innerWidth >= 1024;
 window.addEventListener('resize', () => {
@@ -258,7 +258,7 @@ window.addEventListener('resize', () => {
     <main :class="{ 'lg:pl-80': isOpen }" class="flex bg-zinc-100 flex-1 flex-col h-full w-full">
         <!-- Top Navigation -->
         <div :class="getTopNavClass()"
-            class="fixed justify-between top-0 left-0 right-0 z-30 flex h-16 items-center pl-2 lg:pl-3 pr-4 border-b shadow-md lg:shadow-none">
+            class="fixed justify-between top-0 left-0 right-0 z-30 flex h-16 items-center pl-2 lg:pl-3 pr-4 shadow-md lg:shadow-none">
 
             <!-- Button Toggle Sidebar -->
             <button @click="isOpen = !isOpen"
