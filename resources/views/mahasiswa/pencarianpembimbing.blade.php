@@ -237,31 +237,31 @@
             }
 
             // Sembunyikan datalist di awal
-            dosenList.style.display = "none";
+            autocompleteList.style.display = "none";
 
             // Tampilkan datalist saat input diisi
             lecturerInput.addEventListener("input", () => {
                 if (lecturerInput.value.trim() !== "") {
-                    dosenList.style.display = "block";
+                    autocompleteList.style.display = "block";
                     setClearButtonVisibility();
                 } else {
-                    dosenList.style.display = "none";
+                    autocompleteList.style.display = "none";
                     setClearButtonVisibility();
                 }
             });
 
             // Sembunyikan datalist saat klik di luar
             document.addEventListener("click", (event) => {
-                if (!lecturerInput.contains(event.target) && !dosenList.contains(event.target)) {
-                    dosenList.style.display = "none";
+                if (!lecturerInput.contains(event.target) && !autocompleteList.contains(event.target)) {
+                    autocompleteList.style.display = "none";
                 }
             });
 
             // Tambahkan interaksi saat item dipilih
-            dosenList.addEventListener("click", (event) => {
+            autocompleteList.addEventListener("click", (event) => {
                 if (event.target.tagName === "LI") {
                     lecturerInput.value = event.target.textContent;
-                    dosenList.style.display = "none";
+                    autocompleteList.style.display = "none";
                     setClearButtonVisibility();
                     searchForm.submit();
                 }
