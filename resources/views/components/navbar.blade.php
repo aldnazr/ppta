@@ -258,7 +258,7 @@ window.addEventListener('resize', () => {
     <main :class="{ 'md:pl-80': isOpen }" class="flex bg-zinc-100 flex-1 flex-col h-full w-full">
         <!-- Top Navigation -->
         <div :class="getTopNavClass()"
-            class="fixed justify-between top-0 left-0 right-0 z-30 flex h-16 items-center pl-2 lg:pl-3 pr-4 border-b">
+            class="fixed justify-between top-0 left-0 right-0 z-30 flex h-16 items-center pl-2 lg:pl-3 pr-4 border-b shadow-md">
 
             <!-- Button Toggle Sidebar -->
             <button @click="isOpen = !isOpen"

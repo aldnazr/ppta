@@ -44,15 +44,15 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 align-top w-48">
                                     <div class="font-medium">{{ \Carbon\Carbon::parse($schedule['date'])->format('d-m-Y') }}
                                     </div>
-                                    <div class="text-gray-600">Jam {{ $schedule['time'] }}</div>
-                                    <div class="text-gray-600">Ruang {{ $schedule['room'] }}</div>
+                                    <div class="text-gray-700">Jam {{ $schedule['time'] }}</div>
+                                    <div class="text-gray-700">Ruang {{ $schedule['room'] }}</div>
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-900">
                                     <div class="md:text-base font-medium mb-2">{{ $schedule['title'] }}</div>
-                                    <div class="text-gray-600 mb-1 text-nowrap">{{ $schedule['student'] }}</div>
-                                    <div class="text-gray-600 text-nowrap">Pembimbing 1: {{ $schedule['supervisor1'] }}
+                                    <div class="text-gray-700 mb-1 text-nowrap">{{ $schedule['student'] }}</div>
+                                    <div class="text-gray-700 text-nowrap">Pembimbing 1: {{ $schedule['supervisor1'] }}
                                     </div>
-                                    <div class="text-gray-600 text-nowrap">Pembimbing 2: {{ $schedule['supervisor2'] }}
+                                    <div class="text-gray-700 text-nowrap">Pembimbing 2: {{ $schedule['supervisor2'] }}
                                     </div>
                                 </td>
                             </tr>
