@@ -8,8 +8,7 @@
         class="relative w-full {{ $maxWidthLG }} mx-auto max-h-[80vh] overflow-hidden bg-white border border-gray-200 rounded-xl shadow-lg">
 
         <!-- Sticky header section -->
-        <div
-            class="sticky top-0 z-10 border-b border-gray-200 bg-white flex justify-between items-center px-4 py-3 md:px-6 md:py-4">
+        <div class="flex justify-between sticky bg-white top-0 z-10 shadow-sm items-center px-4 py-3 md:px-6 md:py-4">
             <h2 class="text-base md:text-lg font-bold text-gray-700 truncate" x-text="title()"></h2>
             <button
                 class="text-gray-500 hover:text-gray-700 cursor-pointer rounded-full py-2 px-3 hover:bg-gray-100 transition-colors"
