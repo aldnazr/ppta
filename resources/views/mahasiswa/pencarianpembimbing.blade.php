@@ -18,10 +18,10 @@
                             </svg>
                         </span>
 
-                        <!-- Input Field with Autocomplete -->
+                        <!-- Input Field -->
                         <input type="text" name="lecturer" id="lecturer-input" value="{{ request('lecturer') }}"
                             placeholder="Cari nama dosen..." class="w-full px-4 py-3 text-gray-700 focus:outline-none"
-                            autocomplete="off" oninput="toggleClearButton(this.value)">
+                            autocomplete="off" oninput="showSuggestions(this.value); toggleClearButton(this.value)">
 
                         <!-- Clear Button -->
                         <button type="button" id="clear-button"
@@ -35,11 +35,9 @@
                         </button>
                     </div>
                     <!-- Datalist for Autocomplete -->
-                    <ul id="dosen-list"
+                    <ul id="autocomplete-list"
                         class="absolute z-10 max-h-60 md:max-h-80 overflow-y-auto w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg">
-                        @foreach ($dosens as $dosen)
-                            <li class="px-4 py-2 hover:bg-blue-100 cursor-pointer">{{ $dosen }}</li>
-                        @endforeach
+                        <!-- List items will be inserted here via JavaScript -->
                     </ul>
                 </form>
             </div>
@@ -193,10 +191,40 @@
     </div>
 
     <script>
+        const dosen = @json($dosens);
+        const sortedList = dosen.sort();
         const lecturerInput = document.getElementById("lecturer-input");
-        const dosenList = document.getElementById("dosen-list");
+        const autocompleteList = document.getElementById("autocomplete-list");
         const clearButton = document.getElementById("clear-button");
         const searchForm = document.querySelector("form");
+
+        function showSuggestions(value) {
+            autocompleteList.innerHTML = ""; // Clear previous suggestions
+            if (value.trim() === "") {
+                autocompleteList.classList.add("hidden");
+                return;
+            }
+            const suggestions = sortedList.filter(dosenName =>
+                dosenName.toLowerCase().includes(value.toLowerCase())
+            );
+
+            if (suggestions.length > 0) {
+                suggestions.forEach(dosenName => {
+                    const li = document.createElement("li");
+                    li.textContent = dosenName;
+                    li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
+                    li.addEventListener('click', () => {
+                        inputField.value = dosenName;
+                        autocompleteList.classList.add("hidden");
+                        loadSchedule(dosenName);
+                    });
+                    autocompleteList.appendChild(li);
+                });
+                autocompleteList.classList.remove("hidden");
+            } else {
+                autocompleteList.classList.add("hidden");
+            }
+        }
 
         document.addEventListener("DOMContentLoaded", () => {
             // Function to toggle clear button visibility
@@ -256,7 +284,7 @@
                 clearButton.classList.add("hidden");
                 emptyState.classList.remove("hidden");
                 studentList.classList.add("hidden");
-                list.classList.add("hidden");
+                autocompleteList.classList.add("hidden");
             }
         }
     </script>

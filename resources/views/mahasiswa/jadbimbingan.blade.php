@@ -85,18 +85,18 @@
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const dosen = @json($dosens);
-        const list = document.getElementById("autocomplete-list");
+        const sortedList = dosen.sort();
+        const autocompleteList = document.getElementById("autocomplete-list");
         const clearButton = document.getElementById("clear-button");
         const inputField = document.getElementById("autocomplete-input");
-        const sortedList = dosen.sort();
         const scheduleBody = document.getElementById("schedule-body");
         const table = document.getElementById("schedule-table");
         const emptyState = document.getElementById('empty-state');
 
         function showSuggestions(value) {
-            list.innerHTML = ""; // Clear previous suggestions
+            autocompleteList.innerHTML = ""; // Clear previous suggestions
             if (value.trim() === "") {
-                list.classList.add("hidden");
+                autocompleteList.classList.add("hidden");
                 return;
             }
             const suggestions = sortedList.filter(dosenName =>
@@ -110,14 +110,14 @@
                     li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
                     li.addEventListener('click', () => {
                         inputField.value = dosenName;
-                        list.classList.add("hidden");
+                        autocompleteList.classList.add("hidden");
                         loadSchedule(dosenName);
                     });
-                    list.appendChild(li);
+                    autocompleteList.appendChild(li);
                 });
-                list.classList.remove("hidden");
+                autocompleteList.classList.remove("hidden");
             } else {
-                list.classList.add("hidden");
+                autocompleteList.classList.add("hidden");
             }
         }
 
