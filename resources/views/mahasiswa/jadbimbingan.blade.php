@@ -84,8 +84,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const dosen = @json($dosens);
-        const sortedList = dosen.sort();
+        var dosens = [];
         const autocompleteList = document.getElementById("autocomplete-list");
         const clearButton = document.getElementById("clear-button");
         const inputField = document.getElementById("autocomplete-input");
@@ -93,13 +92,23 @@
         const table = document.getElementById("schedule-table");
         const emptyState = document.getElementById('empty-state');
 
+        async function loadDosen() {
+            const response = await fetch(
+                'https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosens');
+            const data = await response.json();
+            dosens = data.map(dosen => dosen.nama_gelar); // Ambil hanya nama dosen
+        }
+
+        // Panggil loadDosen saat halaman dimuat
+        window.onload = loadDosen;
+
         function showSuggestions(value) {
             autocompleteList.innerHTML = ""; // Clear previous suggestions
             if (value.trim() === "") {
                 autocompleteList.classList.add("hidden");
                 return;
             }
-            const suggestions = sortedList.filter(dosenName =>
+            const suggestions = dosens.filter(dosenName =>
                 dosenName.toLowerCase().includes(value.toLowerCase())
             );
 

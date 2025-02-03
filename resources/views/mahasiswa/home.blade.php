@@ -42,17 +42,21 @@
                         @foreach ($schedules as $schedule)
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 align-top w-48">
-                                    <div class="font-medium">{{ \Carbon\Carbon::parse($schedule['date'])->format('d-m-Y') }}
+                                    <div class="font-medium">{{ $schedule['tgl'] }}
                                     </div>
-                                    <div class="text-gray-700">Jam {{ $schedule['time'] }}</div>
-                                    <div class="text-gray-700">Ruang {{ $schedule['room'] }}</div>
+                                    <div class="text-gray-700">Jam {{ $schedule['jam'] }}</div>
+                                    <div class="text-gray-700">Ruang {{ $schedule['ruang_smn'] }}</div>
                                 </td>
                                 <td class="px-6 py-4 text-sm text-gray-900">
-                                    <div class="md:text-base font-medium mb-2">{{ $schedule['title'] }}</div>
-                                    <div class="text-gray-700 mb-1 text-nowrap">{{ $schedule['student'] }}</div>
-                                    <div class="text-gray-700 text-nowrap">Pembimbing 1: {{ $schedule['supervisor1'] }}
+                                    <div class="md:text-base font-medium mb-2">{{ $schedule['jdl_proposal'] }}</div>
+                                    <div class="text-gray-700 mb-1 text-nowrap">{{ $schedule['nama'] }}
+                                        ({{ $schedule['nim'] }})
                                     </div>
-                                    <div class="text-gray-700 text-nowrap">Pembimbing 2: {{ $schedule['supervisor2'] }}
+                                    <div class="text-gray-700 text-nowrap">Pembimbing 1:
+                                        {{ $schedule['pembimbing_1_nama'] }}
+                                    </div>
+                                    <div class="text-gray-700 text-nowrap">Pembimbing 2:
+                                        {{ $schedule['pembimbing_2_nama'] }}
                                     </div>
                                 </td>
                             </tr>
@@ -65,7 +69,5 @@
                 {{ $schedules->links() }}
             </div>
         </div>
-
-
     </div>
 @endsection

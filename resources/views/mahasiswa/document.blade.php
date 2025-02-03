@@ -70,7 +70,7 @@
                         Pedoman Tugas Akhir
                     </h2>
                     <div class="space-y-2">
-                        <a href="#"
+                        <a href="https://ppta.dinamika.ac.id/doc/PEDOMAN%20TA%20FTI%20FEB.pdf"
                             class="flex items-center px-4 py-2 bg-orange-50 text-orange-700 rounded-lg hover:bg-orange-100 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -79,7 +79,7 @@
                             </svg>
                             PEDOMAN TA FTI/FEB
                         </a>
-                        <a href="#"
+                        <a href="https://ppta.dinamika.ac.id/doc/PEDOMAN%20TA%20FDIK%20TAHUN%202022%20TTD.pdf"
                             class="flex items-center px-4 py-2 bg-orange-50 text-orange-700 rounded-lg hover:bg-orange-100 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -104,7 +104,7 @@
                         Template & Dokumen
                     </h2>
                     <div class="space-y-2">
-                        <a href="#"
+                        <a href="https://ppta.dinamika.ac.id/doc/Template%20Proposal%20Tugas%20Akhir.pdf"
                             class="flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -113,7 +113,7 @@
                             </svg>
                             Template Proposal
                         </a>
-                        <a href="#"
+                        <a href="https://ppta.dinamika.ac.id/doc/Kartu%20Bimbingan%20TA.pdf"
                             class="flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -122,7 +122,7 @@
                             </svg>
                             Kartu Bimbingan TA
                         </a>
-                        <a href="#"
+                        <a href="https://ppta.dinamika.ac.id/doc/Bukti%20Seminar%20TA%20-%20Universitas%20Dinamika.jpg"
                             class="flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -131,7 +131,7 @@
                             </svg>
                             Bukti Seminar TA
                         </a>
-                        <a href="#"
+                        <a href="https://ppta.dinamika.ac.id/doc/Bukti%20Keaslian%20Karya%20Ilmiah.pdf"
                             class="flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">

@@ -46,10 +46,10 @@
             @if ($paginatedDataBimbingan->isNotEmpty())
                 <div class="space-y-6 px-1 mt-8">
                     @foreach ($paginatedDataBimbingan as $tugasAkhir)
-                        <div class="border border-gray-200 shadow-md rounded-xl overflow-hidden">
+                        <div class="ring ring-gray-200 rounded-lg overflow-hidden">
                             <div class="px-5 lg:px-6 py-3 lg:py-5 border-b border-gray-200">
-                                <h2 class="text-lg md:text-xl font-semibold text-blue-700">
-                                    {{ $tugasAkhir->title }}
+                                <h2 class="md:text-lg font-semibold text-blue-700">
+                                    {{ $tugasAkhir['jdl_proposal'] }}
                                 </h2>
                             </div>
 
@@ -67,7 +67,7 @@
                                                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
                                                     </path>
                                                 </svg>
-                                                <span>{{ $tugasAkhir->student_name }}</span>
+                                                <span>{{ $tugasAkhir['nama'] }}</span>
                                             </div>
                                             <div class="flex items-center">
                                                 <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor"
@@ -76,7 +76,7 @@
                                                         d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2">
                                                     </path>
                                                 </svg>
-                                                <span>{{ $tugasAkhir->student_id }}</span>
+                                                <span>{{ $tugasAkhir['nim'] }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@
                                                         d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
                                                     </path>
                                                 </svg>
-                                                <span>Pembimbing 1: {{ $tugasAkhir->pembimbing1 }}</span>
+                                                <span>Pembimbing 1: {{ $tugasAkhir['pemb_1'] }}</span>
                                             </div>
                                             <div class="flex items-center">
                                                 <svg class="w-5 h-5 mr-2 text-green-500" fill="none"
@@ -102,61 +102,83 @@
                                                         d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
                                                     </path>
                                                 </svg>
-                                                <span>Pembimbing 2: {{ $tugasAkhir->pembimbing2 }}</span>
+                                                <span>Pembimbing 2: {{ $tugasAkhir['pemb_2'] }}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <h3 class="text-md md:text-lg font-medium text-gray-700 mt-6 mb-3">Detail Sidang</h3>
-                                <div class="bg-gray-100 rounded-lg p-3 md:p-5">
-                                    <div class="grid md:flex md:justify-evenly gap-y-2">
-                                        <div class="flex items-center space-x-2">
-                                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                                                </path>
-                                            </svg>
-                                            <div>
-                                                <span class="text-gray-600">Tanggal Sidang</span>
-                                                <p
-                                                    class="text-sm md:text-base font-semibold lg:font-medium {{ $tugasAkhir->sidang_date ? 'text-gray-600' : 'text-red-600' }}">
-                                                    {{ $tugasAkhir->sidang_date ?: 'Belum Ditentukan' }}
-                                                </p>
+                                <div class="">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
+                                        <!-- Tanggal Sidang -->
+                                        <div class="flex items-start ring ring-gray-200 p-4 bg-gray-50 rounded-lg">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="1.5"
+                                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <dt class="text-xs font-medium uppercase tracking-wide text-gray-500">
+                                                    Tanggal Sidang</dt>
+                                                <dd
+                                                    class="mt-1 font-semibold {{ $tugasAkhir['tgl'] ? 'text-gray-800' : 'text-red-600' }}">
+                                                    {{ $tugasAkhir['tgl'] ?: 'Belum Ditentukan' }}
+                                                </dd>
                                             </div>
                                         </div>
 
-                                        <div class="flex items-center space-x-2">
-                                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                                                </path>
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                            </svg>
-                                            <div>
-                                                <span class="text-gray-600">Ruang</span>
-                                                <p
-                                                    class="text-sm md:text-base font-semibold lg:font-medium {{ $tugasAkhir->room ? 'text-gray-600' : 'text-red-600' }}">
-                                                    {{ $tugasAkhir->room ?: 'Belum Ditentukan' }}
-                                                </p>
+                                        <!-- Ruang -->
+                                        <div class="flex items-start ring ring-gray-200 p-4 bg-gray-50 rounded-lg">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-blue-600" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="1.5"
+                                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <dt class="text-xs font-medium uppercase tracking-wide text-gray-500">Ruang
+                                                </dt>
+                                                <dd
+                                                    class="mt-1 font-semibold {{ $tugasAkhir['ruang_smn'] ? 'text-gray-800' : 'text-red-600' }}">
+                                                    {{ $tugasAkhir['ruang_smn'] ?: 'Belum Ditentukan' }}
+                                                </dd>
                                             </div>
                                         </div>
 
-                                        <div class="flex items-center space-x-2">
-                                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor"
-                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                            </svg>
-                                            <div>
-                                                <span class="text-gray-600">Jam</span>
-                                                <p
-                                                    class="text-sm md:text-base font-semibold lg:font-medium {{ $tugasAkhir->time ? 'text-gray-600' : 'text-red-600' }}">
-                                                    {{ $tugasAkhir->time ?: 'Belum Ditentukan' }}
-                                                </p>
+                                        <!-- Jam -->
+                                        <div class="flex items-start ring ring-gray-200 p-4 bg-gray-50 rounded-lg">
+                                            <div class="flex-shrink-0">
+                                                <div
+                                                    class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                                    <svg class="w-6 h-6 text-green-600" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="1.5"
+                                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <dt class="text-xs font-medium uppercase tracking-wide text-gray-500">Jam
+                                                </dt>
+                                                <dd
+                                                    class="mt-1 font-semibold {{ $tugasAkhir['jam'] ? 'text-gray-800' : 'text-red-600' }}">
+                                                    {{ $tugasAkhir['jam'] ?: 'Belum Ditentukan' }}
+                                                </dd>
                                             </div>
                                         </div>
                                     </div>
@@ -191,12 +213,20 @@
     </div>
 
     <script>
-        const dosen = @json($dosens);
-        const sortedList = dosen.sort();
+        var dosens = [];
         const lecturerInput = document.getElementById("lecturer-input");
         const autocompleteList = document.getElementById("autocomplete-list");
         const clearButton = document.getElementById("clear-button");
         const searchForm = document.querySelector("form");
+
+        async function loadDosen() {
+            const response = await fetch('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosens');
+            const data = await response.json();
+            dosens = data.map(dosen => dosen.nama_gelar); // Ambil hanya nama dosen
+        }
+
+        // Panggil loadDosen saat halaman dimuat
+        window.onload = loadDosen;
 
         function showSuggestions(value) {
             autocompleteList.innerHTML = ""; // Clear previous suggestions
@@ -204,7 +234,7 @@
                 autocompleteList.classList.add("hidden");
                 return;
             }
-            const suggestions = sortedList.filter(dosenName =>
+            const suggestions = dosens.filter(dosenName =>
                 dosenName.toLowerCase().includes(value.toLowerCase())
             );
 

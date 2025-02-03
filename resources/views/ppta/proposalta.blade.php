@@ -279,9 +279,6 @@
                     <label class="block text-sm font-medium text-gray-800">Ruang</label>
                     <select name="room"
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                        <option value="M504" selected>M504</option>
-                        <option value="M505">M505</option>
-                        <option value="M506">M506</option>
                     </select>
                 </div>
 
@@ -297,6 +294,26 @@
     </div>
     <script>
         let searchTimeout;
+
+        fetch('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosens')
+            .then(response => response.json())
+            .then(data => {
+                const selectElement = document.querySelector('select[name="examiner1"]');
+
+                // Membersihkan opsi yang sudah ada (opsional)
+                selectElement.innerHTML = '';
+
+                // Iterasi data dari API dan membuat opsi baru
+                data.forEach(dosen => {
+                    const option = document.createElement('option');
+                    option.value = dosen.nik; // Sesuaikan dengan struktur data API
+                    option.textContent = dosen.nama_gelar; // Sesuaikan dengan struktur data API
+                    selectElement.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
 
         function submitSearchForm() {
             const form = document.getElementById('searchForm');

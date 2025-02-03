@@ -216,9 +216,6 @@
                     <label class="block text-sm font-medium text-gray-700">Penguji</label>
                     <select name="examiner1"
                         class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                        <option value="1" selected>Dr. Anjik Sukmaaji, S.Kom., M.Eng.</option>
-                        <option value="2">Other Examiner 1</option>
-                        <option value="3">Other Examiner 2</option>
                     </select>
                 </div>
 
@@ -243,4 +240,26 @@
             </form>
         </x-popup-window>
     </div>
+
+    <script>
+        fetch('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosens')
+            .then(response => response.json())
+            .then(data => {
+                const selectElement = document.querySelector('select[name="examiner1"]');
+
+                // Membersihkan opsi yang sudah ada (opsional)
+                selectElement.innerHTML = '';
+
+                // Iterasi data dari API dan membuat opsi baru
+                data.forEach(dosen => {
+                    const option = document.createElement('option');
+                    option.value = dosen.nik; // Sesuaikan dengan struktur data API
+                    option.textContent = dosen.nama_gelar; // Sesuaikan dengan struktur data API
+                    selectElement.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
 @endsection
