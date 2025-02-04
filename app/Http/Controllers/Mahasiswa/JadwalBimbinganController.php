@@ -78,11 +78,6 @@ class JadwalBimbinganController extends Controller
         // Filter data berdasarkan nama_gelar
         $filteredSchedules = $jadwalBimbingan->where('nama_gelar', $namaGelar);
 
-        // Jika tidak ditemukan, kembalikan respons error
-        if ($filteredSchedules->isEmpty()) {
-            return response()->json(['error' => 'Dosen tidak ditemukan'], 404);
-        }
-
         return response()->json(['schedules' => $filteredSchedules->values()]);
     }
 }

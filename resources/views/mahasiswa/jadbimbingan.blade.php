@@ -81,10 +81,6 @@
         </div>
     </div>
 
-    @php
-        $days = config('days');
-    @endphp
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             var dosens = [];
