@@ -7,15 +7,17 @@
             <ul class="space-y-4">
                 @foreach ($paginatedJudulTugasAkhir as $ta)
                     <li @click="
-                            titleData = '{{ $ta->judul }}';
-                            pengusul = '{{ $ta->pengusul }}';
-                            description = '{{ $ta->deskripsi }}';
+                            titleData = '{{ $ta['usul_judul'] }}';
+                            pengusul = '{{ $ta['nama'] }}';
+                            description = '{{ $ta['usul_ket'] ?: 'Tidak ada deskripsi' }}';
                             open = true;"
                         class="p-4 border border-zinc-200 hover:border-blue-300 rounded-md lg:rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-200 cursor-pointer">
-                        <h2 class="text-lg font-semibold text-blue-600">Judul TA: {{ $ta->judul }}</h2>
-                        <p class="text-sm text-gray-600 mt-2"><strong>Pengusul:</strong> {{ $ta->pengusul }}</p>
-                        <p class="text-sm text-gray-600 mt-2 line-clamp-1"><strong>Deskripsi:</strong>
-                            {{ $ta->deskripsi }}</p>
+                        <h2 class="text-lg font-semibold text-blue-600">Judul TA: {{ $ta['usul_judul'] }}</h2>
+                        <p class="text-sm text-gray-600 mt-2"><strong>Pengusul:</strong> {{ $ta['nama'] }}</p>
+                        <p class="{{ $ta['usul_ket'] ? 'not-italic' : 'italic' }} text-sm text-gray-600 mt-2 line-clamp-1">
+                            <span class="not-italic">Deskripsi:</span>
+                            {{ $ta['usul_ket'] ?: 'Tidak ada deskripsi' }}
+                        </p>
                     </li>
                 @endforeach
             </ul>
