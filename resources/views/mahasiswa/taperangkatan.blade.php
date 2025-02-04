@@ -105,8 +105,7 @@
                         <div class="group">
                             <div @click="
                                 titleData = item.angkatan;
-                                // Jika data detail tersedia sebagai array, set ke dataTaMhs; jika tidak, kosongkan.
-                                dataTaMhs = Array.isArray(item) ? item : [];
+                                dataTaMhs = {{ $detail }};
                                 open = true;"
                                 class="cursor-pointer block p-4 border border-gray-300 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
                                 <div class="flex items-center justify-between">
@@ -138,7 +137,7 @@
                                     <!-- Judul -->
                                     <div class="border-l-4 border-indigo-500 pl-4">
                                         <h4 class="font-bold md:text-lg text-gray-800 line-clamp-2 hover:line-clamp-none transition-all duration-200"
-                                            x-text="mahasiswa.judul">
+                                            x-text="mahasiswa.jdl_proposal">
                                         </h4>
                                     </div>
 
@@ -182,7 +181,8 @@
                                                 </svg>
                                                 <div>
                                                     <span class="text-gray-600 font-medium">Pembimbing 1:</span>
-                                                    <span class="text-gray-800 ml-1" x-text="mahasiswa.pembimbing_1"></span>
+                                                    <span class="text-gray-800 ml-1"
+                                                        x-text="mahasiswa.pembimbing_1_nama"></span>
                                                 </div>
                                             </div>
 
@@ -194,7 +194,8 @@
                                                 </svg>
                                                 <div>
                                                     <span class="text-gray-600 font-medium">Pembimbing 2:</span>
-                                                    <span class="text-gray-800 ml-1" x-text="mahasiswa.pembimbing_2"></span>
+                                                    <span class="text-gray-800 ml-1"
+                                                        x-text="mahasiswa.pembimbing_2_nama"></span>
                                                 </div>
                                             </div>
                                         </div>
