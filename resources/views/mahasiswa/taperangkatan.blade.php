@@ -4,10 +4,9 @@
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm mb-0.5 overflow-hidden" x-data="{
         open: false,
         titleData: '',
-        // ID dan nama prodi aktif dari controller
+        dataTaMhs: [],
         activeProdiId: '{{ $activeIdProdi }}',
         activeProdiName: '{{ $activeNamaProdi }}',
-        // Data angkatan (hasil API taperangkatan)
         angkatan: @js($angkatan),
         totalData: {{ $totalData }},
         currentPage: 1,
@@ -15,8 +14,6 @@
         title() {
             return 'Angkatan: ' + this.titleData;
         },
-        // Data detail mahasiswa, jika diperlukan
-        dataTaMhs: [],
         get paginatedMahasiswa() {
             const start = (this.currentPage - 1) * this.itemsPerPage;
             const end = start + this.itemsPerPage;
@@ -38,6 +35,20 @@
         goToPage(page) {
             if (page >= 1 && page <= this.totalPages) {
                 this.currentPage = page;
+            }
+        },
+        async fetchDetail(angkatan) {
+            try {
+                // Panggil endpoint API dengan parameter kode_nim = angkatan (sesuaikan jika perlu)
+                const response = await fetch(`https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/mhs/taperangkatan/detail?kode_nim=${encodeURIComponent(angkatan)}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const result = await response.json();
+                // Update data detail mahasiswa
+                this.dataTaMhs = result;
+            } catch (error) {
+                console.error('Error fetching detail data:', error);
             }
         },
         async fetchJurusan(prodiId, prodiName) {
@@ -105,7 +116,8 @@
                         <div class="group">
                             <div @click="
                                 titleData = item.angkatan;
-                                dataTaMhs = {{ $detail }};
+                                fetchDetail(item.angkatan.substring(2, 4));
+                                {{-- dataTaMhs = {{ $detail }}; --}}
                                 open = true;"
                                 class="cursor-pointer block p-4 border border-gray-300 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
                                 <div class="flex items-center justify-between">

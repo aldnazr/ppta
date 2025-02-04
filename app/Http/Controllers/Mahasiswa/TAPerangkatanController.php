@@ -24,11 +24,6 @@ class TAPerangkatanController extends Controller
         return $response->json();
     }
 
-    private function dataDetail()
-    {
-        $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/mhs/taperangkatan/detail');
-        return $response->json();
-    }
     public function index(Request $request)
     {
         // Ambil data prodi dari API
@@ -43,22 +38,19 @@ class TAPerangkatanController extends Controller
 
         // Ambil nama_prodi aktif berdasarkan jurusan yang dipilih
         $activeNamaProdi = $prodi[$activeIdProdi] ?? null;
-        // dd($activeNamaProdi);
+
         // Ambil data taperangkatan untuk prodi yang aktif
         $angkatan = $this->data($activeIdProdi);
 
         // Hitung total jumlah mahasiswa dari semua angkatan
         $totalData = array_sum(array_column($angkatan, 'jumlah_mahasiswa'));
 
-        $detail = collect($this->dataDetail());
-
         return view('mahasiswa.taperangkatan', compact(
             'prodi',
             'angkatan',
             'totalData',
             'activeIdProdi',
-            'activeNamaProdi',
-            'detail'
+            'activeNamaProdi'
         ));
     }
 
