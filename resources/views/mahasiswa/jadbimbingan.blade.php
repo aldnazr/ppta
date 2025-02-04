@@ -80,125 +80,137 @@
             </div>
         </div>
     </div>
-@endsection
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        var dosens = [];
-        const autocompleteList = document.getElementById("autocomplete-list");
-        const clearButton = document.getElementById("clear-button");
-        const inputField = document.getElementById("autocomplete-input");
-        const scheduleBody = document.getElementById("schedule-body");
-        const table = document.getElementById("schedule-table");
-        const emptyState = document.getElementById('empty-state');
+    @php
+        $days = config('days');
+    @endphp
 
-        async function loadDosen() {
-            const response = await fetch(
-                'https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosens');
-            const data = await response.json();
-            dosens = data.map(dosen => dosen.nama_gelar); // Ambil hanya nama dosen
-        }
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var dosens = [];
+            const autocompleteList = document.getElementById("autocomplete-list");
+            const clearButton = document.getElementById("clear-button");
+            const inputField = document.getElementById("autocomplete-input");
+            const scheduleBody = document.getElementById("schedule-body");
+            const table = document.getElementById("schedule-table");
+            const emptyState = document.getElementById('empty-state');
 
-        // Panggil loadDosen saat halaman dimuat
-        window.onload = loadDosen;
-
-        function showSuggestions(value) {
-            autocompleteList.innerHTML = ""; // Clear previous suggestions
-            if (value.trim() === "") {
-                autocompleteList.classList.add("hidden");
-                return;
+            async function loadDosen() {
+                const response = await fetch(
+                    'https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosens');
+                const data = await response.json();
+                dosens = data.map(dosen => dosen.nama_gelar); // Ambil hanya nama dosen
             }
-            const suggestions = dosens.filter(dosenName =>
-                dosenName.toLowerCase().includes(value.toLowerCase())
-            );
 
-            if (suggestions.length > 0) {
-                suggestions.forEach(dosenName => {
-                    const li = document.createElement("li");
-                    li.textContent = dosenName;
-                    li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
-                    li.addEventListener('click', () => {
-                        inputField.value = dosenName;
-                        autocompleteList.classList.add("hidden");
-                        loadSchedule(dosenName);
+            // Panggil loadDosen saat halaman dimuat
+            window.onload = loadDosen;
+
+            function showSuggestions(value) {
+                autocompleteList.innerHTML = ""; // Clear previous suggestions
+                if (value.trim() === "") {
+                    autocompleteList.classList.add("hidden");
+                    return;
+                }
+                const suggestions = dosens.filter(dosenName =>
+                    dosenName.toLowerCase().includes(value.toLowerCase())
+                );
+
+                if (suggestions.length > 0) {
+                    suggestions.forEach(dosenName => {
+                        const li = document.createElement("li");
+                        li.textContent = dosenName;
+                        li.className = "px-4 py-2 hover:bg-blue-100 cursor-pointer";
+                        li.addEventListener('click', () => {
+                            inputField.value = dosenName;
+                            autocompleteList.classList.add("hidden");
+                            loadSchedule(dosenName);
+                        });
+                        autocompleteList.appendChild(li);
                     });
-                    autocompleteList.appendChild(li);
-                });
-                autocompleteList.classList.remove("hidden");
-            } else {
-                autocompleteList.classList.add("hidden");
+                    autocompleteList.classList.remove("hidden");
+                } else {
+                    autocompleteList.classList.add("hidden");
+                }
             }
-        }
 
-        function toggleClearButton(value) {
-            if (value.trim() !== "") {
-                clearButton.classList.remove("hidden");
-                emptyState.classList.add("hidden");
-            } else {
-                emptyState.classList.remove("hidden");
-                table.classList.add("hidden");
-                clearButton.classList.add("hidden");
+            function toggleClearButton(value) {
+                if (value.trim() !== "") {
+                    clearButton.classList.remove("hidden");
+                    emptyState.classList.add("hidden");
+                } else {
+                    emptyState.classList.remove("hidden");
+                    table.classList.add("hidden");
+                    clearButton.classList.add("hidden");
+                }
             }
-        }
 
-        function clearInput() {
-            inputField.value = "";
-            toggleClearButton("");
-        }
+            function clearInput() {
+                inputField.value = "";
+                toggleClearButton("");
+            }
 
-        function loadSchedule(dosenName) {
-            // Fetch schedule data from server using Fetch API
-            fetch(`{{ route('jadbimbingan.dosen') }}?dosen=${encodeURIComponent(dosenName)}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    scheduleBody.innerHTML = ""; // Clear previous schedules
+            function loadSchedule(dosenName) {
+                const days = {
+                    1: 'Senin',
+                    2: 'Selasa',
+                    3: 'Rabu',
+                    4: 'Kamis',
+                    5: 'Jumat'
+                };
 
-                    if (data.schedules && data.schedules.length > 0) {
-                        let nomor = 0;
-                        data.schedules.forEach(schedule => {
-                            const row = `
+                // Fetch schedule data from server using Fetch API
+                fetch(`{{ route('jadbimbingan.dosen') }}?dosen=${encodeURIComponent(dosenName)}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        scheduleBody.innerHTML = ""; // Clear previous schedules
+
+                        if (data.schedules && data.schedules.length > 0) {
+                            let nomor = 0;
+                            data.schedules.forEach(schedule => {
+                                const row = `
                             <tr class="bg-white border-b">
                                 <td class="px-6 py-4 text-sm font-medium text-gray-900">${++nomor}</td>
                                 <td scope="row" class="px-6 py-4 text-sm text-gray-500">
-                                    ${schedule.tanggal}
+                                    ${days[schedule.hari]}
                                 </td>
-                                <td class="px-6 py-4 text-sm text-gray-500">${schedule.jam_mulai}</td>
-                                <td class="px-6 py-4 text-sm text-gray-500">${schedule.jam_selesai}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">${schedule.awal}</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">${schedule.akhir}</td>
                                 <td class="px-6 py-4 text-sm text-gray-500">${schedule.ruang}</td>
                                 <td class="px-6 py-4 text-sm text-gray-500">${schedule.ket}</td>
                             </tr>
                         `;
-                            scheduleBody.insertAdjacentHTML("beforeend", row);
-                        });
-                    } else {
-                        const noDataRow = `
+                                scheduleBody.insertAdjacentHTML("beforeend", row);
+                            });
+                        } else {
+                            const noDataRow = `
                         <tr>
                             <td colspan="6" class="p-6 text-center text-gray-500">Tidak ada jadwal tersedia</td>
                         </tr>
                     `;
-                        scheduleBody.insertAdjacentHTML("beforeend", noDataRow);
-                    }
+                            scheduleBody.insertAdjacentHTML("beforeend", noDataRow);
+                        }
 
-                    // Show table
-                    table.classList.remove("hidden");
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert("Gagal memuat jadwal. Coba lagi.");
-                });
-        }
+                        // Show table
+                        table.classList.remove("hidden");
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("Gagal memuat jadwal. Coba lagi.");
+                    });
+            }
 
-        // Event Listeners
-        inputField.addEventListener('input', (e) => {
-            showSuggestions(e.target.value);
-            toggleClearButton(e.target.value);
+            // Event Listeners
+            inputField.addEventListener('input', (e) => {
+                showSuggestions(e.target.value);
+                toggleClearButton(e.target.value);
+            });
+
+            clearButton.addEventListener('click', clearInput);
         });
-
-        clearButton.addEventListener('click', clearInput);
-    });
-</script>
+    </script>
+@endsection
