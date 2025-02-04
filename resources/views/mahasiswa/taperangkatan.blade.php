@@ -40,7 +40,7 @@
         async fetchDetail(angkatan) {
             try {
                 // Panggil endpoint API dengan parameter kode_nim = angkatan (sesuaikan jika perlu)
-                const response = await fetch(`https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/mhs/taperangkatan/detail?kode_nim=${encodeURIComponent(angkatan)}`);
+                const response = await fetch(`https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/mhs/taperangkatan/detail?kode_nim=${encodeURIComponent(angkatan)}&kode_prodi=${encodeURIComponent(this.activeProdiId)}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
