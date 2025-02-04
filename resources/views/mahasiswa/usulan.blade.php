@@ -8,7 +8,7 @@
                 @foreach ($paginatedJudulTugasAkhir as $ta)
                     <li @click="
                             titleData = {{ json_encode($ta['usul_judul']) }};
-                            pengusul = {{ json_encode($ta['nama']) }};
+                            pengusul = {{ json_encode($ta['nama_gelar']) }};
                             description = {{ json_encode($ta['usul_ket'] ?: 'Tidak ada deskripsi') }};
                             open = true;
                         "
@@ -24,7 +24,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                                     </svg>
-                                    <span class="font-medium">{{ $ta['nama'] }}</span>
+                                    <span class="font-medium">{{ $ta['nama_gelar'] }}</span>
                                 </p>
                                 <p class="text-sm text-gray-500 flex items-start">
                                     <svg class="w-4 h-4 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor"
