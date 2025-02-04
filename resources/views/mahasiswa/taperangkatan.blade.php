@@ -148,8 +148,8 @@
                                 <div class="space-y-4">
                                     <!-- Judul -->
                                     <div class="border-l-4 border-indigo-500 pl-4">
-                                        <h4 class="font-bold md:text-lg text-gray-800 line-clamp-2 hover:line-clamp-none transition-all duration-200"
-                                            x-text="mahasiswa.jdl_proposal">
+                                        <h4 class="font-bold md:text-lg text-gray-800"
+                                            x-text="mahasiswa.jdl_proposal ?? 'Tidak Ada Judul Proposal Tugas Akhir'">
                                         </h4>
                                     </div>
 
