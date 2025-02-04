@@ -4,12 +4,18 @@
     <div class="bg-white rounded-xl border border-gray-200 shadow-sm mb-0.5 overflow-hidden" x-data="{
         open: false,
         titleData: '',
-        activeJurusan: '{{ $activeJurusan }}',
+        // ID dan nama prodi aktif dari controller
+        activeProdiId: '{{ $activeIdProdi }}',
+        activeProdiName: '{{ $activeNamaProdi }}',
+        // Data angkatan (hasil API taperangkatan)
         angkatan: @js($angkatan),
         totalData: {{ $totalData }},
         currentPage: 1,
         itemsPerPage: 5,
-        title() { return 'Angkatan: ' + this.titleData; },
+        title() {
+            return 'Angkatan: ' + this.titleData;
+        },
+        // Data detail mahasiswa, jika diperlukan
         dataTaMhs: [],
         get paginatedMahasiswa() {
             const start = (this.currentPage - 1) * this.itemsPerPage;
@@ -34,32 +40,49 @@
                 this.currentPage = page;
             }
         },
-        async fetchJurusan(jurusan) {
+        async fetchJurusan(prodiId, prodiName) {
             try {
-                const response = await fetch(`{{ route('taperangkatan.jurusan') }}?jurusan=${jurusan}`);
+                // Panggil endpoint API untuk mendapatkan data taperangkatan berdasarkan kode prodi
+                const response = await fetch(`{{ route('taperangkatan.jurusan') }}?jurusan=${prodiId}`);
                 const result = await response.json();
+                // Update data angkatan dengan data baru
                 this.angkatan = result.data;
-                this.activeJurusan = jurusan;
-                this.totalData = Object.values(this.angkatan).flat().length;
-                this.currentPage = 1; // Reset to first page when changing jurusan
+                // Update prodi aktif (ID dan nama)
+                this.activeProdiId = prodiId;
+                this.activeProdiName = prodiName;
+    
+                // Hitung total mahasiswa berdasarkan data angkatan yang baru
+                let total = 0;
+                for (const key in this.angkatan) {
+                    if (Array.isArray(this.angkatan[key])) {
+                        total += this.angkatan[key].length;
+                    } else {
+                        total += Number(this.angkatan[key].jumlah_mahasiswa) || 0;
+                    }
+                }
+                this.totalData = total;
+                this.currentPage = 1; // Reset ke halaman pertama saat prodi berubah
+    
+                // Jika ada data detail mahasiswa per angkatan, Anda bisa menetapkannya ke dataTaMhs
+                // misalnya: this.dataTaMhs = Array.isArray(this.angkatan[someKey]) ? this.angkatan[someKey] : [];
             } catch (error) {
                 console.error('Error fetching jurusan data:', error);
             }
         }
     }">
+        <!-- Header dan Filter Prodi -->
         <div class="grid border-b border-gray-200">
             <x-header>Judul TA Perangkatan</x-header>
-
             <!-- Filter Chips -->
             <div class="flex flex-wrap gap-2 p-4 md:p-6">
-                @foreach ($jurusan as $jur)
-                    <button @click="fetchJurusan('{{ $jur }}')"
+                @foreach ($prodi as $id => $nama_prodi)
+                    <button @click="fetchJurusan('{{ $id }}', '{{ $nama_prodi }}')"
                         :class="{
-                            'bg-blue-100 text-blue-800': activeJurusan === '{{ $jur }}',
-                            'bg-gray-200 text-gray-700': activeJurusan !== '{{ $jur }}'
+                            'bg-blue-100 text-blue-800': activeProdiId === '{{ $id }}',
+                            'bg-gray-200 text-gray-700': activeProdiId !== '{{ $id }}'
                         }"
                         class="cursor-pointer text-sm lg:text-base filter-btn px-4 py-2 rounded-full font-medium transition-colors hover:text-blue-800 hover:bg-blue-100">
-                        {{ $jur }}
+                        {{ $nama_prodi }}
                     </button>
                 @endforeach
             </div>
@@ -68,30 +91,32 @@
         <!-- Content Card -->
         <div id="content-container" class="transition-all duration-300 p-6">
             <div class="flex items-center justify-between mb-6">
-                <h2 class="text-xl lg:text-2xl font-semibold text-gray-800" x-text="activeJurusan"></h2>
+                <!-- Tampilkan nama prodi aktif -->
+                <h2 class="text-xl lg:text-2xl font-semibold text-gray-800" x-text="activeProdiName"></h2>
                 <div class="bg-blue-100 text-blue-800 px-3 lg:px-4 py-2 rounded-lg text-sm font-medium"
                     x-text="`Total Mahasiswa: ${totalData}`">
                 </div>
             </div>
 
-            <!-- List Angkatan -->
+            <!-- Grid Angkatan -->
             <div id="angkatan-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 <template x-if="Object.keys(angkatan).length > 0">
-                    <template x-for="(mahasiswaTa, tahun) in angkatan" :key="tahun">
+                    <template x-for="(item, index) in angkatan" :key="index">
                         <div class="group">
                             <div @click="
-                                    titleData = tahun;
-                                    dataTaMhs = mahasiswaTa;
-                                    open = true;"
+                                titleData = item.angkatan;
+                                // Jika data detail tersedia sebagai array, set ke dataTaMhs; jika tidak, kosongkan.
+                                dataTaMhs = Array.isArray(item) ? item : [];
+                                open = true;"
                                 class="cursor-pointer block p-4 border border-gray-300 rounded-lg group-hover:border-blue-300 group-hover:shadow-md transition-all duration-200">
                                 <div class="flex items-center justify-between">
                                     <div>
                                         <span class="text-gray-500 text-sm">Angkatan</span>
                                         <h3 class="text-lg font-semibold text-gray-800 group-hover:text-blue-600"
-                                            x-text="tahun"></h3>
+                                            x-text="item.angkatan"></h3>
                                     </div>
                                     <div class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium group-hover:bg-blue-100"
-                                        x-text="mahasiswaTa.length">
+                                        x-text="item.jumlah_mahasiswa">
                                     </div>
                                 </div>
                             </div>
@@ -103,6 +128,7 @@
                 </template>
             </div>
 
+            <!-- Popup Window dengan detail mahasiswa (jika dataTaMhs tersedia) -->
             <x-popup-window>
                 <template x-if="dataTaMhs.length > 0">
                     <div class="container mx-auto mb-4">
@@ -200,6 +226,7 @@
                                 Next
                             </button>
                         </div>
+                    </div>
                 </template>
 
                 <template x-if="dataTaMhs.length === 0">
