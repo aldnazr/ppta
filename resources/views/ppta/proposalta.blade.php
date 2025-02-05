@@ -70,29 +70,30 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($proposals as $index => $proposal)
                             <td rowspan="2" class="text-center px-4 py-2">{{ $index + 1 }}
-                            <td colspan="11" class="border-s px-4 py-4 text-gray-900 font-medium">{{ $proposal['judul'] }}
+                            <td colspan="11" class="border-s px-4 py-4 text-gray-900 font-medium">
+                                {{ $proposal['jdl_proposal'] }}
                             </td>
                             <tr>
-                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['no_daftar'] }}</td>
-                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $proposal['tgl_pengajuan'] }}
+                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['kode_antrian'] }}</td>
+                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $proposal['wkt_proposal'] }}
                                 </td>
-                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['nim'] }}</td>
-                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['nama'] }}</td>
-                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing1'] }}</td>
-                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing2'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['mhs_nim'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['mhs_nama'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing_1_nama'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing_2_nama'] }}</td>
                                 <td class="border text-center px-4 py-2">
                                     <button
-                                        @click="open = true; titleData = 'Jadwal Sidang Proposal TA'; jadwal = '{{ $proposal['status'] === 'Dijadwalkan' ? '05-02-2025' : 'Belum dijadwalkan' }}'"
-                                        class="cursor-pointer px-3 py-1.5 shadow-sm rounded-md text-sm
-                                                {{ $proposal['status'] === 'Dijadwalkan' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' }}">
-                                        {{ $proposal['status'] }}
+                                        @click="open = true; titleData = 'Jadwal Sidang Proposal TA'; jadwal = '{{ $proposal['wkt_app_proposal'] ? '05-02-2025' : 'Belum dijadwalkan' }}'"
+                                        class="cursor-pointer px-3 py-1.5 ring rounded-md text-sm {{ $proposal['wkt_app_proposal'] ? 'bg-green-100 text-green-800 ring-green-200' : 'bg-yellow-100 text-yellow-800 ring-yellow-200' }}">
+                                        {{ $proposal['wkt_app_proposal'] ? 'Dijadwalkan' : 'Pending' }}
                                     </button>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2"></td>
                                 <td class="text-center text-zinc-600 border px-4 py-2">
-                                    <button href="#" class="cursor-pointer text-blue-500 underline">
+                                    <a href="https://sicyca.dinamika.ac.id/{{ $proposal['file_proposal'] }}"
+                                        class="cursor-pointer text-blue-500 underline">
                                         <i class="fa-solid fa-download fa-lg"></i>
-                                    </button>
+                                    </a>
                                 </td>
                                 <td class="px-4 py-2">
                                     <div class="relative" x-data="{ isUpdateopen: false }">
