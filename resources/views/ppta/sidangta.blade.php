@@ -81,20 +81,21 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @forelse ($tugasAkhir as $index => $item)
                             <td rowspan="2" class="text-center px-4 py-2 whitespace-nowrap">{{ $index + 1 }}
-                            <td colspan="12" class="border-s px-4 py-4 text-gray-900 font-medium">{{ $item['judul'] }}
+                            <td colspan="12" class="border-s px-4 py-4 text-gray-900 font-medium">
+                                {{ $item['jdl_proposal'] }}
                             </td>
                             <tr>
-                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['no_daftar'] }}</td>
-                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['tgl_pengajuan'] }}</td>
-                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['nim'] }}</td>
-                                <td class="text-zinc-600 border px-4 py-2">{{ $item['nama'] }}</td>
-                                <td class="text-zinc-600 border px-4 py-2">{{ $item['pembimbing1'] }}</td>
-                                <td class="text-zinc-600 border px-4 py-2">{{ $item['pembimbing2'] }}</td>
+                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['kode_antrian'] }}</td>
+                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['wkt_ta'] }}</td>
+                                <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['mhs_nim'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $item['mhs_nama'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $item['pembimbing_1_nama'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2">{{ $item['pembimbing_2_nama'] }}</td>
                                 <td class="border text-center px-4 py-2">
                                     <button
-                                        @click="open = true; titleData = 'Jadwal Sidang Tugas Akhir'; jadwal = '{{ $item['status'] === 'Dijadwalkan' ? '05-02-2025' : 'Belum dijadwalkan' }}'"
-                                        class="cursor-pointer px-3 py-1.5 rounded rounded-md text-sm ring {{ $item['status'] === 'Dijadwalkan' ? 'bg-green-100 text-green-800 ring-green-200' : 'bg-yellow-100 text-yellow-800 ring-yellow-200' }}">
-                                        {{ $item['status'] }}
+                                        @click="open = true; titleData = 'Jadwal Sidang Tugas Akhir'; jadwal = '{{ $item['wkt_app_ta'] ? '05-02-2025' : 'Belum dijadwalkan' }}'"
+                                        class="cursor-pointer px-3 py-1.5 rounded rounded-md text-sm ring {{ $item['wkt_app_ta'] ? 'bg-green-100 text-green-800 ring-green-200' : 'bg-yellow-100 text-yellow-800 ring-yellow-200' }}">
+                                        {{ $item['wkt_app_ta'] ? 'Dijadwalkan' : 'Pending' }}
                                     </button>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2 text-center">
