@@ -85,13 +85,13 @@
                             <th class="px-6 py-3 text-left text-xs font-medium">
                                 Nama
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium">
+                            <th class="px-6 py-3 text-center text-xs font-medium">
                                 Tingkat
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium">
+                            <th class="px-6 py-3 text-center text-xs font-medium">
                                 Status
                             </th>
-                            <th class="px-6 py-3 text-left text-xs font-medium">
+                            <th class="px-6 py-3 text-center text-xs font-medium">
                                 Aksi
                             </th>
                         </tr>
@@ -110,22 +110,22 @@
                                         {{ $employee['nik'] }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{ $employee['name'] }}
+                                        {{ $employee['nama_gelar'] }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
                                         {{ $employee['tingkat'] }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{ $employee['status'] }}
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                                        {{ $employee['sts_aktif'] }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                         <button
                                             @click="
                                                 open = true;
                                                 nik = '{{ $employee['nik'] }}';
-                                                nama = '{{ $employee['name'] }}';
+                                                nama = '{{ $employee['nama_gelar'] }}';
                                                 tingkat = '{{ $employee['tingkat'] }}';
-                                                status = '{{ $employee['status'] }}';
+                                                status = '{{ $employee['sts_aktif'] }}';
                                             "
                                             class="cursor-pointer bg-blue-500 px-2 py-0.5 rounded text-white hover:bg-blue-700">
                                             Edit
