@@ -153,33 +153,33 @@
                                 <td rowspan="2" class="text-center p-4 text-nowrap">
                                     {{ $proposals->firstItem() + $index }}
                                 <td colspan="8" class="border-s p-4 text-gray-900 font-medium">
-                                    {{ $proposal['judul'] }}
+                                    {{ $proposal['jdl_proposal'] }}
                                 </td>
                                 <tr>
                                     <td class="border text-zinc-700 text-center p-4 text-nowrap">
-                                        {{ $proposal['tgl_pengajuan_proposal'] ? date('d-m-Y', strtotime($proposal['tgl_pengajuan_proposal'])) : '' }}
+                                        {{ $proposal['wkt_proposal'] ? date('d-m-Y', strtotime($proposal['wkt_proposal'])) : '' }}
                                     </td>
                                     <td class="border text-zinc-700 text-center p-4 text-nowrap">
-                                        {{ $proposal['tgl_pengajuan_ta'] ? date('d-m-Y', strtotime($proposal['tgl_pengajuan_ta'])) : '' }}
-                                    </td>
-                                    <td class="border p-4 text-zinc-700">
-                                        {{ $proposal['nim'] }}
-                                        <br>
-                                        {{ $proposal['nama_mahasiswa'] }}
+                                        {{ $proposal['wkt_ta'] ? date('d-m-Y', strtotime($proposal['wkt_ta'])) : '' }}
                                     </td>
                                     <td class="border p-4 text-zinc-700 text-nowrap">
-                                        1. {{ $proposal['pembimbing1'] }}
+                                        {{ $proposal['mhs_nim'] }}
                                         <br>
-                                        2. {{ $proposal['pembimbing2'] }}
+                                        {{ $proposal['mhs_nama'] }}
                                     </td>
                                     <td class="border p-4 text-zinc-700 text-nowrap">
-                                        {{ $proposal['penguji'] }}
+                                        1. {{ $proposal['pembimbing_1_nama'] }}
+                                        <br>
+                                        2. {{ $proposal['pembimbing_2_nama'] }}
+                                    </td>
+                                    <td class="border p-4 text-zinc-700 text-nowrap">
+                                        {{ $proposal['penguji_1_nama'] }}
                                     </td>
                                     <td class="border p-4 text-zinc-700 text-nowrap">
                                         {{ $proposal['siap_transfer'] ?? '' }}
                                     </td>
                                     <td class="border p-4 text-zinc-700 text-nowrap">
-                                        <a href="{{ route('dosen.berkas.penilaian', ['id' => $proposal['id']]) }}"
+                                        <a href="{{ route('dosen.berkas.penilaian', ['mhs_nim' => $proposal['mhs_nim']]) }}"
                                             class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1.5 px-2.5 rounded">
                                             Nilai
                                         </a>

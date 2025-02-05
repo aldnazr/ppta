@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dosen;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class BerkasController extends Controller
@@ -323,25 +324,32 @@ class BerkasController extends Controller
         ]);
     }
 
+    private function antriProposal()
+    {
+        $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/berkas');
+
+        return collect($response->json());
+    }
+
     public function index(Request $request)
     {
         // Get the number of items per page from the request, default to 10
         $perPage = $request->input('per_page', 10);
 
         // Start with dummy proposals
-        $proposals = $this->getDummyProposals();
+        $proposals = $this->antriProposal();
 
         // Apply search if search term is provided
         if ($request->has('search') && $request->search) {
             $searchTerm = strtolower($request->search);
             $proposals = $proposals->filter(function ($proposal) use ($searchTerm) {
                 return
-                    str_contains(strtolower($proposal['nim']), $searchTerm) ||
-                    str_contains(strtolower($proposal['nama_mahasiswa']), $searchTerm) ||
-                    str_contains(strtolower($proposal['judul']), $searchTerm) ||
-                    str_contains(strtolower($proposal['pembimbing1']), $searchTerm) ||
-                    str_contains(strtolower($proposal['pembimbing2']), $searchTerm) ||
-                    str_contains(strtolower($proposal['penguji']), $searchTerm);
+                    str_contains(strtolower($proposal['mhs_nim']), $searchTerm) ||
+                    str_contains(strtolower($proposal['mhs_nama']), $searchTerm) ||
+                    str_contains(strtolower($proposal['jdl_proposal']), $searchTerm) ||
+                    str_contains(strtolower($proposal['pembimbing_1_nama']), $searchTerm) ||
+                    str_contains(strtolower($proposal['pembimbing_2_nama']), $searchTerm) ||
+                    str_contains(strtolower($proposal['penguji_1_nama']), $searchTerm);
             });
         }
 
@@ -379,16 +387,17 @@ class BerkasController extends Controller
         ]);
     }
 
-    public function penilaian($proposalId)
+    public function penilaian($mhsNim)
     {
-        // Find the proposal by ID in dummy data
-        $proposal = $this->getDummyProposals()->firstWhere('id', $proposalId);
+        $proposal = $this->antriProposal()->firstWhere('mhs_nim', $mhsNim);
 
         if (!$proposal) {
             abort(404, 'Proposal not found');
         }
 
-        return view('dosen.penilaian', ['proposal' => $proposal])->with([
+        return view('dosen.penilaian', [
+            'proposal' => $proposal
+        ])->with([
             'user' => 'dosen'
         ]);
     }

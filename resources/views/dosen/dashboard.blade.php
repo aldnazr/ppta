@@ -63,7 +63,7 @@
                             </div>
 
                             <!-- Action Button -->
-                            <a href="{{ route('dosen.dashboard.penilaian', ['id' => $item['id']]) }}"
+                            <a href="{{ route('dosen.dashboard.penilaian', ['mhs_nim' => $item['id']]) }}"
                                 class="w-full md:w-auto inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-sm hover:shadow-md">
                                 <span>Beri Penilaian</span>
                                 <i class="fa-solid fa-arrow-right fa-xs ml-2 mt-0.5"></i>
