@@ -44,7 +44,7 @@
                                 class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-nowrap">
                                 NO DAFTAR</th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
-                                TANGGAL PENGAJUAN</th>
+                                tanggal pengajuan</th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 NIM
                             </th>
@@ -57,14 +57,14 @@
                             <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                 PEMBIMBING 2</th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
-                                JADWAL SIDANG PROPOSAL</th>
+                                jadwal sidang ta</th>
                             <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                                REVISI</th>
-                            <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                                FILE
+                                revisi</th>
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                proposal ta
                             </th>
                             <th class="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
-                                HASIL</th>
+                                hasl</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
