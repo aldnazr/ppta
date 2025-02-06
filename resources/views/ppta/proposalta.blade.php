@@ -119,7 +119,7 @@
                                 <td class="px-4 py-2">
                                     <div class="relative" x-data="{ isUpdateopen: false }">
                                         <button @click="isUpdateopen = !isUpdateopen"
-                                            class="cursor-pointer px-3 py-1 text-gray-800 hover:text-gray-800 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none inline-flex items-center"
+                                            class="cursor-pointer px-3 py-1 text-gray-800 hover:text-gray-900 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none inline-flex items-center"
                                             type="button">
                                             <span>Update Status</span>
                                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
@@ -236,71 +236,71 @@
                 <!-- Registration Details -->
                 <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
                     <div>
-                        <label class="block text-sm font-medium text-gray-800">No Daftar</label>
+                        <label class="block text-sm font-medium text-gray-900">No Daftar</label>
                         <input type="text" x-model="noDaftar" readonly
-                            class="mt-2 block w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-gray-600">
+                            class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-800">NIM</label>
+                        <label class="block text-sm font-medium text-gray-900">NIM</label>
                         <input type="text" x-model="nim" readonly
-                            class="mt-2 block w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-gray-600">
+                            class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700">
                     </div>
                 </div>
 
                 <!-- Student Name -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-800">Nama</label>
+                    <label class="block text-sm font-medium text-gray-900">Nama</label>
                     <input type="text" x-model="nama" readonly
-                        class="mt-2 block w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-gray-600">
+                        class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700">
                 </div>
 
                 <!-- Thesis Title -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-800">Judul</label>
+                    <label class="block text-sm font-medium text-gray-900">Judul</label>
                     <textarea readonly
-                        class="mt-2 block w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-gray-600 resize-none"
+                        class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700 resize-none"
                         rows="3" x-model="judul"></textarea>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-800">Jadwal</label>
+                    <label class="block text-sm font-medium text-gray-900">Jadwal</label>
                     <input type="text" readonly
-                        class="mt-2 block w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-gray-600 resize-none"
+                        class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700 resize-none"
                         x-model="jadwal">
                 </div>
 
                 <!-- Schedule Details -->
-                <fieldset class="flex flex-col bg-white rounded-md border border-gray-200 p-4">
+                <fieldset class="flex flex-col bg-white rounded-md border border-gray-300 p-4">
                     <legend class="text-sm font-semibold text-gray-700">Isi/Edit Jadwal</legend>
                     <div class="grid grid-cols-1 mb-1 gap-4 sm:gap-6 sm:grid-cols-2">
                         <div>
-                            <label class="block text-sm font-medium text-gray-800">Tanggal</label>
+                            <label class="block text-sm font-medium text-gray-900">Tanggal</label>
                             <input type="date" name="defense_date" value="{{ date('Y-m-d') }}"
-                                class="mt-2 block bg-white w-full px-3 py-2 border border-gray-200 rounded-md">
+                                class="mt-2 block bg-white w-full px-3 py-2 border border-gray-300 rounded-md">
                         </div>
 
                         <div>
-                            <label class="block text-sm font-medium text-gray-800">Jam</label>
+                            <label class="block text-sm font-medium text-gray-900">Jam</label>
                             <input type="time" name="defense_time" value="08:00"
-                                class="mt-2 block bg-white w-full px-3 py-2 border border-gray-200 rounded-md">
+                                class="mt-2 block bg-white w-full px-3 py-2 border border-gray-300 rounded-md">
                         </div>
                     </div>
                 </fieldset>
 
                 <!-- Examiners -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-800">Penguji</label>
+                    <label class="block text-sm font-medium text-gray-900">Penguji</label>
                     <select name="examiner1" x-model="penguji1"
-                        class="mt-2 block w-full px-3 py-2 border border-gray-200 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                        class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                     </select>
                 </div>
 
                 <!-- Room -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-800">Ruang</label>
+                    <label class="block text-sm font-medium text-gray-900">Ruang</label>
                     <select name="room" x-model="ruang"
-                        class="mt-2 block w-full px-3 py-2 border border-gray-200 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                        class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                     </select>
                 </div>
 
@@ -328,8 +328,8 @@
                 // Iterasi data dari API dan membuat opsi baru
                 data.forEach(dosen => {
                     const option = document.createElement('option');
-                    option.value = dosen.nik; // Sesuaikan dengan struktur data API
-                    option.textContent = dosen.nama_gelar; // Sesuaikan dengan struktur data API
+                    option.value = dosen.nik;
+                    option.textContent = dosen.nama_gelar;
                     selectElement.appendChild(option);
                 });
             })
