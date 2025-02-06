@@ -111,7 +111,7 @@
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2"></td>
                                 <td class="text-center text-zinc-600 border px-4 py-2">
-                                    <a href="{{ $proposal['file_proposal'] }}"
+                                    <a href="https://sicyca.dinamika.ac.id/{{ $proposal['file_proposal'] }}"
                                         class="cursor-pointer text-blue-500 underline">
                                         <i class="fa-solid fa-download fa-lg"></i>
                                     </a>
