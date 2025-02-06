@@ -1,7 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', noDaftar: '', nim: '', nama: '', judul: '', jadwal: '', ruang: '', penguji1: '', title() { return this.titleData; } }">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{
+        open: false,
+        titleData: '',
+        noDaftar: '',
+        nim: '',
+        nama: '',
+        judul: '',
+        jadwal: '',
+        ruang: '',
+        penguji1: '',
+        title() { return this.titleData; }
+    }">
         <x-header>Antrian Proposal Tugas Akhir</x-header>
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
@@ -54,7 +65,8 @@
                             <th
                                 class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider whitespace-nowrap">
                                 PEMBIMBING 1</th>
-                            <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                            <th
+                                class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider whitespace-nowrap">
                                 PEMBIMBING 2</th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 jadwal sidang proposal</th>

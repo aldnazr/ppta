@@ -79,7 +79,44 @@
             } catch (error) {
                 console.error('Error fetching jurusan data:', error);
             }
-        }
+        },
+        getPageRangeArray() {
+            const total = this.totalPages;
+            const current = this.currentPage;
+            if (total <= 5) {
+                return Array.from({ length: total }, (_, i) => i + 1);
+            }
+    
+            let start = Math.max(current - 2, 1);
+            let end = Math.min(current + 2, total);
+    
+            if (current <= 3) {
+                end = 5;
+            } else if (current >= total - 2) {
+                start = total - 4;
+            }
+    
+            const range = [];
+            if (start > 1) {
+                range.push(1);
+                if (start > 2) {
+                    range.push('...');
+                }
+            }
+    
+            for (let i = start; i <= end; i++) {
+                range.push(i);
+            }
+    
+            if (end < total) {
+                if (end < total - 1) {
+                    range.push('...');
+                }
+                range.push(total);
+            }
+    
+            return range;
+        },
     }">
         <!-- Header dan Filter Prodi -->
         <div class="grid border-b border-gray-200">
@@ -217,27 +254,66 @@
                         </template>
 
                         <!-- Pagination Controls -->
-                        <div class="flex justify-center items-center mt-4">
-                            <button @click="prevPage" :disabled="currentPage === 1"
-                                class="mr-1 px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed hover:bg-gray-300">
-                                Previous
-                            </button>
+                        <!-- Pagination Controls -->
+                        <div
+                            class="min-w-full mt-5 mx-auto flex flex-col gap-y-2 lg:flex-row lg:gap-y-0 lg:justify-between items-center">
+                            <!-- Showing results text -->
+                            <div>
+                                <p class="text-gray-600">
+                                    Menampilkan
+                                    <span x-text="(currentPage - 1) * itemsPerPage + 1"></span>
+                                    sampai
+                                    <span x-text="Math.min(currentPage * itemsPerPage, dataTaMhs.length)"></span>
+                                    dari
+                                    <span x-text="dataTaMhs.length"></span> hasil
+                                </p>
+                            </div>
 
-                            <template x-for="page in totalPages" :key="page">
-                                <button @click="goToPage(page)"
-                                    :class="{
-                                        'bg-blue-500 text-white': currentPage === page,
-                                        'bg-gray-200 hover:bg-gray-300': currentPage !== page
-                                    }"
-                                    class="px-4 py-2 rounded-lg mx-1 cursor-pointer">
-                                    <span x-text="page"></span>
-                                </button>
-                            </template>
+                            <!-- Pagination navigation -->
+                            <div>
+                                <nav
+                                    class="bg-white relative inline-flex rounded-xl border border-gray-200 shadow-sm space-x-1 p-1.5">
+                                    <!-- Previous Page -->
+                                    <button @click="prevPage" :disabled="currentPage === 1"
+                                        :class="{
+                                            'cursor-not-allowed opacity-50': currentPage === 1,
+                                            'cursor-pointer hover:bg-indigo-100 hover:text-blue-600': currentPage !== 1
+                                        }"
+                                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 bg-zinc-100 rounded-lg transition-colors duration-200 ease-in-out">
+                                        <i class="fa-solid fa-chevron-left fa-sm"></i>
+                                    </button>
 
-                            <button @click="nextPage" :disabled="currentPage === totalPages"
-                                class="ml-1 px-4 py-2 bg-gray-200 rounded-lg disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed hover:bg-gray-300">
-                                Next
-                            </button>
+                                    <!-- Numbered pages -->
+                                    <template x-for="page in getPageRangeArray()" :key="page">
+                                        <template x-if="typeof page === 'number'">
+                                            <button @click="goToPage(page)"
+                                                :class="{
+                                                    'bg-indigo-500 text-white': currentPage === page,
+                                                    'bg-zinc-100 hover:bg-indigo-100 hover:text-blue-600': currentPage !==
+                                                        page
+                                                }"
+                                                class="cursor-pointer min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500  rounded-lg transition-colors duration-200 ease-in-out">
+                                                <span x-text="page"></span>
+                                            </button>
+                                        </template>
+                                        <template x-if="typeof page === 'string'">
+                                            <span
+                                                class="min-w-9 min-h-9 flex justify-center items-center px-3 py-1">...</span>
+                                        </template>
+                                    </template>
+
+                                    <!-- Next Page -->
+                                    <button @click="nextPage" :disabled="currentPage === totalPages"
+                                        :class="{
+                                            'cursor-not-allowed opacity-50': currentPage === totalPages,
+                                            'cursor-pointer hover:bg-indigo-100 hover:text-blue-600': currentPage !==
+                                                totalPages
+                                        }"
+                                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 bg-zinc-100 rounded-lg transition-colors duration-200 ease-in-out">
+                                        <i class="fa-solid fa-chevron-right fa-sm"></i>
+                                    </button>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </template>

@@ -20,7 +20,7 @@
                     </span>
                 @else
                     <a href="{{ $paginator->previousPageUrl() }}"
-                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors duration-500 ease-in-out">
+                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors duration-200 ease-in-out">
                         <i class="fa-solid fa-chevron-left fa-sm"></i>
                     </a>
                 @endif
@@ -45,7 +45,7 @@
                 {{-- First Page + Dots --}}
                 @if ($start > 1)
                     <a href="{{ $paginator->url(1) }}"
-                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors duration-500 ease-in-out">
+                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors duration-200 ease-in-out">
                         1
                     </a>
                     @if ($start > 2)
@@ -62,7 +62,7 @@
                         </span>
                     @else
                         <a href="{{ $paginator->url($page) }}"
-                            class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors duration-500 ease-in-out">
+                            class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors duration-200 ease-in-out">
                             {{ $page }}
                         </a>
                     @endif
@@ -74,7 +74,7 @@
                         <span class="min-w-9 min-h-9 flex justify-center items-center px-3 py-1">...</span>
                     @endif
                     <a href="{{ $paginator->url($paginator->lastPage()) }}"
-                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors duration-500 ease-in-out">
+                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors duration-200 ease-in-out">
                         {{ $paginator->lastPage() }}
                     </a>
                 @endif
@@ -82,7 +82,7 @@
                 {{-- Next Page --}}
                 @if ($paginator->hasMorePages())
                     <a href="{{ $paginator->nextPageUrl() }}"
-                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors duration-500 ease-in-out">
+                        class="min-w-9 min-h-9 flex justify-center items-center border border-zinc-200 px-3 py-1 text-gray-500 hover:text-blue-600 bg-zinc-100 hover:bg-indigo-100 rounded-lg transition-colors duration-200 ease-in-out">
                         <i class="fa-solid fa-chevron-right fa-sm"></i>
                     </a>
                 @else
