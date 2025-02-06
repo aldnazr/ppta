@@ -1,21 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="pb-2 overflow-hidden bg-white rounded-xl shadow-sm" x-data="{ open: false, titleData: '', title() { return 'Judul: ' + this.titleData; }, pengusul: '', description: '' }">
+    <div class="pb-2 overflow-hidden bg-white rounded-xl shadow-sm" x-data="{
+        open: false,
+        title() { return 'Usulan Judul' },
+        titleData: '',
+        pengusul: '',
+        description: ''
+    }">
         <x-header>Usulan Judul Tugas Akhir</x-header>
         <div class="p-4 lg:p-6">
             <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 @foreach ($paginatedJudulTugasAkhir as $ta)
-                    <li @click="
-                            titleData = {{ json_encode($ta['usul_judul']) }};
-                            pengusul = {{ json_encode($ta['nama_gelar']) }};
-                            description = {{ json_encode($ta['usul_ket'] ?: 'Tidak ada deskripsi') }};
-                            open = true;
-                        "
-                        class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1">
+                    <li
+                        class="bg-white flex flex-col justify-between rounded-xl shadow-md overflow-hidden hover:ring hover:ring-blue-200 transition-all duration-300">
                         <div class="p-6 space-y-4">
                             <div class="flex items-center justify-between">
-                                <h2 class="text-xl font-bold text-gray-800 line-clamp-2">{{ $ta['usul_judul'] }}</h2>
+                                <h2 class="text-lg lg:text-xl font-bold text-gray-800 line-clamp-2">{{ $ta['usul_judul'] }}
+                                </h2>
                             </div>
                             <div class="space-y-2">
                                 <p class="text-sm text-gray-600 flex items-center">
@@ -38,9 +40,15 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="px-6 py-4 bg-gray-50 flex justify-end">
+                        <div class="px-6 py-4 bg-gray-100/70 flex justify-end">
                             <button
-                                class="text-blue-600 cursor-pointer hover:text-blue-800 text-sm font-medium transition-colors duration-200">
+                                @click="
+                                        titleData = {{ json_encode($ta['usul_judul']) }};
+                                        pengusul = {{ json_encode($ta['nama_gelar']) }};
+                                        description = {{ json_encode($ta['usul_ket'] ?: 'Tidak ada deskripsi') }};
+                                        open = true;
+                                        "
+                                class="text-blue-600 hover:text-blue-700 cursor-pointer text-sm font-medium">
                                 Lihat Detail
                                 <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -59,8 +67,17 @@
             </div>
 
             <!-- Popup Window -->
-            <x-popup-window>
+            <x-popup-window :maxWidthLG="'lg:max-w-3xl'">
                 <div class="flex flex-col space-y-4 text-sm md:text-base">
+                    <div class="grid grid-cols-12 gap-4">
+                        <div class="col-span-4 font-semibold text-gray-600">
+                            <span class="block mb-1">Judul</span>
+                        </div>
+                        <div class="col-span-8 font-semibold text-gray-800" x-text="titleData">
+                            <!-- Nama Pengusul -->
+                        </div>
+                    </div>
+
                     <div class="grid grid-cols-12 gap-4">
                         <div class="col-span-4 font-medium text-gray-600">
                             <span class="block mb-1">Pengusul</span>
