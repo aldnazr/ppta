@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', jadwal: '', title() { return this.titleData; } }">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', noDaftar: '', nim: '', nama: '', judul: '', jadwal: '', ruang: '', penguji1: '', title() { return this.titleData; } }">
         <x-header>Antrian Proposal Tugas Akhir</x-header>
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
@@ -33,7 +33,7 @@
                     </div>
                 </form>
             </div>
-            <div class="overflow-x-auto bg-white rounded-md border border-gray-200">
+            <div class="overflow-x-auto bg-white rounded-md ring ring-gray-200">
                 <table class="w-full text-sm text-left divide-y divide-gray-200">
                     <thead class="bg-gray-200 text-gray-700">
                         <tr>
@@ -57,7 +57,7 @@
                             <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                 PEMBIMBING 2</th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
-                                jadwal sidang ta</th>
+                                jadwal sidang proposal</th>
                             <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                 revisi</th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
@@ -83,14 +83,23 @@
                                 <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing_2_nama'] }}</td>
                                 <td class="border text-center px-4 py-2">
                                     <button
-                                        @click="open = true; titleData = 'Jadwal Sidang Proposal TA'; jadwal = '{{ $proposal['wkt_app_proposal'] ? '05-02-2025' : 'Belum dijadwalkan' }}'"
-                                        class="cursor-pointer px-3 py-1.5 ring rounded-md text-sm {{ $proposal['wkt_app_proposal'] ? 'bg-green-100 text-green-800 ring-green-200' : 'bg-yellow-100 text-yellow-800 ring-yellow-200' }}">
-                                        {{ $proposal['wkt_app_proposal'] ? 'Dijadwalkan' : 'Pending' }}
+                                        @click="open = true; 
+                                        titleData = 'Jadwal Sidang Proposal TA'; 
+                                        noDaftar = '{{ $proposal['kode_antrian'] }}';
+                                        nim = '{{ $proposal['mhs_nim'] }}';
+                                        nama = '{{ $proposal['mhs_nama'] }}';
+                                        judul = '{{ $proposal['jdl_proposal'] }}';
+                                        jadwal = '{{ $proposal['sidang_prop'] ?: 'Belum dijadwalkan' }}';
+                                        ruang = '{{ $proposal['ruang'] }}';
+                                        penguji1 = '{{ $proposal['nik_penguji1'] }}';
+                                        "
+                                        class="cursor-pointer px-3 py-1.5 ring rounded-md text-sm {{ $proposal['sidang_prop'] ? 'bg-green-100 text-green-800 ring-green-200' : 'bg-yellow-100 text-yellow-800 ring-yellow-200' }}">
+                                        {{ $proposal['sidang_prop'] ? 'Dijadwalkan' : 'Pending' }}
                                     </button>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2"></td>
                                 <td class="text-center text-zinc-600 border px-4 py-2">
-                                    <a href="https://sicyca.dinamika.ac.id/{{ $proposal['file_proposal'] }}"
+                                    <a href="{{ $proposal['file_proposal'] }}"
                                         class="cursor-pointer text-blue-500 underline">
                                         <i class="fa-solid fa-download fa-lg"></i>
                                     </a>
@@ -98,13 +107,13 @@
                                 <td class="px-4 py-2">
                                     <div class="relative" x-data="{ isUpdateopen: false }">
                                         <button @click="isUpdateopen = !isUpdateopen"
-                                            class="cursor-pointer px-3 py-1 text-gray-800 hover:text-gray-800 ring ring-gray-300 rounded-md hover:bg-gray-100 focus:outline-none inline-flex items-center"
+                                            class="cursor-pointer px-3 py-1 text-gray-800 hover:text-gray-800 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none inline-flex items-center"
                                             type="button">
                                             <span>Update Status</span>
                                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7" />
+                                                    d=" M19 9l-7 7-7-7" />
                                             </svg>
                                         </button>
 
@@ -210,83 +219,83 @@
         </div>
 
         <x-popup-window>
-            <form method="POST" class="space-y-4 mb-4">
+            <form method="POST" class="space-y-4 mb-4 text-sm">
                 @csrf
                 <!-- Registration Details -->
                 <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
                     <div>
                         <label class="block text-sm font-medium text-gray-800">No Daftar</label>
-                        <input type="text" value="2025010004" readonly
-                            class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
+                        <input type="text" x-model="noDaftar" readonly
+                            class="mt-2 block w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-gray-600">
                     </div>
 
                     <div>
                         <label class="block text-sm font-medium text-gray-800">NIM</label>
-                        <input type="text" value="20410100030" readonly
-                            class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
+                        <input type="text" x-model="nim" readonly
+                            class="mt-2 block w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-gray-600">
                     </div>
                 </div>
 
                 <!-- Student Name -->
                 <div>
                     <label class="block text-sm font-medium text-gray-800">Nama</label>
-                    <input type="text" value="Reza Maulana Winardi" readonly
-                        class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
+                    <input type="text" x-model="nama" readonly
+                        class="mt-2 block w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-gray-600">
                 </div>
 
                 <!-- Thesis Title -->
                 <div>
                     <label class="block text-sm font-medium text-gray-800">Judul</label>
                     <textarea readonly
-                        class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600 resize-none"
-                        rows="3">Evaluasi Dan Redesain Aplikasi GOBIS Suroboyo Bus Dengan Pendekatan Design Thinking Untuk Meningkatkan Pengalaman Pengguna</textarea>
+                        class="mt-2 block w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-gray-600 resize-none"
+                        rows="3" x-model="judul"></textarea>
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-800">Jadwal</label>
                     <input type="text" readonly
-                        class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600 resize-none"
+                        class="mt-2 block w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-gray-600 resize-none"
                         x-model="jadwal">
                 </div>
 
                 <!-- Schedule Details -->
-                <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-800">Tanggal</label>
-                        <input type="date" name="defense_date" value="2025-01-16"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                    </div>
+                <fieldset class="flex flex-col bg-white rounded-md border border-gray-200 p-4">
+                    <legend class="text-sm font-semibold text-gray-700">Isi/Edit Jadwal</legend>
+                    <div class="grid grid-cols-1 mb-1 gap-4 sm:gap-6 sm:grid-cols-2">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-800">Tanggal</label>
+                            <input type="date" name="defense_date" value="{{ date('Y-m-d') }}"
+                                class="mt-2 block bg-white w-full px-3 py-2 border border-gray-200 rounded-md">
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-800">Jam</label>
-                        <input type="time" name="defense_time" value="08:00"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-800">Jam</label>
+                            <input type="time" name="defense_time" value="08:00"
+                                class="mt-2 block bg-white w-full px-3 py-2 border border-gray-200 rounded-md">
+                        </div>
                     </div>
-                </div>
+                </fieldset>
 
                 <!-- Examiners -->
                 <div>
                     <label class="block text-sm font-medium text-gray-800">Penguji</label>
-                    <select name="examiner1"
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                        <option value="1" selected>Dr. Anjik Sukmaaji, S.Kom., M.Eng.</option>
-                        <option value="2">Other Examiner 1</option>
-                        <option value="3">Other Examiner 2</option>
+                    <select name="examiner1" x-model="penguji1"
+                        class="mt-2 block w-full px-3 py-2 border border-gray-200 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                     </select>
                 </div>
 
                 <!-- Room -->
                 <div>
                     <label class="block text-sm font-medium text-gray-800">Ruang</label>
-                    <select name="room"
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    <select name="room" x-model="ruang"
+                        class="mt-2 block w-full px-3 py-2 border border-gray-200 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                     </select>
                 </div>
 
                 <!-- Submit Button -->
                 <div>
                     <button type="submit"
-                        class="cursor-pointer w-full sm:w-auto px-4 py-2.5 bg-indigo-600 hover:bg-indigo-800 text-white font-medium rounded-md shadow-sm transition-colors">
+                        class="cursor-pointer w-full sm:w-auto px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md transition-colors">
                         Simpan Jadwal
                     </button>
                 </div>

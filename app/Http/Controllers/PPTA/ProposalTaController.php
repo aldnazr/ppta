@@ -18,7 +18,6 @@ class ProposalTaController extends Controller
     public function index(Request $request)
     {
         $proposals = $this->antriProposals();
-
         $perPage = $request->input('per_page', 10);
 
         // Pencarian berdasarkan nama atau judul
