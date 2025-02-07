@@ -24,50 +24,64 @@
             <!-- Assessment List -->
             <ul class="space-y-4">
                 @foreach ($paginated as $item)
-                    <li class="relative p-4 md:px-5 md:py-6 ring ring-gray-200 shadow shadow-sm rounded-lg">
-                        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                            <!-- Left Content -->
-                            <div class="flex-1 space-y-3">
-                                <!-- Badge + Title -->
-                                <div class="flex flex-col md:flex-row items-start gap-3">
-                                    <span
-                                        class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium {{ $item['tipe'] === 'proposal' ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800' }}">
-                                        {{ str_replace('_', ' ', Str::title($item['tipe'])) }}
-                                    </span>
-                                    <h3 class="lg:text-lg font-semibold text-gray-900">
-                                        {{ $item['judul'] }}
-                                    </h3>
-                                </div>
+                    <li
+                        class="p-5 md:p-6 relative overflow-hidden bg-white rounded-xl border border-gray-200 shadow-md transition-all">
+                        <div class="space-y-4">
+                            <!-- Header Section -->
+                            <div
+                                class="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
+                                <!-- Type Badge -->
+                                <span
+                                    class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium tracking-wide {{ $item['tipe'] === 'proposal'
+                                        ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/20'
+                                        : 'bg-amber-50 text-amber-700 ring-1 ring-amber-600/20' }}">
+                                    {{ str_replace('_', ' ', Str::title($item['tipe'])) }}
+                                </span>
 
-                                <!-- Student Info -->
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-                                    <div class="flex items-center text-gray-600">
-                                        <svg class="w-5 h-5 mr-2 text-gray-400 shrink-0" fill="none"
-                                            stroke="currentColor" viewBox="0 0 24 24">
+                                <!-- Date -->
+                                <div class="flex items-center text-gray-500 text-sm">
+                                    <svg class="w-4 h-4 mr-1.5 text-gray-400" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                    <span>Sidang: {{ date('d M Y', strtotime($item['tgl_pengajuan_proposal'])) }}</span>
+                                </div>
+                            </div>
+
+                            <!-- Title -->
+                            <h3 class="md:text-lg font-semibold text-gray-900 leading-tight">
+                                {{ $item['judul'] }}
+                            </h3>
+
+                            <!-- Student Info -->
+                            <div class="flex items-center space-x-2">
+                                <div class="relative">
+                                    <div class="w-11 h-11 rounded-full bg-gray-100 flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                         </svg>
-                                        <span class="truncate">{{ $item['nama_mahasiswa'] }}</span>
                                     </div>
-
-                                    <div class="flex items-center text-gray-600">
-                                        <svg class="w-5 h-5 mr-2 text-gray-400 shrink-0" fill="none"
-                                            stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                        </svg>
-                                        <span>Sidang:
-                                            {{ date('d M Y', strtotime($item['tgl_pengajuan_proposal'])) }}</span>
-                                    </div>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium text-gray-900">{{ $item['nama_mahasiswa'] }}</p>
+                                    <p class="text-sm text-gray-500">{{ $item['nim'] }}</p>
                                 </div>
                             </div>
 
                             <!-- Action Button -->
-                            <a href="{{ route('dosen.dashboard.penilaian', ['mhs_nim' => $item['id']]) }}"
-                                class="w-full md:w-auto inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-sm hover:shadow-md">
-                                <span>Beri Penilaian</span>
-                                <i class="fa-solid fa-arrow-right fa-xs ml-2 mt-0.5"></i>
-                            </a>
+                            <div class="pt-2">
+                                <a href="{{ route('dosen.dashboard.penilaian', ['mhs_nim' => $item['id']]) }}"
+                                    class="inline-flex items-center justify-center w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg hover:from-blue-700 hover:to-indigo-700 focus:ring-4 focus:ring-blue-100 transition-all duration-300">
+                                    <span>Beri Penilaian</span>
+                                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </li>
                 @endforeach

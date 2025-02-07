@@ -8,9 +8,9 @@
                 <!-- Search Form -->
                 <form action="{{ route('pencarianpembimbing') }}" method="GET" class="relative">
                     <div
-                        class="flex items-center border border-gray-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500 transition-all duration-200 bg-white">
+                        class="flex items-center border border-gray-300 rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-blue-500  focus-within:border-blue-500 transition-all duration-200 bg-white">
                         <!-- Search Icon -->
-                        <span class="pl-4 text-gray-400">
+                        <span class="pl-3.5 md:pl-4 text-gray-400">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -20,8 +20,9 @@
 
                         <!-- Input Field -->
                         <input type="text" name="lecturer" id="lecturer-input" value="{{ request('lecturer') }}"
-                            placeholder="Cari nama dosen..." class="w-full px-4 py-3 text-gray-700 focus:outline-none"
-                            autocomplete="off" oninput="showSuggestions(this.value); toggleClearButton(this.value)">
+                            placeholder="Cari nama dosen"
+                            class="w-full px-4 py-2.5 md:py-3 text-gray-700 focus:outline-none" autocomplete="off"
+                            oninput="showSuggestions(this.value); toggleClearButton(this.value)">
 
                         <!-- Clear Button -->
                         <button type="button" id="clear-button"
@@ -48,7 +49,7 @@
                     @foreach ($paginatedDataBimbingan as $tugasAkhir)
                         <div class="ring ring-gray-200 rounded-lg overflow-hidden">
                             <div class="px-5 lg:px-6 py-3 lg:py-5 border-b border-gray-200">
-                                <h2 class="md:text-lg font-semibold text-blue-700">
+                                <h2 class="text-lg font-semibold text-blue-700">
                                     {{ $tugasAkhir['jdl_proposal'] }}
                                 </h2>
                             </div>
@@ -56,7 +57,7 @@
                             <div class="p-5 lg:p-6">
                                 <div class="grid md:grid-cols-2 gap-6">
                                     <div>
-                                        <h3 class="text-md md:text-lg font-medium text-gray-700 mb-3">
+                                        <h3 class="md:text-lg font-medium text-gray-700 mb-3">
                                             Informasi Mahasiswa
                                         </h3>
                                         <div class="space-y-2 text-gray-600">
@@ -112,7 +113,8 @@
                                 <div class="">
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
                                         <!-- Tanggal Sidang -->
-                                        <div class="flex items-start ring ring-gray-200 p-4 bg-gray-50 rounded-lg">
+                                        <div
+                                            class="flex items-start border border-gray-200 shadow-sm p-4 bg-white rounded-lg">
                                             <div class="flex-shrink-0">
                                                 <div
                                                     class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
@@ -135,7 +137,8 @@
                                         </div>
 
                                         <!-- Ruang -->
-                                        <div class="flex items-start ring ring-gray-200 p-4 bg-gray-50 rounded-lg">
+                                        <div
+                                            class="flex items-start border border-gray-200 shadow-sm p-4 bg-white rounded-lg">
                                             <div class="flex-shrink-0">
                                                 <div
                                                     class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
@@ -160,7 +163,8 @@
                                         </div>
 
                                         <!-- Jam -->
-                                        <div class="flex items-start ring ring-gray-200 p-4 bg-gray-50 rounded-lg">
+                                        <div
+                                            class="flex items-start border border-gray-200 shadow-sm p-4 bg-white rounded-lg">
                                             <div class="flex-shrink-0">
                                                 <div
                                                     class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">

@@ -8,9 +8,9 @@
                 <!-- Search Input -->
                 <div class="relative">
                     <div
-                        class="flex items-center border border-gray-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500 transition-all duration-200 bg-white">
+                        class="flex items-center border border-gray-300 rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500 transition-all duration-200 bg-white">
                         <!-- Search Icon -->
-                        <span class="pl-4 text-gray-400">
+                        <span class="pl-3.5 md:pl-4 text-gray-400">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -19,8 +19,8 @@
                         </span>
 
                         <!-- Input Field -->
-                        <input type="text" id="autocomplete-input" placeholder="Cari nama dosen..."
-                            class="w-full px-4 py-3 text-gray-700 focus:outline-none" autocomplete="off"
+                        <input type="text" id="autocomplete-input" placeholder="Cari nama dosen"
+                            class="w-full px-4 py-2.5 md:py-3 text-gray-700 focus:outline-none" autocomplete="off"
                             oninput="showSuggestions(this.value); toggleClearButton(this.value)">
 
                         <!-- Clear Button -->
