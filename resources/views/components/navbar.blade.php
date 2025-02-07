@@ -242,12 +242,15 @@ window.addEventListener('resize', () => {
                 <!-- Logout -->
                 <template x-if="role !== 'mahasiswa'">
                     <div class="group mb-4 mt-auto">
-                        <a href="route('logout')"
-                            class="flex w-full gap-x-4 font-semibold items-center  rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-gray-50">
-                            <i
-                                class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>
-                            Logout
-                        </a>
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit"
+                                class="cursor-pointer flex w-full gap-x-4 font-semibold items-center  rounded-lg p-3 text-sm text-slate-700 hover:text-indigo-600 hover:bg-gray-50">
+                                <i
+                                    class="fa-regular fa-arrow-right-from-bracket fa-lg text-slate-700 group-hover:text-indigo-600"></i>
+                                Logout
+                            </button>
+                        </form>
                     </div>
                 </template>
             </div>
