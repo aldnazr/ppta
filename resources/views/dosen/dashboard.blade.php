@@ -14,11 +14,11 @@
                     <i class="fa-regular fa-circle-exclamation fa-xl text-white/90 md:fa-2xl"></i>
                 </div>
 
-                <div class="space-y-1 md:space-y-2">
+                <div class="space-y-1 md:space-y-1">
                     <h3 class="text-sm md:text-base font-medium uppercase tracking-wide text-white/90">
                         Penilaian Tertunda
                     </h3>
-                    <div class="text-2xl md:text-4xl font-bold text-white/95 tracking-tight">
+                    <div class="text-2xl md:text-3xl font-bold text-white/95 tracking-tight">
                         {{ $unassessedCount }}
                     </div>
                 </div>
