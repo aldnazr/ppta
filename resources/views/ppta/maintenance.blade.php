@@ -55,9 +55,9 @@
                                     class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                                     <option value="" disabled selected>Status</option>
                                     @foreach ($uniqueStatus as $item)
-                                        <option value="{{ $item }}"
-                                            {{ $selectedStatus == $item ? 'selected' : '' }}>
-                                            {{ $item }}</option>
+                                        <option value="{{ $item }}">
+                                            {{ $item }}
+                                        </option>
                                     @endforeach
                                 </select>
                                 <div class="flex justify-between space-x-2">
@@ -165,7 +165,6 @@
                         <label for="tingkat" class="block text-sm font-medium text-gray-700">Tingkat</label>
                         <select id="tingkat" name="tingkat" :value="tingkat"
                             class="w-full h-10 px-1.5 text-slate-800 rounded-md border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
-                            <option value="">Select Level</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                         </select>
@@ -178,9 +177,11 @@
                         <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                         <select id="status" name="status" x-model="status"
                             class="w-full h-10 px-1.5 text-slate-800 border rounded-md border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
-                            <option value="">Select Status</option>
-                            <option value="Y">Aktif</option>
-                            <option value="N">Nonaktif</option>
+                            @foreach ($uniqueStatus as $item)
+                                <option value="{{ $item }}">
+                                    {{ $item }}
+                                </option>
+                            @endforeach
                         </select>
                         @error('status')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>

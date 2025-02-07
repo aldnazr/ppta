@@ -96,14 +96,14 @@
                                 <td class="border text-center px-4 py-2">
                                     <button
                                         @click="open = true; 
-                                        titleData = 'Jadwal Sidang Proposal TA'; 
-                                        noDaftar = '{{ $proposal['kode_antrian'] }}';
-                                        nim = '{{ $proposal['mhs_nim'] }}';
-                                        nama = '{{ $proposal['mhs_nama'] }}';
-                                        judul = '{{ $proposal['jdl_proposal'] }}';
-                                        jadwal = '{{ $proposal['sidang_prop'] ?: 'Belum dijadwalkan' }}';
-                                        ruang = '{{ $proposal['ruang'] }}';
-                                        penguji1 = '{{ $proposal['nik_penguji1'] }}';
+                                            titleData = 'Jadwal Sidang Proposal TA'; 
+                                            noDaftar = '{{ $proposal['kode_antrian'] }}';
+                                            nim = '{{ $proposal['mhs_nim'] }}';
+                                            nama = '{{ $proposal['mhs_nama'] }}';
+                                            judul = '{{ $proposal['jdl_proposal'] }}';
+                                            jadwal = '{{ $proposal['sidang_prop'] ?: 'Belum dijadwalkan' }}';
+                                            ruang = '{{ $proposal['ruang'] }}';
+                                            penguji1 = '{{ $proposal['nik_penguji1'] }}';
                                         "
                                         class="cursor-pointer px-3 py-1.5 ring rounded-md text-sm {{ $proposal['sidang_prop'] ? 'bg-green-100 text-green-800 ring-green-200' : 'bg-yellow-100 text-yellow-800 ring-yellow-200' }}">
                                         {{ $proposal['sidang_prop'] ? 'Dijadwalkan' : 'Pending' }}
@@ -111,8 +111,7 @@
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2"></td>
                                 <td class="text-center text-zinc-600 border px-4 py-2">
-                                    <a href="https://sicyca.dinamika.ac.id/{{ $proposal['file_proposal'] }}"
-                                        class="cursor-pointer text-blue-500 underline">
+                                    <a href="{{ $proposal['prop_link'] }}" class="cursor-pointer text-blue-500 underline">
                                         <i class="fa-solid fa-download fa-lg"></i>
                                     </a>
                                 </td>
@@ -299,7 +298,7 @@
                 <!-- Room -->
                 <div>
                     <label class="block text-sm font-medium text-gray-900">Ruang</label>
-                    <select name="room" x-model="ruang"
+                    <select name="ruangs" x-model="ruang"
                         class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                     </select>
                 </div>
@@ -325,11 +324,46 @@
                 // Membersihkan opsi yang sudah ada (opsional)
                 selectElement.innerHTML = '';
 
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = 'Silahkan pilih dosen';
+                defaultOption.selected = true;
+                defaultOption.disabled = true;
+                selectElement.appendChild(defaultOption);
+
                 // Iterasi data dari API dan membuat opsi baru
                 data.forEach(dosen => {
                     const option = document.createElement('option');
                     option.value = dosen.nik;
                     option.textContent = dosen.nama_gelar;
+                    selectElement.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        fetch('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/ruangs')
+            .then(response => response.json())
+            .then(data => {
+                const selectElement = document.querySelector('select[name="ruangs"]');
+
+                // Membersihkan opsi yang sudah ada
+                selectElement.innerHTML = '';
+
+                // Menambahkan opsi dengan value kosong sebagai selected
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = 'Silahkan pilih ruang';
+                defaultOption.selected = true;
+                defaultOption.disabled = true;
+                selectElement.appendChild(defaultOption);
+
+                // Iterasi data dari API dan membuat opsi baru
+                data.forEach(ruang => {
+                    const option = document.createElement('option');
+                    option.value = ruang.id;
+                    option.textContent = ruang.id;
                     selectElement.appendChild(option);
                 });
             })

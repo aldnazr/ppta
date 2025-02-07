@@ -1,7 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{ open: false, titleData: '', jadwal: '', title() { return this.titleData; } }">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden" x-data="{
+        open: false,
+        titleData: '',
+        noDaftar: '',
+        nim: '',
+        nama: '',
+        judul: '',
+        jadwal: '',
+        ruang: '',
+        penguji1: '',
+        title() { return this.titleData; }
+    }">
         <x-header>Antrian Sidang Tugas Akhir</x-header>
         <div class="pb-6 px-6 pt-2">
             <div class="flex flex-col md:flex-row justify-between my-4 space-y-3 lg:space-y-0 lg:space-x-2">
@@ -93,47 +104,73 @@
                                 <td class="text-zinc-600 border px-4 py-2">{{ $item['pembimbing_2_nama'] }}</td>
                                 <td class="border text-center px-4 py-2">
                                     <button
-                                        @click="open = true; titleData = 'Jadwal Sidang Tugas Akhir'; jadwal = '{{ $item['wkt_app_ta'] ? '05-02-2025' : 'Belum dijadwalkan' }}'"
-                                        class="cursor-pointer px-3 py-1.5 rounded rounded-md text-sm ring {{ $item['wkt_app_ta'] ? 'bg-green-100 text-green-800 ring-green-200' : 'bg-yellow-100 text-yellow-800 ring-yellow-200' }}">
-                                        {{ $item['wkt_app_ta'] ? 'Dijadwalkan' : 'Pending' }}
+                                        @click="open = true; 
+                                            titleData = 'Jadwal Sidang TA'; 
+                                            noDaftar = '{{ $item['kode_antrian'] }}';
+                                            nim = '{{ $item['mhs_nim'] }}';
+                                            nama = '{{ $item['mhs_nama'] }}';
+                                            judul = '{{ $item['jdl_proposal'] }}';
+                                            jadwal = '{{ $item['tgl_smn'] ?: 'Belum dijadwalkan' }}';
+                                            ruang = '{{ $item['ruang_smn'] }}';
+                                            penguji1 = '{{ $item['penguji'] }}';
+                                        "
+                                        class="cursor-pointer px-3 py-1.5 rounded rounded-md text-sm ring {{ $item['tgl_smn'] ? 'bg-green-100 text-green-800 ring-green-200' : 'bg-yellow-100 text-yellow-800 ring-yellow-200' }}">
+                                        {{ $item['tgl_smn'] ? 'Dijadwalkan' : 'Pending' }}
                                     </button>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <button href="#" class="cursor-pointer text-blue-500">
+                                    <a href="{{ $item['proposal_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['proposal_link'] }}"
+                                        class="cursor-pointer text-blue-500">
                                         <i class="fa-solid fa-download fa-lg"></i>
-                                    </button>
+                                    </a>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <button href="#" class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                    <a href="{{ $item['laporan_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['laporan_link'] }}"
+                                        class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i>
+                                    </a>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <button href="#" class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                    <a href="{{ $item['jurnal_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['jurnal_link'] }}"
+                                        class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i>
+                                    </a>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <button href="#" class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                    <a href="{{ $item['seminar_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['seminar_link'] }}"
+                                        class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i>
+                                    </a>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <button href="#" class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                    <a href="{{ $item['bimbingan_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['bimbingan_link'] }}"
+                                        class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i>
+                                    </a>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <button href="#" class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                    <a href="{{ $item['poster_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['poster_link'] }}"
+                                        class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i>
+                                    </a>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <button href="#" class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                    <a href="{{ $item['original_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['original_link'] }}"
+                                        class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i>
+                                    </a>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <button href="#" class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                    <a href="{{ $item['upload_jurnal_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['upload_jurnal_link'] }}"
+                                        class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i>
+                                    </a>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <button href="#" class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i></button>
+                                    <a href="{{ $item['keaslian_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['keaslian_link'] }}"
+                                        class="cursor-pointer text-blue-500">
+                                        <i class="fa-solid fa-download fa-lg"></i>
+                                    </a>
                                 </td>
                                 <td class="px-4 py-2 space-y-2">
                                     <select class="ring ring-gray-300 rounded-md px-2 py-1 text-sm">
@@ -147,7 +184,7 @@
                             </td>
                         @empty
                             <tr>
-                                <td colspan="13" class="border py-12 text-center">Tidak ada data proposal</td>
+                                <td colspan="13" class="border py-12 text-center">Tidak ada data item</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -158,83 +195,83 @@
             </div>
         </div>
         <x-popup-window>
-            <form method="POST" class="space-y-4 mb-4">
+            <form method="POST" class="space-y-4 mb-4 text-sm">
                 @csrf
                 <!-- Registration Details -->
                 <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">No Daftar</label>
-                        <input type="text" value="2025010004" readonly
-                            class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
+                        <label class="block text-sm font-medium text-gray-900">No Daftar</label>
+                        <input type="text" x-model="noDaftar" readonly
+                            class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700">
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-gray-700">NIM</label>
-                        <input type="text" value="20410100030" readonly
-                            class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
+                        <label class="block text-sm font-medium text-gray-900">NIM</label>
+                        <input type="text" x-model="nim" readonly
+                            class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700">
                     </div>
                 </div>
 
                 <!-- Student Name -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Nama</label>
-                    <input type="text" value="Reza Maulana Winardi" readonly
-                        class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600">
+                    <label class="block text-sm font-medium text-gray-900">Nama</label>
+                    <input type="text" x-model="nama" readonly
+                        class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700">
                 </div>
 
                 <!-- Thesis Title -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Judul</label>
+                    <label class="block text-sm font-medium text-gray-900">Judul</label>
                     <textarea readonly
-                        class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600 resize-none"
-                        rows="3">Evaluasi Dan Redesain Aplikasi GOBIS Suroboyo Bus Dengan Pendekatan Design Thinking Untuk Meningkatkan Pengalaman Pengguna</textarea>
+                        class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700 resize-none"
+                        rows="3" x-model="judul"></textarea>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Jadwal</label>
+                    <label class="block text-sm font-medium text-gray-900">Jadwal</label>
                     <input type="text" readonly
-                        class="mt-1 block w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-md shadow-sm text-gray-600 resize-none"
+                        class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700 resize-none"
                         x-model="jadwal">
                 </div>
 
                 <!-- Schedule Details -->
-                <div class="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Tanggal</label>
-                        <input type="date" name="defense_date" value="2025-01-16"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                    </div>
+                <fieldset class="flex flex-col bg-white rounded-md border border-gray-300 p-4">
+                    <legend class="text-sm font-semibold text-gray-700">Isi/Edit Jadwal</legend>
+                    <div class="grid grid-cols-1 mb-1 gap-4 sm:gap-6 sm:grid-cols-2">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-900">Tanggal</label>
+                            <input type="date" name="defense_date" value="{{ date('Y-m-d') }}"
+                                class="mt-2 block bg-white w-full px-3 py-2 border border-gray-300 rounded-md">
+                        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">Jam</label>
-                        <input type="time" name="defense_time" value="08:00"
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-900">Jam</label>
+                            <input type="time" name="defense_time" value="08:00"
+                                class="mt-2 block bg-white w-full px-3 py-2 border border-gray-300 rounded-md">
+                        </div>
                     </div>
-                </div>
+                </fieldset>
 
                 <!-- Examiners -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Penguji</label>
-                    <select name="examiner1"
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                    <label class="block text-sm font-medium text-gray-900">Penguji</label>
+                    <select name="examiner1" x-model="penguji1"
+                        class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                     </select>
                 </div>
 
                 <!-- Room -->
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Ruang</label>
-                    <select name="room"
-                        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                        <option value="M504" selected>M504</option>
-                        <option value="M505">M505</option>
-                        <option value="M506">M506</option>
+                    <label class="block text-sm font-medium text-gray-900">Ruang</label>
+                    <select name="ruangs" x-model="ruang"
+                        class="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                     </select>
                 </div>
 
                 <!-- Submit Button -->
                 <div>
                     <button type="submit"
-                        class="cursor-pointer w-full sm:w-auto px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md shadow-sm transition-colors">
+                        class="cursor-pointer w-full sm:w-auto px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-md transition-colors">
                         Simpan Jadwal
                     </button>
                 </div>
@@ -251,11 +288,46 @@
                 // Membersihkan opsi yang sudah ada (opsional)
                 selectElement.innerHTML = '';
 
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = 'Silahkan pilih dosen';
+                defaultOption.selected = true;
+                defaultOption.disabled = true;
+                selectElement.appendChild(defaultOption);
+
                 // Iterasi data dari API dan membuat opsi baru
                 data.forEach(dosen => {
                     const option = document.createElement('option');
-                    option.value = dosen.nik; // Sesuaikan dengan struktur data API
-                    option.textContent = dosen.nama_gelar; // Sesuaikan dengan struktur data API
+                    option.value = dosen.nik;
+                    option.textContent = dosen.nama_gelar;
+                    selectElement.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+        fetch('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/ruangs')
+            .then(response => response.json())
+            .then(data => {
+                const selectElement = document.querySelector('select[name="ruangs"]');
+
+                // Membersihkan opsi yang sudah ada
+                selectElement.innerHTML = '';
+
+                // Menambahkan opsi dengan value kosong sebagai selected
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = 'Silahkan pilih ruang';
+                defaultOption.selected = true;
+                defaultOption.disabled = true;
+                selectElement.appendChild(defaultOption);
+
+                // Iterasi data dari API dan membuat opsi baru
+                data.forEach(ruang => {
+                    const option = document.createElement('option');
+                    option.value = ruang.id;
+                    option.textContent = ruang.id;
                     selectElement.appendChild(option);
                 });
             })
