@@ -8,21 +8,24 @@
         <div class="p-4 lg:p-6">
             <!-- Notification Card -->
             <div
-                class="bg-amber-50/70 border-l-4 border-amber-400 shadow-sm rounded-xl p-4 mt-1 md:mt-2 mb-5 md:mb-7 flex items-center">
-                <div class="flex-shrink-0">
-                    <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                    </svg>
+                class="group bg-red-600/90 border border-red-600/50 shadow-lg transition-all duration-300 rounded-2xl p-4 md:p-6 mb-6 flex items-center space-x-4 backdrop-blur-sm">
+                <div
+                    class="flex bg-white/40 items-center justify-center backdrop-blur-sm rounded-full h-12 w-12 md:h-14 md:w-14 transition-colors duration-300">
+                    <i class="fa-regular fa-circle-exclamation fa-xl text-white/90 md:fa-2xl"></i>
                 </div>
-                <div class="ml-4 flex-1">
-                    <h3 class="text-lg lg:text-xl font-semibold text-amber-800">Penilaian Tertunda</h3>
-                    <div class="mt-1 text-xl lg:text-2xl font-bold text-amber-900">{{ $unassessedCount }}</div>
+
+                <div class="space-y-1 md:space-y-2">
+                    <h3 class="text-sm md:text-base font-medium uppercase tracking-wide text-white/90">
+                        Penilaian Tertunda
+                    </h3>
+                    <div class="text-2xl md:text-4xl font-bold text-white/95 tracking-tight">
+                        {{ $unassessedCount }}
+                    </div>
                 </div>
             </div>
 
             <!-- Assessment List -->
-            <ul class="space-y-4">
+            <ul class="space-y-5">
                 @foreach ($paginated as $item)
                     <li
                         class="p-5 md:p-6 relative overflow-hidden bg-white rounded-xl border border-gray-200 shadow-md transition-all">
@@ -57,8 +60,8 @@
                             <!-- Student Info -->
                             <div class="flex items-center space-x-2">
                                 <div class="relative">
-                                    <div class="w-11 h-11 rounded-full bg-gray-100 flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor"
+                                    <div class="w-11 h-11 rounded-full bg-gray-200 flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-gray-500/80" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -74,7 +77,7 @@
                             <!-- Action Button -->
                             <div class="pt-2">
                                 <a href="{{ route('dosen.dashboard.penilaian', ['mhs_nim' => $item['id']]) }}"
-                                    class="inline-flex items-center justify-center w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg hover:from-blue-700 hover:to-indigo-700 focus:ring-4 focus:ring-blue-100 transition-all duration-300">
+                                    class="inline-flex items-center justify-center w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-blue-600/90 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-100 transition-all duration-300">
                                     <span>Beri Penilaian</span>
                                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
