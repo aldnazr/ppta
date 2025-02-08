@@ -131,7 +131,6 @@
                 {{-- Content for Proposal Tab --}}
                 <div x-show="activeTab === 'proposal'" class="rounded-lg pb-3" id="proposal" role="tabpanel"
                     aria-labelledby="profile-tab">
-                    <!-- Supervision Forms -->
                     <div class="grid grid-cols-1 gap-y-3 lg:grid-cols-2 lg:gap-x-8">
                         <!-- Pembimbing Section -->
                         <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
@@ -143,8 +142,7 @@
                                 <h2 class="text-black font-semibold">Berita Acara</h2>
                                 <div>
                                     <label for="penulisan_masalah"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5">Penulisan
-                                        masalah</label>
+                                        class="block text-gray-900 text-sm font-medium mb-2.5">Perumusan masalah</label>
                                     <textarea id="penulisan_masalah" name="penulisan_masalah"
                                         class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
                                         placeholder="Masukkan penulisan masalah..."></textarea>
@@ -168,8 +166,7 @@
 
                                 <div>
                                     <label for="penulisan_masalah"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5">Luaran tugas
-                                        akhir</label>
+                                        class="block text-gray-900 text-sm font-medium mb-2.5">Luaran tugas akhir</label>
                                     <textarea id="penulisan_masalah" name="penulisan_masalah"
                                         class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
                                         placeholder="Masukkan luaran tugas akhir..."></textarea>
@@ -200,8 +197,8 @@
                                 <div class="grid grid-cols-2 gap-4">
                                     <div>
                                         <label for="penulisan_masalah_nilai"
-                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Penulisan masalah
-                                            (25%)</label>
+                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Perumusan
+                                            masalah (25%)</label>
                                         <input type="number" id="penulisan_masalah_nilai" name="penulisan_masalah_nilai"
                                             min="0" max="100"
                                             class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
@@ -255,7 +252,7 @@
                                 <h2 class="text-black font-semibold">Berita Acara</h2>
                                 <div>
                                     <label for="penulisan_masalah"
-                                        class="block text-gray-900 text-sm font-medium mb-2.5">Penulisan
+                                        class="block text-gray-900 text-sm font-medium mb-2.5">Perumusan
                                         masalah</label>
                                     <textarea id="penulisan_masalah" name="penulisan_masalah"
                                         class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800"
@@ -312,7 +309,7 @@
                                 <div class="grid grid-cols-2 gap-4">
                                     <div>
                                         <label for="penulisan_masalah_nilai"
-                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Penulisan masalah
+                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Perumusan masalah
                                             (25%)</label>
                                         <input type="number" id="penulisan_masalah_nilai" name="penulisan_masalah_nilai"
                                             min="0" max="100"
@@ -366,9 +363,8 @@
                                 <div class="grid grid-cols-2 gap-4">
                                     <div>
                                         <label for="penulisan_masalah_nilai"
-                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Penulisan
-                                            masalah
-                                            (25%)</label>
+                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Kemandirian
+                                            (30%)</label>
                                         <input type="number" id="penulisan_masalah_nilai" name="penulisan_masalah_nilai"
                                             min="0" max="100"
                                             class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
@@ -376,8 +372,7 @@
 
                                     <div>
                                         <label for="kajian_pustaka_nilai"
-                                            class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                            pustaka (25%)</label>
+                                            class="block text-gray-900 text-sm font-medium mb-2.5">Keaktifan (20%)</label>
                                         <input type="number" id="kajian_pustaka_nilai" name="kajian_pustaka_nilai"
                                             min="0" max="100"
                                             class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
@@ -385,8 +380,8 @@
 
                                     <div>
                                         <label for="metodologi_nilai"
-                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Metodologi
-                                            (25%)</label>
+                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Kreatifitas
+                                            (20%)</label>
                                         <input type="number" id="metodologi_nilai" name="metodologi_nilai"
                                             min="0" max="100"
                                             class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
@@ -394,9 +389,8 @@
 
                                     <div>
                                         <label for="luaran_tugas_akhir_nilai"
-                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Luaran tugas
-                                            akhir
-                                            (25%)</label>
+                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Analisa Ilmiah
+                                            (30%)</label>
                                         <input type="number" id="luaran_tugas_akhir_nilai"
                                             name="luaran_tugas_akhir_nilai" min="0" max="100"
                                             class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
@@ -425,9 +419,8 @@
                                 <div class="grid grid-cols-2 gap-4">
                                     <div>
                                         <label for="penulisan_masalah_nilai"
-                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Penulisan
-                                            masalah
-                                            (25%)</label>
+                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Kemandirian
+                                            (30%)</label>
                                         <input type="number" id="penulisan_masalah_nilai" name="penulisan_masalah_nilai"
                                             min="0" max="100"
                                             class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
@@ -435,8 +428,7 @@
 
                                     <div>
                                         <label for="kajian_pustaka_nilai"
-                                            class="block text-gray-900 text-sm font-medium mb-2.5">Kajian
-                                            pustaka (25%)</label>
+                                            class="block text-gray-900 text-sm font-medium mb-2.5">Keaktifan (20%)</label>
                                         <input type="number" id="kajian_pustaka_nilai" name="kajian_pustaka_nilai"
                                             min="0" max="100"
                                             class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
@@ -444,8 +436,8 @@
 
                                     <div>
                                         <label for="metodologi_nilai"
-                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Metodologi
-                                            (25%)</label>
+                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Kreatifitas
+                                            (20%)</label>
                                         <input type="number" id="metodologi_nilai" name="metodologi_nilai"
                                             min="0" max="100"
                                             class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
@@ -453,9 +445,8 @@
 
                                     <div>
                                         <label for="luaran_tugas_akhir_nilai"
-                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Luaran tugas
-                                            akhir
-                                            (25%)</label>
+                                            class="block text-gray-900 text-sm font-medium mb-2.5 ">Analisa Ilmiah
+                                            (30%)</label>
                                         <input type="number" id="luaran_tugas_akhir_nilai"
                                             name="luaran_tugas_akhir_nilai" min="0" max="100"
                                             class="w-full px-3 py-2 border text-sm border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-gray-800">
