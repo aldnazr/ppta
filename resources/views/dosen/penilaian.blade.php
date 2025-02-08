@@ -486,7 +486,7 @@
                                                         bobot="{{ $nilai['bobot'] }}"
                                                         id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                                         name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '' }}" disabled />
+                                                        value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
                                                 @endforeach
                                             </div>
                                         </div>
@@ -503,7 +503,7 @@
                                                         bobot="{{ $nilai['bobot'] }}"
                                                         id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                                         name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '' }}" disabled />
+                                                        value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
                                                 @endforeach
                                             </div>
                                         </div>
@@ -520,7 +520,7 @@
                                                         bobot="{{ $nilai['bobot'] }}"
                                                         id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                                         name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '' }}" disabled />
+                                                        value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
                                                 @endforeach
                                             </div>
                                         </div>

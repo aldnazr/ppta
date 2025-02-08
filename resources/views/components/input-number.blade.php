@@ -6,7 +6,7 @@
     'value' => '',
     'min' => 0,
     'max' => 100,
-    'disabled' => false, // Tambahkan opsi disabled (default: false)
+    'disabled' => false,
 ])
 
 <div>
