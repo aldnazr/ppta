@@ -9,324 +9,16 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class BerkasController extends Controller
 {
-
-    private function getDummyProposals()
-    {
-        return collect([
-            [
-                'id' => 1,
-                'tgl_pengajuan_proposal' => '2024-10-25',
-                'tgl_pengajuan_ta' => null,
-                'nim' => '18410100143',
-                'nama_mahasiswa' => 'Muhammad Alauddin Azhary',
-                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
-                'pembimbing1' => 'Tan Amelia',
-                'pembimbing2' => 'M.J. Dewiyani Sunarto',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'proposal'
-            ],
-            [
-                'id' => 2,
-                'tgl_pengajuan_proposal' => null,
-                'tgl_pengajuan_ta' => '2024-11-15',
-                'nim' => '18410100145',
-                'nama_mahasiswa' => 'Aldy Irma Aprillianto',
-                'judul' => 'ANALISIS SISTEM INFORMASI MANAJEMEN BERBASIS CLOUD',
-                'pembimbing1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'tugas_akhir'
-            ],
-            [
-                'id' => 1,
-                'tgl_pengajuan_proposal' => '2024-10-25',
-                'tgl_pengajuan_ta' => null,
-                'nim' => '18410100143',
-                'nama_mahasiswa' => 'Muhammad Alauddin Azhary',
-                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
-                'pembimbing1' => 'Tan Amelia',
-                'pembimbing2' => 'M.J. Dewiyani Sunarto',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'proposal'
-            ],
-            [
-                'id' => 2,
-                'tgl_pengajuan_proposal' => null,
-                'tgl_pengajuan_ta' => '2024-11-15',
-                'nim' => '18410100145',
-                'nama_mahasiswa' => 'Aldy Irma Aprillianto',
-                'judul' => 'ANALISIS SISTEM INFORMASI MANAJEMEN BERBASIS CLOUD',
-                'pembimbing1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'tugas_akhir'
-            ],
-            [
-                'id' => 1,
-                'tgl_pengajuan_proposal' => '2024-10-25',
-                'tgl_pengajuan_ta' => null,
-                'nim' => '18410100143',
-                'nama_mahasiswa' => 'Muhammad Alauddin Azhary',
-                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
-                'pembimbing1' => 'Tan Amelia',
-                'pembimbing2' => 'M.J. Dewiyani Sunarto',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'proposal'
-            ],
-            [
-                'id' => 2,
-                'tgl_pengajuan_proposal' => null,
-                'tgl_pengajuan_ta' => '2024-11-15',
-                'nim' => '18410100145',
-                'nama_mahasiswa' => 'Aldy Irma Aprillianto',
-                'judul' => 'ANALISIS SISTEM INFORMASI MANAJEMEN BERBASIS CLOUD',
-                'pembimbing1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'tugas_akhir'
-            ],
-            [
-                'id' => 1,
-                'tgl_pengajuan_proposal' => '2024-10-25',
-                'tgl_pengajuan_ta' => null,
-                'nim' => '18410100143',
-                'nama_mahasiswa' => 'Muhammad Alauddin Azhary',
-                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
-                'pembimbing1' => 'Tan Amelia',
-                'pembimbing2' => 'M.J. Dewiyani Sunarto',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'proposal'
-            ],
-            [
-                'id' => 2,
-                'tgl_pengajuan_proposal' => null,
-                'tgl_pengajuan_ta' => '2024-11-15',
-                'nim' => '18410100145',
-                'nama_mahasiswa' => 'Aldy Irma Aprillianto',
-                'judul' => 'ANALISIS SISTEM INFORMASI MANAJEMEN BERBASIS CLOUD',
-                'pembimbing1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'tugas_akhir'
-            ],
-            [
-                'id' => 1,
-                'tgl_pengajuan_proposal' => '2024-10-25',
-                'tgl_pengajuan_ta' => null,
-                'nim' => '18410100143',
-                'nama_mahasiswa' => 'Muhammad Alauddin Azhary',
-                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
-                'pembimbing1' => 'Tan Amelia',
-                'pembimbing2' => 'M.J. Dewiyani Sunarto',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'proposal'
-            ],
-            [
-                'id' => 2,
-                'tgl_pengajuan_proposal' => null,
-                'tgl_pengajuan_ta' => '2024-11-15',
-                'nim' => '18410100145',
-                'nama_mahasiswa' => 'Aldy Irma Aprillianto',
-                'judul' => 'ANALISIS SISTEM INFORMASI MANAJEMEN BERBASIS CLOUD',
-                'pembimbing1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'tugas_akhir'
-            ],
-            [
-                'id' => 1,
-                'tgl_pengajuan_proposal' => '2024-10-25',
-                'tgl_pengajuan_ta' => null,
-                'nim' => '18410100143',
-                'nama_mahasiswa' => 'Muhammad Alauddin Azhary',
-                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
-                'pembimbing1' => 'Tan Amelia',
-                'pembimbing2' => 'M.J. Dewiyani Sunarto',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'proposal'
-            ],
-            [
-                'id' => 2,
-                'tgl_pengajuan_proposal' => null,
-                'tgl_pengajuan_ta' => '2024-11-15',
-                'nim' => '18410100145',
-                'nama_mahasiswa' => 'Aldy Irma Aprillianto',
-                'judul' => 'ANALISIS SISTEM INFORMASI MANAJEMEN BERBASIS CLOUD',
-                'pembimbing1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'tugas_akhir'
-            ],
-            [
-                'id' => 1,
-                'tgl_pengajuan_proposal' => '2024-10-25',
-                'tgl_pengajuan_ta' => null,
-                'nim' => '18410100143',
-                'nama_mahasiswa' => 'Muhammad Alauddin Azhary',
-                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
-                'pembimbing1' => 'Tan Amelia',
-                'pembimbing2' => 'M.J. Dewiyani Sunarto',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'proposal'
-            ],
-            [
-                'id' => 2,
-                'tgl_pengajuan_proposal' => null,
-                'tgl_pengajuan_ta' => '2024-11-15',
-                'nim' => '18410100145',
-                'nama_mahasiswa' => 'Aldy Irma Aprillianto',
-                'judul' => 'ANALISIS SISTEM INFORMASI MANAJEMEN BERBASIS CLOUD',
-                'pembimbing1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'tugas_akhir'
-            ],
-            [
-                'id' => 1,
-                'tgl_pengajuan_proposal' => '2024-10-25',
-                'tgl_pengajuan_ta' => null,
-                'nim' => '18410100143',
-                'nama_mahasiswa' => 'Muhammad Alauddin Azhary',
-                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
-                'pembimbing1' => 'Tan Amelia',
-                'pembimbing2' => 'M.J. Dewiyani Sunarto',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'proposal'
-            ],
-            [
-                'id' => 2,
-                'tgl_pengajuan_proposal' => null,
-                'tgl_pengajuan_ta' => '2024-11-15',
-                'nim' => '18410100145',
-                'nama_mahasiswa' => 'Aldy Irma Aprillianto',
-                'judul' => 'ANALISIS SISTEM INFORMASI MANAJEMEN BERBASIS CLOUD',
-                'pembimbing1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'tugas_akhir'
-            ],
-            [
-                'id' => 1,
-                'tgl_pengajuan_proposal' => '2024-10-25',
-                'tgl_pengajuan_ta' => null,
-                'nim' => '18410100143',
-                'nama_mahasiswa' => 'Muhammad Alauddin Azhary',
-                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
-                'pembimbing1' => 'Tan Amelia',
-                'pembimbing2' => 'M.J. Dewiyani Sunarto',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'proposal'
-            ],
-            [
-                'id' => 2,
-                'tgl_pengajuan_proposal' => null,
-                'tgl_pengajuan_ta' => '2024-11-15',
-                'nim' => '18410100145',
-                'nama_mahasiswa' => 'Aldy Irma Aprillianto',
-                'judul' => 'ANALISIS SISTEM INFORMASI MANAJEMEN BERBASIS CLOUD',
-                'pembimbing1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'tugas_akhir'
-            ],
-            [
-                'id' => 1,
-                'tgl_pengajuan_proposal' => '2024-10-25',
-                'tgl_pengajuan_ta' => null,
-                'nim' => '18410100143',
-                'nama_mahasiswa' => 'Muhammad Alauddin Azhary',
-                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
-                'pembimbing1' => 'Tan Amelia',
-                'pembimbing2' => 'M.J. Dewiyani Sunarto',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'proposal'
-            ],
-            [
-                'id' => 2,
-                'tgl_pengajuan_proposal' => null,
-                'tgl_pengajuan_ta' => '2024-11-15',
-                'nim' => '18410100145',
-                'nama_mahasiswa' => 'Aldy Irma Aprillianto',
-                'judul' => 'ANALISIS SISTEM INFORMASI MANAJEMEN BERBASIS CLOUD',
-                'pembimbing1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'tugas_akhir'
-            ],
-            [
-                'id' => 1,
-                'tgl_pengajuan_proposal' => '2024-10-25',
-                'tgl_pengajuan_ta' => null,
-                'nim' => '18410100143',
-                'nama_mahasiswa' => 'Muhammad Alauddin Azhary',
-                'judul' => 'RANCANG BANGUN WEBSITE RESPONSIF PPTA PADA UNIVERSITAS DINAMIKA',
-                'pembimbing1' => 'Tan Amelia',
-                'pembimbing2' => 'M.J. Dewiyani Sunarto',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'proposal'
-            ],
-            [
-                'id' => 2,
-                'tgl_pengajuan_proposal' => null,
-                'tgl_pengajuan_ta' => '2024-11-15',
-                'nim' => '18410100145',
-                'nama_mahasiswa' => 'Aldy Irma Aprillianto',
-                'judul' => 'ANALISIS SISTEM INFORMASI MANAJEMEN BERBASIS CLOUD',
-                'pembimbing1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing2' => 'Tan Amelia',
-                'penguji' => 'Erwin Sutomo',
-                'siap_transfer' => null,
-                'status' => 'Proses',
-                'tipe' => 'tugas_akhir'
-            ],
-        ]);
-    }
-
     private function antriProposal()
     {
         $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/berkas');
+
+        return collect($response->json());
+    }
+
+    private function penilaianNilai()
+    {
+        $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/penilaian_nilai');
 
         return collect($response->json());
     }
@@ -390,13 +82,33 @@ class BerkasController extends Controller
     public function penilaian($mhsNim)
     {
         $proposal = $this->antriProposal()->firstWhere('mhs_nim', $mhsNim);
+        $penilaianProposalPembimbing = $this->penilaianNilai()->slice(0, 4);
+        $penilaianProposalPembahas = $this->penilaianNilai()->slice(4, 4);
+        $penilaianBimbinganPembimbing1 = $this->penilaianNilai()->slice(8, 4)->sortBy('kriteria_nama');
+        $penilaianBimbinganPembimbing2 = $this->penilaianNilai()->slice(12, 4)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas1p1 = $this->penilaianNilai()->slice(16, 2)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas1p2 = $this->penilaianNilai()->slice(18, 5)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas1p3 = $this->penilaianNilai()->slice(23, 2)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas2p1 = $this->penilaianNilai()->slice(25, 2)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas2p2 = $this->penilaianNilai()->slice(27, 5)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas2p3 = $this->penilaianNilai()->slice(32, 2)->sortBy('kriteria_nama');
 
         if (!$proposal) {
             abort(404, 'Proposal not found');
         }
 
         return view('dosen.penilaian', [
-            'proposal' => $proposal
+            'proposal' => $proposal,
+            'penilaianProposalPembimbing' => $penilaianProposalPembimbing,
+            'penilaianProposalPembahas' => $penilaianProposalPembahas,
+            'penilaianBimbinganPembimbing1' => $penilaianBimbinganPembimbing1,
+            'penilaianBimbinganPembimbing2' => $penilaianBimbinganPembimbing2,
+            'penilaianSidangPembahas1p1' => $penilaianSidangPembahas1p1,
+            'penilaianSidangPembahas1p2' => $penilaianSidangPembahas1p2,
+            'penilaianSidangPembahas1p3' => $penilaianSidangPembahas1p3,
+            'penilaianSidangPembahas2p1' => $penilaianSidangPembahas2p1,
+            'penilaianSidangPembahas2p2' => $penilaianSidangPembahas2p2,
+            'penilaianSidangPembahas2p3' => $penilaianSidangPembahas2p3,
         ])->with([
             'user' => 'dosen'
         ]);
