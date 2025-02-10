@@ -6,12 +6,7 @@
         <div class="p-4 lg:p-6">
             <form id="searchForm" method="GET" action="{{ url()->current() }}" class="mb-4 flex md:justify-end space-x-1.5">
                 <!-- Search Bar -->
-                <div class="relative flex w-full md:w-72 items-center">
-                    <i class="fa-solid fa-magnifying-glass fa-sm absolute left-3 text-gray-700/90"></i>
-                    <input type="text" name="search" value="{{ request('search') }}"
-                        @keydown.enter="event.target.form.submit()" placeholder="Pencarian"
-                        class="w-full py-2 pl-10 pr-4 bg-gray-100 placeholder-gray-500 text-sm text-gray-700/90 rounded-lg ring ring-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" />
-                </div>
+                <x-search name="search" placeholder="Cari sesuatu..." />
             </form>
 
             <div class="overflow-x-auto bg-white rounded-md shadow border border-gray-200">

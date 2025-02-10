@@ -31,12 +31,7 @@
                 </form>
                 <form id="searchForm" method="GET" action="{{ url()->current() }}" class="w-auto flex items-center">
                     <!-- Search Bar -->
-                    <div class="relative flex w-full md:w-72 items-center">
-                        <i class="fa-solid fa-magnifying-glass fa-sm absolute left-3 text-gray-700/90"></i>
-                        <input type="text" name="search" value="{{ request('search') }}"
-                            @keydown.enter="event.target.form.submit()" placeholder="Pencarian"
-                            class="w-full py-2 pl-10 pr-4 bg-gray-100 placeholder-gray-500 text-sm text-gray-700/90 rounded-lg ring ring-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300" />
-                    </div>
+                    <x-search name="search" placeholder="Cari sesuatu..." />
                 </form>
             </div>
             <div class="overflow-x-auto bg-white rounded-md border border-gray-200">
@@ -135,8 +130,13 @@
                                     @endphp
 
                                     <td class="text-zinc-600 border px-4 py-2 text-center">
-                                        <a href="{{ $downloadLink }}" class="cursor-pointer {{ $linkClass }}">
+                                        <a href="{{ $downloadLink }}"
+                                            class="relative group cursor-pointer {{ $linkClass }}">
                                             <i class="fa-solid fa-download fa-lg"></i>
+                                            <span
+                                                class="{{ $isDefaultLink ? 'group-hover:block' : '' }} absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden w-max px-2 py-1 text-sm text-white bg-gray-800 rounded-md shadow-md opacity-0 transition-opacity group-hover:opacity-100">
+                                                Berkas tidak tersedia
+                                            </span>
                                         </a>
                                     </td>
                                 @endforeach
