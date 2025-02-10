@@ -12,16 +12,12 @@ class LaporanTaController extends Controller
     /**
      * Mengambil data laporan TA dari API
      */
-    private function laporanTA($kodeProdi = null, $tanggal_awal = null, $tanggal_akhir = null): array
+    private function laporanTA($tanggal_awal = null, $tanggal_akhir = null, $hasilSidang = null, $kodeProdi = null): array
     {
         $url = 'https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/ppta/laporan/ta';
 
         // Buat array untuk query parameters
         $queryParams = [];
-
-        if (!empty($kodeProdi)) {
-            $queryParams['kode_prodi'] = $kodeProdi;
-        }
 
         if (!empty($tanggal_awal)) {
             $queryParams['tanggal_awal'] = $tanggal_awal;
@@ -29,6 +25,14 @@ class LaporanTaController extends Controller
 
         if (!empty($tanggal_akhir)) {
             $queryParams['tanggal_akhir'] = $tanggal_akhir;
+        }
+
+        if (!empty($hasilSidang)) {
+            $queryParams['hasil_sidang'] = $hasilSidang;
+        }
+
+        if (!empty($kodeProdi)) {
+            $queryParams['kode_prodi'] = $kodeProdi;
         }
 
         // Kirim request dengan parameter yang sudah disusun
@@ -62,19 +66,14 @@ class LaporanTaController extends Controller
         $prodi = $request->input('prodi', 'semua');
 
         // Konversi nilai 'semua' menjadi null agar parameter tidak dikirim jika tidak diperlukan
-        $kodeProdi = $prodi !== 'semua' ? $prodi : null;
+
         $tanggalAwal = !empty($tanggalAwal) ? $tanggalAwal : null;
         $tanggalAkhir = !empty($tanggalAkhir) ? $tanggalAkhir : null;
+        $hasilSidang = $hasilSidang !== 'semua' ? $hasilSidang : null;
+        $kodeProdi = $prodi !== 'semua' ? $prodi : null;
 
         // Panggil laporanTA dengan filter tanggal
-        $data = $this->laporanTA($kodeProdi, $tanggalAwal, $tanggalAkhir);
-
-        // Filter berdasarkan hasil sidang jika dipilih
-        if ($hasilSidang !== 'semua') {
-            $data = array_filter($data, function ($item) use ($hasilSidang) {
-                return isset($item['sts_ta']) && $item['sts_ta'] === $hasilSidang;
-            });
-        }
+        $data = $this->laporanTA($tanggalAwal, $tanggalAkhir, $hasilSidang, $kodeProdi);
 
         // Jika tidak ada data setelah difilter, kembalikan pesan error
         if (empty($data)) {

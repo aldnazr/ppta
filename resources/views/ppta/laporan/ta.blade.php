@@ -83,7 +83,7 @@
                             {{ $item['wkt_ta'] }}
                         </td>
                         <td>{{ $item['ruang'] }}</td>
-                        <td>{{ $item['sts_ta'] }}</td>
+                        <td>{{ $item['sts_ta'] === 'Y' ? 'Diterima' : 'Ditolak' }}</td>
                     </tr>
                 @endforeach
             </tbody>
