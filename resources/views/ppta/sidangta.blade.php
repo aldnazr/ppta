@@ -113,60 +113,34 @@
                                         {{ $item['tgl_smn'] ? 'Dijadwalkan' : 'Pending' }}
                                     </button>
                                 </td>
-                                <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <a href="{{ $item['proposal_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['proposal_link'] }}"
-                                        class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i>
-                                    </a>
-                                </td>
-                                <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <a href="{{ $item['laporan_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['laporan_link'] }}"
-                                        class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i>
-                                    </a>
-                                </td>
-                                <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <a href="{{ $item['jurnal_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['jurnal_link'] }}"
-                                        class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i>
-                                    </a>
-                                </td>
-                                <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <a href="{{ $item['seminar_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['seminar_link'] }}"
-                                        class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i>
-                                    </a>
-                                </td>
-                                <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <a href="{{ $item['bimbingan_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['bimbingan_link'] }}"
-                                        class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i>
-                                    </a>
-                                </td>
-                                <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <a href="{{ $item['poster_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['poster_link'] }}"
-                                        class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i>
-                                    </a>
-                                </td>
-                                <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <a href="{{ $item['original_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['original_link'] }}"
-                                        class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i>
-                                    </a>
-                                </td>
-                                <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <a href="{{ $item['upload_jurnal_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['upload_jurnal_link'] }}"
-                                        class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i>
-                                    </a>
-                                </td>
-                                <td class="text-zinc-600 border px-4 py-2 text-center">
-                                    <a href="{{ $item['keaslian_link'] === 'https://sicyca.dinamika.ac.id/' ? '#' : $item['keaslian_link'] }}"
-                                        class="cursor-pointer text-blue-500">
-                                        <i class="fa-solid fa-download fa-lg"></i>
-                                    </a>
-                                </td>
+                                @php
+                                    $links = [
+                                        'proposal_link' => 'Proposal',
+                                        'laporan_link' => 'Laporan',
+                                        'jurnal_link' => 'Jurnal',
+                                        'seminar_link' => 'Seminar',
+                                        'bimbingan_link' => 'Bimbingan',
+                                        'poster_link' => 'Poster',
+                                        'original_link' => 'Original',
+                                        'upload_jurnal_link' => 'Upload Jurnal',
+                                        'keaslian_link' => 'Keaslian',
+                                    ];
+                                @endphp
+
+                                @foreach ($links as $key => $label)
+                                    @php
+                                        $isDefaultLink = $item[$key] === 'https://sicyca.dinamika.ac.id/';
+                                        $downloadLink = $isDefaultLink ? '#' : $item[$key];
+                                        $linkClass = $isDefaultLink ? 'text-blue-400/80' : 'text-blue-500';
+                                    @endphp
+
+                                    <td class="text-zinc-600 border px-4 py-2 text-center">
+                                        <a href="{{ $downloadLink }}" class="cursor-pointer {{ $linkClass }}">
+                                            <i class="fa-solid fa-download fa-lg"></i>
+                                        </a>
+                                    </td>
+                                @endforeach
+
                                 <td class="px-4 py-2 space-y-2">
                                     <select class="ring ring-gray-300 rounded-md px-2 py-1 text-sm">
                                         <option value="diterima">Diterima</option>
