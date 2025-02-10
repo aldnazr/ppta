@@ -79,11 +79,13 @@ class LaporanFkController extends Controller
     function index(Request $request)
     {
         $today = now()->format('Y-m-d');
+        $prodis = $this->prodiMapping();
 
         return view('ppta.laporanfk',)->with([
             'user' => 'ppta',
             'tanggal_awal' => $today,
-            'tanggal_akhir' => $today
+            'tanggal_akhir' => $today,
+            'prodis' => $prodis
         ]);
     }
 

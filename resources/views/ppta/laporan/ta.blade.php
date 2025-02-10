@@ -63,7 +63,7 @@
                             {{ $item['nim'] }}
                             {{ $item['nama'] }}
                         </td>
-                        <td>{{ $item['judul'] }}</td>
+                        <td>{{ $item['jdl_proposal'] }}</td>
                         <td>
                             1. {{ $item['pembimbing_1'] }}
                             <br>
@@ -71,17 +71,17 @@
                         </td>
                         <td>
                             1. {{ $item['penguji_1'] }}
-                            @if ($item['penguji_2'] !== '')
+                            @if ($item['penguji_2'])
                                 <br>
-                                2. {{ $item['penguji2'] }}
+                                2. {{ $item['penguji_2'] }}
                             @endif
                         </td>
                         <td>
-                            {{ $item['tgl_pengajuan'] }}
-                            {{ $item['tgl_sidang'] }}
+                            {{ $item['wkt_proposal'] }}
+                            {{ $item['wkt_ta'] }}
                         </td>
                         <td>{{ $item['ruang'] }}</td>
-                        <td>{{ $item['hasil'] }}</td>
+                        <td>{{ $item['sts_ta'] }}</td>
                     </tr>
                 @endforeach
             </tbody>

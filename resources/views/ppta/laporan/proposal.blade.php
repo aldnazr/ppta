@@ -76,7 +76,7 @@
                             @endif
                         </td>
                         <td>{{ $item['tgl_sidang'] }}</td>
-                        <td>{{ $item['hasil'] }}</td>
+                        <td>{{ $item['sts_ta'] }}</td>
                     </tr>
                 @endforeach
             </tbody>

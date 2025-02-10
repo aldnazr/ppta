@@ -3,153 +3,87 @@
 namespace App\Http\Controllers\PPTA;
 
 use Carbon\Carbon;
-use App\Data\Prodi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
 
 class LaporanTaController extends Controller
 {
-    private $prodiMapping = [
-        'semua' => 'semua',
-        'sistem_informasi' => 'Sistem Informasi',
-        'manajemen' => 'Manajemen',
-        'akuntansi' => 'Akuntansi',
-        'teknik_komputer' => 'Teknik Komputer',
-        'desain_komunikasi_visual' => 'Desain Komunikasi Visual',
-        'desain_produk' => 'Desain Produk'
-    ];
-
-    function dummyMahasiswa()
+    /**
+     * Mengambil data laporan TA dari API
+     */
+    private function laporanTA(): array
     {
-        return $data = [
-            [
-                'nim' => '18410100075',
-                'nama' => 'Ilham Dwicky Syaputra',
-                'prodi' => 'Sistem Informasi',
-                'judul' => 'PERANCANGAN DESAIN UI/UX PROTOTYPE HYBRID COURSE PADA BIMBINGAN BELAJAR AFTERSCHOOL MENGGUNAKAN METODE LEAN UX',
-                'pembimbing_1' => 'Sri Hariani Eko Wulandari',
-                'pembimbing_2' => 'Tony Soebijono',
-                'penguji_1' => 'Tri Sagraini',
-                'penguji_2' => '',
-                'tgl_pengajuan' => '07-11-2022',
-                'tgl_sidang' => '03-12-2024 16:37',
-                'ruang' => 'M504',
-                'hasil' => 'Ditolak',
-            ],
-            [
-                'nim' => '18410100028',
-                'nama' => 'Ahmad Fauzi Ari Iftaudin',
-                'prodi' => 'Manajemen',
-                'judul' => 'REDESIGN WEBSITE PADA PT KYODO UTAMA INDONESIA UNTUK MENINGKATKAN USABILITY',
-                'pembimbing_1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing_2' => 'Tan Amelia',
-                'penguji_1' => 'Julianto Lemantara',
-                'penguji_2' => '',
-                'tgl_pengajuan' => '09-11-2022',
-                'tgl_sidang' => '24-10-2024 12:11',
-                'ruang' => 'M504',
-                'hasil' => 'ACC',
-            ],
-            [
-                'nim' => '16410100116',
-                'nama' => 'Muhammad Yusuf Al Azar',
-                'prodi' => 'Desain Komunikasi Visual',
-                'judul' => 'RANCANG BANGUN APLIKASI PENGGAJIAN KARYAWAN PADA KOPERASI ECCINDO PT. ECCO INDONESIA',
-                'pembimbing_1' => 'Titik Lusiani',
-                'pembimbing_2' => 'Vivine Nurchayawati',
-                'penguji_1' => 'Tan Amelia',
-                'penguji_2' => '',
-                'tgl_pengajuan' => '16-12-2022 22:01',
-                'tgl_sidang' => '05-08-2024 22:01',
-                'ruang' => 'B503',
-                'hasil' => 'ACC',
-            ],
-            [
-                'nim' => '18410100084',
-                'nama' => 'Endar Dharma Mukti',
-                'prodi' => 'Teknik Komputer',
-                'judul' => 'RANCANG BANGUN APLIKASI SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN SISWA BERPRESTASI DENGAN MENERAPKAN METODE SIMPLE ADDITIVE WEIGHTING (SAW) PADA SMA TRI-MAHAYU SURABAYA',
-                'pembimbing_1' => 'Endra Rahmawati Pradita',
-                'pembimbing_2' => 'Maulidya Effendi',
-                'penguji_1' => 'Julianto Lemantara',
-                'penguji_2' => '',
-                'tgl_pengajuan' => '11-04-2023',
-                'tgl_sidang' => '05-08-2024 16:27',
-                'ruang' => 'M504',
-                'hasil' => 'ACC',
-            ],
-            [
-                'nim' => '17410100017',
-                'nama' => 'Rizaldy Pasya Wijaya',
-                'prodi' => 'Akuntansi',
-                'judul' => 'RANCANG BANGUN APLIKASI PENJUALAN MENGGUNAKAN METODE GAMIFICATION PADA UMKM SABLON ALFAH',
-                'pembimbing_1' => 'Agus Dwi Churniawan',
-                'pembimbing_2' => 'Henry Bambang',
-                'penguji_1' => 'Endra Rahmawati',
-                'penguji_2' => '',
-                'tgl_pengajuan' => '05-04-2023',
-                'tgl_sidang' => '25-11-2024 15:39',
-                'ruang' => 'M504',
-                'hasil' => 'ACC',
-            ],
-        ];
+        $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/ppta/laporan/ta');
+
+        if ($response->successful()) {
+            return $response->json();
+        }
+
+        return []; // Jika gagal, kembalikan array kosong
     }
 
-    function index(Request $request)
+    /**
+     * Menampilkan halaman index laporan TA
+     */
+    public function index(Request $request)
     {
         $today = now()->format('Y-m-d');
+        $prodis = $this->prodiMapping();
 
-        return view('ppta.laporanta',)->with([
+        return view('ppta.laporanta')->with([
             'user' => 'ppta',
             'tanggal_awal' => $today,
-            'tanggal_akhir' => $today
+            'tanggal_akhir' => $today,
+            'prodis' => $prodis
         ]);
     }
 
+    /**
+     * Generate PDF berdasarkan filter yang diberikan
+     */
     public function generatePdf(Request $request)
     {
-        // Get filter parameters
-        $tanggalAwal = $request->input('tanggal-awal');
-        $tanggalAkhir = $request->input('tanggal-akhir');
+        // Ambil data filter dari request
+        $tanggalAwal = $request->input('tanggal_awal');
+        $tanggalAkhir = $request->input('tanggal_akhir'); // Diperbaiki dari typo `tanggal-akhir`
         $hasilSidang = $request->input('hasil_sidang', 'semua');
         $prodi = $request->input('prodi', 'semua');
 
-        // Start with dummy data
-        $data = $this->dummyMahasiswa();
+        // Ambil data dari API
+        $data = $this->laporanTA();
 
-        // Filter by Date Range (if both dates are provided)
-        if ($tanggalAwal && $tanggalAkhir) {
-            $data = array_filter($data, function ($item) use ($tanggalAwal, $tanggalAkhir) {
-                $tglSidang = Carbon::parse($item['tgl_sidang']);
-                $awal = Carbon::parse($tanggalAwal);
-                $akhir = Carbon::parse($tanggalAkhir);
+        // Filter berdasarkan rentang tanggal
+        if ($tanggalAwal || $tanggalAkhir) {
+            $awal = $tanggalAwal ? Carbon::parse($tanggalAwal) : null;
+            $akhir = $tanggalAkhir ? Carbon::parse($tanggalAkhir) : null;
 
-                return $tglSidang->between($awal, $akhir);
-            });
-        } elseif ($tanggalAwal) {
-            // If only start date is provided
-            $data = array_filter($data, function ($item) use ($tanggalAwal) {
-                return Carbon::parse($item['tgl_sidang']) >= Carbon::parse($tanggalAwal);
-            });
-        } elseif ($tanggalAkhir) {
-            // If only end date is provided
-            $data = array_filter($data, function ($item) use ($tanggalAkhir) {
-                return Carbon::parse($item['tgl_sidang']) <= Carbon::parse($tanggalAkhir);
+            $data = array_filter($data, function ($item) use ($awal, $akhir) {
+                $tglSidang = Carbon::parse($item['wkt_ta']);
+
+                if ($awal && $akhir) {
+                    return $tglSidang->between($awal, $akhir);
+                } elseif ($awal) {
+                    return $tglSidang->greaterThanOrEqualTo($awal);
+                } elseif ($akhir) {
+                    return $tglSidang->lessThanOrEqualTo($akhir);
+                }
+                return true;
             });
         }
 
-        // Filter by Hasil Sidang
+        // Filter berdasarkan hasil sidang
         if ($hasilSidang !== 'semua') {
             $data = array_filter($data, function ($item) use ($hasilSidang) {
-                return strtolower($item['hasil']) === strtolower($hasilSidang);
+                return Str::lower($item['sts_ta']) === Str::lower($hasilSidang);
             });
         }
 
-        // Filter by Program Studi
+        // Filter berdasarkan Program Studi
         if ($prodi !== 'semua') {
-            $prodiMapping = Prodi::$getProdi;
-            // Use the mapping to get the correct prodi name
+            $prodiMapping = $this->prodiMapping();
             $prodiName = $prodiMapping[$prodi] ?? $prodi;
 
             $data = array_filter($data, function ($item) use ($prodiName) {
@@ -157,8 +91,11 @@ class LaporanTaController extends Controller
             });
         }
 
-        // If no data after filtering, return with pop-up message
-        if (empty($data)) {
+        // Pastikan data tetap dalam format array numerik agar tidak error saat diproses oleh Blade/PDF
+        $data = array_values($data);
+
+        // Jika data kosong, kembalikan dengan pesan error
+        if (count($data) === 0) {
             return redirect()->back()->with('error', [
                 'title' => 'Data Tidak Tersedia',
                 'message' => 'Tidak ada data yang ditemukan.',
@@ -166,11 +103,9 @@ class LaporanTaController extends Controller
             ]);
         }
 
-        // Load view and pass filtered data
-        $pdf = Pdf::loadView('ppta.laporan.ta', compact('data'))
-            ->setPaper('a4', 'landscape');
+        // Generate PDF dengan data yang telah difilter
+        $pdf = Pdf::loadView('ppta.laporan.ta', compact('data'))->setPaper('a4', 'landscape');
 
-        // Download PDF
-        return $pdf->download('laporan_TA.pdf');
+        return response()->download($pdf->output(), 'laporan_TA.pdf');
     }
 }

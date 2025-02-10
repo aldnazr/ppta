@@ -75,7 +75,7 @@
                                 2. {{ $item['penguji_2'] }}
                             @endif
                         </td>
-                        <td>{{ $item['tgl_daftar'] }}</td>
+                        <td>{{ $item['wkt_proposal'] }}</td>
                         <td>{{ $item['keterangan'] }}</td>
                     </tr>
                 @endforeach

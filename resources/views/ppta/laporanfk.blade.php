@@ -80,36 +80,13 @@
                                 <option value="semua" {{ request('prodi') == 'semua' ? 'selected' : '' }}>Semua Program
                                     Studi
                                 </option>
-                                <option value="d3_sistem_informasi"
-                                    {{ request('prodi') == 'd3_sistem_informasi' ? 'selected' : '' }}>
-                                    D3 Sistem Informasi
                                 </option>
-                                <option value="s1_sistem_informasi"
-                                    {{ request('prodi') == 's1_sistem_informasi' ? 'selected' : '' }}>
-                                    S1 Sistem Informasi
-                                </option>
-                                <option value="s1_manajemen" {{ request('prodi') == 's1_manajemen' ? 'selected' : '' }}>S1
-                                    Manajemen
-                                </option>
-                                <option value="s1_akuntansi" {{ request('prodi') == 's1_akuntansi' ? 'selected' : '' }}>S1
-                                    Akuntansi
-                                </option>
-                                <option value="s1_teknik_komputer"
-                                    {{ request('prodi') == 's1_teknik_komputer' ? 'selected' : '' }}>
-                                    S1 Teknik Komputer
-                                </option>
-                                <option value="s1_desain_komunikasi_visual"
-                                    {{ request('prodi') == 's1_desain_komunikasi_visual' ? 'selected' : '' }}>S1 Desain
-                                    Komunikasi Visual
-                                </option>
-                                <option value="s1_desain_produk"
-                                    {{ request('prodi') == 's1_desain_produk' ? 'selected' : '' }}>
-                                    S1 Desain Produk
-                                </option>
-                                <option value="d4_produksi_film_dan_televisi"
-                                    {{ request('prodi') == 'd4_produksi_film_dan_televisi' ? 'selected' : '' }}>
-                                    D4 Produksi Film dan Televisi
-                                </option>
+                                @foreach ($prodis as $item)
+                                    <option value="{{ $item['id'] }}"
+                                        {{ request('prodi') == $item['id'] ? 'selected' : '' }}>
+                                        {{ $item['nama_prodi'] }}
+                                    </option>
+                                @endforeach
                             </select>
                             <div
                                 class="pointer-events-none absolute inset-y-0 right-1 flex items-center px-2 text-gray-700">
