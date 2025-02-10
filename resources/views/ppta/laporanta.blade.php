@@ -54,10 +54,10 @@
                                 text-sm text-gray-900 appearance-none transition-all duration-300 ease-in-out">
                                 <option value="semua" {{ request('hasil_sidang') == 'semua' ? 'selected' : '' }}>Semua
                                 </option>
-                                <option value="diterima" {{ request('hasil_sidang') == 'diterima' ? 'selected' : '' }}>
+                                <option value="Y" {{ request('hasil_sidang') == 'diterima' ? 'selected' : '' }}>
                                     Diterima
                                 </option>
-                                <option value="ditolak" {{ request('hasil_sidang') == 'ditolak' ? 'selected' : '' }}>
+                                <option value="N" {{ request('hasil_sidang') == 'ditolak' ? 'selected' : '' }}>
                                     Ditolak
                                 </option>
                             </select>
@@ -79,10 +79,10 @@
                                 class="block w-full pl-3 pr-10 py-2 border border-gray-300 rounded-lg shadow-sm 
                                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                                 text-sm text-gray-900 appearance-none transition-all duration-300 ease-in-out">
-                                <option value="semua" {{ request('prodi') == 'semua' ? 'selected' : '' }}>Semua Program
+                                <option value="" {{ request('prodi') == 'semua' ? 'selected' : '' }}>Semua Program
                                     Studi
                                 </option>
-                                @foreach ($prodis as $item)
+                                @foreach ($prodi as $item)
                                     <option value="{{ $item['id'] }}"
                                         {{ request('prodi') == $item['id'] ? 'selected' : '' }}>
                                         {{ $item['nama_prodi'] }}

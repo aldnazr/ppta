@@ -68,7 +68,7 @@ class LaporanProposalController extends Controller
         $today = now()->format('Y-m-d');
         $prodis = $this->prodiMapping();
 
-        return view('ppta.laporanproposal',)->with([
+        return view('ppta.laporanproposal')->with([
             'user' => 'ppta',
             'tanggal_awal' => $today,
             'tanggal_akhir' => $today,

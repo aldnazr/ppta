@@ -65,16 +65,18 @@
                         </td>
                         <td>{{ $item['jdl_proposal'] }}</td>
                         <td>
-                            1. {{ $item['pembimbing_1'] }}
-                            <br>
-                            2. {{ $item['pembimbing_2'] }}
+                            <ol>
+                                <li>{{ $item['pembimbing_1_nama'] }}</li>
+                                <li>{{ $item['pembimbing_2_nama'] }}</li>
+                            </ol>
                         </td>
                         <td>
-                            1. {{ $item['penguji_1'] }}
-                            @if ($item['penguji_2'])
-                                <br>
-                                2. {{ $item['penguji_2'] }}
-                            @endif
+                            <ol>
+                                <li>{{ $item['penguji_1_nama'] }}</li>
+                                @if ($item['penguji_2_nama'] !== ' ')
+                                    <li>{{ $item['penguji_2_nama'] }}</li>
+                                @endif
+                            </ol>
                         </td>
                         <td>
                             {{ $item['wkt_proposal'] }}
