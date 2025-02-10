@@ -12,19 +12,31 @@ class LaporanTaController extends Controller
     /**
      * Mengambil data laporan TA dari API
      */
-    private function laporanTA($kodeProdi = null): array
+    private function laporanTA($kodeProdi = null, $tanggal_awal = null, $tanggal_akhir = null): array
     {
         $url = 'https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/ppta/laporan/ta';
 
-        // Tambahkan kode_prodi hanya jika ada
+        // Buat array untuk query parameters
+        $queryParams = [];
+
         if (!empty($kodeProdi)) {
-            $url .= '?kode_prodi=' . urlencode($kodeProdi);
+            $queryParams['kode_prodi'] = $kodeProdi;
         }
 
-        $response = Http::get($url);
+        if (!empty($tanggal_awal)) {
+            $queryParams['tanggal_awal'] = $tanggal_awal;
+        }
+
+        if (!empty($tanggal_akhir)) {
+            $queryParams['tanggal_akhir'] = $tanggal_akhir;
+        }
+
+        // Kirim request dengan parameter yang sudah disusun
+        $response = Http::get($url, $queryParams);
 
         return $response->successful() ? $response->json() : [];
     }
+
 
     public function index()
     {
@@ -49,9 +61,13 @@ class LaporanTaController extends Controller
         $hasilSidang = $request->input('hasil_sidang', 'semua');
         $prodi = $request->input('prodi', 'semua');
 
-        // Ambil data dari API
+        // Konversi nilai 'semua' menjadi null agar parameter tidak dikirim jika tidak diperlukan
         $kodeProdi = $prodi !== 'semua' ? $prodi : null;
-        $data = $this->laporanTA($kodeProdi);
+        $tanggalAwal = !empty($tanggalAwal) ? $tanggalAwal : null;
+        $tanggalAkhir = !empty($tanggalAkhir) ? $tanggalAkhir : null;
+
+        // Panggil laporanTA dengan filter tanggal
+        $data = $this->laporanTA($kodeProdi, $tanggalAwal, $tanggalAkhir);
 
         // Filter berdasarkan hasil sidang jika dipilih
         if ($hasilSidang !== 'semua') {

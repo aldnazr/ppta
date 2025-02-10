@@ -115,4 +115,15 @@
             @endif
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let tanggalAwal = document.getElementById("tanggal_awal");
+            console.log("Tanggal Awal:", tanggalAwal.value);
+
+            // Tambahkan event listener untuk melihat perubahan nilai
+            tanggalAwal.addEventListener("change", function() {
+                console.log("Tanggal Awal berubah:", tanggalAwal.value);
+            });
+        });
+    </script>
 @endsection
