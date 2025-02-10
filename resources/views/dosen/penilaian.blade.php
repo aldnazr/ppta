@@ -279,12 +279,12 @@
                                 <h2 class="text-black font-semibold">Penilaian</h2>
 
                                 <div class="grid grid-cols-2 gap-4">
-                                    @foreach ($penilaianProposalPembimbing as $index => $nilai)
+                                    @foreach ($penilaianProposalPembahas as $index => $nilai)
                                         <x-input-number label="{{ $nilai['kriteria_nama'] }}"
                                             bobot="{{ $nilai['bobot'] }}"
                                             id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                             name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                            value="{{ $nilai['nilai'] ?? '' }}" />
+                                            value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
                                     @endforeach
                                 </div>
                             </div>
@@ -339,7 +339,7 @@
                                             bobot="{{ $nilai['bobot'] }}"
                                             id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                             name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                            value="{{ $nilai['nilai'] ?? '' }}" />
+                                            value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
                                     @endforeach
                                 </div>
                             </div>
@@ -414,7 +414,7 @@
                                                         bobot="{{ $nilai['bobot'] }}"
                                                         id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                                         name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '' }}" />
+                                                        value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
                                                 @endforeach
                                             </div>
                                         </div>
