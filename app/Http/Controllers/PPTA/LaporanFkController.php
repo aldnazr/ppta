@@ -7,75 +7,38 @@ use App\Data\Prodi;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 
 class LaporanFkController extends Controller
 {
-    function dummyMahasiswa()
+    private function laporanTA($tanggal_awal = null, $tanggal_akhir = null, $hasilSidang = null, $kodeProdi = null): array
     {
-        return $data = [
-            [
-                'nim' => '18410100075',
-                'nama' => 'Ilham Dwicky Syaputra',
-                'prodi' => 'Sistem Informasi',
-                'judul' => 'PERANCANGAN DESAIN UI/UX PROTOTYPE HYBRID COURSE PADA BIMBINGAN BELAJAR AFTERSCHOOL MENGGUNAKAN METODE LEAN UX',
-                'pembimbing_1' => 'Sri Hariani Eko Wulandari',
-                'pembimbing_2' => 'Tony Soebijono',
-                'penguji_1' => 'Tri Sagraini',
-                'penguji_2' => '',
-                'tgl_daftar' => '07-11-2024',
-                'keterangan' => 'Tulis judul dengan tepat'
-            ],
-            [
-                'nim' => '18410100028',
-                'nama' => 'Ahmad Fauzi Ari Iftaudin',
-                'prodi' => 'Manajemen',
-                'judul' => 'REDESIGN WEBSITE PADA PT KYODO UTAMA INDONESIA UNTUK MENINGKATKAN USABILITY',
-                'pembimbing_1' => 'M.J. Dewiyani Sunarto',
-                'pembimbing_2' => 'Tan Amelia',
-                'penguji_1' => 'Julianto Lemantara',
-                'penguji_2' => '',
-                'tgl_daftar' => '09-11-2022',
-                'keterangan' => 'Tulis judul dengan tepat'
-            ],
-            [
-                'nim' => '16410100116',
-                'nama' => 'Muhammad Yusuf Al Azar',
-                'prodi' => 'Desain Komunikasi Visual',
-                'judul' => 'RANCANG BANGUN APLIKASI PENGGAJIAN KARYAWAN PADA KOPERASI ECCINDO PT. ECCO INDONESIA',
-                'pembimbing_1' => 'Titik Lusiani',
-                'pembimbing_2' => 'Vivine Nurchayawati',
-                'penguji_1' => 'Tan Amelia',
-                'penguji_2' => '',
-                'tgl_daftar' => '16-12-2022 22:01',
-                'keterangan' => 'Tulis judul dengan tepat'
-            ],
-            [
-                'nim' => '18410100084',
-                'nama' => 'Endar Dharma Mukti',
-                'prodi' => 'Teknik Komputer',
-                'judul' => 'RANCANG BANGUN APLIKASI SISTEM PENDUKUNG KEPUTUSAN PEMILIHAN SISWA BERPRESTASI DENGAN MENERAPKAN METODE SIMPLE ADDITIVE WEIGHTING (SAW) PADA SMA TRI-MAHAYU SURABAYA',
-                'pembimbing_1' => 'Endra Rahmawati Pradita',
-                'pembimbing_2' => 'Maulidya Effendi',
-                'penguji_1' => 'Julianto Lemantara',
-                'penguji_2' => '',
-                'tgl_daftar' => '11-04-2023',
-                'keterangan' => 'Tulis judul dengan tepat'
-            ],
-            [
-                'nim' => '17410100017',
-                'nama' => 'Rizaldy Pasya Wijaya',
-                'prodi' => 'Akuntansi',
-                'judul' => 'RANCANG BANGUN APLIKASI PENJUALAN MENGGUNAKAN METODE GAMIFICATION PADA UMKM SABLON ALFAH',
-                'pembimbing_1' => 'Agus Dwi Churniawan',
-                'pembimbing_2' => 'Henry Bambang',
-                'penguji_1' => 'Endra Rahmawati',
-                'penguji_2' => '',
-                'tgl_daftar' => '05-04-2023',
-                'keterangan' => 'Tulis judul dengan tepat'
-            ],
-        ];
-    }
+        $url = 'https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/ppta/laporan/fk';
 
+        // Buat array untuk query parameters
+        $queryParams = [];
+
+        if (!empty($tanggal_awal)) {
+            $queryParams['tanggal_awal'] = $tanggal_awal;
+        }
+
+        if (!empty($tanggal_akhir)) {
+            $queryParams['tanggal_akhir'] = $tanggal_akhir;
+        }
+
+        if (!empty($hasilSidang)) {
+            $queryParams['hasil_sidang'] = $hasilSidang;
+        }
+
+        if (!empty($kodeProdi)) {
+            $queryParams['kode_prodi'] = $kodeProdi;
+        }
+
+        // Kirim request dengan parameter yang sudah disusun
+        $response = Http::get($url, $queryParams);
+
+        return $response->successful() ? $response->json() : [];
+    }
     function index(Request $request)
     {
         $today = now()->format('Y-m-d');

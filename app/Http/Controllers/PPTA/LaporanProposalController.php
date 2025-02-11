@@ -7,62 +7,38 @@ use App\Data\Prodi;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 
 class LaporanProposalController extends Controller
 {
-    // Mapping for program studi to make filtering more robust
-    private $prodiMapping = [
-        'semua' => 'semua',
-        'sistem_informasi' => 'Sistem Informasi',
-        'manajemen' => 'Manajemen',
-        'akuntansi' => 'Akuntansi',
-        'teknik_komputer' => 'Teknik Komputer',
-        'desain_komunikasi_visual' => 'Desain Komunikasi Visual',
-        'desain_produk' => 'Desain Produk'
-    ];
-
-    public function dummyData()
+    private function laporanTA($tanggal_awal = null, $tanggal_akhir = null, $hasilSidang = null, $kodeProdi = null): array
     {
-        return [
-            [
-                'nim' => '18410100100',
-                'nama' => 'Josh Doe',
-                'prodi' => 'Sistem Informasi',
-                'judul' => 'Analisis Sentimen Msyarakat dengan Metode Naive Bayes',
-                'pembimbing_1' => 'Alex',
-                'pembimbing_2' => 'Ajax',
-                'penguji_1' => 'Lexa',
-                'penguji_2' => '',
-                'tgl_sidang' => '18-01-2023',
-                'hasil' => 'Belum'
-            ],
-            [
-                'nim' => '18410100101',
-                'nama' => 'Josh Doe',
-                'prodi' => 'Manajemen',
-                'judul' => 'Analisis Sentimen Msyarakat dengan Metode Naive Bayes',
-                'pembimbing_1' => 'Alex',
-                'pembimbing_2' => 'Ajax',
-                'penguji_1' => 'Lexa',
-                'penguji_2' => '',
-                'tgl_sidang' => '01-01-2023',
-                'hasil' => 'Belum'
-            ],
-            [
-                'nim' => '18410100102',
-                'nama' => 'Josh Doe',
-                'prodi' => 'Desain Komunikasi Visual',
-                'judul' => 'Analisis Sentimen Msyarakat dengan Metode Naive Bayes',
-                'pembimbing_1' => 'Alex',
-                'pembimbing_2' => 'Ajax',
-                'penguji_1' => 'Lexa',
-                'penguji_2' => 'aXela',
-                'tgl_sidang' => '23-11-2024',
-                'hasil' => 'Belum'
-            ],
-        ];
-    }
+        $url = 'https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/ppta/laporan/prop';
 
+        // Buat array untuk query parameters
+        $queryParams = [];
+
+        if (!empty($tanggal_awal)) {
+            $queryParams['tanggal_awal'] = $tanggal_awal;
+        }
+
+        if (!empty($tanggal_akhir)) {
+            $queryParams['tanggal_akhir'] = $tanggal_akhir;
+        }
+
+        if (!empty($hasilSidang)) {
+            $queryParams['hasil_sidang'] = $hasilSidang;
+        }
+
+        if (!empty($kodeProdi)) {
+            $queryParams['kode_prodi'] = $kodeProdi;
+        }
+
+        // Kirim request dengan parameter yang sudah disusun
+        $response = Http::get($url, $queryParams);
+
+        return $response->successful() ? $response->json() : [];
+    }
     function index(Request $request)
     {
         $today = now()->format('Y-m-d');
