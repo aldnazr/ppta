@@ -281,7 +281,7 @@ window.addEventListener('resize', () => {
                         src="https://plus.unsplash.com/premium_photo-1671656349322-41de944d259b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt="User Avatar">
                     <span class="hidden md:block text-sm font-medium text-gray-700">
-                        Tom Cook
+                        {{ $nama ?? 'User' }}
                     </span>
                 </div>
             </div>

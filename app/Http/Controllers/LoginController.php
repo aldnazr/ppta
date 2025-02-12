@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class LoginController extends Controller
 {
+    private function listDosen()
+    {
+        $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosens');
+        return collect($response->json());
+    }
+
     public function login(Request $request)
     {
+        $listDosen = $this->listDosen();
+
         $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
@@ -32,11 +39,18 @@ class LoginController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
 
-        foreach ($staticUsers as $user) {
-            if ($username === $user['username'] && $password === $user['password']) {
+        foreach ($listDosen as $user) {
+            if ($username === $user['nik'] && $password === $user['nik']) {
                 session(['is_logged_in' => true]);
-                return redirect()->intended($user['redirect'])->with('success', 'Berhasil login!');
+                session(['nik' => $user['nik']]); // Simpan username ke session
+                session(['nama' => $user['nama']]);
+                return redirect()->intended('/dosen')->with('success', 'Berhasil login!');
             }
+            // if ($username === $user['username'] && $password === $user['password']) {
+            //     session(['is_logged_in' => true]);
+            //     session(['username' => $username]); // Simpan username ke session
+            //     return redirect()->intended($user['redirect'])->with('success', 'Berhasil login!');
+            // }
         }
 
         // Jika tidak cocok dengan kredensial di atas
@@ -45,7 +59,7 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        $request->session()->flush();
+        $request->session()->flush(); // Hapus semua data session
         return redirect()->route('login')->with('success', 'Berhasil logout.');
     }
 }
