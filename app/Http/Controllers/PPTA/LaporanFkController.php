@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Http;
 
 class LaporanFkController extends Controller
 {
-    private function laporanTA($tanggal_awal = null, $tanggal_akhir = null, $hasilSidang = null, $kodeProdi = null): array
+    private function laporanFK($tanggal_awal = null, $tanggal_akhir = null, $krs = null, $kodeProdi = null): array
     {
         $url = 'https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/ppta/laporan/fk';
 
@@ -26,8 +26,8 @@ class LaporanFkController extends Controller
             $queryParams['tanggal_akhir'] = $tanggal_akhir;
         }
 
-        if (!empty($hasilSidang)) {
-            $queryParams['hasil_sidang'] = $hasilSidang;
+        if (!empty($krs)) {
+            $queryParams['hasil_sidang'] = $krs;
         }
 
         if (!empty($kodeProdi)) {
@@ -39,7 +39,7 @@ class LaporanFkController extends Controller
 
         return $response->successful() ? $response->json() : [];
     }
-    function index(Request $request)
+    function index()
     {
         $today = now()->format('Y-m-d');
         $prodis = $this->prodiMapping();
@@ -60,47 +60,14 @@ class LaporanFkController extends Controller
         $krs = $request->input('krs', 'semua');
         $prodi = $request->input('prodi', 'semua');
 
-        // Start with dummy data
-        $data = $this->dummyMahasiswa();
+        // Konversi nilai 'semua' menjadi null agar parameter tidak dikirim jika tidak diperlukan
+        $tanggalAwal = !empty($tanggalAwal) ? $tanggalAwal : null;
+        $tanggalAkhir = !empty($tanggalAkhir) ? $tanggalAkhir : null;
+        $hasilSidang = $krs !== 'semua' ? $krs : null;
+        $kodeProdi = $prodi !== 'semua' ? $prodi : null;
 
-        // Filter by Date Range (if both dates are provided)
-        if ($tanggalAwal && $tanggalAkhir) {
-            $data = array_filter($data, function ($item) use ($tanggalAwal, $tanggalAkhir) {
-                $tglSidang = Carbon::parse($item['tgl_daftar']);
-                $awal = Carbon::parse($tanggalAwal);
-                $akhir = Carbon::parse($tanggalAkhir);
-
-                return $tglSidang->between($awal, $akhir);
-            });
-        } elseif ($tanggalAwal) {
-            // If only start date is provided
-            $data = array_filter($data, function ($item) use ($tanggalAwal) {
-                return Carbon::parse($item['tgl_daftar']) >= Carbon::parse($tanggalAwal);
-            });
-        } elseif ($tanggalAkhir) {
-            // If only end date is provided
-            $data = array_filter($data, function ($item) use ($tanggalAkhir) {
-                return Carbon::parse($item['tgl_daftar']) <= Carbon::parse($tanggalAkhir);
-            });
-        }
-
-        // Filter by Hasil Sidang
-        if ($krs !== 'semua') {
-            $data = array_filter($data, function ($item) use ($krs) {
-                return strtolower($item['hasil']) === strtolower($krs);
-            });
-        }
-
-        // Filter by Program Studi
-        if ($prodi !== 'semua') {
-            $prodiMapping = Prodi::$getProdi;
-            // Use the mapping to get the correct prodi name
-            $prodiName = $prodiMapping[$prodi] ?? $prodi;
-
-            $data = array_filter($data, function ($item) use ($prodiName) {
-                return $item['prodi'] === $prodiName;
-            });
-        }
+        // Panggil laporanTA dengan filter tanggal
+        $data = $this->laporanFK($tanggalAwal, $tanggalAkhir, null, $kodeProdi);
 
         // If no data after filtering, return with pop-up message
         if (empty($data)) {

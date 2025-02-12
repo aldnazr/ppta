@@ -66,7 +66,6 @@ class LaporanTaController extends Controller
         $prodi = $request->input('prodi', 'semua');
 
         // Konversi nilai 'semua' menjadi null agar parameter tidak dikirim jika tidak diperlukan
-
         $tanggalAwal = !empty($tanggalAwal) ? $tanggalAwal : null;
         $tanggalAkhir = !empty($tanggalAkhir) ? $tanggalAkhir : null;
         $hasilSidang = $hasilSidang !== 'semua' ? $hasilSidang : null;

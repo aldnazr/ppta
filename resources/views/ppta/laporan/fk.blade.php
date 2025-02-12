@@ -35,7 +35,7 @@
 
     <body>
         <div class="header">
-            <h1>Laporan Data Dummy</h1>
+            <h1>Laporan Form Konfirmasi Tugas Akhir</h1>
             <p>Tanggal Cetak: {{ date('d F Y') }}</p>
         </div>
 
@@ -47,8 +47,8 @@
                     <th>Judul</th>
                     <th>Pembimbing</th>
                     <th>Penguji</th>
-                    <th>Tgl Sidang</th>
-                    <th>Hasil</th>
+                    <th class="text-nowrap">Tgl Daftar</th>
+                    <th>Keterangan</th>
                 </tr>
             </thead>
             <tbody>
@@ -60,23 +60,26 @@
                         <td>{{ $no++ }}</td>
                         <td>
                             {{ $item['nim'] }}
+                            <br>
                             {{ $item['nama'] }}
                         </td>
-                        <td>{{ $item['judul'] }}</td>
+                        <td>{{ $item['jdl_proposal'] }}</td>
                         <td>
-                            1. {{ $item['pembimbing_1'] }}
-                            <br>
-                            2. {{ $item['pembimbing_2'] }}
+                            <ol>
+                                <li>{{ $item['pembimbing_1_nama'] }}</li>
+                                <li>{{ $item['pembimbing_2_nama'] }}</li>
+                            </ol>
                         </td>
                         <td>
-                            1. {{ $item['penguji_1'] }}
-                            @if ($item['penguji_2'] !== '')
-                                <br>
-                                2. {{ $item['penguji_2'] }}
-                            @endif
+                            <ol>
+                                @if ($item['penguji_1_nama'] !== ' ' && $item['penguji_2_nama'] !== ' ')
+                                    <li>{{ $item['penguji_1_nama'] }}</li>
+                                    <li>{{ $item['penguji_2_nama'] }}</li>
+                                @endif
+                            </ol>
                         </td>
-                        <td>{{ $item['wkt_proposal'] }}</td>
-                        <td>{{ $item['keterangan'] }}</td>
+                        <td class="text-nowrap">{{ $item['wkt_proposal'] }}</td>
+                        <td>{{ $item['ket_tolak'] ?? 'Tidak ada keterangan' }}</td>
                     </tr>
                 @endforeach
             </tbody>

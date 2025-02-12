@@ -35,7 +35,7 @@
 
     <body>
         <div class="header">
-            <h1>Laporan Data Dummy</h1>
+            <h1>Laporan Tugas Akhir</h1>
             <p>Tanggal Cetak: {{ date('d F Y') }}</p>
         </div>
 

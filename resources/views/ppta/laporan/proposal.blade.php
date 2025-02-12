@@ -35,7 +35,7 @@
 
     <body>
         <div class="header">
-            <h1>Laporan Data Dummy</h1>
+            <h1>Laporan Proposal</h1>
             <p>Tanggal Cetak: {{ date('d F Y') }}</p>
         </div>
 
@@ -62,21 +62,23 @@
                             {{ $item['nim'] }}
                             {{ $item['nama'] }}
                         </td>
-                        <td>{{ $item['judul'] }}</td>
+                        <td>{{ $item['jdl_proposal'] }}</td>
                         <td>
-                            1. {{ $item['pembimbing_1'] }}
-                            <br>
-                            2. {{ $item['pembimbing_2'] }}
+                            <ol>
+                                <li>{{ $item['pembimbing_1_nama'] }}</li>
+                                <li>{{ $item['pembimbing_2_nama'] }}</li>
+                            </ol>
                         </td>
                         <td>
-                            1. {{ $item['penguji_1'] }}
-                            @if ($item['penguji_2'] !== '')
-                                <br>
-                                2. {{ $item['penguji_2'] }}
-                            @endif
+                            <ol>
+                                <li>{{ $item['penguji_1_nama'] }}</li>
+                                @if ($item['penguji_2_nama'] !== ' ')
+                                    <li>{{ $item['penguji_2_nama'] }}</li>
+                                @endif
+                            </ol>
                         </td>
-                        <td>{{ $item['tgl_sidang'] }}</td>
-                        <td>{{ $item['sts_ta'] }}</td>
+                        <td>{{ $item['wkt_proposal'] }}</td>
+                        <td>{{ $item['sts_proposal'] === 'Y' ? 'Diterima' : 'Ditolak' }}</td>
                     </tr>
                 @endforeach
             </tbody>
