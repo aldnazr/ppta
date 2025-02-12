@@ -24,10 +24,16 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::defaultView('vendor.pagination.custom-pagination');
 
-        // Share username to all views and components
+        // Share nik and nama to all views and components
         View::composer('*', function ($view) {
-            $username = session('nama'); // Ambil username dari session
-            $view->with('nama', $username);
+            $nik = session('nik'); // Ambil NIK dari session
+            $nama = session('nama'); // Ambil Nama dari session
+
+            // Kirim data ke view
+            $view->with([
+                'nik' => $nik,
+                'nama' => $nama,
+            ]);
         });
     }
 }

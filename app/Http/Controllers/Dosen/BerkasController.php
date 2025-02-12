@@ -9,16 +9,19 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class BerkasController extends Controller
 {
-    private function antriProposal()
+
+    private function berkas()
     {
-        $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/berkas');
+        $nik = session('nik');
+
+        $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/berkas?nik_dosen=' . $nik);
 
         return collect($response->json());
     }
 
-    private function penilaianNilai()
+    private function penilaianNilai($kode_antrian = 2023100008)
     {
-        $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/penilaian_nilai');
+        $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/penilaian_nilai?kode_antrian=' . $kode_antrian);
 
         return collect($response->json());
     }
@@ -29,7 +32,7 @@ class BerkasController extends Controller
         $perPage = $request->input('per_page', 10);
 
         // Start with dummy proposals
-        $proposals = $this->antriProposal();
+        $proposals = $this->berkas();
 
         // Apply search if search term is provided
         if ($request->has('search') && $request->search) {
@@ -79,9 +82,11 @@ class BerkasController extends Controller
         ]);
     }
 
-    public function penilaian($mhsNim)
+    public function penilaian($mhsNim, $kodeAntri)
     {
-        $proposal = $this->antriProposal()->firstWhere('mhs_nim', $mhsNim);
+        $proposal = $this->berkas()->firstWhere('mhs_nim', $mhsNim);
+        $penilaianNilai = $this->penilaianNilai($kodeAntri);
+
         $penilaianProposalPembimbing = $this->penilaianNilai()->slice(0, 4);
         $penilaianProposalPembahas = $this->penilaianNilai()->slice(4, 4);
         $penilaianBimbinganPembimbing1 = $this->penilaianNilai()->slice(8, 4)->sortBy('kriteria_nama');

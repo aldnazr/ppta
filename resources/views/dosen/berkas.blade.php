@@ -175,7 +175,7 @@
                                         {{ $proposal['siap_transfer'] ?? '' }}
                                     </td>
                                     <td class="border p-4 text-zinc-700 text-nowrap">
-                                        <a href="{{ route('dosen.berkas.penilaian', ['mhs_nim' => $proposal['mhs_nim']]) }}"
+                                        <a href="{{ route('dosen.berkas.penilaian', ['mhs_nim' => $proposal['mhs_nim'], 'kode_antri' => $proposal['kode_antrian']]) }}"
                                             class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-1.5 px-2.5 rounded">
                                             Nilai
                                         </a>
