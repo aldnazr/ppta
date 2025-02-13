@@ -29,11 +29,11 @@ class LoginController extends Controller
                 'password' => 'ppta',
                 'redirect' => '/ppta',
             ],
-            'dosen' => [
-                'username' => 'dosen',
-                'password' => 'dosen',
-                'redirect' => '/dosen',
-            ],
+            // 'dosen' => [
+            //     'username' => 'dosen',
+            //     'password' => 'dosen',
+            //     'redirect' => '/dosen',
+            // ],
         ];
 
         $username = $request->input('username');
@@ -46,11 +46,13 @@ class LoginController extends Controller
                 session(['nama' => $user['nama']]);
                 return redirect()->intended('/dosen')->with('success', 'Berhasil login!');
             }
-            // if ($username === $user['username'] && $password === $user['password']) {
-            //     session(['is_logged_in' => true]);
-            //     session(['username' => $username]); // Simpan username ke session
-            //     return redirect()->intended($user['redirect'])->with('success', 'Berhasil login!');
-            // }
+        }
+
+        $users = $staticUsers['ppta'];
+        if ($username === $users['username'] && $password === $users['password']) {
+            session(['is_logged_in' => true]);
+            session(['nama' => $users['username']]); // Simpan username ke session
+            return redirect()->intended($users['redirect'])->with('success', 'Berhasil login!');
         }
 
         // Jika tidak cocok dengan kredensial di atas

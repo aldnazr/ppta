@@ -19,7 +19,7 @@ class BerkasController extends Controller
         return collect($response->json());
     }
 
-    private function penilaianNilai($kode_antrian = 2023100008)
+    private function penilaianNilai($kode_antrian)
     {
         $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/penilaian_nilai?kode_antrian=' . $kode_antrian);
 
@@ -87,16 +87,16 @@ class BerkasController extends Controller
         $proposal = $this->berkas()->firstWhere('mhs_nim', $mhsNim);
         $penilaianNilai = $this->penilaianNilai($kodeAntri);
 
-        $penilaianProposalPembimbing = $this->penilaianNilai()->slice(0, 4);
-        $penilaianProposalPembahas = $this->penilaianNilai()->slice(4, 4);
-        $penilaianBimbinganPembimbing1 = $this->penilaianNilai()->slice(8, 4)->sortBy('kriteria_nama');
-        $penilaianBimbinganPembimbing2 = $this->penilaianNilai()->slice(12, 4)->sortBy('kriteria_nama');
-        $penilaianSidangPembahas1p1 = $this->penilaianNilai()->slice(16, 2)->sortBy('kriteria_nama');
-        $penilaianSidangPembahas1p2 = $this->penilaianNilai()->slice(18, 5)->sortBy('kriteria_nama');
-        $penilaianSidangPembahas1p3 = $this->penilaianNilai()->slice(23, 2)->sortBy('kriteria_nama');
-        $penilaianSidangPembahas2p1 = $this->penilaianNilai()->slice(25, 2)->sortBy('kriteria_nama');
-        $penilaianSidangPembahas2p2 = $this->penilaianNilai()->slice(27, 5)->sortBy('kriteria_nama');
-        $penilaianSidangPembahas2p3 = $this->penilaianNilai()->slice(32, 2)->sortBy('kriteria_nama');
+        $penilaianProposalPembimbing = $penilaianNilai->slice(0, 4);
+        $penilaianProposalPembahas = $penilaianNilai->slice(4, 4);
+        $penilaianBimbinganPembimbing1 = $penilaianNilai->slice(8, 4)->sortBy('kriteria_nama');
+        $penilaianBimbinganPembimbing2 = $penilaianNilai->slice(12, 4)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas1p1 = $penilaianNilai->slice(16, 2)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas1p2 = $penilaianNilai->slice(18, 5)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas1p3 = $penilaianNilai->slice(23, 2)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas2p1 = $penilaianNilai->slice(25, 2)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas2p2 = $penilaianNilai->slice(27, 5)->sortBy('kriteria_nama');
+        $penilaianSidangPembahas2p3 = $penilaianNilai->slice(32, 2)->sortBy('kriteria_nama');
 
         if (!$proposal) {
             abort(404, 'Proposal not found');

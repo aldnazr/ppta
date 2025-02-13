@@ -200,7 +200,7 @@
                                             bobot="{{ $nilai['bobot'] }}"
                                             id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                             name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                            value="{{ $nilai['nilai'] ?? '' }}" />
+                                            value="{{ $nilai['nilai'] ?? '0' }}" />
                                     @endforeach
                                 </div>
                             </div>
@@ -208,7 +208,7 @@
                             <!-- Save Button -->
                             <div class="mt-6">
                                 <button type="button"
-                                    class="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                    class="cursor-pointer w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                     Simpan Nilai
                                 </button>
                             </div>
@@ -284,7 +284,7 @@
                                             bobot="{{ $nilai['bobot'] }}"
                                             id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                             name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                            value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
+                                            value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
                                     @endforeach
                                 </div>
                             </div>
@@ -310,7 +310,7 @@
                                             bobot="{{ $nilai['bobot'] }}"
                                             id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                             name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                            value="{{ $nilai['nilai'] ?? '' }}" />
+                                            value="{{ $nilai['nilai'] ?? '0' }}" />
                                     @endforeach
                                 </div>
                             </div>
@@ -318,7 +318,7 @@
                             <!-- Save Button -->
                             <div class="mt-6">
                                 <button type="button"
-                                    class="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                    class="cursor-pointer w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                     Simpan Nilai
                                 </button>
                             </div>
@@ -339,7 +339,7 @@
                                             bobot="{{ $nilai['bobot'] }}"
                                             id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                             name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                            value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
+                                            value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
                                     @endforeach
                                 </div>
                             </div>
@@ -397,7 +397,7 @@
                                                         bobot="{{ $nilai['bobot'] }}"
                                                         id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                                         name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '' }}" />
+                                                        value="{{ $nilai['nilai'] ?? '0' }}" />
                                                 @endforeach
                                             </div>
                                         </div>
@@ -414,7 +414,7 @@
                                                         bobot="{{ $nilai['bobot'] }}"
                                                         id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                                         name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
+                                                        value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
                                                 @endforeach
                                             </div>
                                         </div>
@@ -431,8 +431,16 @@
                                                         bobot="{{ $nilai['bobot'] }}"
                                                         id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                                         name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '' }}" />
+                                                        value="{{ $nilai['nilai'] ?? '0' }}" />
                                                 @endforeach
+                                            </div>
+
+                                            <!-- Save Button -->
+                                            <div class="mt-6">
+                                                <button type="button"
+                                                    class="cursor-pointer w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                                    Simpan Nilai
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -486,7 +494,7 @@
                                                         bobot="{{ $nilai['bobot'] }}"
                                                         id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                                         name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
+                                                        value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
                                                 @endforeach
                                             </div>
                                         </div>
@@ -503,7 +511,7 @@
                                                         bobot="{{ $nilai['bobot'] }}"
                                                         id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                                         name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
+                                                        value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
                                                 @endforeach
                                             </div>
                                         </div>
@@ -520,7 +528,7 @@
                                                         bobot="{{ $nilai['bobot'] }}"
                                                         id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                                         name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '' }}" :disabled="true" />
+                                                        value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
                                                 @endforeach
                                             </div>
                                         </div>
