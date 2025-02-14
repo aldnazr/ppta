@@ -261,7 +261,7 @@
 
                 <!-- Schedule Details -->
                 <fieldset class="flex flex-col bg-white rounded-md border border-gray-300 p-4">
-                    <legend class="text-sm font-semibold text-gray-700">Isi/Edit Jadwal</legend>
+                    <legend class="text-sm font-semibold text-gray-700">Isi/Update Jadwal</legend>
                     <div class="grid grid-cols-1 mb-1 gap-4 sm:gap-6 sm:grid-cols-2">
                         <div>
                             <label class="block text-sm font-medium text-gray-900">Tanggal</label>
