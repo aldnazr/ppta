@@ -129,7 +129,7 @@
                                                 <div>
                                                     <input type="hidden" name="status" value="ACC">
                                                     <button
-                                                        class="w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-green-50 hover:text-green-800 flex items-center">
+                                                        class="cursor-pointer w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-green-50 hover:text-green-800 flex items-center">
                                                         <svg class="w-4 h-4 mr-2 text-green-500" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -143,7 +143,7 @@
                                                 <div>
                                                     <input type="hidden" name="status" value="ACC Bersyarat">
                                                     <button
-                                                        class="w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-blue-50 hover:text-blue-800 flex items-center">
+                                                        class="cursor-pointer w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-blue-50 hover:text-blue-800 flex items-center">
                                                         <svg class="w-4 h-4 mr-2 text-blue-500" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -159,7 +159,7 @@
                                                     <input type="hidden" name="status"
                                                         value="ACC Bersyarat Sidang Ulang">
                                                     <button
-                                                        class="w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-purple-50 hover:text-purple-800 flex items-center">
+                                                        class="cursor-pointer w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-purple-50 hover:text-purple-800 flex items-center">
                                                         <svg class="w-4 h-4 mr-2 text-purple-500" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -174,7 +174,7 @@
                                                 <div>
                                                     <input type="hidden" name="status" value="Materi Kurang">
                                                     <button
-                                                        class="w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-yellow-50 hover:text-yellow-800 flex items-center">
+                                                        class="cursor-pointer w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-yellow-50 hover:text-yellow-800 flex items-center">
                                                         <svg class="w-4 h-4 mr-2 text-yellow-500" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -189,7 +189,7 @@
                                                 <div>
                                                     <input type="hidden" name="status" value="Ditolak">
                                                     <button
-                                                        class="w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-red-50 hover:text-red-800 flex items-center">
+                                                        class="cursor-pointer w-full px-4 py-2 text-sm text-left text-gray-800 hover:bg-red-50 hover:text-red-800 flex items-center">
                                                         <svg class="w-4 h-4 mr-2 text-red-500" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
