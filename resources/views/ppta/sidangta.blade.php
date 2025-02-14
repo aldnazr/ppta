@@ -141,13 +141,19 @@
                                     </td>
                                 @endforeach
 
-                                <td class="px-4 py-2 space-y-2">
-                                    <select class="ring ring-gray-300 rounded-md px-2 py-1 text-sm">
-                                        <option value="diterima">Diterima</option>
-                                        <option value="ditolak">Ditolak</option>
-                                    </select>
-                                    <textarea class="w-full ring ring-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
-                                        rows="2" placeholder="Keterangan jika ditolak"></textarea>
+                                <td class="px-4 py-2">
+                                    <form action="#" class="space-y-2">
+                                        <select class="hasil ring ring-gray-300 rounded-md px-2 py-1 text-sm">
+                                            <option value="Y">Diterima</option>
+                                            <option value="N">Ditolak</option>
+                                        </select>
+                                        <textarea class="keterangan w-full ring ring-gray-300 rounded-md py-1 px-2 focus:border-green-500 focus:ring-green-500"
+                                            rows="2" placeholder="Keterangan jika ditolak"></textarea>
+                                        <button
+                                            class="cursor-pointer w-full rounded-md font-medium text-white/90 py-1.5 bg-blue-600 hover:bg-blue-700">
+                                            Simpan
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             </td>
@@ -249,6 +255,30 @@
     </div>
 
     <script>
+        function toggleTextareaRequired(selectElement) {
+            const keterangan = selectElement.parentElement.querySelector('.keterangan');
+            if (selectElement.value === 'N') {
+                keterangan.required = true;
+                keterangan.style.display = 'block';
+            } else {
+                keterangan.required = false;
+                keterangan.style.display = 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectElements = document.querySelectorAll('.hasil');
+
+            selectElements.forEach(selectElement => {
+                selectElement.addEventListener('change', (event) => {
+                    toggleTextareaRequired(event.target);
+                });
+
+                // Panggil sekali saat halaman dimuat untuk menyetel status awal
+                toggleTextareaRequired(selectElement);
+            });
+        });
+
         fetch('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosens')
             .then(response => response.json())
             .then(data => {
