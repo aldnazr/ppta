@@ -55,26 +55,34 @@
                         <div class="col-span-2">
                             <div
                                 class="flex flex-wrap md:flex-nowrap gap-2 overflow-x-auto py-2 px-1 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-                                <button
-                                    class="flex-shrink-0 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                                @php
+                                    $baseUrl = 'https://sicyca.dinamika.ac.id/';
+                                    $buttonClasses =
+                                        'flex-shrink-0 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50';
+                                @endphp
+
+                                <a href="{{ $proposal['file_proposal'] ? $baseUrl . $proposal['file_proposal'] : '#' }}"
+                                    class="{{ $buttonClasses }}">
                                     Proposal
-                                </button>
-                                <button
-                                    class="flex-shrink-0 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                                </a>
+
+                                <a href="#" class="{{ $buttonClasses }}">
                                     Proposal (Digi)
-                                </button>
-                                <button
-                                    class="flex-shrink-0 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
-                                    Ujian
-                                </button>
-                                <button
-                                    class="flex-shrink-0 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                                </a>
+
+                                <a href="#" class="{{ $buttonClasses }}">
+                                    BAP
+                                </a>
+
+                                <a href="{{ $proposal['file_bimbingan'] ? $baseUrl . $proposal['file_bimbingan'] : '#' }}"
+                                    class="{{ $buttonClasses }}">
                                     Bimbingan
-                                </button>
-                                <button
-                                    class="flex-shrink-0 px-4 py-2 text-sm font-medium text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 rounded-md shadow-sm transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                                </a>
+
+                                <a href="#" class="{{ $buttonClasses }}">
                                     Hasil Ujian
-                                </button>
+                                </a>
+
                             </div>
                         </div>
                     </div>

@@ -10,7 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class BerkasController extends Controller
 {
 
-    private function berkas($filterBerkas)
+    private function berkas($filterBerkas = null)
     {
         $nik = session('nik');
 
@@ -35,7 +35,7 @@ class BerkasController extends Controller
         // Get the number of items per page from the request, default to 10
         $perPage = $request->input('per_page', 10);
 
-        $filterBerkas = $request->input('filter_berkas', 'semua');
+        $filterBerkas = $request->input('filter_berkas');
 
         // Start with dummy proposals
         $proposals = $this->berkas($filterBerkas);
