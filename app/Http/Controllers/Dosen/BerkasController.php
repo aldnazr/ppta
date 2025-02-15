@@ -10,14 +10,18 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class BerkasController extends Controller
 {
 
-    private function berkas()
+    private function berkas($filterBerkas)
     {
         $nik = session('nik');
 
-        $response = Http::get('https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/berkas?nik_dosen=' . $nik);
+        $url = 'https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/berkas?nik_dosen='
+            . $nik . '&filter_berkas=' . $filterBerkas;
+
+        $response = Http::get($url);
 
         return collect($response->json());
     }
+
 
     private function penilaianNilai($kode_antrian)
     {
@@ -31,8 +35,10 @@ class BerkasController extends Controller
         // Get the number of items per page from the request, default to 10
         $perPage = $request->input('per_page', 10);
 
+        $filterBerkas = $request->input('filter_berkas', 'semua');
+
         // Start with dummy proposals
-        $proposals = $this->berkas();
+        $proposals = $this->berkas($filterBerkas);
 
         // Apply search if search term is provided
         if ($request->has('search') && $request->search) {
@@ -46,16 +52,6 @@ class BerkasController extends Controller
                     str_contains(strtolower($proposal['pembimbing_2_nama']), $searchTerm) ||
                     str_contains(strtolower($proposal['penguji_1_nama']), $searchTerm);
             });
-        }
-
-        if ($request->has('filter')) {
-            $filterTerm = strtolower($request->filter);
-
-            if ($filterTerm === 'proposal') {
-                $proposals = $proposals->where('tipe', 'proposal');
-            } elseif ($filterTerm === 'tugas_akhir') {
-                $proposals = $proposals->where('tipe', 'tugas_akhir');
-            }
         }
 
         // Convert to collection for pagination

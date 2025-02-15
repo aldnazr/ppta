@@ -40,7 +40,7 @@
 
                     <!-- Filter Form -->
                     <form method="GET" action="{{ url()->current() }}" class="relative" x-data="{ isMenuOpen: false }">
-                        <button type ="button" @click="isMenuOpen = !isMenuOpen"
+                        <button type="button" @click="isMenuOpen = !isMenuOpen"
                             class="bg-blue-100 text-blue-700 px-3 py-1.5 rounded-md flex items-center hover:text-blue-700 hover:bg-blue-200 cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" viewBox="0 0 20 20"
                                 fill="currentColor">
@@ -53,7 +53,7 @@
 
                         <!-- Advanced Filter Dropdown -->
                         <div id="advancedFilterDropdown" x-transition x-show="isMenuOpen"
-                            @click.outside = "isMenuOpen = false"
+                            @click.outside="isMenuOpen = false"
                             class="absolute lg:right-0 z-10 mt-2 bg-zinc-50 shadow-md rounded-lg p-4 border border-gray-200">
                             <h3 class="mb-2 font-semibold text-gray-900">Berkas</h3>
                             <div class="grid gap-4">
@@ -61,30 +61,32 @@
                                     class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
                                     <li class="w-full border-b border-gray-200 rounded-t-lg">
                                         <div class="flex items-center ps-3">
-                                            <input id="list-radio-semua" type="radio" value="" name="filter"
+                                            <!-- Gunakan name filter_berkas -->
+                                            <input id="list-radio-semua" type="radio" value="semua" name="filter_berkas"
                                                 class="w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-                                                {{ request('filter') == '' ? 'checked' : '' }}
+                                                {{ request('filter_berkas', 'semua') == 'semua' ? 'checked' : '' }}
                                                 onchange="this.closest('form').submit()">
                                             <label for="list-radio-semua"
                                                 class="w-full py-3 ms-2 text-sm font-medium text-gray-900">Semua</label>
                                         </div>
                                     </li>
-                                    <li class="w-full border-b border-gray-200 rounded-t-lg">
+                                    <li class="w-full border-b border-gray-200">
                                         <div class="flex items-center ps-3">
-                                            <input id="list-radio-proposal" type="radio" value="proposal" name="filter"
+                                            <input id="list-radio-proposal" type="radio" value="proposal"
+                                                name="filter_berkas"
                                                 class="w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-                                                {{ request('filter') == 'proposal' ? 'checked' : '' }}
+                                                {{ request('filter_berkas') == 'proposal' ? 'checked' : '' }}
                                                 onchange="this.closest('form').submit()">
                                             <label for="list-radio-proposal"
                                                 class="w-full py-3 ms-2 text-sm font-medium text-gray-900">Proposal</label>
                                         </div>
                                     </li>
-                                    <li class="w-full border-b border-gray-200 rounded-t-lg">
+                                    <li class="w-full border-b border-gray-200">
                                         <div class="flex items-center ps-3">
                                             <input id="list-radio-tugas_akhir" type="radio" value="tugas_akhir"
-                                                name="filter"
+                                                name="filter_berkas"
                                                 class="w-4 h-4 text-blue-700 bg-gray-100 border-gray-300 focus:ring-blue-500 focus:ring-2"
-                                                {{ request('filter') == 'tugas_akhir' ? 'checked' : '' }}
+                                                {{ request('filter_berkas') == 'tugas_akhir' ? 'checked' : '' }}
                                                 onchange="this.closest('form').submit()">
                                             <label for="list-radio-tugas_akhir"
                                                 class="w-full py-3 ms-2 text-sm font-medium text-gray-900">Tugas
@@ -94,11 +96,12 @@
                                 </ul>
                             </div>
 
-                            <!-- Keep existing per_page and search values to maintain state -->
+                            <!-- Pertahankan nilai per_page dan search untuk menjaga state -->
                             <input type="hidden" name="per_page" value="{{ request('per_page', 10) }}">
                             <input type="hidden" name="search" value="{{ request('search') }}">
                         </div>
                     </form>
+
                 </div>
             </div>
 
