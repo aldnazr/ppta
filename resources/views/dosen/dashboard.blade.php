@@ -19,7 +19,7 @@
                         Penilaian Tertunda
                     </h3>
                     <div class="text-2xl md:text-3xl font-bold text-white/95 tracking-tight">
-                        {{ $unassessedCount }}
+                        {{ '6' }}
                     </div>
                 </div>
             </div>
@@ -35,10 +35,10 @@
                                 class="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
                                 <!-- Type Badge -->
                                 <span
-                                    class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium tracking-wide {{ $item['tipe'] === 'proposal'
+                                    class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium tracking-wide {{ $item['wkt_ta']
                                         ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/20'
                                         : 'bg-amber-50 text-amber-700 ring-1 ring-amber-600/20' }}">
-                                    {{ str_replace('_', ' ', Str::title($item['tipe'])) }}
+                                    {{ $item['wkt_ta'] ? 'Proposal' : 'Tugas Akhir' }}
                                 </span>
 
                                 <!-- Date -->
@@ -48,13 +48,14 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
-                                    <span>Sidang: {{ date('d M Y', strtotime($item['tgl_pengajuan_proposal'])) }}</span>
+                                    <span>Sidang:
+                                        {{ date('d M Y', strtotime($item['wkt_ta'] ?? $item['wkt_proposal'])) }}</span>
                                 </div>
                             </div>
 
                             <!-- Title -->
                             <h3 class="md:text-lg font-semibold text-gray-900 leading-tight">
-                                {{ $item['judul'] }}
+                                {{ $item['jdl_proposal'] }}
                             </h3>
 
                             <!-- Student Info -->
@@ -69,14 +70,14 @@
                                     </div>
                                 </div>
                                 <div class="flex-1">
-                                    <p class="font-medium text-gray-900">{{ $item['nama_mahasiswa'] }}</p>
-                                    <p class="text-sm text-gray-500">{{ $item['nim'] }}</p>
+                                    <p class="font-medium text-gray-900">{{ $item['mhs_nama'] }}</p>
+                                    <p class="text-sm text-gray-500">{{ $item['mhs_nim'] }}</p>
                                 </div>
                             </div>
 
                             <!-- Action Button -->
                             <div class="pt-2">
-                                <a href="{{ route('dosen.dashboard.penilaian', ['mhs_nim' => $item['id']]) }}"
+                                <a href="{{ route('dosen.dashboard.penilaian', ['mhs_nim' => $item['mhs_nim']]) }}"
                                     class="inline-flex items-center justify-center w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-blue-600/90 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-100 transition-all duration-300">
                                     <span>Beri Penilaian</span>
                                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
