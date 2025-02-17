@@ -150,7 +150,7 @@
                         @else
                             @foreach ($proposals as $index => $proposal)
                                 <td rowspan="2" class="text-center p-4 text-nowrap">
-                                    {{ $proposals->firstItem() + $index }}
+                                    {{ $index + 1 }}
                                 <td colspan="8" class="border-s p-4 text-gray-900 font-medium">
                                     {{ $proposal['jdl_proposal'] }}
                                 </td>

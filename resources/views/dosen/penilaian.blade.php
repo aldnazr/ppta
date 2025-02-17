@@ -208,7 +208,7 @@
                                             bobot="{{ $nilai['bobot'] }}"
                                             id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                             name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                            value="{{ $nilai['nilai'] ?? '0' }}" />
+                                            value="{{ $nilai['nilai'] ?? '0' }}" :disabled="$proposal['status_dosen'] !== 'Pembimbing 1'" />
                                     @endforeach
                                 </div>
                             </div>
@@ -277,7 +277,7 @@
                             <!-- Buttons -->
                             <div class="mt-6">
                                 <button type="button"
-                                    class="hidden w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                    class="w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                     Simpan Berita Acara Pembimbing
                                 </button>
                             </div>
@@ -292,8 +292,16 @@
                                             bobot="{{ $nilai['bobot'] }}"
                                             id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                             name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                            value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
+                                            value="{{ $nilai['nilai'] ?? '0' }}" :disabled="$proposal['status_dosen'] !== 'Penguji 1'" />
                                     @endforeach
+                                </div>
+
+                                <!-- Save Button -->
+                                <div class="mt-6">
+                                    <button type="button"
+                                        class="cursor-pointer w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                        Simpan Nilai
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -318,7 +326,7 @@
                                             bobot="{{ $nilai['bobot'] }}"
                                             id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                             name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                            value="{{ $nilai['nilai'] ?? '0' }}" />
+                                            value="{{ $nilai['nilai'] ?? '0' }}" :disabled="$proposal['status_dosen'] !== 'Pembimbing 1'" />
                                     @endforeach
                                 </div>
                             </div>
@@ -340,16 +348,23 @@
                             <!-- Penilaian Section -->
                             <div class="mt-8 space-y-4">
                                 <h2 class="text-black font-semibold">Penilaian</h2>
-
                                 <div class="grid grid-cols-2 gap-4">
                                     @foreach ($penilaianBimbinganPembimbing2 as $index => $nilai)
                                         <x-input-number label="{{ $nilai['kriteria_nama'] }}"
                                             bobot="{{ $nilai['bobot'] }}"
                                             id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
                                             name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                            value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
+                                            value="{{ $nilai['nilai'] ?? '0' }}" :disabled="$proposal['status_dosen'] !== 'Pembimbing 2'" />
                                     @endforeach
                                 </div>
+                            </div>
+
+                            <!-- Save Button -->
+                            <div class="mt-6">
+                                <button type="button" disabled
+                                    class="cursor-pointer disabled:bg-black/80 w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                    Simpan Nilai
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -393,64 +408,57 @@
                                 <!-- Penilaian Section -->
                                 <div class="mt-8 space-y-4 mb-4">
                                     <h2 class="text-black font-semibold">Penilaian</h2>
-                                    <div class="gap-4">
-                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                            <!-- Top Bar -->
-                                            <x-dosen.profile-bobot :isRole="false" role="Presentasi" bobot="20" />
+                                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                        <!-- Top Bar -->
+                                        <x-dosen.profile-bobot :isRole="false" role="Presentasi" bobot="20" />
 
-                                            <!-- Form Section -->
-                                            <div class="space-y-4">
-                                                @foreach ($penilaianSidangPembahas1p1 as $index => $nilai)
-                                                    <x-input-number label="{{ $nilai['kriteria_nama'] }}"
-                                                        bobot="{{ $nilai['bobot'] }}"
-                                                        id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '0' }}" />
-                                                @endforeach
-                                            </div>
+                                        <!-- Form Section -->
+                                        <div class="space-y-4">
+                                            @foreach ($penilaianSidangPembahas1p1 as $index => $nilai)
+                                                <x-input-number label="{{ $nilai['kriteria_nama'] }}"
+                                                    bobot="{{ $nilai['bobot'] }}"
+                                                    id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    value="{{ $nilai['nilai'] ?? '0' }}" :disabled="$proposal['status_dosen'] !== 'Penguji 1'" />
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="gap-4">
-                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                            <!-- Top Bar -->
-                                            <x-dosen.profile-bobot :isRole="false" role="Buku" bobot="40" />
+                                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                        <!-- Top Bar -->
+                                        <x-dosen.profile-bobot :isRole="false" role="Buku" bobot="40" />
 
-                                            <!-- Form Section -->
-                                            <div class="space-y-4">
-                                                @foreach ($penilaianSidangPembahas1p2 as $index => $nilai)
-                                                    <x-input-number label="{{ $nilai['kriteria_nama'] }}"
-                                                        bobot="{{ $nilai['bobot'] }}"
-                                                        id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
-                                                @endforeach
-                                            </div>
+                                        <!-- Form Section -->
+                                        <div class="space-y-4">
+                                            @foreach ($penilaianSidangPembahas1p2 as $index => $nilai)
+                                                <x-input-number label="{{ $nilai['kriteria_nama'] }}"
+                                                    bobot="{{ $nilai['bobot'] }}"
+                                                    id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    value="{{ $nilai['nilai'] ?? '0' }}" :disabled="$proposal['status_dosen'] !== 'Penguji 1'" />
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="gap-4">
-                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                            <!-- Top Bar -->
-                                            <x-dosen.profile-bobot :isRole="false" role="Tanya-jawab" bobot="40" />
+                                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                        <!-- Top Bar -->
+                                        <x-dosen.profile-bobot :isRole="false" role="Tanya-jawab" bobot="40" />
 
-                                            <!-- Form Section -->
-                                            <div class="space-y-4">
-                                                @foreach ($penilaianSidangPembahas1p3 as $index => $nilai)
-                                                    <x-input-number label="{{ $nilai['kriteria_nama'] }}"
-                                                        bobot="{{ $nilai['bobot'] }}"
-                                                        id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '0' }}" />
-                                                @endforeach
-                                            </div>
-
-                                            <!-- Save Button -->
-                                            <div class="mt-6">
-                                                <button type="button"
-                                                    class="cursor-pointer w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
-                                                    Simpan Nilai
-                                                </button>
-                                            </div>
+                                        <!-- Form Section -->
+                                        <div class="space-y-4">
+                                            @foreach ($penilaianSidangPembahas1p3 as $index => $nilai)
+                                                <x-input-number label="{{ $nilai['kriteria_nama'] }}"
+                                                    bobot="{{ $nilai['bobot'] }}"
+                                                    id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    value="{{ $nilai['nilai'] ?? '0' }}" :disabled="$proposal['status_dosen'] !== 'Penguji 1'" />
+                                            @endforeach
                                         </div>
+                                    </div>
+                                    <!-- Save Button -->
+                                    <div class="mt-6">
+                                        <button type="button"
+                                            class="cursor-pointer w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                            Simpan Nilai
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -490,56 +498,58 @@
                                 <!-- Penilaian Section -->
                                 <div class="mt-8 space-y-4 mb-4">
                                     <h2 class="text-black font-semibold">Penilaian</h2>
-                                    <div class="gap-4">
-                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                            <!-- Top Bar -->
-                                            <x-dosen.profile-bobot :isRole="false" role="Presentasi" bobot="20" />
+                                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                        <!-- Top Bar -->
+                                        <x-dosen.profile-bobot :isRole="false" role="Presentasi" bobot="20" />
 
-                                            <!-- Form Section -->
-                                            <div class="space-y-4">
-                                                @foreach ($penilaianSidangPembahas2p1 as $index => $nilai)
-                                                    <x-input-number label="{{ $nilai['kriteria_nama'] }}"
-                                                        bobot="{{ $nilai['bobot'] }}"
-                                                        id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
-                                                @endforeach
-                                            </div>
+                                        <!-- Form Section -->
+                                        <div class="space-y-4">
+                                            @foreach ($penilaianSidangPembahas2p1 as $index => $nilai)
+                                                <x-input-number label="{{ $nilai['kriteria_nama'] }}"
+                                                    bobot="{{ $nilai['bobot'] }}"
+                                                    id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    value="{{ $nilai['nilai'] ?? '0' }}" :disabled="$proposal['status_dosen'] !== 'Penguji 2'" />
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="gap-4">
-                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                            <!-- Top Bar -->
-                                            <x-dosen.profile-bobot :isRole="false" role="Buku" bobot="40" />
+                                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                        <!-- Top Bar -->
+                                        <x-dosen.profile-bobot :isRole="false" role="Buku" bobot="40" />
 
-                                            <!-- Form Section -->
-                                            <div class="space-y-4">
-                                                @foreach ($penilaianSidangPembahas2p2 as $index => $nilai)
-                                                    <x-input-number label="{{ $nilai['kriteria_nama'] }}"
-                                                        bobot="{{ $nilai['bobot'] }}"
-                                                        id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
-                                                @endforeach
-                                            </div>
+                                        <!-- Form Section -->
+                                        <div class="space-y-4">
+                                            @foreach ($penilaianSidangPembahas2p2 as $index => $nilai)
+                                                <x-input-number label="{{ $nilai['kriteria_nama'] }}"
+                                                    bobot="{{ $nilai['bobot'] }}"
+                                                    id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    value="{{ $nilai['nilai'] ?? '0' }}" :disabled="$proposal['status_dosen'] !== 'Penguji 2'" />
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <div class="gap-4">
-                                        <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
-                                            <!-- Top Bar -->
-                                            <x-dosen.profile-bobot :isRole="false" role="Tanya-jawab" bobot="40" />
+                                    <div class="p-4 md:p-6 bg-white shadow border rounded-lg">
+                                        <!-- Top Bar -->
+                                        <x-dosen.profile-bobot :isRole="false" role="Tanya-jawab" bobot="40" />
 
-                                            <!-- Form Section -->
-                                            <div class="space-y-4">
-                                                @foreach ($penilaianSidangPembahas2p3 as $index => $nilai)
-                                                    <x-input-number label="{{ $nilai['kriteria_nama'] }}"
-                                                        bobot="{{ $nilai['bobot'] }}"
-                                                        id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
-                                                        value="{{ $nilai['nilai'] ?? '0' }}" :disabled="true" />
-                                                @endforeach
-                                            </div>
+                                        <!-- Form Section -->
+                                        <div class="space-y-4">
+                                            @foreach ($penilaianSidangPembahas2p3 as $index => $nilai)
+                                                <x-input-number label="{{ $nilai['kriteria_nama'] }}"
+                                                    bobot="{{ $nilai['bobot'] }}"
+                                                    id="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    name="{{ str_replace(' ', '_', strtolower($nilai['kriteria_nama'])) }}"
+                                                    value="{{ $nilai['nilai'] ?? '0' }}" :disabled="$proposal['status_dosen'] !== 'Penguji 2'" />
+                                            @endforeach
                                         </div>
+                                    </div>
+
+                                    <!-- Save Button -->
+                                    <div class="mt-6">
+                                        <button type="button"
+                                            class="cursor-pointer w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                            Simpan Nilai
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -548,5 +558,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

@@ -19,7 +19,7 @@
                         Penilaian Tertunda
                     </h3>
                     <div class="text-2xl md:text-3xl font-bold text-white/95 tracking-tight">
-                        {{ '6' }}
+                        {{ $count }}
                     </div>
                 </div>
             </div>
@@ -77,8 +77,8 @@
 
                             <!-- Action Button -->
                             <div class="pt-2">
-                                <a href="{{ route('dosen.dashboard.penilaian', ['mhs_nim' => $item['mhs_nim']]) }}"
-                                    class="inline-flex items-center justify-center w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-blue-600/90 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-100 transition-all duration-300">
+                                <a href="{{ route('dosen.dashboard.penilaian', ['mhs_nim' => $item['mhs_nim'], 'kode_antri' => $item['kode_antrian']]) }}"
+                                    class="inline-flex items-center justify-center w-full sm:w-auto px-5 py-2 text-sm font-medium text-white bg-blue-600/90 rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-100 transition-all duration-300">
                                     <span>Beri Penilaian</span>
                                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

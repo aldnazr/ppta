@@ -47,7 +47,7 @@ Route::middleware(['loggedin'])->group(function () {
         return redirect()->route('dosen.dashboard');
     });
     Route::get('/dosen/dashboard', [DashboardController::class, 'index'])->name('dosen.dashboard');
-    Route::get('/dosen/dashboard/penilaian/{mhs_nim}', [BerkasController::class, 'penilaian'])->name('dosen.dashboard.penilaian');
+    Route::get('/dosen/dashboard/penilaian/{mhs_nim}/{kode_antri}', [BerkasController::class, 'penilaian'])->name('dosen.dashboard.penilaian');
     Route::get('/dosen/berkas', [BerkasController::class, 'index'])->name('dosen.berkas');
     Route::get('/dosen/berkas/penilaian/{mhs_nim}/{kode_antri}', [BerkasController::class, 'penilaian'])->name('dosen.berkas.penilaian');
 

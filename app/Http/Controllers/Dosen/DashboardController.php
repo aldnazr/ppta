@@ -14,7 +14,7 @@ class DashboardController extends Controller
     {
         $nik = session('nik');
 
-        $url = 'https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/berkas?nik_dosen='
+        $url = 'https://kpta84.dinamika.ac.id/18410100143/ppta/public/api/dosen/dashboard?nik_dosen='
             . $nik;
 
         $response = Http::get($url);
@@ -38,22 +38,9 @@ class DashboardController extends Controller
         );
 
         return view('dosen.dashboard', [
-            'paginated' => $paginatedData
+            'paginated' => $paginatedData,
+            'count' => $total
         ])->with([
-            'user' => 'dosen'
-        ]);
-    }
-
-    public function penilaian($proposalId)
-    {
-        // Find the proposal by ID in dummy data
-        $proposal = $this->dataBelumDinilai()->firstWhere('id', $proposalId);
-
-        if (!$proposal) {
-            abort(404, 'Proposal not found');
-        }
-
-        return view('dosen.penilaian', ['proposal' => $proposal])->with([
             'user' => 'dosen'
         ]);
     }
