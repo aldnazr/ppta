@@ -39,3 +39,12 @@
     border-color: var(--color-gray-200, currentColor);
   }
 }
+
+/* Sembunyikan scrollbar di semua browser */
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.scrollbar-none {
+  -ms-overflow-style: none; /* Internet Explorer */
+  scrollbar-width: none; /* Firefox */
+}

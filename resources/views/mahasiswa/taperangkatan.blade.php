@@ -121,18 +121,21 @@
         <!-- Header dan Filter Prodi -->
         <div class="grid border-b border-gray-200">
             <x-header>Judul TA Perangkatan</x-header>
-            <!-- Filter Chips -->
-            <div class="flex flex-wrap gap-2 p-4 md:p-6">
-                @foreach ($prodi as $id => $nama_prodi)
-                    <button @click="fetchJurusan('{{ $id }}', '{{ $nama_prodi }}')"
-                        :class="{
-                            'bg-blue-100 text-blue-800': activeProdiId === '{{ $id }}',
-                            'bg-gray-200 text-gray-700': activeProdiId !== '{{ $id }}'
-                        }"
-                        class="cursor-pointer text-sm lg:text-base filter-btn px-4 py-2 rounded-full font-medium transition-colors hover:text-blue-800 hover:bg-blue-100">
-                        {{ $nama_prodi }}
-                    </button>
-                @endforeach
+            <!-- Wrapper Scroll Horizontal -->
+            <div class="overflow-x-auto p-4 md:p-6 scrollbar-none">
+                <!-- Filter Chips -->
+                <div class="grid md:grid-rows-2 grid-flow-col gap-2">
+                    @foreach ($prodi as $id => $nama_prodi)
+                        <button @click="fetchJurusan('{{ $id }}', '{{ $nama_prodi }}')"
+                            :class="{
+                                'bg-blue-100 text-blue-800': activeProdiId === '{{ $id }}',
+                                'bg-gray-200 text-gray-700': activeProdiId !== '{{ $id }}'
+                            }"
+                            class="cursor-pointer text-sm lg:text-base filter-btn px-4 py-2 rounded-full font-medium transition-colors hover:text-blue-800 hover:bg-blue-100 whitespace-nowrap">
+                            {{ $nama_prodi }}
+                        </button>
+                    @endforeach
+                </div>
             </div>
         </div>
 
