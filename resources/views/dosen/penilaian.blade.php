@@ -194,7 +194,7 @@
                             <div class="mt-6">
                                 <button type="button"
                                     {{ $proposal['status_dosen'] === 'Pembimbing 1' ? '' : 'disabled' }}
-                                    class="cursor-pointer disabled:bg-black disabled:opacity-70 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                    class="cursor-pointer disabled:bg-black disabled:opacity-60 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                     Simpan Berita Acara
                                 </button>
                             </div>
@@ -218,7 +218,7 @@
                             <div class="mt-6">
                                 <button type="button"
                                     {{ $proposal['status_dosen'] === 'Pembimbing 1' ? '' : 'disabled' }}
-                                    class="cursor-pointer disabled:bg-black disabled:opacity-70 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                    class="cursor-pointer disabled:bg-black disabled:opacity-60 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                     Simpan Nilai
                                 </button>
                             </div>
@@ -279,7 +279,7 @@
                             <!-- Save Button -->
                             <div class="mt-6">
                                 <button type="button" {{ $proposal['status_dosen'] === 'Penguji 1' ? '' : 'disabled' }}
-                                    class="cursor-pointer disabled:bg-black disabled:opacity-70 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                    class="cursor-pointer disabled:bg-black disabled:opacity-60 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                     Simpan Berita Acara
                                 </button>
                             </div>
@@ -302,7 +302,7 @@
                                 <div class="mt-6">
                                     <button type="button"
                                         {{ $proposal['status_dosen'] === 'Penguji 1' ? '' : 'disabled' }}
-                                        class="cursor-pointer disabled:bg-black disabled:opacity-70 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                        class="cursor-pointer disabled:bg-black disabled:opacity-60 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                         Simpan Nilai
                                     </button>
                                 </div>
@@ -338,7 +338,7 @@
                             <div class="mt-6">
                                 <button type="button"
                                     {{ $proposal['status_dosen'] === 'Pembimbing 1' ? '' : 'disabled' }}
-                                    class="cursor-pointer disabled:bg-black disabled:opacity-70 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                    class="cursor-pointer disabled:bg-black disabled:opacity-60 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                     Simpan Nilai
                                 </button>
                             </div>
@@ -367,7 +367,7 @@
                             <div class="mt-6">
                                 <button type="button"
                                     {{ $proposal['status_dosen'] === 'Pembimbing 2' ? '' : 'disabled' }}
-                                    class="cursor-pointer disabled:bg-black disabled:opacity-70 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                    class="cursor-pointer disabled:bg-black disabled:opacity-60 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                     Simpan Nilai
                                 </button>
                             </div>
@@ -406,7 +406,7 @@
                                 <div class="mt-6">
                                     <button type="button"
                                         {{ $proposal['status_dosen'] === 'Penguji 1' ? '' : 'disabled' }}
-                                        class="cursor-pointer disabled:bg-black disabled:opacity-70 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                        class="cursor-pointer disabled:bg-black disabled:opacity-60 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                         Simpan Berita Acara
                                     </button>
                                 </div>
@@ -464,7 +464,7 @@
                                     <div class="mt-6">
                                         <button type="button"
                                             {{ $proposal['status_dosen'] === 'Penguji 1' ? '' : 'disabled' }}
-                                            class="cursor-pointer disabled:bg-black disabled:opacity-70 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                            class="cursor-pointer disabled:bg-black disabled:opacity-60 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                             Simpan Nilai
                                         </button>
                                     </div>
@@ -499,7 +499,7 @@
                                 <div class="mt-6">
                                     <button type="button"
                                         {{ $proposal['status_dosen'] === 'Penguji 2' ? '' : 'disabled' }}
-                                        class="cursor-pointer disabled:bg-black disabled:opacity-70 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                        class="cursor-pointer disabled:bg-black disabled:opacity-60 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                         Simpan Berita Acara
                                     </button>
                                 </div>
@@ -557,7 +557,7 @@
                                     <div class="mt-6">
                                         <button type="button"
                                             {{ $proposal['status_dosen'] === 'Penguji 2' ? '' : 'disabled' }}
-                                            class="cursor-pointer disabled:bg-black disabled:opacity-70 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
+                                            class="cursor-pointer disabled:bg-black disabled:opacity-60 disabled:cursor-not-allowed w-full bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 focus:outline-none focus:ring focus:ring-white">
                                             Simpan Nilai
                                         </button>
                                     </div>

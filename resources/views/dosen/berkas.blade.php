@@ -166,12 +166,13 @@
                                         <br>
                                         {{ $proposal['mhs_nama'] }}
                                     </td>
-                                    <td class="border p-4 text-zinc-700 text-nowrap">
-                                        1. {{ $proposal['pembimbing_1_nama'] }}
-                                        <br>
-                                        2. {{ $proposal['pembimbing_2_nama'] }}
+                                    <td class="border p-4 text-zinc-700 md:text-nowrap">
+                                        <ol class="list-decimal pl-4">
+                                            <li>{{ $proposal['pembimbing_1_nama'] }}</li>
+                                            <li>{{ $proposal['pembimbing_2_nama'] }}</li>
+                                        </ol>
                                     </td>
-                                    <td class="border p-4 text-zinc-700 text-nowrap">
+                                    <td class="border p-4 text-zinc-700 md:text-nowrap">
                                         {{ $proposal['penguji_1_nama'] }}
                                     </td>
                                     <td class="border p-4 text-zinc-700 text-nowrap">

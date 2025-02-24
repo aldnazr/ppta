@@ -54,10 +54,7 @@
                             </th>
                             <th
                                 class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider whitespace-nowrap">
-                                PEMBIMBING 1</th>
-                            <th
-                                class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider whitespace-nowrap">
-                                PEMBIMBING 2</th>
+                                PEMBIMBING</th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 jadwal sidang proposal</th>
                             <th class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
@@ -81,8 +78,12 @@
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2">{{ $proposal['mhs_nim'] }}</td>
                                 <td class="text-zinc-600 border px-4 py-2">{{ $proposal['mhs_nama'] }}</td>
-                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing_1_nama'] }}</td>
-                                <td class="text-zinc-600 border px-4 py-2">{{ $proposal['pembimbing_2_nama'] }}</td>
+                                <td class="text-zinc-600 border px-4 py-2 md:text-nowrap">
+                                    <ol class="list-decimal pl-4">
+                                        <li>{{ $proposal['pembimbing_1_nama'] }}</li>
+                                        <li>{{ $proposal['pembimbing_2_nama'] }}</li>
+                                    </ol>
+                                </td>
                                 <td class="border text-center px-4 py-2">
                                     <button
                                         @click="open = true; 
