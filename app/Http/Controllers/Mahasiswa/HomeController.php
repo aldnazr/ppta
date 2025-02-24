@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Mahasiswa;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
@@ -17,12 +18,13 @@ class HomeController extends Controller
 
         switch ($sort) {
             case 'date_asc':
-                $schedules = $schedules->sortBy('jam');
+                $schedules = $schedules->sortBy(fn($schedule) => Carbon::parse("{$schedule['tgl']} {$schedule['jam']}"));
                 break;
             case 'date_desc':
-                $schedules = $schedules->sortByDesc('jam');
+                $schedules = $schedules->sortByDesc(fn($schedule) => Carbon::parse("{$schedule['tgl']} {$schedule['jam']}"));
                 break;
         }
+
 
         if ($request->has('search') && $request->search) {
             $searchTerm = strtolower($request->search);
