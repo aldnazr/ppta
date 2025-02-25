@@ -8,7 +8,6 @@
         nim: '',
         nama: '',
         judul: '',
-        jadwal: '',
         ruang: '',
         penguji1: '',
         title() { return this.titleData; }
@@ -44,7 +43,11 @@
                             <th class="border-e px-6 py-3 text-left text-xs font-medium whitespace-nowrap">
                                 NO DAFTAR</th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium">
-                                TANGGAL PENGAJUAN</th>
+                                TANGGAL PENGAJUAN
+                            </th>
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase">
+                                TANGGAL Sidang TA
+                            </th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 NIM
                             </th>
@@ -86,6 +89,8 @@
                             <tr>
                                 <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['kode_antrian'] }}</td>
                                 <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['wkt_ta'] }}</td>
+                                <td class="text-center text-zinc-600 border px-4 py-2">
+                                    {{ $item['tgl_smn'] ?: 'Belum dijadwalkan' }}</td>
                                 <td class="text-center text-zinc-600 border px-4 py-2">{{ $item['mhs_nim'] }}</td>
                                 <td class="text-zinc-600 border px-4 py-2">{{ $item['mhs_nama'] }}</td>
                                 <td class="text-zinc-600 border px-4 py-2 md:text-nowrap">
@@ -102,12 +107,11 @@
                                             nim = '{{ $item['mhs_nim'] }}';
                                             nama = '{{ $item['mhs_nama'] }}';
                                             judul = '{{ $item['jdl_proposal'] }}';
-                                            jadwal = '{{ $item['tgl_smn'] ?: 'Belum dijadwalkan' }}';
                                             ruang = '{{ $item['ruang_smn'] }}';
                                             penguji1 = '{{ $item['penguji'] }}';
                                         "
-                                        class="cursor-pointer px-3 py-1.5 rounded rounded-md text-sm ring {{ $item['tgl_smn'] ? 'bg-green-100 text-green-800 ring-green-200' : 'bg-yellow-100 text-yellow-800 ring-yellow-200' }}">
-                                        {{ $item['tgl_smn'] ? 'Dijadwalkan' : 'Pending' }}
+                                        class="cursor-pointer px-3 py-1.5 rounded rounded-md text-sm text-nowrap ring bg-blue-100 text-blue-800 ring-blue-200">
+                                        Atur Jadwal
                                     </button>
                                 </td>
                                 @php
@@ -203,13 +207,6 @@
                     <textarea readonly
                         class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700 resize-none"
                         rows="3" x-model="judul"></textarea>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-900">Jadwal</label>
-                    <input type="text" readonly
-                        class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700 resize-none"
-                        x-model="jadwal">
                 </div>
 
                 <!-- Schedule Details -->
