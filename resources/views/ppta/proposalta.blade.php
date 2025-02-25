@@ -47,7 +47,7 @@
                                 tanggal pengajuan
                             </th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
-                                Jadwal Sidang Proposal
+                                Tanggal Sidang Proposal
                             </th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 NIM

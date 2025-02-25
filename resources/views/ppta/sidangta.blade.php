@@ -46,7 +46,7 @@
                                 TANGGAL PENGAJUAN
                             </th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase">
-                                TANGGAL Sidang TA
+                                TANGGAL Sidang
                             </th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium">
                                 NIM
