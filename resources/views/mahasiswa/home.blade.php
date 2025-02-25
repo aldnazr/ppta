@@ -6,6 +6,13 @@
             class ="bg-white backdrop-blur-lg rounded-md shadow-xl border border-white/20 overflow-hidden mb-6">
             <!-- Improved Welcome Greeting -->
             <div class="relative py-4 md:py-8">
+                <div class="absolute right-0 top-0 p-3 md:p-5">
+                    <button @click="open = false"
+                        class="cursor-pointer flex items-center justify-center w-7 h-7 md:w-9 md:h-9 bg-blue-900/20 hover:bg-blue-900/40 rounded-full">
+                        <i class="fa-solid text-black/60 fa-xmark fa-sm"></i>
+                    </button>
+                </div>
+
                 <div class="max-w-4xl mx-auto flex flex-col items-center justify-center space-y-6">
                     <!-- Animated Icon Container -->
                     <div
@@ -37,11 +44,6 @@
                         <path d="M0,70 C150,110 350,25 500,70 L500,100 L0,100 Z" fill="currentColor" opacity="0.1"></path>
                     </svg>
                 </div>
-
-                <button @click="open = false"
-                    class="cursor-pointer flex items-center justify-center w-7 h-7 md:w-9 md:h-9 absolute bg-blue-900/20 hover:bg-blue-900/40 rounded-full top-4 right-6">
-                    <i class="fa-solid fa-xmark fa-sm"></i>
-                </button>
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@
     },
     getTopNavClass() {
         if (this.role === 'mahasiswa') {
-            return 'lg:border-transparent bg-white lg:bg-transparent lg:shadow-none';
+            return 'md:border-transparent bg-white md:bg-transparent md:shadow-none';
         }
         return 'bg-white lg:shadow-sm';
     }
@@ -20,7 +20,7 @@ window.addEventListener('resize', () => {
     isOpen = window.innerWidth >= 1024;
 })">
     <!-- Desktop Sidebar -->
-    <div class="hidden lg:block">
+    <div class="hidden md:block">
         <div id="sidebar" x-show="isOpen" x-transition:enter="transition ease-out duration-300"
             x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
             x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0"
@@ -139,7 +139,7 @@ window.addEventListener('resize', () => {
     </div>
 
     {{-- Mobile Sidebar --}}
-    <div class="lg:hidden ">
+    <div class="md:hidden ">
         <div x-show="isOpen" class="z-50 backdrop-contrast-75 absolute h-screen w-screen bg-white/10">
             <div id="sidebar" @click.outside = "isOpen = false" x-show="isOpen"
                 x-transition:enter="transition ease-out duration-300" x-transition:enter-start="-translate-x-full"
