@@ -11,7 +11,7 @@
     },
     getTopNavClass() {
         if (this.role === 'mahasiswa') {
-            return 'md:border-transparent bg-white md:bg-transparent md:shadow-none';
+            return 'md:border-transparent md:w-max bg-white md:bg-transparent md:shadow-none';
         }
         return 'bg-white lg:shadow-sm';
     }
@@ -261,7 +261,7 @@ window.addEventListener('resize', () => {
     <main :class="{ 'lg:pl-80': isOpen }" class="flex bg-zinc-100 flex-1 flex-col h-full w-full">
         <!-- Top Navigation -->
         <div :class="getTopNavClass()"
-            class="fixed justify-between top-0 left-0 right-0 z-30 flex h-16 items-center pl-2 lg:pl-3 pr-4 shadow-md">
+            class="fixed top-0 justify-between left-0 right-0 z-30 flex h-16 items-center pl-2 lg:pl-3 pr-4 shadow-md">
 
             <!-- Button Toggle Sidebar -->
             <button @click="isOpen = !isOpen"
