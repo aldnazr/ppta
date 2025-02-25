@@ -8,7 +8,6 @@
         nim: '',
         nama: '',
         judul: '',
-        jadwal: '',
         ruang: '',
         penguji1: '',
         title() { return this.titleData; }
@@ -45,7 +44,11 @@
                                 class="border-e px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-nowrap">
                                 NO DAFTAR</th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
-                                tanggal pengajuan</th>
+                                tanggal pengajuan
+                            </th>
+                            <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
+                                Jadwal Sidang Proposal
+                            </th>
                             <th class="border-e px-6 py-3 text-center text-xs font-medium uppercase tracking-wider">
                                 NIM
                             </th>
@@ -76,6 +79,9 @@
                                 <td class="text-zinc-600 border px-4 py-2">{{ $proposal['kode_antrian'] }}</td>
                                 <td class="text-center text-zinc-600 border px-4 py-2">{{ $proposal['wkt_proposal'] }}
                                 </td>
+                                <td class="text-center text-zinc-600 border px-4 py-2">
+                                    {{ $proposal['sidang_prop'] ?: 'Belum dijadwalkan' }}
+                                </td>
                                 <td class="text-zinc-600 border px-4 py-2">{{ $proposal['mhs_nim'] }}</td>
                                 <td class="text-zinc-600 border px-4 py-2">{{ $proposal['mhs_nama'] }}</td>
                                 <td class="text-zinc-600 border px-4 py-2 md:text-nowrap">
@@ -92,12 +98,11 @@
                                             nim = '{{ $proposal['mhs_nim'] }}';
                                             nama = '{{ $proposal['mhs_nama'] }}';
                                             judul = '{{ $proposal['jdl_proposal'] }}';
-                                            jadwal = '{{ $proposal['sidang_prop'] ?: 'Belum dijadwalkan' }}';
                                             ruang = '{{ $proposal['ruang'] }}';
                                             penguji1 = '{{ $proposal['nik_penguji1'] }}';
-                                        "
-                                        class="cursor-pointer px-3 py-1.5 ring rounded-md text-sm {{ $proposal['sidang_prop'] ? 'bg-green-100 text-green-800 ring-green-200' : 'bg-yellow-100 text-yellow-800 ring-yellow-200' }}">
-                                        {{ $proposal['sidang_prop'] ? 'Dijadwalkan' : 'Pending' }}
+                                            "
+                                        class="cursor-pointer px-3 py-1.5 ring rounded-md text-sm text-nowrap bg-blue-100 text-blue-800 ring-blue-200">Atur
+                                        Jadwal
                                     </button>
                                 </td>
                                 <td class="text-zinc-600 border px-4 py-2"></td>
@@ -251,13 +256,6 @@
                     <textarea readonly
                         class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700 resize-none"
                         rows="3" x-model="judul"></textarea>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-900">Jadwal</label>
-                    <input type="text" readonly
-                        class="mt-2 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700 resize-none"
-                        x-model="jadwal">
                 </div>
 
                 <!-- Schedule Details -->
