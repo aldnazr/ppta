@@ -100,7 +100,7 @@ window.addEventListener('resize', () => {
                         </x-nav-link>
                         <x-nav-link href="{{ route('ppta.maintenance') }}" :active="request()->is('ppta/maintenance')"
                             iconClass="fa-solid fa-screwdriver-wrench fa-lg">
-                            Maintenance Data Penguji
+                            Maintenance Penguji
                         </x-nav-link>
                     </div>
                 </template>
@@ -218,7 +218,7 @@ window.addEventListener('resize', () => {
                             </x-nav-link>
                             <x-nav-link href="{{ route('ppta.maintenance') }}" :active="request()->is('ppta/maintenance')"
                                 iconClass="fa-solid fa-screwdriver-wrench fa-lg">
-                                Maintenance Data Penguji
+                                Maintenance Penguji
                             </x-nav-link>
                         </div>
                     </template>
