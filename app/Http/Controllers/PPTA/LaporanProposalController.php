@@ -83,6 +83,8 @@ class LaporanProposalController extends Controller
             ->setPaper('a4', 'landscape');
 
         // Download PDF
-        return $pdf->download('laporan_proposal.pdf');
+        return response()->streamDownload(function () use ($pdf) {
+            echo $pdf->output();
+        }, 'Laporan_Proposal.pdf', ['Content-Type' => 'application/pdf']);
     }
 }

@@ -87,9 +87,8 @@ class LaporanTaController extends Controller
         $pdf = Pdf::loadView('ppta.laporan.ta', compact('data'))
             ->setPaper('a4', 'landscape');
 
-        return response()->streamDownload(
-            fn() => print($pdf->output()),
-            'laporan_TA.pdf'
-        );
+        return response()->streamDownload(function () use ($pdf) {
+            echo $pdf->output();
+        }, 'Laporan_TA.pdf', ['Content-Type' => 'application/pdf']);
     }
 }

@@ -83,6 +83,6 @@ class LaporanFkController extends Controller
         // Download PDF
         return response()->streamDownload(function () use ($pdf) {
             echo $pdf->output();
-        }, 'laporan_FK.pdf', ['Content-Type' => 'application/pdf']);
+        }, 'Laporan_FK.pdf', ['Content-Type' => 'application/pdf']);
     }
 }
