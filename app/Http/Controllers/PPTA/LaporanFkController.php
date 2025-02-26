@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\PPTA;
 
-use Carbon\Carbon;
-use App\Data\Prodi;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
@@ -83,6 +81,8 @@ class LaporanFkController extends Controller
             ->setPaper('a4', 'landscape');
 
         // Download PDF
-        return $pdf->download('laporan_FK.pdf');
+        return response()->streamDownload(function () use ($pdf) {
+            echo $pdf->output();
+        }, 'laporan_FK.pdf', ['Content-Type' => 'application/pdf']);
     }
 }
