@@ -70,8 +70,13 @@ Route::middleware(['loggedin'])->group(function () {
 
 
 // API
-Route::get('/listkaryawan', function () {
-    $query1 = "SELECT * FROM v_mhs_ WHERE ROWNUM <=10 AND nim = 18410100141";
+
+Route::get('/api/ppta/laporan/fk', function (Request $request) {
+    $tanggalAwal = $request->query('tanggal_awal');
+    $tanggalAkhir = $request->query('tanggal_akhir');
+    $krs = $request->query('krs');
+    $kodeProdi = $request->query('kode_prodi');
+
     $query = "SELECT
             ap.jdl_proposal,
             vm.nim,
@@ -80,10 +85,8 @@ Route::get('/listkaryawan', function () {
             nama_plus_gelar(ap.pembimbing_2) AS pembimbing_2_nama,
             nama_plus_gelar(jp.penguji1) AS penguji_1_nama,
             nama_plus_gelar(jp.penguji2) AS penguji_2_nama,
-            TO_CHAR(ap.wkt_proposal, 'YYYY-MM-DD') AS wkt_proposal, 
-            TO_CHAR(ap.wkt_ta, 'YYYY-MM-DD') AS wkt_ta,
-            jp.ruang,
-            ap.sts_ta
+            TO_CHAR(ap.wkt_proposal, 'DD-MM-YYYY') AS wkt_proposal,
+            ap.ket_tolak
         FROM 
            v_antri_proposal ap
         JOIN 
@@ -91,54 +94,88 @@ Route::get('/listkaryawan', function () {
         JOIN 
             v_mhs_ vm ON ap.mhs_nim = vm.nim
         WHERE
-            ap.sts_ta != 'Y' AND
-            ap.file_bimbingan IS NOT NULL 
-            AND ap.file_laporan IS NOT NULL
+            jp.penguji1 IS NULL 
+            AND ap.sts_proposal IS NULL
             AND ROWNUM <= 10
         ";
 
-    $users = DB::select($query);
-    return view('listkaryawan', compact('users'));
+    $params = [];
+
+    if (!empty($tanggalAwal) && !empty($tanggalAkhir)) {
+        $query .= " AND ap.wkt_proposal BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD')";
+        $params[] = $tanggalAwal;
+        $params[] = $tanggalAkhir;
+    }
+
+    if (!empty($krs)) {
+        $query .= " AND ap.sts_ta = ?";
+        $params[] = $krs;
+    }
+
+    if (!empty($kodeProdi) && is_numeric($kodeProdi)) {
+        $query .= " AND SUBSTR(vm.nim, 3, 5) = ?";
+        $params[] = $kodeProdi;
+    }
+
+    $query .= " ORDER BY ap.wkt_proposal DESC";
+
+    // Eksekusi query
+    $data = DB::select($query, $params);
+
+    return response()->json($data);
 });
 
-Route::get('/api/ppta/laporan/fk', function () {
-    $query = "SELECT 
-            *
+Route::get('/api/ppta/laporan/prop', function (Request $request) {
+    $tanggalAwal = $request->query('tanggal_awal');
+    $tanggalAkhir = $request->query('tanggal_akhir');
+    $hasilSidang = $request->query('hasil_sidang');
+    $kodeProdi = $request->query('kode_prodi');
+
+    $query = "SELECT
+            ap.jdl_proposal,
+            vm.nim,
+            vm.nama,
+            nama_plus_gelar(ap.pembimbing_1) AS pembimbing_1_nama, 
+            nama_plus_gelar(ap.pembimbing_2) AS pembimbing_2_nama,
+            nama_plus_gelar(jp.penguji1) AS penguji_1_nama,
+            nama_plus_gelar(jp.penguji2) AS penguji_2_nama,
+            TO_CHAR(ap.wkt_proposal, 'DD-MM-YYYY') AS wkt_proposal,
+            ap.sts_proposal
         FROM 
            v_antri_proposal ap
         JOIN 
-            v_jdw_proposal  jp ON ap.kode_antrian = jp.kode_antrian
-        WHERE
-            penguji1 is null AND 
-            ap.sts_proposal is null AND
-            ROWNUM <= 10
-        ORDER BY
-            ap.kode_antrian DESC
-        ";
-
-    $execute = DB::select($query); // Menggunakan raw SQL query
-
-    return response()->json($execute);
-});
-
-Route::get('/api/ppta/laporan/prop', function () {
-    $query = "SELECT 
-            *
-        FROM 
-           v_antri_proposal ap
+            v_jdw_proposal jp ON ap.kode_antrian = jp.kode_antrian
         JOIN 
-            v_jdw_proposal  jp ON ap.kode_antrian = jp.kode_antrian
+            v_mhs_ vm ON ap.mhs_nim = vm.nim
         WHERE
-            penguji1 is NOT null AND 
-            ap.sts_proposal IS NOT null AND
-            ROWNUM <= 10
-        ORDER BY
-            ap.kode_antrian DESC
+            jp.penguji1 IS NULL 
+            AND ap.sts_proposal IS NULL
+            AND ROWNUM <= 10
         ";
 
-    $execute = DB::select($query); // Menggunakan raw SQL query
+    $params = [];
 
-    return response()->json($execute);
+    if (!empty($tanggalAwal) && !empty($tanggalAkhir)) {
+        $query .= " AND ap.wkt_proposal BETWEEN TO_DATE(?, 'YYYY-MM-DD') AND TO_DATE(?, 'YYYY-MM-DD')";
+        $params[] = $tanggalAwal;
+        $params[] = $tanggalAkhir;
+    }
+
+    if (!empty($hasilSidang)) {
+        $query .= " AND ap.sts_ta = ?";
+        $params[] = $hasilSidang;
+    }
+
+    if (!empty($kodeProdi) && is_numeric($kodeProdi)) {
+        $query .= " AND SUBSTR(vm.nim, 3, 5) = ?";
+        $params[] = $kodeProdi;
+    }
+
+    $query .= " ORDER BY ap.wkt_proposal DESC";
+
+    $data = DB::select($query, $params);
+
+    return response()->json($data);
 });
 
 Route::get('/api/ppta/laporan/ta', function (Request $request) {
@@ -155,8 +192,8 @@ Route::get('/api/ppta/laporan/ta', function (Request $request) {
             nama_plus_gelar(ap.pembimbing_2) AS pembimbing_2_nama,
             nama_plus_gelar(jp.penguji1) AS penguji_1_nama,
             nama_plus_gelar(jp.penguji2) AS penguji_2_nama,
-            TO_CHAR(ap.wkt_proposal, 'YYYY-MM-DD') AS wkt_proposal, 
-            TO_CHAR(ap.wkt_ta, 'YYYY-MM-DD') AS wkt_ta,
+            TO_CHAR(ap.wkt_proposal, 'DD-MM-YYYY') AS wkt_proposal, 
+            TO_CHAR(ap.wkt_ta, 'DD-MM-YYYY') AS wkt_ta,
             jp.ruang,
             ap.sts_ta
         FROM 
@@ -189,7 +226,6 @@ Route::get('/api/ppta/laporan/ta', function (Request $request) {
         $params[] = $kodeProdi;
     }
 
-    // Batasi jumlah data
     $query .= " ORDER BY ap.kode_antrian";
 
     // Eksekusi query
@@ -202,7 +238,8 @@ Route::get('/api/ppta/laporan/ta', function (Request $request) {
 Route::get('/api/dosens', function () {
     $query = "SELECT 
             vk.nik, 
-            nama_plus_gelar(vk.nik) AS nama_gelar
+            nama_plus_gelar(vk.nik) AS nama_gelar,
+            nama
         FROM 
             v_prodiewmp vp
         JOIN 
@@ -211,7 +248,7 @@ Route::get('/api/dosens', function () {
             nama_gelar
         ";
 
-    $execute = DB::select($query); // Menggunakan raw SQL query
+    $execute = DB::select($query);
 
     return response()->json($execute);
 });
@@ -245,8 +282,67 @@ Route::get('/api/prodi', function () {
     return response()->json($execute);
 });
 
-Route::get('/api/dosen/berkas', function () {
-    $dosen_id = '020393';
+Route::get('/api/dosen/dashboard', function (Request $request) {
+    $nikDosen = $request->query('nik_dosen');
+
+    $query = "
+        SELECT * FROM (
+            SELECT 
+                ap.kode_antrian,
+                ap.wkt_proposal,
+                ap.wkt_ta,
+                ap.jdl_proposal,
+                ap.mhs_nim,
+                vm.nama as mhs_nama
+            FROM
+                v_antri_proposal ap
+            JOIN 
+                v_jdw_proposal jdw 
+                    ON ap.kode_antrian = jdw.kode_antrian
+            JOIN 
+                v_mhs_ vm 
+                    ON ap.mhs_nim = vm.nim
+            WHERE
+                NOT EXISTS (
+                    SELECT 1 
+                    FROM v_rincian_nilai_ta_ rnt 
+                    WHERE rnt.kode_antrian = ap.kode_antrian
+                )
+            AND
+                ? IN (ap.pembimbing_1, ap.pembimbing_2, jdw.penguji1, jdw.penguji2)
+            AND
+                ap.mhs_nim NOT IN (SELECT nim FROM v_alumni_)
+            ORDER BY
+                ap.kode_antrian DESC
+        )
+    ";
+
+    $execute = DB::select($query, [$nikDosen]);
+
+    return response()->json($execute);
+});
+
+
+
+Route::get('/api/dosen/berkas', function (Request $request) {
+    $nikDosen = $request->query('nik_dosen');
+    $filterBerkas = $request->query('filter_berkas', 'semua');
+
+    // Siapkan variabel tambahan untuk menampung kondisi
+    $additionalWhere = '';
+
+    switch ($filterBerkas) {
+        case 'proposal':
+            $additionalWhere = 'AND prop.wkt_ta IS NULL';
+            break;
+        case 'tugas_akhir':
+            $additionalWhere = 'AND prop.wkt_ta IS NOT NULL';
+            break;
+        case 'semua':
+        default:
+            $additionalWhere = '';
+            break;
+    }
 
     $query = "
         SELECT 
@@ -256,6 +352,8 @@ Route::get('/api/dosen/berkas', function () {
             prop.jdl_proposal,
             vm.nama as mhs_nama,
             prop.mhs_nim,
+            file_proposal,
+            file_bimbingan,
             nama_plus_gelar(prop.pembimbing_1) AS pembimbing_1_nama, 
             nama_plus_gelar(prop.pembimbing_2) AS pembimbing_2_nama,
             nama_plus_gelar(jdw.penguji1) AS penguji_1_nama,
@@ -273,17 +371,19 @@ Route::get('/api/dosen/berkas', function () {
             v_mhs_ vm ON prop.mhs_nim = vm.nim
         WHERE 
             ? IN (prop.pembimbing_1, prop.pembimbing_2, jdw.penguji1, jdw.penguji2)
+            $additionalWhere
         ORDER BY
             prop.wkt_proposal DESC
     ";
 
-    $execute = DB::select($query, [$dosen_id, $dosen_id, $dosen_id, $dosen_id]);
+    $execute = DB::select($query, [$nikDosen, $nikDosen, $nikDosen, $nikDosen]);
 
     return response()->json($execute);
 });
 
+Route::get('/api/dosen/penilaian', function (Request $request) {
+    $nikDosen = $request->query('nik_dosen', '020393');
 
-Route::get('/api/dosen/penilaian', function () {
     $query = "SELECT 
             prop.wkt_proposal,
             prop.wkt_ta,
@@ -299,21 +399,23 @@ Route::get('/api/dosen/penilaian', function () {
             v_jdw_proposal jdw on prop.kode_antrian = jdw.kode_antrian
         JOIN 
             v_mhs_ vm ON prop.mhs_nim = vm.nim
-        WHERE '020393' 
-            in (prop.pembimbing_1, prop.pembimbing_2, jdw.penguji1, jdw.penguji2)
+        WHERE 
+            ? in (prop.pembimbing_1, prop.pembimbing_2, jdw.penguji1, jdw.penguji2)
         ORDER BY
             prop.wkt_proposal DESC
         ";
 
-    $execute = DB::select($query); // Menggunakan raw SQL query
+    $execute = DB::select($query, [$nikDosen]); // Menggunakan raw SQL query
 
     return response()->json($execute);
 });
 
 Route::get('/api/dosen/penilaian_nilai',  function (Request $request) {
-    $kodeAntrian = $request->query('$kode_antrian', 2023100008);
+    $kodeAntrian = $request->query('kode_antrian');
 
     $query = "SELECT 
+            kode_antrian,
+            kriteria_id,
             kriteria_nama,
             bobot,
             nilai
@@ -329,9 +431,260 @@ Route::get('/api/dosen/penilaian_nilai',  function (Request $request) {
             parent_id
         ";
 
-    $execute = DB::select($query, [$kodeAntrian]); // Menggunakan raw SQL query
+    $penilaian = DB::select($query, [$kodeAntrian]);
 
-    return response()->json($execute);
+    if (!empty($penilaian)) {
+        return response()->json($penilaian);
+    }
+
+    $dummyTemplate = [
+        [
+            "kriteria_id" => "F2.1.1",
+            "kriteria_nama" => "Perumusan masalah",
+            "bobot" => "30",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F2.1.2",
+            "kriteria_nama" => "Kajian pustaka",
+            "bobot" => "20",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F2.1.3",
+            "kriteria_nama" => "Metodologi",
+            "bobot" => "30",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F2.1.4",
+            "kriteria_nama" => "Luaran tugas akhir",
+            "bobot" => "20",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F2.2.1",
+            "kriteria_nama" => "Perumusan masalah",
+            "bobot" => "30",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F2.2.2",
+            "kriteria_nama" => "Kajian pustaka",
+            "bobot" => "20",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F2.2.4",
+            "kriteria_nama" => "Luaran tugas akhir",
+            "bobot" => "20",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F2.2.3",
+            "kriteria_nama" => "Metodologi",
+            "bobot" => "30",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F3.1.1",
+            "kriteria_nama" => "Kemandirian",
+            "bobot" => "30",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F3.1.3",
+            "kriteria_nama" => "Kreatifitas",
+            "bobot" => "20",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F3.1.2",
+            "kriteria_nama" => "Keaktifan",
+            "bobot" => "20",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F3.1.4",
+            "kriteria_nama" => "Analisa Ilmiah",
+            "bobot" => "30",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F3.2.3",
+            "kriteria_nama" => "Kreatifitas",
+            "bobot" => "20",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F3.2.4",
+            "kriteria_nama" => "Analisa Ilmiah",
+            "bobot" => "30",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F3.2.2",
+            "kriteria_nama" => "Keaktifan",
+            "bobot" => "20",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F3.2.1",
+            "kriteria_nama" => "Kemandirian",
+            "bobot" => "30",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.1.1.2",
+            "kriteria_nama" => "Sikap dan penampilan",
+            "bobot" => "50",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.1.1.1",
+            "kriteria_nama" => "Persiapan, sistematika pemakaian bahasa, dan pengaturan waktu penyajian",
+            "bobot" => "50",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.1.2.5",
+            "kriteria_nama" => "Format dan tata tulis",
+            "bobot" => "10",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.1.2.3",
+            "kriteria_nama" => "Analisis dan metodologi",
+            "bobot" => "25",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.1.2.4",
+            "kriteria_nama" => "Kreatifitas",
+            "bobot" => "15",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.1.2.1",
+            "kriteria_nama" => "Sistematika dan kelengkapan naskah",
+            "bobot" => "25",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.1.2.2",
+            "kriteria_nama" => "Kompleksitas dan manfaat",
+            "bobot" => "25",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.1.3.1",
+            "kriteria_nama" => "Penguasaan materi",
+            "bobot" => "60",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.1.3.2",
+            "kriteria_nama" => "Ketepatan jawaban dan objektifitas dalam menanggapi permasalahan",
+            "bobot" => "40",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.2.1.1",
+            "kriteria_nama" => "Persiapan, sistematika pemakaian bahasa, dan pengaturan waktu penyajian",
+            "bobot" => "50",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.2.1.2",
+            "kriteria_nama" => "Sikap dan penampilan",
+            "bobot" => "50",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.2.2.1",
+            "kriteria_nama" => "Sistematika dan kelengkapan naskah",
+            "bobot" => "25",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.2.2.4",
+            "kriteria_nama" => "Kreatifitas",
+            "bobot" => "15",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.2.2.3",
+            "kriteria_nama" => "Analisis dan metodologi",
+            "bobot" => "25",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.2.2.2",
+            "kriteria_nama" => "Kompleksitas dan manfaat",
+            "bobot" => "25",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.2.2.5",
+            "kriteria_nama" => "Format dan tata tulis",
+            "bobot" => "10",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.2.3.2",
+            "kriteria_nama" => "Ketepatan jawaban dan objektifitas dalam menanggapi permasalahan",
+            "bobot" => "40",
+            "nilai" => "0"
+        ],
+        [
+            "kriteria_id" => "F5.2.3.1",
+            "kriteria_nama" => "Penguasaan materi",
+            "bobot" => "60",
+            "nilai" => "0"
+        ]
+    ];
+
+    // Tambahkan kode_antrian ke setiap item
+    $dummyData = array_map(function ($item) use ($kodeAntrian) {
+        return array_merge(
+            ['kode_antrian' => $kodeAntrian],
+            $item
+        );
+    }, $dummyTemplate);
+
+    return response()->json($dummyData);
+});
+
+Route::post('/api/nilai-ta/insert', function (Request $request) {
+    // Ambil input dari request
+    $nikDosen = $request->input('nik_dosen');
+    $kodeAntrian = $request->input('kode_antrian');
+    $nilai = $request->input('nilai');
+    $idKriteria = $request->input('id_kriteria');
+
+    $cekData = DB::table('v_kriteria_nilai_ta_ as knt')
+        ->join('v_ta_bobot_nilai_ as tbn', 'knt.kriteria_id', '=', 'tbn.kriteria_nilai_ta')
+        ->join('v_rincian_nilai_ta_ as rnt', 'knt.kriteria_id', '=', 'rnt.kriteria_nilai_ta')
+        ->where('kode_antrian', $kodeAntrian)
+        ->exists();
+
+    // if ($cekData) {
+    // DB::statement("BEGIN sp_update_nilai_ta_(:nik_dosen, :kode_antrian, :nilai, :id_kriteria); END;", [
+    //     'nik_dosen'   => $nikDosen,
+    //     'kode_antrian'=> $kodeAntrian,
+    //     'nilai'       => $nilai,
+    //     'id_kriteria' => $idKriteria,
+    // ]);
+    // } else {
+    DB::statement("BEGIN sp_insert_nilai_ta_(:nik_dosen, :kode_antrian, :nilai, :id_kriteria); END;", [
+        'nik_dosen'   => $nikDosen,
+        'kode_antrian' => $kodeAntrian,
+        'nilai'       => $nilai,
+        'id_kriteria' => $idKriteria,
+    ]);
+    // }
+
+    return response()->json(['message' => 'Data nilai TA berhasil ditambahkan.']);
 });
 
 Route::get('/api/mhs/jadbim', function () {
@@ -377,7 +730,10 @@ Route::get('/api/mhs/home', function () {
             v_mhs_ vm ON vp.mhs_nim = vm.nim
         WHERE 
             vp.tgl_smn >= TRUNC(add_months(sysdate,-1)) 
-            AND vp.tgl_smn < TRUNC(add_months(sysdate,1))";
+            AND vp.tgl_smn < TRUNC(add_months(sysdate,1))
+        ORDER BY
+            vp.ruang_smn
+            ";
 
     $execute = DB::select($query);
 
@@ -469,6 +825,8 @@ Route::get('/api/ppta/maintenance', function () {
             nama_plus_gelar(dp.nik) AS nama_gelar
         FROM 
             v_dos_penguji dp
+        ORDER BY
+            nama_gelar
         ";
 
     $execute = DB::select($query); // Menggunakan raw SQL query
