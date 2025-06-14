@@ -8,8 +8,7 @@ This project is a redesign of the Academic Final Project Service Center website,
 
 ## Preview
 
-| TA Perangkatan                                                                    |
-| --------------------------------------------------------------------------------- |
+| TA Perangkatan |
 | ![](https://raw.githubusercontent.com/aldnazr/ppta/refs/heads/main/preview/1.png) |
 
 ![2](https://raw.githubusercontent.com/aldnazr/ppta/refs/heads/main/preview/2.png)
