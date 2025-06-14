@@ -12,10 +12,10 @@ This project is a redesign of the Academic Final Project Service Center website,
 | --------------------------------------------------------------------------------- |
 | ![](https://raw.githubusercontent.com/aldnazr/ppta/refs/heads/main/preview/1.png) |
 
-| TA Perangkatan                                                                    |
+| Dokumen                                                                           |
 | --------------------------------------------------------------------------------- |
-| ![](https://raw.githubusercontent.com/aldnazr/ppta/refs/heads/main/preview/1.png) |
+| ![](https://raw.githubusercontent.com/aldnazr/ppta/refs/heads/main/preview/2.png) |
 
-| Dokumen Usulan                                                                    |
+| Usulan                                                                            |
 | --------------------------------------------------------------------------------- |
-| ![](https://raw.githubusercontent.com/aldnazr/ppta/refs/heads/main/preview/1.png) |
+| ![](https://raw.githubusercontent.com/aldnazr/ppta/refs/heads/main/preview/3.png) |
