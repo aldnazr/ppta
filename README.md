@@ -8,7 +8,6 @@ This project is a redesign of the Academic Final Project Service Center website,
 
 # Demo
 
-<video width="320" height="240" controls>
-  <source src="https://media.githubusercontent.com/media/aldnazr/ppta/refs/heads/main/preview/Demo_PPTA.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![1](https://raw.githubusercontent.com/aldnazr/ppta/refs/heads/main/preview/1.png)
+![2](https://raw.githubusercontent.com/aldnazr/ppta/refs/heads/main/preview/2.png)
+![3](https://raw.githubusercontent.com/aldnazr/ppta/refs/heads/main/preview/3.png)
