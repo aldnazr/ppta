@@ -9,6 +9,7 @@ This project is a redesign of the Academic Final Project Service Center website,
 -   enable **zip** in php.ini
 -   Install Dependencies PHP `composer update`
 -   Install Dependencies FrontEnd `yarn install`
+-   migrate local db for session `php artisan migrate`
 -   start vite by `yarn dev`
 -   run project by `php artisan serve`
 
