@@ -4,9 +4,9 @@ This project is a redesign of the Academic Final Project Service Center website,
 
 ## Installation
 
--   Require [Oci8](https://pecl.php.net/package/oci8) extension and then enable in php.ini
+-   Require [Oci8](https://pecl.php.net/package/oci8) PHP extension enable in php.ini
 -   Require [Instant Client](https://www.oracle.com/database/technologies/instant-client.html) add to environment variable
--   enable **zip** in php.ini
+-   enable **pdo_sqlite, sqlite3, zip** in php.ini
 -   Install Dependencies PHP `composer update`
 -   Install Dependencies FrontEnd `yarn install`
 -   migrate local db for session `php artisan migrate`
