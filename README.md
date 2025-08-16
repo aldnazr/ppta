@@ -8,6 +8,7 @@ This project is a redesign of the Academic Final Project Service Center website,
 -   Require [Instant Client](https://www.oracle.com/database/technologies/instant-client.html) add to environment variable
 -   enable **zip** in php.ini
 -   Install Dependencies PHP `composer update`
+-   Install Dependencies FrontEnd `yarn install`
 -   start vite by `yarn dev`
 -   run project by `php artisan serve`
 
